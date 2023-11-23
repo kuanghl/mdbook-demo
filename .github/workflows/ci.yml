@@ -37,7 +37,6 @@ jobs:
       uses: magicgh/mdbook-mermaid-action@v1
       with:
         version: 'latest'
-      run: cargo install mdbook-admonish
 
     # Setting --> Pages --> Build and deployment --> Github Actions
     - name: Setup Pages
@@ -46,6 +45,7 @@ jobs:
 
     - name: Build docs
       run: |
+        cargo install mdbook-admonish
         mdbook build
 
     - name: Upload artifact
