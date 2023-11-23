@@ -1,4 +1,1 @@
-mermaid.initialize({
-  startOnLoad: true,
-  theme: 'dark',
-})
+mermaid.initialize({startOnLoad:true});

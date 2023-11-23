@@ -5,11 +5,6 @@ multilingual = false
 src = "src"
 title = "kuanghl"
 
-# # Uncomment this section to regennerate theme
-# [preprocessor.theme]
-# pagetoc = true
-# sidebar-width = "250px"
-
 [build]
 build-dir = "docs"
 create-missing = true
@@ -18,19 +13,20 @@ use-default-preprocessors = false
 [preprocessor.svgbob]
 class = "bob"
 
+[preprocessor.admonish]
+command = "mdbook-admonish"
+assets_version = "2.0.2" # do not edit: managed by `mdbook-admonish install`
+
 [preprocessor.mermaid]
 command = "mdbook-mermaid"
 
 [output.html]
-# default-theme = "ayu"
 mathjax-support = true
 curly-quotes = true
 default-theme = "coal"
 preferred-dark-theme = "coal"
-git-repository-url = "https://github.com/kuanghl/mdbook"
-# additional-css = ["theme/pagetoc.css"]
-# additional-js = ["theme/pagetoc.js"]
-additional-css = ["theme/svgbob.css", "theme/other.css","theme/css/variables.css", "theme/css/general.css", "theme/css/chrome.css", "theme/highlight.css"]
+git-repository-url = "https://github.com/kuanghl/mdbook-demo"
+additional-css = ["theme/svgbob.css", "theme/other.css","theme/css/variables.css", "theme/css/general.css", "theme/css/chrome.css", "theme/highlight.css", "css/mdbook-admonish.css"]
 additional-js = ["js/helper.js", "js/support.js", "theme/theme-monokai.js","js/mermaid.min.js", "js/mermaid-init.js"]
 
 [output.html.search]
@@ -52,7 +48,4 @@ editable = true
 [output.html.print]
 enable = true
 
-# # Uncomment this section to regenerate theme (no use)
-# [output.theme-ace]
-# theme-white = "xcode"
-# theme-dark = "monokai"
+

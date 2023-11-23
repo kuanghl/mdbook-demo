@@ -8,8 +8,6 @@
 - 掌握并能记住如何绘制`Mermaid`流程图;
 - 了解 `Gitbook` 写作环境的相关集成插件.
 
-![mermaid-flow-chart-simplemindmap-preview.png](./images/mermaid-flow-chart-simplemindmap-preview.png)
-
 ## 什么是Mermaid流程图
 
 **关键词**
@@ -26,7 +24,7 @@
 
 **源码**
 
-```mermaid
+```
 graph TD
   A[Christmas] -->|Get money| B(Go shopping)
   B --> C{Let me think}
@@ -56,15 +54,19 @@ graph TD
 
 **关键词**
 
-```mardown
+```markdown
 + TB
 + BT
 + LR
 + RL
 ```
 
-![mermaid-flow-chart-layout-simplemindmap.png](./images/mermaid-flow-chart-layout-simplemindmap.png)
-
+```mermaid
++ TB
++ BT
++ LR
++ RL
+```
 流程图布局方向,由四种基本方向组成,分别是英文单词: `top`(上), `bottom`(下),`left`(左)和 `right`(右).其中可选值: `TB` (从上到下),`BT` (从下到上),`LR` (从左往右)和 `RL` (从右往左)四种.
 
 > **核心**: 仅支持上下左右四个垂直方向,是英文单词首字母大写缩写.

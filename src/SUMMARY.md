@@ -20,7 +20,8 @@
   - [FAQ](./3rd/pybind11/15.FAQ.md)
   - [案例](./3rd/pybind11/16.案例.md)
   - [pybind11 demo](./3rd/pybind11/pybind11_demo.md)
-- [markdown mermaid](./basic/markdown.md)
+- [markdown](./basic/markdown.md)
+- [mermaid](./basic/mermaid.md)
 - [Test](./test/chapter_1.md)
 
   
