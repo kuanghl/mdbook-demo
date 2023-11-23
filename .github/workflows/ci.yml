@@ -37,17 +37,13 @@ jobs:
       uses: magicgh/mdbook-mermaid-action@v1
       with:
         version: 'latest'
-    
-    - name: Setup mdbook-katex
-      uses: magicgh/mdbook-katex-action@v1
-      with:
-        version: 'latest'
 
     - name: Setup mdbook-env install
       run: |
         cargo install mdbook-admonish
         mdbook-admonish install ./
         cargo install mdbook-toc
+        cargo install mdbook-katex
 
     # Setting --> Pages --> Build and deployment --> Github Actions
     - name: Setup Pages
