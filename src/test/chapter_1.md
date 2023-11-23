@@ -42,3 +42,10 @@ an equation,
 $$ \nabla f(x) \in \mathbb{R}^n, $$
 
 and a regular \$ symbol.
+
+Define $f(x)$:
+
+$$
+f(x)=x^2\\
+x\in\R
+$$

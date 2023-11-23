@@ -12,6 +12,7 @@ use-default-preprocessors = false
 
 [preprocessor.toc]
 command = "mdbook-toc"
+renderer = ["html"]
 
 [preprocessor.katex]
 after = ["links"]
