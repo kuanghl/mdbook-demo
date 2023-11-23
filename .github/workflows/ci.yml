@@ -39,10 +39,15 @@ jobs:
         version: 'latest'
     
     - name: Setup mdbook-admonish
-      run: |
-        cargo install mdbook-admonish
-        mdbook-admonish install ./
-        ls
+      uses: jontze/action-mdbook@v3
+        with:
+          # Optional Plugins have to be enabled
+          use-linkcheck: true
+          # use-mermaid: true
+          use-toc: true
+          use-opengh: true
+          use-admonish: true
+          use-katex: true
 
     # Setting --> Pages --> Build and deployment --> Github Actions
     - name: Setup Pages
