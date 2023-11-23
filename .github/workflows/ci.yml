@@ -28,7 +28,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: install mdbook
-      run: cargo install mdbook --version 0.4.35
+      run: | 
+        cargo install mdbook-mermaid
+        cargo install mdbook --version 0.4.35
 
     # Setting --> Pages --> Build and deployment --> Github Actions
     - name: Setup Pages
