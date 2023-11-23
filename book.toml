@@ -50,7 +50,7 @@ level = 0 # 1
 editable = true
 
 [output.html.print]
-enable = false
+enable = true
 
 # # Uncomment this section to regenerate theme (no use)
 # [output.theme-ace]
