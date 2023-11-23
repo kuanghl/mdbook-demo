@@ -41,7 +41,7 @@ jobs:
     - name: Setup mdbook-admonish
       run: |
         cargo install mdbook-admonish
-        mdbook-admonish install ./css
+        mdbook-admonish install ./
 
     # Setting --> Pages --> Build and deployment --> Github Actions
     - name: Setup Pages
