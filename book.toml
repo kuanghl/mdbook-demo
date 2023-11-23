@@ -1,0 +1,42 @@
+[book]
+authors = ["khl <1365342449@qq.com>"]
+language = "en"
+multilingual = false
+src = "src"
+title = "kuanghl"
+
+# # Uncomment this section to regennerate theme
+# [preprocessor.theme]
+# pagetoc = true
+# sidebar-width = "250px"
+
+[preprocessor.svgbob]
+class = "bob"
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
+
+[output.html]
+# default-theme = "ayu"
+default-theme = "coal"
+preferred-dark-theme = "coal"
+git-repository-url = "https://github.com/kuanghl/mdbook"
+# additional-css = ["theme/pagetoc.css"]
+# additional-js = ["theme/pagetoc.js"]
+additional-css = ["theme/svgbob.css", "theme/other.css","theme/css/variables.css", "theme/css/general.css", "theme/css/chrome.css", "theme/highlight.css"]
+additional-js = ["js/helper.js", "js/support.js", "theme/theme-monokai.js","js/mermaid.min.js", "js/mermaid-init.js"]
+
+[output.html.fold]
+enable = true # false
+level = 0 # 1
+
+[output.html.playground]
+editable = true
+
+[output.html.print]
+enable = false
+
+# # Uncomment this section to regenerate theme (no use)
+# [output.theme-ace]
+# theme-white = "xcode"
+# theme-dark = "monokai"
