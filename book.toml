@@ -29,9 +29,8 @@ curly-quotes = true
 git-repository-url = "https://github.com/kuanghl/mdbook-demo"
 additional-css = ["assets/admonish/mdbook-admonish.css",
                 "assets/catppuccin/catppuccin.css", "assets/catppuccin/catppuccin-admonish.css"]
-additional-js = ["js/helper.js", "js/support.js", 
-                "theme/theme-monokai.js",
-                "js/mermaid.min.js", "js/mermaid-init.js"]
+additional-js = ["assets/help/helper.js", "assets/help/support.js", 
+                "assets/mermaid/mermaid.min.js", "assets/mermaid/mermaid-init.js"]
 
 [output.html.search]
 limit-results = 20
