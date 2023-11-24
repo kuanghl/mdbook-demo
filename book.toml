@@ -29,7 +29,7 @@ curly-quotes = true
 default-theme = "coal"
 preferred-dark-theme = "coal"
 git-repository-url = "https://github.com/kuanghl/mdbook-demo"
-additional-css = ["css/mdbook-admonish.css",
+additional-css = ["assets/admonish/mdbook-admonish.css",
                 "assets/catppuccin/catppuccin.css", "assets/catppuccin/catppuccin-admonish.css"]
 additional-js = ["js/helper.js", "js/support.js", 
                 "theme/theme-monokai.js",

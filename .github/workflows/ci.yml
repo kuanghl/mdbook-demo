@@ -38,8 +38,8 @@ jobs:
         cargo install mdbook-mermaid
         mdbook-mermaid install ./
 
-        cargo install mdbook-admonish
-        mdbook-admonish install ./
+        # cargo install mdbook-admonish
+        # mdbook-admonish install ./
 
         cargo install mdbook-toc
         cargo install mdbook-katex
