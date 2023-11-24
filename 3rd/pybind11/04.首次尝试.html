@@ -1,49 +1,19 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js coal">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>首次尝试 - kuanghl</title>
 
+
         <!-- Custom HTML head -->
         
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="../../favicon.svg">
         <link rel="shortcut icon" href="../../favicon.png">
-
-        <meta property="og:url" content="https://gist.rs/" />
-        <meta property="og:type" content="book" />
-        <meta property="og:title" content="Gist of Rust" />
-        <meta property="og:description" content="Learn Rust and Wasm with joy" />
-        <meta property="og:image" content="https://gist.rs/img/gist-rs-og.png" />
-
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:site" content="@katopz">
-        <meta name="twitter:title" content="Gist of Rust">
-        <meta name="twitter:description" content="Gist of Rust: Learn Rust and Wasm with joy.">
-        <meta name="twitter:image" content="https://gist.rs/img/gist-rs-og.png">
-
-        <link rel="apple-touch-icon" sizes="57x57" href="../../icons/apple-icon-57x57.png" />
-        <link rel="apple-touch-icon" sizes="60x60" href="../../icons/apple-icon-60x60.png" />
-        <link rel="apple-touch-icon" sizes="72x72" href="../../icons/apple-icon-72x72.png" />
-        <link rel="apple-touch-icon" sizes="76x76" href="../../icons/apple-icon-76x76.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="../../icons/apple-icon-114x114.png" />
-        <link rel="apple-touch-icon" sizes="120x120" href="../../icons/apple-icon-120x120.png" />
-        <link rel="apple-touch-icon" sizes="144x144" href="../../icons/apple-icon-144x144.png" />
-        <link rel="apple-touch-icon" sizes="152x152" href="../../icons/apple-icon-152x152.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="../../icons/apple-icon-180x180.png" />
-        <link rel="icon" type="image/png" sizes="192x192" href="../../icons/android-icon-192x192.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="96x96" href="../../icons/favicon-96x96.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16x16.png" />
-
-        <meta name="msapplication-TileColor" content="#ffffff" />
-        <meta name="msapplication-TileImage" content="../../icons/ms-icon-144x144.png" />
-
         <link rel="stylesheet" href="../../css/variables.css">
         <link rel="stylesheet" href="../../css/general.css">
         <link rel="stylesheet" href="../../css/chrome.css">
@@ -59,19 +29,19 @@
         <link rel="stylesheet" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="../../css/mdbook-admonish.css">
+        <link rel="stylesheet" href="../../assets/admonish/mdbook-admonish.css">
         <link rel="stylesheet" href="../../assets/catppuccin/catppuccin.css">
         <link rel="stylesheet" href="../../assets/catppuccin/catppuccin-admonish.css">
-        <link rel="stylesheet" href="../.././mdbook-admonish.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "../../";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "coal" : "coal";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -96,22 +66,29 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
-            html.classList.remove('coal')
+            html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -121,15 +98,37 @@
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -332,7 +331,7 @@ Python中使用如下：
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../../3rd/pybind11/05.面对对象编程.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../3rd/pybind11/05.面对对象编程.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -346,7 +345,7 @@ Python中使用如下：
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../../3rd/pybind11/05.面对对象编程.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../3rd/pybind11/05.面对对象编程.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -364,7 +363,7 @@ Python中使用如下：
         <script src="../../editor.js"></script>
         <script src="../../mode-rust.js"></script>
         <script src="../../theme-dawn.js"></script>
-        <script src="../../theme/theme-monokai.js"></script>
+        <script src="../../theme-tomorrow_night.js"></script>
 
         <script src="../../elasticlunr.min.js"></script>
         <script src="../../mark.min.js"></script>
@@ -375,12 +374,12 @@ Python中使用如下：
         <script src="../../book.js"></script>
 
         <!-- Custom JS scripts -->
-        <script type="module" src="../../js/helper.js"></script>
-        <script type="module" src="../../js/support.js"></script>
-        <script type="module" src="../../theme/theme-monokai.js"></script>
-        <script type="module" src="../../js/mermaid.min.js"></script>
-        <script type="module" src="../../js/mermaid-init.js"></script>
+        <script src="../../assets/help/helper.js"></script>
+        <script src="../../assets/help/support.js"></script>
+        <script src="../../assets/mermaid/mermaid.min.js"></script>
+        <script src="../../assets/mermaid/mermaid-init.js"></script>
 
 
+    </div>
     </body>
 </html>

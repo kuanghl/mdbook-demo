@@ -1,49 +1,19 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js coal">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>markdown - kuanghl</title>
 
+
         <!-- Custom HTML head -->
         
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="../favicon.svg">
         <link rel="shortcut icon" href="../favicon.png">
-
-        <meta property="og:url" content="https://gist.rs/" />
-        <meta property="og:type" content="book" />
-        <meta property="og:title" content="Gist of Rust" />
-        <meta property="og:description" content="Learn Rust and Wasm with joy" />
-        <meta property="og:image" content="https://gist.rs/img/gist-rs-og.png" />
-
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:site" content="@katopz">
-        <meta name="twitter:title" content="Gist of Rust">
-        <meta name="twitter:description" content="Gist of Rust: Learn Rust and Wasm with joy.">
-        <meta name="twitter:image" content="https://gist.rs/img/gist-rs-og.png">
-
-        <link rel="apple-touch-icon" sizes="57x57" href="../icons/apple-icon-57x57.png" />
-        <link rel="apple-touch-icon" sizes="60x60" href="../icons/apple-icon-60x60.png" />
-        <link rel="apple-touch-icon" sizes="72x72" href="../icons/apple-icon-72x72.png" />
-        <link rel="apple-touch-icon" sizes="76x76" href="../icons/apple-icon-76x76.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="../icons/apple-icon-114x114.png" />
-        <link rel="apple-touch-icon" sizes="120x120" href="../icons/apple-icon-120x120.png" />
-        <link rel="apple-touch-icon" sizes="144x144" href="../icons/apple-icon-144x144.png" />
-        <link rel="apple-touch-icon" sizes="152x152" href="../icons/apple-icon-152x152.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="../icons/apple-icon-180x180.png" />
-        <link rel="icon" type="image/png" sizes="192x192" href="../icons/android-icon-192x192.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="../icons/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="96x96" href="../icons/favicon-96x96.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="../icons/favicon-16x16.png" />
-
-        <meta name="msapplication-TileColor" content="#ffffff" />
-        <meta name="msapplication-TileImage" content="../icons/ms-icon-144x144.png" />
-
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
@@ -59,19 +29,19 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="../css/mdbook-admonish.css">
+        <link rel="stylesheet" href="../assets/admonish/mdbook-admonish.css">
         <link rel="stylesheet" href="../assets/catppuccin/catppuccin.css">
         <link rel="stylesheet" href="../assets/catppuccin/catppuccin-admonish.css">
-        <link rel="stylesheet" href=".././mdbook-admonish.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "../";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "coal" : "coal";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -96,22 +66,29 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
-            html.classList.remove('coal')
+            html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -121,15 +98,37 @@
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -206,13 +205,13 @@
   C --&gt;|Three| F[fa:fa-car Car]
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph TD
+<pre><code class="language-mermaid">graph TD
   A[Christmas] --&gt;|Get money| B(Go shopping)
   B --&gt; C{Let me think}
   C --&gt;|One| D[Laptop]
   C --&gt;|Two| E[iPhone]
   C --&gt;|Three| F[fa:fa-car Car]
-</pre>
+</code></pre>
 <ul>
 <li>项目地址: <a href="https://github.com/mermaid-js/mermaid">https://github.com/mermaid-js/mermaid</a></li>
 <li>在线编辑: <a href="https://mermaidjs.github.io/mermaid-live-editor/">https://mermaidjs.github.io/mermaid-live-editor/</a></li>
@@ -226,11 +225,11 @@
 + LR
 + RL
 </code></pre>
-<pre class="mermaid">+ TB
+<pre><code class="language-mermaid">+ TB
 + BT
 + LR
 + RL
-</pre>
+</code></pre>
 <p>流程图布局方向,由四种基本方向组成,分别是英文单词: <code>top</code>(上), <code>bottom</code>(下),<code>left</code>(左)和 <code>right</code>(右).其中可选值: <code>TB</code> (从上到下),<code>BT</code> (从下到上),<code>LR</code> (从左往右)和 <code>RL</code> (从右往左)四种.</p>
 <blockquote>
 <p><strong>核心</strong>: 仅支持上下左右四个垂直方向,是英文单词首字母大写缩写.</p>
@@ -246,9 +245,9 @@
     Start --&gt; Stop
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph TB
+<pre><code class="language-mermaid">graph TB
     Start --&gt; Stop
-</pre>
+</code></pre>
 <ul>
 <li>BT </li>
 </ul>
@@ -260,9 +259,9 @@
     Start --&gt; Stop
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph BT
+<pre><code class="language-mermaid">graph BT
     Start --&gt; Stop
-</pre>
+</code></pre>
 <ul>
 <li>LR</li>
 </ul>
@@ -274,9 +273,9 @@
     Start --&gt; Stop
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     Start --&gt; Stop
-</pre>
+</code></pre>
 <ul>
 <li>RL</li>
 </ul>
@@ -288,9 +287,9 @@
     Start --&gt; Stop
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph RL
+<pre><code class="language-mermaid">graph RL
     Start --&gt; Stop
-</pre>
+</code></pre>
 <h3 id="形状"><a class="header" href="#形状">形状</a></h3>
 <p><strong>关键词</strong></p>
 <pre><code class="language-markdown">- 节点形状
@@ -312,7 +311,7 @@
         - {(暂不支持)}
     + &gt;不对称矩形]
 </code></pre>
-<pre class="mermaid">- 节点形状
+<pre><code class="language-mermaid">- 节点形状
     + [矩形]
         - [[暂不支持]]
         - [(圆柱)]
@@ -330,7 +329,7 @@
         - {[暂不支持]}
         - {(暂不支持)}
     + &gt;不对称矩形]
-</pre>
+</code></pre>
 <p>流程图节点形状,默认支持矩形和圆两种基本形状,包括基本形状的简单变体,支持嵌套组合形式,其中 <code>[]</code> 表示矩形,<code>()</code> 表示圆弧,<code>{}</code> 表示尖角(窃以为 <code>&lt;&gt;</code> 更适合)等等.</p>
 <blockquote>
 <p><strong>核心</strong>: 最外层代表主形状,内层辅助修饰.</p>
@@ -345,9 +344,9 @@
     id
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph TD
+<pre><code class="language-mermaid">graph TD
     id
-</pre>
+</code></pre>
 <h4 id="可重复节点"><a class="header" href="#可重复节点">可重复节点</a></h4>
 <p>可重复节点,指定节点形状,其文本内容不再是 <code>id</code> 的值而是 <code>&lt;node shape&gt;</code> 的值,适合后续出现多次引用相同节点的情况.</p>
 <blockquote>
@@ -364,9 +363,9 @@
     id1[This is the text in the box]
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     id1[This is the text in the box]
-</pre>
+</code></pre>
 <ul>
 <li>圆角矩形</li>
 </ul>
@@ -378,9 +377,9 @@
     id1(This is the text in the box)
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     id1(This is the text in the box)
-</pre>
+</code></pre>
 <ul>
 <li>体育场</li>
 </ul>
@@ -392,9 +391,9 @@
     id1([This is the text in the box])
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     id1([This is the text in the box])
-</pre>
+</code></pre>
 <ul>
 <li>圆柱</li>
 </ul>
@@ -406,9 +405,9 @@
     id1[(Database)]
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     id1[(Database)]
-</pre>
+</code></pre>
 <ul>
 <li>圆形</li>
 </ul>
@@ -420,9 +419,9 @@
     id1((This is the text in the circle))
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     id1((This is the text in the circle))
-</pre>
+</code></pre>
 <ul>
 <li>不对称矩形</li>
 </ul>
@@ -434,9 +433,9 @@
     id1&gt;This is the text in the box]
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     id1&gt;This is the text in the box]
-</pre>
+</code></pre>
 <ul>
 <li>菱形</li>
 </ul>
@@ -448,9 +447,9 @@
     id1{This is the text in the box}
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     id1{This is the text in the box}
-</pre>
+</code></pre>
 <ul>
 <li>六角形</li>
 </ul>
@@ -465,9 +464,9 @@
 <p><code>Gitbook</code> 语法中双大括号 <code>{}</code> 表示特殊意义,上述源码只能转义处理,实际上并不需要 <code>\</code> 进行转义.</p>
 </blockquote>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     id1\{\{This is the text in the box\}\}
-</pre>
+</code></pre>
 <ul>
 <li>平行四边形</li>
 </ul>
@@ -479,9 +478,9 @@
     id1[/This is the text in the box/]
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph TD
+<pre><code class="language-mermaid">graph TD
     id1[/This is the text in the box/]
-</pre>
+</code></pre>
 <ul>
 <li>平行四边形</li>
 </ul>
@@ -493,9 +492,9 @@
     id1[\This is the text in the box\]
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph TD
+<pre><code class="language-mermaid">graph TD
     id1[\This is the text in the box\]
-</pre>
+</code></pre>
 <ul>
 <li>梯形</li>
 </ul>
@@ -507,9 +506,9 @@
     A[/Christmas\]
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph TD
+<pre><code class="language-mermaid">graph TD
     A[/Christmas\]
-</pre>
+</code></pre>
 <ul>
 <li>另一种梯形</li>
 </ul>
@@ -521,9 +520,9 @@
     B[\Go shopping/]
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph TD
+<pre><code class="language-mermaid">graph TD
     B[\Go shopping/]
-</pre>
+</code></pre>
 <h3 id="连接线"><a class="header" href="#连接线">连接线</a></h3>
 <p><strong>关键词</strong></p>
 <pre><code class="language-markdown">+ 实线/虚线
@@ -567,7 +566,7 @@
         + ==描述文字===
         + ===|描述文字|
 </code></pre>
-<pre class="mermaid">+ 实线/虚线
+<pre><code class="language-mermaid">+ 实线/虚线
     - --
     - -.
 + 有箭头/无箭头
@@ -607,7 +606,7 @@
     - 有描述加粗实线无箭头(2)
         + ==描述文字===
         + ===|描述文字|
-</pre>
+</code></pre>
 <p>流程图连接线样式,支持实线和虚线以及有箭头样式和无箭头样式,除此之外还支持添加连接线描述文字,其中 <code>--</code> 代表实线,实线中间多一点 <code>-.-</code> 代表虚线,添加箭头用右尖括号 <code>&gt;</code> ,没有箭头继续用短横线 <code>-</code>.</p>
 <blockquote>
 <p><strong>核心</strong>: 先实线再虚线,先有箭头再去箭头,左边位置添加描述文字需要区分实现还是虚线,右边位置添加描述文字格式一致.</p>
@@ -623,9 +622,9 @@
     A--&gt;B
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     A--&gt;B
-</pre>
+</code></pre>
 <ul>
 <li>无箭头实线</li>
 </ul>
@@ -637,9 +636,9 @@
     A --- B
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     A --- B
-</pre>
+</code></pre>
 <ul>
 <li>带描述的有箭头实线</li>
 </ul>
@@ -651,9 +650,9 @@
     A-- text --&gt;B
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     A-- text --&gt;B
-</pre>
+</code></pre>
 <blockquote>
 <p>一般格式: <code>|connection line description|</code> ,其中 <code>||</code> 添加到<strong>连接线右边位置</strong>.</p>
 </blockquote>
@@ -662,9 +661,9 @@
     A--&gt;|text|B
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     A--&gt;|text|B
-</pre>
+</code></pre>
 <ul>
 <li>带描述的无箭头实线</li>
 </ul>
@@ -676,9 +675,9 @@
     A-- This is the text ---B
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     A-- This is the text ---B
-</pre>
+</code></pre>
 <blockquote>
 <p>一般格式: <code>|connection line description|</code> ,其中 <code>||</code> 添加到<strong>连接线右边位置</strong>.</p>
 </blockquote>
@@ -687,9 +686,9 @@
     A---|This is the text|B
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     A---|This is the text|B
-</pre>
+</code></pre>
 <ul>
 <li>有箭头虚线</li>
 </ul>
@@ -701,9 +700,9 @@
    A-. text .-&gt; B
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
    A-. text .-&gt; B
-</pre>
+</code></pre>
 <ul>
 <li>有箭头加粗实线</li>
 </ul>
@@ -715,9 +714,9 @@
    A ==&gt; B
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
    A ==&gt; B
-</pre>
+</code></pre>
 <ul>
 <li>带描述的有箭头加粗实线</li>
 </ul>
@@ -729,9 +728,9 @@
    A == text ==&gt; B
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
    A == text ==&gt; B
-</pre>
+</code></pre>
 <ul>
 <li>带描述的有箭头加粗实线</li>
 </ul>
@@ -743,9 +742,9 @@
    A ==&gt;|text| B
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
    A ==&gt;|text| B
-</pre>
+</code></pre>
 <h3 id="高级用法"><a class="header" href="#高级用法">高级用法</a></h3>
 <p><strong>关键词</strong></p>
 <pre><code class="language-markdown">+ --&gt;--&gt;
@@ -754,12 +753,12 @@
 + %%
 + subgraph
 </code></pre>
-<pre class="mermaid">+ --&gt;--&gt;
+<pre><code class="language-mermaid">+ --&gt;--&gt;
 + &amp;
 + &quot;&quot;
 + %%
 + subgraph
-</pre>
+</code></pre>
 <ul>
 <li>多节点链式连接</li>
 </ul>
@@ -769,9 +768,9 @@
    A -- text --&gt; B -- text2 --&gt; C
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
    A -- text --&gt; B -- text2 --&gt; C
-</pre>
+</code></pre>
 <ul>
 <li>多节点共同连接</li>
 </ul>
@@ -781,9 +780,9 @@
    a --&gt; b &amp; c--&gt; d
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
    a --&gt; b &amp; c--&gt; d
-</pre>
+</code></pre>
 <ul>
 <li>多节点相互连接</li>
 </ul>
@@ -793,9 +792,9 @@
     A &amp; B--&gt; C &amp; D
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph TB
+<pre><code class="language-mermaid">graph TB
     A &amp; B--&gt; C &amp; D
-</pre>
+</code></pre>
 <ul>
 <li>双引号包裹特殊字符</li>
 </ul>
@@ -805,9 +804,9 @@
     id1[&quot;This is the (text) in the box&quot;]
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     id1[&quot;This is the (text) in the box&quot;]
-</pre>
+</code></pre>
 <ul>
 <li>双引号包裹转义字符</li>
 </ul>
@@ -817,9 +816,9 @@
     A[&quot;A double quote:#quot;&quot;] --&gt;B[&quot;A dec char:#9829;&quot;]
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     A[&quot;A double quote:#quot;&quot;] --&gt;B[&quot;A dec char:#9829;&quot;]
-</pre>
+</code></pre>
 <ul>
 <li>嵌套子流程图</li>
 </ul>
@@ -841,7 +840,7 @@ end
     c1--&gt;c2
     end
 </code></pre>
-<pre class="mermaid">graph TB
+<pre><code class="language-mermaid">graph TB
     c1--&gt;a2
     subgraph one
     a1--&gt;a2
@@ -852,7 +851,7 @@ end
     subgraph three
     c1--&gt;c2
     end
-</pre>
+</code></pre>
 <ul>
 <li>注释语法</li>
 </ul>
@@ -861,10 +860,10 @@ end
 %% this is a comment A -- text --&gt; B{node}
    A -- text --&gt; B -- text2 --&gt; C
 </code></pre>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
 %% this is a comment A -- text --&gt; B{node}
    A -- text --&gt; B -- text2 --&gt; C
-</pre>
+</code></pre>
 <h2 id="快速入门流程图回顾总结"><a class="header" href="#快速入门流程图回顾总结">快速入门流程图回顾总结</a></h2>
 <p><strong>关键词</strong></p>
 <pre><code class="language-mardown">- 英文单词缩写
@@ -969,7 +968,7 @@ end
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../basic/mermaid.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../basic/mermaid.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -983,7 +982,7 @@ end
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../basic/mermaid.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../basic/mermaid.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -1001,7 +1000,7 @@ end
         <script src="../editor.js"></script>
         <script src="../mode-rust.js"></script>
         <script src="../theme-dawn.js"></script>
-        <script src="../theme/theme-monokai.js"></script>
+        <script src="../theme-tomorrow_night.js"></script>
 
         <script src="../elasticlunr.min.js"></script>
         <script src="../mark.min.js"></script>
@@ -1012,12 +1011,12 @@ end
         <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
-        <script type="module" src="../js/helper.js"></script>
-        <script type="module" src="../js/support.js"></script>
-        <script type="module" src="../theme/theme-monokai.js"></script>
-        <script type="module" src="../js/mermaid.min.js"></script>
-        <script type="module" src="../js/mermaid-init.js"></script>
+        <script src="../assets/help/helper.js"></script>
+        <script src="../assets/help/support.js"></script>
+        <script src="../assets/mermaid/mermaid.min.js"></script>
+        <script src="../assets/mermaid/mermaid-init.js"></script>
 
 
+    </div>
     </body>
 </html>
