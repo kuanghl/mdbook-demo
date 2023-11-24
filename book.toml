@@ -62,8 +62,3 @@ editable = true
 [output.html.print]
 enable = true
 
-[output.latex]
-latex    = true  # default = true
-pdf      = true  # default = false
-markdown = true  # default = false
-
