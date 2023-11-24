@@ -35,12 +35,12 @@ preferred-dark-theme = "mocha"
 git-repository-url = "https://github.com/kuanghl/mdbook-demo"
 git-repository-icon = "fa-github"
 additional-css = [
-    "assets/catppuccin/catppuccin.css", "assets/catppuccin/catppuccin-admonish.css",
-    "assets/admonish/mdbook-admonish.css",
+    "./assets/catppuccin/catppuccin.css", "./assets/catppuccin/catppuccin-admonish.css",
+    "./assets/admonish/mdbook-admonish.css",
     ]
 additional-js = [
-    "assets/help/helper.js", "assets/help/support.js", 
-    "assets/mermaid/mermaid.min.js", "assets/mermaid/mermaid-init.js",
+    "./assets/help/helper.js", "./assets/help/support.js", 
+    "./assets/mermaid/mermaid.min.js", "./assets/mermaid/mermaid-init.js",
     ]
 
 [output.html.search]
