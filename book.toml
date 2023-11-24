@@ -17,9 +17,6 @@ renderer = ["html"]
 [preprocessor.katex]
 after = ["links"]
 
-[preprocessor.svgbob]
-class = "bob"
-
 [preprocessor.admonish]
 command = "mdbook-admonish"
 
