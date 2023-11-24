@@ -26,8 +26,6 @@ command = "mdbook-mermaid"
 [output.html]
 mathjax-support = true
 curly-quotes = true
-default-theme = "coal"
-preferred-dark-theme = "coal"
 git-repository-url = "https://github.com/kuanghl/mdbook-demo"
 additional-css = ["assets/admonish/mdbook-admonish.css",
                 "assets/catppuccin/catppuccin.css", "assets/catppuccin/catppuccin-admonish.css"]
