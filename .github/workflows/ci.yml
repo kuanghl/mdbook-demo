@@ -43,6 +43,9 @@ jobs:
 
         cargo install mdbook-toc
         cargo install mdbook-katex
+        cargo install mdbook-latex  
+        cargo install mdbook-linkcheck
+
 
     # Setting --> Pages --> Build and deployment --> Github Actions
     - name: Setup Pages
