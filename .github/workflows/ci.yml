@@ -58,13 +58,13 @@ jobs:
         mdbook test
 
     - name: Build all translations
-        run: |
-          for lang in es jp ko cn vi lt; do
-              echo "Building $lang translation"
-              MDBOOK_BOOK__LANGUAGE=$lang \
-              mdbook build -d book/$lang
-              echo "End $lang"
-          done
+      run: |
+        for lang in es jp ko cn vi lt; do
+            echo "Building $lang translation"
+            MDBOOK_BOOK__LANGUAGE=$lang \
+            mdbook build -d book/$lang
+            echo "End $lang"
+        done
 
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v2
