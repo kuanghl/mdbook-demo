@@ -20,6 +20,9 @@ renderer = ["html"]
 [preprocessor.katex]
 after = ["links"]
 
+[preprocessor.gettext]
+after = ["links"]
+
 [preprocessor.admonish]
 command = "mdbook-admonish"
 assets_version = "3.0.1" # do not edit: managed by `mdbook-admonish install`
