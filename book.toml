@@ -27,10 +27,6 @@ assets_version = "3.0.1" # do not edit: managed by `mdbook-admonish install`
 [preprocessor.mermaid]
 command = "mdbook-mermaid"
 
-[preprocessor.kroki-preprocessor]
-# Example endpoint configuration
-endpoint = "https://kroki.io"
-
 [output.html]
 mathjax-support = true
 curly-quotes = true

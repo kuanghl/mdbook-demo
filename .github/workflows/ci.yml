@@ -40,7 +40,6 @@ jobs:
         cargo install mdbook-linkcheck
         cargo install mdbook-i18n-helpers
         cargo install mdbook-pdf
-        cargo install mdbook-kroki-preprocessor
         
         pip install mdbook-pdf-outline
 
