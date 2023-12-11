@@ -52,24 +52,24 @@ jobs:
       id: pages
       uses: actions/configure-pages@v3
 
-    - name: Build src into docs
+    - name: Build src into books
       run: |
         mdbook build
 
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v2
       with:
-        path: ./docs
+        path: ./books
 
     - name: Add & Commit
       uses: EndBug/add-and-commit@v9.1.3
       with:
-          message: 'rebuild docs'
+          message: 'rebuild books'
 
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4
       with:
-        folder: docs # The folder the action should deploy.
+        folder: books # The folder the action should deploy.
  
   # Deployment job
   deploy:

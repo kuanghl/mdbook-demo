@@ -2,11 +2,11 @@
 authors = ["khl <1365342449@qq.com>"]
 language = "en"
 multilingual = false
-src = "src"
+src = "./src"
 title = "mdbook-demo"
 
 [build]
-build-dir = "docs"
+build-dir = "books"
 create-missing = true
 use-default-preprocessors = false
 
