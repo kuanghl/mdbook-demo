@@ -1,0 +1,735 @@
+<!DOCTYPE HTML>
+<html lang="es" class="mocha" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>类型转换 - kuanghl</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../.././assets/catppuccin/catppuccin.css">
+        <link rel="stylesheet" href="../.././assets/catppuccin/catppuccin-admonish.css">
+        <link rel="stylesheet" href="../.././assets/admonish/mdbook-admonish.css">
+        <link rel="stylesheet" href="../.././mdbook-admonish.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "mocha" : "mocha";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('mocha')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../../test/chapter_1.html"><strong aria-hidden="true">1.</strong> mdbook_demo</a></li><li class="chapter-item expanded "><a href="../../3rd/pybind11/00.pybind11介绍.html"><strong aria-hidden="true">2.</strong> pybind11</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../3rd/pybind11/01.改动日志.html"><strong aria-hidden="true">2.1.</strong> 改动日志</a></li><li class="chapter-item "><a href="../../3rd/pybind11/02.更新指南.html"><strong aria-hidden="true">2.2.</strong> 更新指南</a></li><li class="chapter-item "><a href="../../3rd/pybind11/03.安装说明.html"><strong aria-hidden="true">2.3.</strong> 安装说明</a></li><li class="chapter-item "><a href="../../3rd/pybind11/04.首次尝试.html"><strong aria-hidden="true">2.4.</strong> 首次尝试</a></li><li class="chapter-item "><a href="../../3rd/pybind11/05.面对对象编程.html"><strong aria-hidden="true">2.5.</strong> 面对对象编程</a></li><li class="chapter-item "><a href="../../3rd/pybind11/06.构建系统.html"><strong aria-hidden="true">2.6.</strong> 构建系统</a></li><li class="chapter-item "><a href="../../3rd/pybind11/07.函数.html"><strong aria-hidden="true">2.7.</strong> 函数</a></li><li class="chapter-item "><a href="../../3rd/pybind11/08.类.html"><strong aria-hidden="true">2.8.</strong> 类</a></li><li class="chapter-item "><a href="../../3rd/pybind11/09.异常.html"><strong aria-hidden="true">2.9.</strong> 异常</a></li><li class="chapter-item "><a href="../../3rd/pybind11/10.智能指针.html"><strong aria-hidden="true">2.10.</strong> 智能指针</a></li><li class="chapter-item expanded "><a href="../../3rd/pybind11/11.类型转换.html" class="active"><strong aria-hidden="true">2.11.</strong> 类型转换</a></li><li class="chapter-item "><a href="../../3rd/pybind11/12.Python的C++接口.html"><strong aria-hidden="true">2.12.</strong> Python的C++接口</a></li><li class="chapter-item "><a href="../../3rd/pybind11/13.内嵌解释器.html"><strong aria-hidden="true">2.13.</strong> 内嵌解释器</a></li><li class="chapter-item "><a href="../../3rd/pybind11/14.杂项.html"><strong aria-hidden="true">2.14.</strong> 杂项</a></li><li class="chapter-item "><a href="../../3rd/pybind11/15.FAQ.html"><strong aria-hidden="true">2.15.</strong> FAQ</a></li><li class="chapter-item "><a href="../../3rd/pybind11/16.案例.html"><strong aria-hidden="true">2.16.</strong> 案例</a></li><li class="chapter-item "><a href="../../3rd/pybind11/pybind11_demo.html"><strong aria-hidden="true">2.17.</strong> pybind11 demo</a></li></ol></li><li class="chapter-item "><a href="../../basic/markdown.html"><strong aria-hidden="true">3.</strong> markdown</a></li><li class="chapter-item "><a href="../../basic/mermaid.html"><strong aria-hidden="true">4.</strong> mermaid</a></li><li class="chapter-item "><a href="../../test/chapter_1.html"><strong aria-hidden="true">5.</strong> Test</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">kuanghl</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/kuanghl/mdbook-demo" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="11-类型转换"><a class="header" href="#11-类型转换">11. 类型转换</a></h2>
+<p>除了支持跨语言函数调用，pybind11这类绑定工具必须处理的一个基本问题就是，提供在C++中访问原生Python类型的方式，反之亦然。有三种完全不同的方法做到这点，每种方法适用性取决于你使用的环境。</p>
+<ol>
+<li>任意侧使用原生的C++类型。这种情况下，必须使用pybind11生成类型的绑定，Python才能使用它。</li>
+<li>任意侧使用原生的Python类型。同样需要包装后，C++函数才能够使用它。</li>
+<li>C++侧使用原生C++类型，Python侧使用原生Python类型。pybind11称其为类型转换。
+某种意义下，在任意侧使用原生类型，类型转换是最自然的选项。该方法主要的缺点是，每次Python和C++之间转换时都需要拷贝一份数据，因为C++和Python的对相同类型的内存布局不一样。
+pybind11可以自动完成多种类型的转换。后面会提供所有内置转换的表格。</li>
+</ol>
+<p>下面的小节将更详细地讨论这些选项之间的区别。</p>
+<h3 id="111-概述"><a class="header" href="#111-概述">11.1 概述</a></h3>
+<p><strong>1. Native type in C++, wrapper in Python</strong></p>
+<p>在“面对对象编程”一章中，我们详细介绍了通过<code>py::class_</code>公开自定义C++类型的方法。这里，底层的数据结构仍然是原始的C++类，而<code>py::class_</code>包装则提供了Python侧的接口。当一个对象从C++侧发送到Python侧时，pybind11仅仅在原始的C++对象上增加了一层包装而已。从Python侧获取它也仅仅是撕掉了包装而已。</p>
+<p><strong>2. Wrapper in C++, native type in Python</strong></p>
+<p>这与上面是完全相反的情况。现在我们有一个原生的Python类型，如tuple或list。在C++侧获取这个数据的一种方法是使用<code>py::object</code>族包装器。这将在后续章节详细解释。这里举个简单的例子：</p>
+<pre><code class="language-c++">void print_list(py::list my_list) {
+    for (auto item : my_list)
+        std::cout &lt;&lt; item &lt;&lt; &quot; &quot;;
+}
+</code></pre>
+<pre><code class="language-python">&gt;&gt;&gt; print_list([1, 2, 3])
+1 2 3
+</code></pre>
+<p>Python的list仅仅是包裹在了C++ <code>py::list</code>类里，并没有仅仅任何转换。它的核心任然是一个Python对象。拷贝一个<code>py::list</code>会像Python中一样增加引用计数。将对象返回到Python侧，将去掉这层封装。</p>
+<p><strong>3. Converting between native C++ and Python types</strong></p>
+<p>前面两种情况，我们在一种语言中使用原生类型，而在另一种语言中使用它的包装类型。现在，我们在两侧都使用原生类型，并对他们进行类型转换。</p>
+<pre><code class="language-c++">void print_vector(const std::vector&lt;int&gt; &amp;v) {
+    for (auto item : v)
+        std::cout &lt;&lt; item &lt;&lt; &quot;\n&quot;;
+}
+</code></pre>
+<pre><code class="language-python">&gt;&gt;&gt; print_vector([1, 2, 3])
+1 2 3
+</code></pre>
+<p>这个例子中，pybind11将创建一个<code>std::vector&lt;int&gt;</code>实例，并从Python list中拷贝每个元素。然后将该实例传递给<code>print_vector</code>。同样的事情发生在另一个方向：新建了一个list，并从C++的vector中获取元素值。</p>
+<p>如下表所示，多数转换是开箱即用的。他们相当方便，但请记住一点，这些转换是基于数据拷贝的。这对小型的不变的类型相当友好，对于大型数据结构则相当昂贵。这可以通过自定义包装类型重载自动转换来规避（如上面提到的方法1）。This requires some manual effort and more details are available in the <a href="https://pybind11.readthedocs.io/en/stable/advanced/cast/stl.html#opaque">Making opaque types</a> section.</p>
+<p><strong>内置转换的列表</strong></p>
+<p>下面基础数据类型是开箱即用的（有些可能需要include额外的头文件）。</p>
+<div class="table-wrapper"><table><thead><tr><th>Data type</th><th>Description</th><th>Header file</th></tr></thead><tbody>
+<tr><td><code>int8_t</code>, <code>uint8_t</code></td><td>8-bit integers</td><td><code>pybind11/pybind11.h</code></td></tr>
+<tr><td><code>int16_t</code>, <code>uint16_t</code></td><td>16-bit integers</td><td><code>pybind11/pybind11.h</code></td></tr>
+<tr><td><code>int32_t</code>, <code>uint32_t</code></td><td>32-bit integers</td><td><code>pybind11/pybind11.h</code></td></tr>
+<tr><td><code>int64_t</code>, <code>uint64_t</code></td><td>64-bit integers</td><td><code>pybind11/pybind11.h</code></td></tr>
+<tr><td><code>ssize_t</code>, <code>size_t</code></td><td>Platform-dependent size</td><td><code>pybind11/pybind11.h</code></td></tr>
+<tr><td><code>float</code>, <code>double</code></td><td>Floating point types</td><td><code>pybind11/pybind11.h</code></td></tr>
+<tr><td><code>bool</code></td><td>Two-state Boolean type</td><td><code>pybind11/pybind11.h</code></td></tr>
+<tr><td><code>char</code></td><td>Character literal</td><td><code>pybind11/pybind11.h</code></td></tr>
+<tr><td><code>char16_t</code></td><td>UTF-16 character literal</td><td><code>pybind11/pybind11.h</code></td></tr>
+<tr><td><code>char32_t</code></td><td>UTF-32 character literal</td><td><code>pybind11/pybind11.h</code></td></tr>
+<tr><td><code>wchar_t</code></td><td>Wide character literal</td><td><code>pybind11/pybind11.h</code></td></tr>
+<tr><td><code>const char *</code></td><td>UTF-8 string literal</td><td><code>pybind11/pybind11.h</code></td></tr>
+<tr><td><code>const char16_t *</code></td><td>UTF-16 string literal</td><td><code>pybind11/pybind11.h</code></td></tr>
+<tr><td><code>const char32_t *</code></td><td>UTF-32 string literal</td><td><code>pybind11/pybind11.h</code></td></tr>
+<tr><td><code>const wchar_t *</code></td><td>Wide string literal</td><td><code>pybind11/pybind11.h</code></td></tr>
+<tr><td><code>std::string</code></td><td>STL dynamic UTF-8 string</td><td><code>pybind11/pybind11.h</code></td></tr>
+<tr><td><code>std::u16string</code></td><td>STL dynamic UTF-16 string</td><td><code>pybind11/pybind11.h</code></td></tr>
+<tr><td><code>std::u32string</code></td><td>STL dynamic UTF-32 string</td><td><code>pybind11/pybind11.h</code></td></tr>
+<tr><td><code>std::wstring</code></td><td>STL dynamic wide string</td><td><code>pybind11/pybind11.h</code></td></tr>
+<tr><td><code>std::string_view</code>, <code>std::u16string_view</code>, etc.</td><td>STL C++17 string views</td><td><code>pybind11/pybind11.h</code></td></tr>
+<tr><td><code>std::pair&lt;T1, T2&gt;</code></td><td>Pair of two custom types</td><td><code>pybind11/pybind11.h</code></td></tr>
+<tr><td><code>std::tuple&lt;...&gt;</code></td><td>Arbitrary tuple of types</td><td><code>pybind11/pybind11.h</code></td></tr>
+<tr><td><code>std::reference_wrapper&lt;...&gt;</code></td><td>Reference type wrapper</td><td><code>pybind11/pybind11.h</code></td></tr>
+<tr><td><code>std::complex&lt;T&gt;</code></td><td>Complex numbers</td><td><code>pybind11/complex.h</code></td></tr>
+<tr><td><code>std::array&lt;T, Size&gt;</code></td><td>STL static array</td><td><code>pybind11/stl.h</code></td></tr>
+<tr><td><code>std::vector&lt;T&gt;</code></td><td>STL dynamic array</td><td><code>pybind11/stl.h</code></td></tr>
+<tr><td><code>std::deque&lt;T&gt;</code></td><td>STL double-ended queue</td><td><code>pybind11/stl.h</code></td></tr>
+<tr><td><code>std::valarray&lt;T&gt;</code></td><td>STL value array</td><td><code>pybind11/stl.h</code></td></tr>
+<tr><td><code>std::list&lt;T&gt;</code></td><td>STL linked list</td><td><code>pybind11/stl.h</code></td></tr>
+<tr><td><code>std::map&lt;T1, T2&gt;</code></td><td>STL ordered map</td><td><code>pybind11/stl.h</code></td></tr>
+<tr><td><code>std::unordered_map&lt;T1, T2&gt;</code></td><td>STL unordered map</td><td><code>pybind11/stl.h</code></td></tr>
+<tr><td><code>std::set&lt;T&gt;</code></td><td>STL ordered set</td><td><code>pybind11/stl.h</code></td></tr>
+<tr><td><code>std::unordered_set&lt;T&gt;</code></td><td>STL unordered set</td><td><code>pybind11/stl.h</code></td></tr>
+<tr><td><code>std::optional&lt;T&gt;</code></td><td>STL optional type (C++17)</td><td><code>pybind11/stl.h</code></td></tr>
+<tr><td><code>std::experimental::optional&lt;T&gt;</code></td><td>STL optional type (exp.)</td><td><code>pybind11/stl.h</code></td></tr>
+<tr><td><code>std::variant&lt;...&gt;</code></td><td>Type-safe union (C++17)</td><td><code>pybind11/stl.h</code></td></tr>
+<tr><td><code>std::filesystem::path&lt;T&gt;</code></td><td>STL path (C++17) <a href="https://pybind11.readthedocs.io/en/stable/advanced/cast/overview.html#id2">1</a></td><td><code>pybind11/stl.h</code></td></tr>
+<tr><td><code>std::function&lt;...&gt;</code></td><td>STL polymorphic function</td><td><code>pybind11/functional.h</code></td></tr>
+<tr><td><code>std::chrono::duration&lt;...&gt;</code></td><td>STL time duration</td><td><code>pybind11/chrono.h</code></td></tr>
+<tr><td><code>std::chrono::time_point&lt;...&gt;</code></td><td>STL date/time</td><td><code>pybind11/chrono.h</code></td></tr>
+<tr><td><code>Eigen::Matrix&lt;...&gt;</code></td><td>Eigen: dense matrix</td><td><code>pybind11/eigen.h</code></td></tr>
+<tr><td><code>Eigen::Map&lt;...&gt;</code></td><td>Eigen: mapped memory</td><td><code>pybind11/eigen.h</code></td></tr>
+<tr><td><code>Eigen::SparseMatrix&lt;...&gt;</code></td><td>Eigen: sparse matrix</td><td><code>pybind11/eigen.h</code></td></tr>
+</tbody></table>
+</div>
+<h3 id="112-strings-bytes-and-unicode-conversions"><a class="header" href="#112-strings-bytes-and-unicode-conversions">11.2 Strings, bytes and Unicode conversions</a></h3>
+<blockquote>
+<p>Note: 本节讨论的string处理基于Python3 strings。对于python2.7，使用<code>unicode</code>替换<code>str</code>，<code>str</code>替换<code>bytes</code>。Python2.7用于最好使用<code>from __future__ import unicode_literals</code>避免无意间使用<code>str</code>代替<code>unicode</code>。</p>
+</blockquote>
+<h4 id="1121-传递python-strings到c"><a class="header" href="#1121-传递python-strings到c">11.2.1 传递Python strings到C++</a></h4>
+<p>当向一个接收<code>std::string</code>或<code>char *</code>参数的函数传递Python的<code>str</code>时，pybind11会将Python字符串编码为UTF-8。所有的Python <code>str</code>都能够用UTF-8编码，所以这个操作不会失败。</p>
+<p>C++语言是encoding agnostic。程序员负责处理编码，最简单的做法就是每处都使用UTF-8。</p>
+<pre><code class="language-c++">m.def(&quot;utf8_test&quot;,
+    [](const std::string &amp;s) {
+        cout &lt;&lt; &quot;utf-8 is icing on the cake.\n&quot;;
+        cout &lt;&lt; s;
+    }
+);
+m.def(&quot;utf8_charptr&quot;,
+    [](const char *s) {
+        cout &lt;&lt; &quot;My favorite food is\n&quot;;
+        cout &lt;&lt; s;
+    }
+);
+</code></pre>
+<pre><code class="language-python">&gt;&gt;&gt; utf8_test(&quot;🎂&quot;)
+utf-8 is icing on the cake.
+🎂
+
+&gt;&gt;&gt; utf8_charptr(&quot;🍕&quot;)
+My favorite food is
+🍕
+</code></pre>
+<blockquote>
+<p>Note: 有些终端模拟器不支持UTF-8或emoji字体，上面的例子可能无法显示。</p>
+</blockquote>
+<p>无论C++函数的参数是传值或引用，是否是const，结果都是一样的。</p>
+<p><strong>向C++传递bytes对象</strong></p>
+<p>向接收<code>std::string</code>或<code>char *</code>类型参数的C++函数传递Python bytes对象无需转换。在Python3上，如果想要函数只接收bytes，不接收str，可以声明参数类型为<code>py::bytes</code>。</p>
+<h4 id="1122-向python返回c-字符串"><a class="header" href="#1122-向python返回c-字符串">11.2.2 向Python返回C++ 字符串</a></h4>
+<p>当C++函数返回<code>std::string</code>或<code>char*</code>参数给Python调用者时，pybind11会将字符串以UTF-8格式解码给原生Python str，类似于Python中的<code>bytes.decode('utf-8')</code>。如果隐式转换失败，pybind11将会抛出异常<code>UnicodeDecodeError</code>。</p>
+<pre><code class="language-c++">m.def(&quot;std_string_return&quot;,
+    []() {
+        return std::string(&quot;This string needs to be UTF-8 encoded&quot;);
+    }
+);
+</code></pre>
+<pre><code class="language-python">&gt;&gt;&gt; isinstance(example.std_string_return(), str)
+True
+</code></pre>
+<p>因为UTF-8包含纯ASCII，返回一个纯ASCII字符串到Python没有任何问题。否则就需要确保编码是有效的UTF-8。</p>
+<blockquote>
+<p>Warning: 隐式转换假定<code>char *</code>字符串以null为结束符。若不是，将导致缓冲区溢出。</p>
+</blockquote>
+<p><strong>显式转换</strong></p>
+<p>如果C++代码构造了一个非UTF-8的string字符串，可以执行显式转换并返回<code>py::str</code>对象。显式转换与隐式转换的开销相同。</p>
+<pre><code class="language-c++">// This uses the Python C API to convert Latin-1 to Unicode
+m.def(&quot;str_output&quot;,
+    []() {
+        std::string s = &quot;Send your r\xe9sum\xe9 to Alice in HR&quot;; // Latin-1
+        py::str py_s = PyUnicode_DecodeLatin1(s.data(), s.length());
+        return py_s;
+    }
+);
+</code></pre>
+<pre><code class="language-python">&gt;&gt;&gt; str_output()
+'Send your résumé to Alice in HR'
+</code></pre>
+<p><a href="https://docs.python.org/3/c-api/unicode.html#built-in-codecs">Python C API</a>提供了一些内置的编解码方法可以使用。也可以使用第三方库如libiconv 来转换UTF-8。</p>
+<p><strong>不使用类型转换来返回C++字符串</strong></p>
+<p>如果C++ <code>std::string</code>中的数据不表示文本，则应该以<code>bytes</code>的形式传递给Python，这时我们可以返回一个<code>py::btyes</code>对象。</p>
+<pre><code class="language-c++">m.def(&quot;return_bytes&quot;,
+    []() {
+        std::string s(&quot;\xba\xd0\xba\xd0&quot;);  // Not valid UTF-8
+        return py::bytes(s);  // Return the data without transcoding
+    }
+);
+</code></pre>
+<pre><code class="language-python">&gt;&gt;&gt; example.return_bytes()
+b'\xba\xd0\xba\xd0'
+</code></pre>
+<p>注意：pybind11可以将bytes无需编码地转换为<code>std::string</code>，但不能不经编码地隐式转换<code>std::string</code>到bytes。</p>
+<pre><code class="language-c++">m.def(&quot;asymmetry&quot;,
+    [](std::string s) {  // Accepts str or bytes from Python
+        return s;  // Looks harmless, but implicitly converts to str
+    }
+);
+</code></pre>
+<pre><code class="language-python">&gt;&gt;&gt; isinstance(example.asymmetry(b&quot;have some bytes&quot;), str)
+True
+
+&gt;&gt;&gt; example.asymmetry(b&quot;\xba\xd0\xba\xd0&quot;)  # invalid utf-8 as bytes
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xba in position 0: invalid start byte
+</code></pre>
+<h4 id="1123-宽字符串"><a class="header" href="#1123-宽字符串">11.2.3 宽字符串</a></h4>
+<p>向入参为<code>std::wstring</code>、<code>wchar_t*</code>、<code>std::u16string</code>或<code>std::u32string</code>的C++函数传递Python str对象，str将被编码为UTF-16或UTF-32（具体哪种取决于C++编译器的支持）。当C++函数返回这些类型的字符串到Python str时，需要保证字符串是合法的UTF-16或UTF-32。</p>
+<pre><code class="language-c++">#define UNICODE
+#include &lt;windows.h&gt;
+
+m.def(&quot;set_window_text&quot;,
+    [](HWND hwnd, std::wstring s) {
+        // Call SetWindowText with null-terminated UTF-16 string
+        ::SetWindowText(hwnd, s.c_str());
+    }
+);
+m.def(&quot;get_window_text&quot;,
+    [](HWND hwnd) {
+        const int buffer_size = ::GetWindowTextLength(hwnd) + 1;
+        auto buffer = std::make_unique&lt; wchar_t[] &gt;(buffer_size);
+
+        ::GetWindowText(hwnd, buffer.data(), buffer_size);
+
+        std::wstring text(buffer.get());
+
+        // wstring will be converted to Python str
+        return text;
+    }
+);
+</code></pre>
+<blockquote>
+<p>警告：带<code>--enable-unicode=ucs2</code>选项编译的Python 2.7和3.3版本可能不支持上述的宽字符串。</p>
+</blockquote>
+<p>多字节编码地字符串，如Shift-JIS，必须转换为UTF-8/16/32后，再返回给Python。</p>
+<h4 id="1124-字符类型"><a class="header" href="#1124-字符类型">11.2.4 字符类型</a></h4>
+<p>向一个入参为字符类型（char, wchar_t）的C++函数，传递Python str，C++函数将接收str的首字符。如果字符串超过一个Unicode字符长度，将忽略尾部字节。</p>
+<p>当C++返回一个字符变量时，它将被转化为单字符的str变量。</p>
+<pre><code class="language-c++">m.def(&quot;pass_char&quot;, [](char c) { return c; });
+m.def(&quot;pass_wchar&quot;, [](wchar_t w) { return w; });
+</code></pre>
+<pre><code class="language-python">example.pass_char(&quot;A&quot;)
+'A'
+</code></pre>
+<p>虽然C++可以将整数转换为字符类型（<code>char c = 0x65</code>），pybind11并不会隐式转换Python整数到字符类型。可以使用<code>chr()</code>Python函数来将整数转换为字符。</p>
+<pre><code class="language-python">&gt;&gt;&gt; example.pass_char(0x65)
+TypeError
+
+&gt;&gt;&gt; example.pass_char(chr(0x65))
+'A'
+</code></pre>
+<p>如果需要使用8-bit整数，可使用<code>int8_t</code>或<code>uint8_t</code>作为参数类型。</p>
+<h4 id="1125-grapheme-clusters"><a class="header" href="#1125-grapheme-clusters">11.2.5 Grapheme clusters</a></h4>
+<p>A single grapheme may be represented by two or more Unicode characters. For example ‘é’ is usually represented as U+00E9 but can also be expressed as the combining character sequence U+0065 U+0301 (that is, the letter ‘e’ followed by a combining acute accent). The combining character will be lost if the two-character sequence is passed as an argument, even though it renders as a single grapheme.</p>
+<pre><code>&gt;&gt;&gt; example.pass_wchar(&quot;é&quot;)
+'é'
+
+&gt;&gt;&gt; combining_e_acute = &quot;e&quot; + &quot;\u0301&quot;
+
+&gt;&gt;&gt; combining_e_acute
+'é'
+
+&gt;&gt;&gt; combining_e_acute == &quot;é&quot;
+False
+
+&gt;&gt;&gt; example.pass_wchar(combining_e_acute)
+'e'
+</code></pre>
+<p>Normalizing combining characters before passing the character literal to C++ may resolve <em>some</em> of these issues:</p>
+<pre><code>&gt;&gt;&gt; example.pass_wchar(unicodedata.normalize(&quot;NFC&quot;, combining_e_acute))
+'é'
+</code></pre>
+<p>In some languages (Thai for example), there are <a href="http://unicode.org/reports/tr29/#Grapheme_Cluster_Boundaries">graphemes that cannot be expressed as a single Unicode code point</a>, so there is no way to capture them in a C++ character type.</p>
+<h4 id="1126-c17-string_view"><a class="header" href="#1126-c17-string_view">11.2.6 c++17 string_view</a></h4>
+<p>C++17 string views are automatically supported when compiling in C++17 mode. They follow the same rules for encoding and decoding as the corresponding STL string type (for example, a <code>std::u16string_view</code> argument will be passed UTF-16-encoded data, and a returned <code>std::string_view</code> will be decoded as UTF-8).</p>
+<h3 id="113-stl容器"><a class="header" href="#113-stl容器">11.3 STL容器</a></h3>
+<h4 id="1131-自动转换"><a class="header" href="#1131-自动转换">11.3.1 自动转换</a></h4>
+<p>包含头文件<code>pybind11/stl.h</code>后，自动支持 <code>std::vector&lt;&gt;</code>/<code>std::deque&lt;&gt;</code>/<code>std::list&lt;&gt;</code>/<code>std::array&lt;&gt;</code>/<code>std::valarray&lt;&gt;</code>, <code>std::set&lt;&gt;</code>/<code>std::unordered_set&lt;&gt;</code>, 和<code>std::map&lt;&gt;</code>/<code>std::unordered_map&lt;&gt;</code> 到Python <code>list</code>, <code>set</code> 和 <code>dict</code> 的类型转换。 <code>std::pair&lt;&gt;</code> 和<code>std::tuple&lt;&gt;</code> 类型转换在<code>pybind11/pybind11.h</code>中已经支持。</p>
+<p>隐式转换的主要缺点就是Python和C++之间的容器类型转换都需要拷贝数据，这对程序语义和性能有一定的影响。后续章节将介绍如何避免该问题。</p>
+<blockquote>
+<p>Note: 这些类型任意嵌套都是可以的。</p>
+</blockquote>
+<h4 id="1132-c17库的容器"><a class="header" href="#1132-c17库的容器">11.3.2 C++17库的容器</a></h4>
+<p><code>pybind11/stl.h</code>支持C++17的 <code>std::optional&lt;&gt;</code> 和<code>std::variant&lt;&gt;</code>，C++14的<code>std::experimental::optional&lt;&gt;</code>。</p>
+<p>C++11中也存在这些容器的其他版本，如Boost中。pybind11提供了一个简单的方法<code>type_caster</code>来处理这些类型：</p>
+<pre><code class="language-c++">// `boost::optional` as an example -- can be any `std::optional`-like container
+namespace pybind11 { namespace detail {
+    template &lt;typename T&gt;
+    struct type_caster&lt;boost::optional&lt;T&gt;&gt; : optional_caster&lt;boost::optional&lt;T&gt;&gt; {};
+}}
+</code></pre>
+<p>上述内容应放到头文件中，并在需要的地方包含它们。Similarly, a specialization can be provided for custom variant types:</p>
+<pre><code class="language-c++">// `boost::variant` as an example -- can be any `std::variant`-like container
+namespace pybind11 { namespace detail {
+    template &lt;typename... Ts&gt;
+    struct type_caster&lt;boost::variant&lt;Ts...&gt;&gt; : variant_caster&lt;boost::variant&lt;Ts...&gt;&gt; {};
+
+    // Specifies the function used to visit the variant -- `apply_visitor` instead of `visit`
+    template &lt;&gt;
+    struct visit_helper&lt;boost::variant&gt; {
+        template &lt;typename... Args&gt;
+        static auto call(Args &amp;&amp;...args) -&gt; decltype(boost::apply_visitor(args...)) {
+            return boost::apply_visitor(args...);
+        }
+    };
+}} // namespace pybind11::detail
+</code></pre>
+<p>The <code>visit_helper</code> specialization is not required if your <code>name::variant</code> provides a <code>name::visit()</code> function. For any other function name, the specialization must be included to tell pybind11 how to visit the variant.</p>
+<blockquote>
+<p>Warning: When converting a <code>variant</code> type, pybind11 follows the same rules as when determining which function overload to call (<a href="https://pybind11.readthedocs.io/en/stable/advanced/functions.html#overload-resolution">Overload resolution order</a>), and so the same caveats hold. In particular, the order in which the <code>variant</code>’s alternatives are listed is important, since pybind11 will try conversions in this order. This means that, for example, when converting <code>variant&lt;int, bool&gt;</code>, the <code>bool</code> variant will never be selected, as any Python <code>bool</code> is already an <code>int</code> and is convertible to a C++ <code>int</code>. Changing the order of alternatives (and using <code>variant&lt;bool, int&gt;</code>, in this example) provides a solution.</p>
+</blockquote>
+<h4 id="1133-制作opaque类型"><a class="header" href="#1133-制作opaque类型">11.3.3 制作opaque类型</a></h4>
+<p>pybind11严重依赖于模板匹配机制来转换STL类型的参数和返回值，如vector，链表，哈希表等。甚至会递归处理，如lists of hash maps of pairs of elementary and custom types。</p>
+<p>然而，这个方法的一个基本限制就是，Python和C++类型的转换涉及到拷贝操作，这妨碍了pass-by-reference的语义。</p>
+<p>假设我们绑定如下函数：</p>
+<pre><code class="language-c++">void append_1(std::vector&lt;int&gt; &amp;v) {
+   v.push_back(1);
+}
+</code></pre>
+<p>在Python中调用它：</p>
+<pre><code class="language-python">&gt;&gt;&gt; v = [5, 6]
+&gt;&gt;&gt; append_1(v)
+&gt;&gt;&gt; print(v)
+[5, 6]
+</code></pre>
+<p>如你所见，通过引用传递STL数据时，修改并不会传递到Python侧。相同的场景表现在通过<code>def_readwrite</code>或<code>def_readonly</code>函数公开STL数据结构时：</p>
+<pre><code class="language-c++">/* ... definition ... */
+
+class MyClass {
+    std::vector&lt;int&gt; contents;
+};
+
+/* ... binding code ... */
+
+py::class_&lt;MyClass&gt;(m, &quot;MyClass&quot;)
+    .def(py::init&lt;&gt;())
+    .def_readwrite(&quot;contents&quot;, &amp;MyClass::contents);
+</code></pre>
+<p>这个例子中，属性可以整体的读写。但是，涉及到append操作时就无能为力了：</p>
+<pre><code class="language-python">&gt;&gt;&gt; m = MyClass()
+&gt;&gt;&gt; m.contents = [5, 6]
+&gt;&gt;&gt; print(m.contents)
+[5, 6]
+&gt;&gt;&gt; m.contents.append(7)
+&gt;&gt;&gt; print(m.contents)
+[5, 6]
+</code></pre>
+<p>最后，在处理大型列表时，涉及的拷贝操作会耗费巨大。为处理上述场景，pybind11提供了<code>PYBIND11_MAKE_OPAQUE(T)</code>来禁用基于模板的类型转换机制，从而使他们变得不透明（<em>opaque</em>）。opaque对象的内容永远不会被检查或提取，因此它们可以通过引用传递。例如，要将<code>std::vector&lt;int&gt;</code>转换为opaque类型，需要在所有绑定代码之前添加声明：</p>
+<pre><code class="language-c++">PYBIND11_MAKE_OPAQUE(std::vector&lt;int&gt;);
+</code></pre>
+<p>这个宏必须在顶层（所有命名空间外）设定，因为然添加了<code>type_caster</code>的模板实例化。如果你绑定代码包含多个编译单元，需要在每个文件使用<code>std::vector&lt;int&gt;</code>前指定（通常通过公共的头文件来实现）。opaque对象有相关的<code>class_</code>定义来联系Python中的类名，还需定义一组有用的操作，如：</p>
+<pre><code class="language-c++">py::class_&lt;std::vector&lt;int&gt;&gt;(m, &quot;IntVector&quot;)
+    .def(py::init&lt;&gt;())
+    .def(&quot;clear&quot;, &amp;std::vector&lt;int&gt;::clear)
+    .def(&quot;pop_back&quot;, &amp;std::vector&lt;int&gt;::pop_back)
+    .def(&quot;__len__&quot;, [](const std::vector&lt;int&gt; &amp;v) { return v.size(); })
+    .def(&quot;__iter__&quot;, [](std::vector&lt;int&gt; &amp;v) {
+       return py::make_iterator(v.begin(), v.end());
+    }, py::keep_alive&lt;0, 1&gt;()) /* Keep vector alive while iterator is used */
+    // ....
+</code></pre>
+<h4 id="1134-绑定stl容器"><a class="header" href="#1134-绑定stl容器">11.3.4 绑定STL容器</a></h4>
+<p>公开STL容器作为一个Python对象时一个相当常见的需求，因此pybind11也提供了一个可选的头文件<code>pybind11/stl_bind.h</code>来做这件事。映射容器会尽可能的去匹配Python对应类型的行为。下面示例将展示该机制的使用方法：</p>
+<pre><code class="language-c++">// Don't forget this
+#include &lt;pybind11/stl_bind.h&gt;
+
+PYBIND11_MAKE_OPAQUE(std::vector&lt;int&gt;);
+PYBIND11_MAKE_OPAQUE(std::map&lt;std::string, double&gt;);
+
+// ...
+
+// later in binding code:
+py::bind_vector&lt;std::vector&lt;int&gt;&gt;(m, &quot;VectorInt&quot;);
+py::bind_map&lt;std::map&lt;std::string, double&gt;&gt;(m, &quot;MapStringDouble&quot;);
+</code></pre>
+<p>绑定STL容器时，pybind11会根据容器元素的类型来决定该容器是否应该局限于模块内（参考Module-local class bindings特性）。如果容器元素的类型不是已经绑定的自定义类型且未标识<code>py::module_local</code>，那么容器绑定将应用<code>py::module_local</code>。这包括数值类型、strings、Eigen类型，和其他在绑定STL容器时还未绑定的类型。module-local绑定的意图是为了避免模块间的潜在的冲突（如，两个独立的模块都试图绑定<code>std::vector&lt;int&gt;</code>）。</p>
+<p>通过指定属性<code>py::module_local()</code>或<code>py_module_local(false)</code>，你也可以强制绑定的STL容器公开在模块内或全局：</p>
+<pre><code class="language-c++">py::bind_vector&lt;std::vector&lt;int&gt;&gt;(m, &quot;VectorInt&quot;, py::module_local(false));
+</code></pre>
+<p>注意：这样的全局绑定可能会导致模块无法加载，如果其他的模块也绑定了相同的容器类型（如<code>std::vector&lt;int&gt;</code>）并以加载。</p>
+<h3 id="114-函数对象"><a class="header" href="#114-函数对象">11.4 函数对象</a></h3>
+<p>要使能以下属性，需要包含<code>pybind11/functional.h</code>。</p>
+<p><strong>回调并传递匿名函数</strong></p>
+<p>C++11标准引入了功能强大的lambda函数和泛函对象<code>std::function&lt;&gt;</code>。lambda函数有两种类型：无状态lambda函数类似于指向一块匿名代码的函数指针，而有状态lambda函数还依赖于存储在lambda闭包对象中的被捕获的参数。</p>
+<p>这里有一个接收任意函数签名为<code>int -&gt; int</code>的函数类型参数（有状态或无状态）：</p>
+<pre><code class="language-c++">int func_arg(const std::function&lt;int(int)&gt; &amp;f) {
+    return f(10);
+}
+</code></pre>
+<p>下面的例子更复杂，它的入参是一个函数对象，并返回一个同样类型的函数对象。返回值是一个有状态的lambda函数，它捕获了<code>f</code>参数：</p>
+<pre><code class="language-c++">std::function&lt;int(int)&gt; func_ret(const std::function&lt;int(int)&gt; &amp;f) {
+    return [f](int i) {
+        return f(i) + 1;
+    };
+}
+</code></pre>
+<p>在C++回调函数中使用python具名参数，需要使用<code>py::cpp_function</code>包裹，类似于下面的代码：</p>
+<pre><code class="language-c++">py::cpp_function func_cpp() {
+    return py::cpp_function([](int i) { return i+1; },
+       py::arg(&quot;number&quot;));
+}
+</code></pre>
+<p>包含<code>pybind11/functional.h</code>头文件后，可以简单地直接为上述函数生成绑定代码：</p>
+<pre><code class="language-c++">#include &lt;pybind11/functional.h&gt;
+
+PYBIND11_MODULE(example, m) {
+    m.def(&quot;func_arg&quot;, &amp;func_arg);
+    m.def(&quot;func_ret&quot;, &amp;func_ret);
+    m.def(&quot;func_cpp&quot;, &amp;func_cpp);
+}
+</code></pre>
+<p>Python中交互示例如下：</p>
+<pre><code class="language-python">$ python
+&gt;&gt;&gt; import example
+&gt;&gt;&gt; def square(i):
+...     return i * i
+...
+&gt;&gt;&gt; example.func_arg(square)
+100L
+&gt;&gt;&gt; square_plus_1 = example.func_ret(square)
+&gt;&gt;&gt; square_plus_1(4)
+17L
+&gt;&gt;&gt; plus_1 = func_cpp()
+&gt;&gt;&gt; plus_1(number=43)
+44L
+</code></pre>
+<blockquote>
+<p>Warning</p>
+<p>请记住在从C++传递函数对象到Python的过程中（反向亦然），将生成一些包装代码来两种语言的函数调用。这种翻译自然会稍微增加函数调用的开销。当一个函数在Python和C++之间来回拷贝多次时，包装层数会不断累积，会明显降低性能。</p>
+<p>这里有个例外：一个无状态函数作为参数传递给在Python中公开的另一个C++函数时，将不会有额外的开销。Pybind11将从封装的函数中提取C++函数指针，以回避潜在地C++ -&gt; Python -&gt; C++的往返。</p>
+</blockquote>
+<h3 id="115-chrono"><a class="header" href="#115-chrono">11.5 Chrono</a></h3>
+<p>包含<code>pybind11/chrono</code>将使能C++11 chrono和Python datatime对象将的自动转换，还支持python floats（从<code>time.monotonic()</code>或<code>time.perf_counter()</code>获取的）和<code>time.process_time()</code>到durations的转换。</p>
+<h4 id="1151-c11时钟的概览"><a class="header" href="#1151-c11时钟的概览">11.5.1 C++11时钟的概览</a></h4>
+<p>使用这些转换时容易混淆的点是，C++11中提供的各种时钟的差异。C++11标准定义了三种时钟类型，用户也可以根据自身需求定义自己的时钟类型。这些时钟有着不用的属性，与Python之间转换时也会获得不同的结果。</p>
+<p>标准定义的第一种时钟<code>std::chrono::system_clock</code>。它测量当前的时间和日期。但是，这个时钟会随着操作系统的时钟变化而改变。例如，在系统时间与时间服务器同步时，这个时钟也会跟着改变。这对计时功能来说很糟糕，但对测量wall time还是有用的。</p>
+<p>标准定义的第二种时钟<code>std::chrono::steady_clock</code>。这个时钟以稳定的速度跳动，从不调整。这非常实用于计时功能，但与实际时间和日志并不一致。这个时间通常是你操作系统已经运行的时间，虽然不是必须的。这个时钟永远不会与系统时钟相同，因为系统时钟可以改变，但steady_clock不能。</p>
+<p>标准定义的第二种时钟<code>std::chrono::high_resolution_clock</code>。它是系统中分辨率最高的时钟，通常是system clock 或 steady clock的一种，也可以有自己独立的时钟。需要注意的是，你在Python中获取到的该时钟的转换值，可能存在差异，这取决于系统的实现。如果它是系统时钟的一种，Python将得到datetime对象，否则将得到timedelta对象。</p>
+<h4 id="1152-提供的转换"><a class="header" href="#1152-提供的转换">11.5.2 提供的转换</a></h4>
+<p><strong>C++到Python</strong></p>
+<ul>
+<li><code>std::chrono::system_clock::time_point</code> → <code>datetime.datetime</code></li>
+<li><code>std::chrono::duration</code> → <code>datetime.timedelta</code></li>
+<li><code>std::chrono::[other_clocks]::time_point</code> → <code>datetime.timedelta</code></li>
+</ul>
+<p><strong>Python到C++</strong></p>
+<ul>
+<li><code>datetime.datetime</code>or<code>datetime.date</code>or<code>datetime.time</code> → <code>std::chrono::system_clock::time_point</code></li>
+<li><code>datetime.timedelta</code> → <code>std::chrono::duration</code></li>
+<li><code>datetime.timedelta</code> → <code>std::chrono::[other_clocks]::time_point</code></li>
+<li><code>float</code> → <code>std::chrono::duration</code></li>
+<li><code>float</code> → <code>std::chrono::[other_clocks]::time_point</code></li>
+</ul>
+<h3 id="116-eigen"><a class="header" href="#116-eigen">11.6 Eigen</a></h3>
+<p>没接触过Eigen，先不翻译。</p>
+<h3 id="117-自定义类型转换"><a class="header" href="#117-自定义类型转换">11.7 自定义类型转换</a></h3>
+<p>在极少数情况下，程序可能需要一些pybind11没有提供的自定义类型转换，这需要使用到原始的Python C API。这是相当高级的使用方法，只有熟悉Python引用计数复杂之处的专家才能使用。</p>
+<p>The following snippets demonstrate how this works for a very simple <code>inty</code> type that that should be convertible from Python types that provide a <code>__int__(self)</code> method.</p>
+<pre><code class="language-c++">struct inty { long long_value; };
+
+void print(inty s) {
+    std::cout &lt;&lt; s.long_value &lt;&lt; std::endl;
+}
+</code></pre>
+<p>The following Python snippet demonstrates the intended usage from the Python side:</p>
+<pre><code class="language-python">class A:
+    def __int__(self):
+        return 123
+
+
+from example import print
+
+print(A())
+</code></pre>
+<p>To register the necessary conversion routines, it is necessary to add an instantiation of the <code>pybind11::detail::type_caster&lt;T&gt;</code> template. Although this is an implementation detail, adding an instantiation of this type is explicitly allowed.</p>
+<pre><code class="language-c++">namespace pybind11 { namespace detail {
+    template &lt;&gt; struct type_caster&lt;inty&gt; {
+    public:
+        /**
+         * This macro establishes the name 'inty' in
+         * function signatures and declares a local variable
+         * 'value' of type inty
+         */
+        PYBIND11_TYPE_CASTER(inty, _(&quot;inty&quot;));
+
+        /**
+         * Conversion part 1 (Python-&gt;C++): convert a PyObject into a inty
+         * instance or return false upon failure. The second argument
+         * indicates whether implicit conversions should be applied.
+         */
+        bool load(handle src, bool) {
+            /* Extract PyObject from handle */
+            PyObject *source = src.ptr();
+            /* Try converting into a Python integer value */
+            PyObject *tmp = PyNumber_Long(source);
+            if (!tmp)
+                return false;
+            /* Now try to convert into a C++ int */
+            value.long_value = PyLong_AsLong(tmp);
+            Py_DECREF(tmp);
+            /* Ensure return code was OK (to avoid out-of-range errors etc) */
+            return !(value.long_value == -1 &amp;&amp; !PyErr_Occurred());
+        }
+
+        /**
+         * Conversion part 2 (C++ -&gt; Python): convert an inty instance into
+         * a Python object. The second and third arguments are used to
+         * indicate the return value policy and parent object (for
+         * ``return_value_policy::reference_internal``) and are generally
+         * ignored by implicit casters.
+         */
+        static handle cast(inty src, return_value_policy /* policy */, handle /* parent */) {
+            return PyLong_FromLong(src.long_value);
+        }
+    };
+}} // namespace pybind11::detail
+</code></pre>
+<blockquote>
+<p>Note: A <code>type_caster&lt;T&gt;</code> defined with <code>PYBIND11_TYPE_CASTER(T, ...)</code> requires that <code>T</code> is default-constructible (<code>value</code> is first default constructed and then <code>load()</code> assigns to it).</p>
+</blockquote>
+<blockquote>
+<p>Warning: When using custom type casters, it’s important to declare them consistently in every compilation unit of the Python extension module. Otherwise, undefined behavior can ensue.</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../3rd/pybind11/10.智能指针.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../3rd/pybind11/12.Python的C++接口.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../3rd/pybind11/10.智能指针.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../3rd/pybind11/12.Python的C++接口.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../../ace.js"></script>
+        <script src="../../editor.js"></script>
+        <script src="../../mode-rust.js"></script>
+        <script src="../../theme-dawn.js"></script>
+        <script src="../../theme-tomorrow_night.js"></script>
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../.././assets/help/helper.js"></script>
+        <script src="../.././assets/help/support.js"></script>
+        <script src="../.././assets/mermaid/mermaid.min.js"></script>
+        <script src="../.././assets/mermaid/mermaid-init.js"></script>
+
+
+    </div>
+    </body>
+</html>

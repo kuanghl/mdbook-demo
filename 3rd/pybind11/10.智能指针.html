@@ -182,8 +182,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<h2 id="10-智能指针"><a class="header" href="#10-智能指针">10. 智能指针</a></h2>
+                        <h2 id="10-智能指针"><a class="header" href="#10-智能指针">10. 智能指针</a></h2>
 <h3 id="101-stdunique_ptr"><a class="header" href="#101-stdunique_ptr">10.1 <code>std::unique_ptr</code></a></h3>
 <p>给定一个带Python绑定的类<code>Example</code>，我们可以像下面一样返回它的unique pointer智能指针实例：</p>
 <pre><code class="language-c++">std::unique_ptr&lt;Example&gt; create_example() { return std::unique_ptr&lt;Example&gt;(new Example()); }

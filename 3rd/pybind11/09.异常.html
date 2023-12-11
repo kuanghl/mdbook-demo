@@ -182,8 +182,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<h2 id="9-异常"><a class="header" href="#9-异常">9. 异常</a></h2>
+                        <h2 id="9-异常"><a class="header" href="#9-异常">9. 异常</a></h2>
 <h3 id="91-c内置异常到python异常的转换"><a class="header" href="#91-c内置异常到python异常的转换">9.1 C++内置异常到Python异常的转换</a></h3>
 <p>当Python通过pybind11调用C++代码时，pybind11将捕获C++异常，并将其翻译为对应的Python异常后抛出。这样Python代码就能够处理它们。</p>
 <p>pybind11定义了<code>std::exception</code>及其标准子类，和一些特殊异常到Python异常的翻译。由于它们不是真正的Python异常，所以不能使用Python C API来检查。相反，它们是纯C++异常，当它们到达异常处理器时，pybind11将其翻译为对应的Python异常。</p>

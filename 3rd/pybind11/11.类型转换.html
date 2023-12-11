@@ -182,8 +182,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<h2 id="11-类型转换"><a class="header" href="#11-类型转换">11. 类型转换</a></h2>
+                        <h2 id="11-类型转换"><a class="header" href="#11-类型转换">11. 类型转换</a></h2>
 <p>除了支持跨语言函数调用，pybind11这类绑定工具必须处理的一个基本问题就是，提供在C++中访问原生Python类型的方式，反之亦然。有三种完全不同的方法做到这点，每种方法适用性取决于你使用的环境。</p>
 <ol>
 <li>任意侧使用原生的C++类型。这种情况下，必须使用pybind11生成类型的绑定，Python才能使用它。</li>
