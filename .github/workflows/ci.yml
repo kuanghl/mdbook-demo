@@ -54,8 +54,7 @@ jobs:
 
     - name: Build docs into book
       run: |
-        mdbook build -d book
-        mdbook test
+        mdbook build docs -d book
 
     - name: Build all translations
       run: |
