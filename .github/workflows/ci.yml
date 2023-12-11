@@ -54,14 +54,14 @@ jobs:
 
     - name: Build docs into book
       run: |
-        mdbook build docs -d book
+        mdbook build src -d book
 
     - name: Build all translations
       run: |
         for lang in es jp ko cn vi lt; do
             echo "Building $lang translation"
             MDBOOK_BOOK__LANGUAGE=$lang \
-            mdbook build -d book/$lang
+            mdbook build src -d book/$lang
             echo "End $lang"
         done
 
