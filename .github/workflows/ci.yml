@@ -44,12 +44,11 @@ jobs:
         
         pip install mdbook-pdf-outline
 
-        # cargo install mdbook-mermaid
-        # mdbook-mermaid install ./
-        # cargo install mdbook-kroki-preprocessor
+        cargo install mdbook-mermaid
+        mdbook-mermaid install ./
 
-        # cargo install mdbook-admonish
-        # mdbook-admonish install ./
+        cargo install mdbook-admonish
+        mdbook-admonish install ./
 
     # Setting --> Pages --> Build and deployment --> Github Actions
     - name: Setup Pages
