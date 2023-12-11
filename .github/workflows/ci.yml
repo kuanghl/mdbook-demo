@@ -44,6 +44,7 @@ jobs:
         cargo install mdbook-toc
         cargo install mdbook-katex
         cargo install mdbook-linkcheck
+        cargo install mdbook-tera-backend
         cargo install mdbook-i18n-helpers
 
 
