@@ -45,7 +45,9 @@ jobs:
         cargo install mdbook-katex
         cargo install mdbook-linkcheck
         cargo install mdbook-i18n-helpers
-        cargo install mdbook-i18n
+        cargo install mdbook-pdf
+        
+        pip install mdbook-pdf-outline
 
     # Setting --> Pages --> Build and deployment --> Github Actions
     - name: Setup Pages
