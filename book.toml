@@ -17,11 +17,8 @@ assets_version = "2.1.0" # DO NOT EDIT: Managed by `mdbook-catppuccin install`
 command = "mdbook-toc"
 renderer = ["html"]
 
-[preprocessor.katex]
-after = ["links"]
-
-[preprocessor.gettext]
-after = ["links"]
+[preprocessor.links]
+after = ["katex", "gettext"]
 
 [preprocessor.admonish]
 command = "mdbook-admonish"
