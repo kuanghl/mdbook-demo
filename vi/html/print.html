@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="lt" class="mocha" dir="ltr">
+<html lang="vi" class="mocha" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -37,6 +37,32 @@
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Custom JS scripts for mdbook-pdf PDF generation -->
+        <script type='text/javascript'>
+            let markAllContentHasLoadedForPrinting = () =>
+                window.setTimeout(
+                    () => {
+                        let p = document.createElement('div');
+                        p.setAttribute('id', 'content-has-all-loaded-for-mdbook-pdf-generation');
+                        document.body.appendChild(p);
+                    }, 100
+                );
+
+            window.addEventListener('load', () => {
+                // Expand all the <details> elements for printing.
+                r = document.getElementsByTagName('details');
+                for (let i of r)
+                    i.open = true;
+
+                try {
+                    MathJax.Hub.Register.StartupHook('End', markAllContentHasLoadedForPrinting);
+                } catch (e) {
+                    markAllContentHasLoadedForPrinting();
+                }
+            });
+        </script>
+    <div style="display: none"><a href="#test-chapter_1">test-chapter_1</a><a href="#3rd-pybind11-00.pybind11介绍">3rd-pybind11-00.pybind11介绍</a><a href="#3rd-pybind11-01.改动日志">3rd-pybind11-01.改动日志</a><a href="#3rd-pybind11-02.更新指南">3rd-pybind11-02.更新指南</a><a href="#3rd-pybind11-03.安装说明">3rd-pybind11-03.安装说明</a><a href="#3rd-pybind11-04.首次尝试">3rd-pybind11-04.首次尝试</a><a href="#3rd-pybind11-05.面对对象编程">3rd-pybind11-05.面对对象编程</a><a href="#3rd-pybind11-06.构建系统">3rd-pybind11-06.构建系统</a><a href="#3rd-pybind11-07.函数">3rd-pybind11-07.函数</a><a href="#3rd-pybind11-08.类">3rd-pybind11-08.类</a><a href="#3rd-pybind11-09.异常">3rd-pybind11-09.异常</a><a href="#3rd-pybind11-10.智能指针">3rd-pybind11-10.智能指针</a><a href="#3rd-pybind11-11.类型转换">3rd-pybind11-11.类型转换</a><a href="#3rd-pybind11-12.python的c++接口">3rd-pybind11-12.python的c++接口</a><a href="#3rd-pybind11-13.内嵌解释器">3rd-pybind11-13.内嵌解释器</a><a href="#3rd-pybind11-14.杂项">3rd-pybind11-14.杂项</a><a href="#3rd-pybind11-15.faq">3rd-pybind11-15.faq</a><a href="#3rd-pybind11-16.案例">3rd-pybind11-16.案例</a><a href="#3rd-pybind11-pybind11_demo">3rd-pybind11-pybind11_demo</a><a href="#basic-markdown">basic-markdown</a><a href="#basic-mermaid">basic-mermaid</a><a href="#test-chapter_1">test-chapter_1</a></div>
     </head>
     <body class="sidebar-visible no-js">
     <div id="body-container">
