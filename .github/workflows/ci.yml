@@ -38,9 +38,7 @@ jobs:
         cargo install mdbook-toc
         cargo install mdbook-katex
         cargo install mdbook-linkcheck
-        cargo install mdbook-i18n-helpers
         cargo install mdbook-pdf
-        
         pip install mdbook-pdf-outline
 
         cargo install mdbook-mermaid
@@ -54,23 +52,14 @@ jobs:
       id: pages
       uses: actions/configure-pages@v3
 
-    - name: Build docs into book
+    - name: Build src into docs
       run: |
-        mdbook build -d book
-
-    - name: Build all translations
-      run: |
-        for lang in es jp ko cn vi lt; do
-            echo "Building $lang translation"
-            MDBOOK_BOOK__LANGUAGE=$lang \
-            mdbook build -d book/$lang
-            echo "End $lang"
-        done
+        mdbook build
 
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v2
       with:
-        path: ./book
+        path: ./docs
 
     - name: Add & Commit
       uses: EndBug/add-and-commit@v9.1.3
@@ -80,7 +69,7 @@ jobs:
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4
       with:
-        folder: book # The folder the action should deploy.
+        folder: docs # The folder the action should deploy.
  
   # Deployment job
   deploy:

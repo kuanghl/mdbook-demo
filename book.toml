@@ -6,7 +6,7 @@ src = "src"
 title = "mdbook-demo"
 
 [build]
-build-dir = "book"
+build-dir = "docs"
 create-missing = true
 use-default-preprocessors = false
 
