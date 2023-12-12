@@ -33,7 +33,6 @@
         <link rel="stylesheet" href="./assets/catppuccin/catppuccin.css">
         <link rel="stylesheet" href="./assets/catppuccin/catppuccin-admonish.css">
         <link rel="stylesheet" href="./assets/admonish/mdbook-admonish.css">
-        <link rel="stylesheet" href="./mdbook-admonish.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -4255,13 +4254,13 @@ PYBIND11_MODULE(example, m) {
   C --&gt;|Three| F[fa:fa-car Car]
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph TD
+<pre><code class="language-mermaid">graph TD
   A[Christmas] --&gt;|Get money| B(Go shopping)
   B --&gt; C{Let me think}
   C --&gt;|One| D[Laptop]
   C --&gt;|Two| E[iPhone]
   C --&gt;|Three| F[fa:fa-car Car]
-</pre>
+</code></pre>
 <ul>
 <li>项目地址: <a href="https://github.com/mermaid-js/mermaid">https://github.com/mermaid-js/mermaid</a></li>
 <li>在线编辑: <a href="https://mermaidjs.github.io/mermaid-live-editor/">https://mermaidjs.github.io/mermaid-live-editor/</a></li>
@@ -4275,11 +4274,11 @@ PYBIND11_MODULE(example, m) {
 + LR
 + RL
 </code></pre>
-<pre class="mermaid">+ TB
+<pre><code class="language-mermaid">+ TB
 + BT
 + LR
 + RL
-</pre>
+</code></pre>
 <p>流程图布局方向,由四种基本方向组成,分别是英文单词: <code>top</code>(上), <code>bottom</code>(下),<code>left</code>(左)和 <code>right</code>(右).其中可选值: <code>TB</code> (从上到下),<code>BT</code> (从下到上),<code>LR</code> (从左往右)和 <code>RL</code> (从右往左)四种.</p>
 <blockquote>
 <p><strong>核心</strong>: 仅支持上下左右四个垂直方向,是英文单词首字母大写缩写.</p>
@@ -4295,9 +4294,9 @@ PYBIND11_MODULE(example, m) {
     Start --&gt; Stop
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph TB
+<pre><code class="language-mermaid">graph TB
     Start --&gt; Stop
-</pre>
+</code></pre>
 <ul>
 <li>BT </li>
 </ul>
@@ -4309,9 +4308,9 @@ PYBIND11_MODULE(example, m) {
     Start --&gt; Stop
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph BT
+<pre><code class="language-mermaid">graph BT
     Start --&gt; Stop
-</pre>
+</code></pre>
 <ul>
 <li>LR</li>
 </ul>
@@ -4323,9 +4322,9 @@ PYBIND11_MODULE(example, m) {
     Start --&gt; Stop
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     Start --&gt; Stop
-</pre>
+</code></pre>
 <ul>
 <li>RL</li>
 </ul>
@@ -4337,9 +4336,9 @@ PYBIND11_MODULE(example, m) {
     Start --&gt; Stop
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph RL
+<pre><code class="language-mermaid">graph RL
     Start --&gt; Stop
-</pre>
+</code></pre>
 <h3 id="形状"><a class="header" href="#形状">形状</a></h3>
 <p><strong>关键词</strong></p>
 <pre><code class="language-markdown">- 节点形状
@@ -4361,7 +4360,7 @@ PYBIND11_MODULE(example, m) {
         - {(暂不支持)}
     + &gt;不对称矩形]
 </code></pre>
-<pre class="mermaid">- 节点形状
+<pre><code class="language-mermaid">- 节点形状
     + [矩形]
         - [[暂不支持]]
         - [(圆柱)]
@@ -4379,7 +4378,7 @@ PYBIND11_MODULE(example, m) {
         - {[暂不支持]}
         - {(暂不支持)}
     + &gt;不对称矩形]
-</pre>
+</code></pre>
 <p>流程图节点形状,默认支持矩形和圆两种基本形状,包括基本形状的简单变体,支持嵌套组合形式,其中 <code>[]</code> 表示矩形,<code>()</code> 表示圆弧,<code>{}</code> 表示尖角(窃以为 <code>&lt;&gt;</code> 更适合)等等.</p>
 <blockquote>
 <p><strong>核心</strong>: 最外层代表主形状,内层辅助修饰.</p>
@@ -4394,9 +4393,9 @@ PYBIND11_MODULE(example, m) {
     id
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph TD
+<pre><code class="language-mermaid">graph TD
     id
-</pre>
+</code></pre>
 <h4 id="可重复节点"><a class="header" href="#可重复节点">可重复节点</a></h4>
 <p>可重复节点,指定节点形状,其文本内容不再是 <code>id</code> 的值而是 <code>&lt;node shape&gt;</code> 的值,适合后续出现多次引用相同节点的情况.</p>
 <blockquote>
@@ -4413,9 +4412,9 @@ PYBIND11_MODULE(example, m) {
     id1[This is the text in the box]
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     id1[This is the text in the box]
-</pre>
+</code></pre>
 <ul>
 <li>圆角矩形</li>
 </ul>
@@ -4427,9 +4426,9 @@ PYBIND11_MODULE(example, m) {
     id1(This is the text in the box)
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     id1(This is the text in the box)
-</pre>
+</code></pre>
 <ul>
 <li>体育场</li>
 </ul>
@@ -4441,9 +4440,9 @@ PYBIND11_MODULE(example, m) {
     id1([This is the text in the box])
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     id1([This is the text in the box])
-</pre>
+</code></pre>
 <ul>
 <li>圆柱</li>
 </ul>
@@ -4455,9 +4454,9 @@ PYBIND11_MODULE(example, m) {
     id1[(Database)]
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     id1[(Database)]
-</pre>
+</code></pre>
 <ul>
 <li>圆形</li>
 </ul>
@@ -4469,9 +4468,9 @@ PYBIND11_MODULE(example, m) {
     id1((This is the text in the circle))
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     id1((This is the text in the circle))
-</pre>
+</code></pre>
 <ul>
 <li>不对称矩形</li>
 </ul>
@@ -4483,9 +4482,9 @@ PYBIND11_MODULE(example, m) {
     id1&gt;This is the text in the box]
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     id1&gt;This is the text in the box]
-</pre>
+</code></pre>
 <ul>
 <li>菱形</li>
 </ul>
@@ -4497,9 +4496,9 @@ PYBIND11_MODULE(example, m) {
     id1{This is the text in the box}
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     id1{This is the text in the box}
-</pre>
+</code></pre>
 <ul>
 <li>六角形</li>
 </ul>
@@ -4514,9 +4513,9 @@ PYBIND11_MODULE(example, m) {
 <p><code>Gitbook</code> 语法中双大括号 <code>{}</code> 表示特殊意义,上述源码只能转义处理,实际上并不需要 <code>\</code> 进行转义.</p>
 </blockquote>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     id1\{\{This is the text in the box\}\}
-</pre>
+</code></pre>
 <ul>
 <li>平行四边形</li>
 </ul>
@@ -4528,9 +4527,9 @@ PYBIND11_MODULE(example, m) {
     id1[/This is the text in the box/]
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph TD
+<pre><code class="language-mermaid">graph TD
     id1[/This is the text in the box/]
-</pre>
+</code></pre>
 <ul>
 <li>平行四边形</li>
 </ul>
@@ -4542,9 +4541,9 @@ PYBIND11_MODULE(example, m) {
     id1[\This is the text in the box\]
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph TD
+<pre><code class="language-mermaid">graph TD
     id1[\This is the text in the box\]
-</pre>
+</code></pre>
 <ul>
 <li>梯形</li>
 </ul>
@@ -4556,9 +4555,9 @@ PYBIND11_MODULE(example, m) {
     A[/Christmas\]
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph TD
+<pre><code class="language-mermaid">graph TD
     A[/Christmas\]
-</pre>
+</code></pre>
 <ul>
 <li>另一种梯形</li>
 </ul>
@@ -4570,9 +4569,9 @@ PYBIND11_MODULE(example, m) {
     B[\Go shopping/]
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph TD
+<pre><code class="language-mermaid">graph TD
     B[\Go shopping/]
-</pre>
+</code></pre>
 <h3 id="连接线"><a class="header" href="#连接线">连接线</a></h3>
 <p><strong>关键词</strong></p>
 <pre><code class="language-markdown">+ 实线/虚线
@@ -4616,7 +4615,7 @@ PYBIND11_MODULE(example, m) {
         + ==描述文字===
         + ===|描述文字|
 </code></pre>
-<pre class="mermaid">+ 实线/虚线
+<pre><code class="language-mermaid">+ 实线/虚线
     - --
     - -.
 + 有箭头/无箭头
@@ -4656,7 +4655,7 @@ PYBIND11_MODULE(example, m) {
     - 有描述加粗实线无箭头(2)
         + ==描述文字===
         + ===|描述文字|
-</pre>
+</code></pre>
 <p>流程图连接线样式,支持实线和虚线以及有箭头样式和无箭头样式,除此之外还支持添加连接线描述文字,其中 <code>--</code> 代表实线,实线中间多一点 <code>-.-</code> 代表虚线,添加箭头用右尖括号 <code>&gt;</code> ,没有箭头继续用短横线 <code>-</code>.</p>
 <blockquote>
 <p><strong>核心</strong>: 先实线再虚线,先有箭头再去箭头,左边位置添加描述文字需要区分实现还是虚线,右边位置添加描述文字格式一致.</p>
@@ -4672,9 +4671,9 @@ PYBIND11_MODULE(example, m) {
     A--&gt;B
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     A--&gt;B
-</pre>
+</code></pre>
 <ul>
 <li>无箭头实线</li>
 </ul>
@@ -4686,9 +4685,9 @@ PYBIND11_MODULE(example, m) {
     A --- B
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     A --- B
-</pre>
+</code></pre>
 <ul>
 <li>带描述的有箭头实线</li>
 </ul>
@@ -4700,9 +4699,9 @@ PYBIND11_MODULE(example, m) {
     A-- text --&gt;B
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     A-- text --&gt;B
-</pre>
+</code></pre>
 <blockquote>
 <p>一般格式: <code>|connection line description|</code> ,其中 <code>||</code> 添加到<strong>连接线右边位置</strong>.</p>
 </blockquote>
@@ -4711,9 +4710,9 @@ PYBIND11_MODULE(example, m) {
     A--&gt;|text|B
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     A--&gt;|text|B
-</pre>
+</code></pre>
 <ul>
 <li>带描述的无箭头实线</li>
 </ul>
@@ -4725,9 +4724,9 @@ PYBIND11_MODULE(example, m) {
     A-- This is the text ---B
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     A-- This is the text ---B
-</pre>
+</code></pre>
 <blockquote>
 <p>一般格式: <code>|connection line description|</code> ,其中 <code>||</code> 添加到<strong>连接线右边位置</strong>.</p>
 </blockquote>
@@ -4736,9 +4735,9 @@ PYBIND11_MODULE(example, m) {
     A---|This is the text|B
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     A---|This is the text|B
-</pre>
+</code></pre>
 <ul>
 <li>有箭头虚线</li>
 </ul>
@@ -4750,9 +4749,9 @@ PYBIND11_MODULE(example, m) {
    A-. text .-&gt; B
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
    A-. text .-&gt; B
-</pre>
+</code></pre>
 <ul>
 <li>有箭头加粗实线</li>
 </ul>
@@ -4764,9 +4763,9 @@ PYBIND11_MODULE(example, m) {
    A ==&gt; B
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
    A ==&gt; B
-</pre>
+</code></pre>
 <ul>
 <li>带描述的有箭头加粗实线</li>
 </ul>
@@ -4778,9 +4777,9 @@ PYBIND11_MODULE(example, m) {
    A == text ==&gt; B
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
    A == text ==&gt; B
-</pre>
+</code></pre>
 <ul>
 <li>带描述的有箭头加粗实线</li>
 </ul>
@@ -4792,9 +4791,9 @@ PYBIND11_MODULE(example, m) {
    A ==&gt;|text| B
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
    A ==&gt;|text| B
-</pre>
+</code></pre>
 <h3 id="高级用法"><a class="header" href="#高级用法">高级用法</a></h3>
 <p><strong>关键词</strong></p>
 <pre><code class="language-markdown">+ --&gt;--&gt;
@@ -4803,12 +4802,12 @@ PYBIND11_MODULE(example, m) {
 + %%
 + subgraph
 </code></pre>
-<pre class="mermaid">+ --&gt;--&gt;
+<pre><code class="language-mermaid">+ --&gt;--&gt;
 + &amp;
 + &quot;&quot;
 + %%
 + subgraph
-</pre>
+</code></pre>
 <ul>
 <li>多节点链式连接</li>
 </ul>
@@ -4818,9 +4817,9 @@ PYBIND11_MODULE(example, m) {
    A -- text --&gt; B -- text2 --&gt; C
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
    A -- text --&gt; B -- text2 --&gt; C
-</pre>
+</code></pre>
 <ul>
 <li>多节点共同连接</li>
 </ul>
@@ -4830,9 +4829,9 @@ PYBIND11_MODULE(example, m) {
    a --&gt; b &amp; c--&gt; d
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
    a --&gt; b &amp; c--&gt; d
-</pre>
+</code></pre>
 <ul>
 <li>多节点相互连接</li>
 </ul>
@@ -4842,9 +4841,9 @@ PYBIND11_MODULE(example, m) {
     A &amp; B--&gt; C &amp; D
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph TB
+<pre><code class="language-mermaid">graph TB
     A &amp; B--&gt; C &amp; D
-</pre>
+</code></pre>
 <ul>
 <li>双引号包裹特殊字符</li>
 </ul>
@@ -4854,9 +4853,9 @@ PYBIND11_MODULE(example, m) {
     id1[&quot;This is the (text) in the box&quot;]
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     id1[&quot;This is the (text) in the box&quot;]
-</pre>
+</code></pre>
 <ul>
 <li>双引号包裹转义字符</li>
 </ul>
@@ -4866,9 +4865,9 @@ PYBIND11_MODULE(example, m) {
     A[&quot;A double quote:#quot;&quot;] --&gt;B[&quot;A dec char:#9829;&quot;]
 </code></pre>
 <p><strong>效果</strong></p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
     A[&quot;A double quote:#quot;&quot;] --&gt;B[&quot;A dec char:#9829;&quot;]
-</pre>
+</code></pre>
 <ul>
 <li>嵌套子流程图</li>
 </ul>
@@ -4890,7 +4889,7 @@ end
     c1--&gt;c2
     end
 </code></pre>
-<pre class="mermaid">graph TB
+<pre><code class="language-mermaid">graph TB
     c1--&gt;a2
     subgraph one
     a1--&gt;a2
@@ -4901,7 +4900,7 @@ end
     subgraph three
     c1--&gt;c2
     end
-</pre>
+</code></pre>
 <ul>
 <li>注释语法</li>
 </ul>
@@ -4910,10 +4909,10 @@ end
 %% this is a comment A -- text --&gt; B{node}
    A -- text --&gt; B -- text2 --&gt; C
 </code></pre>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
 %% this is a comment A -- text --&gt; B{node}
    A -- text --&gt; B -- text2 --&gt; C
-</pre>
+</code></pre>
 <h2 id="快速入门流程图回顾总结"><a class="header" href="#快速入门流程图回顾总结">快速入门流程图回顾总结</a></h2>
 <p><strong>关键词</strong></p>
 <pre><code class="language-mardown">- 英文单词缩写
@@ -5016,221 +5015,82 @@ automatically themed to match Catppuccin.</p>
 <h2 id="directives"><a class="header" href="#directives">Directives</a></h2>
 <p>All supported directives are listed below.</p>
 <p><code>note</code></p>
-<div id="admonition-note" class="admonition admonish-note">
-<div class="admonition-title">
-<p>Note</p>
-<p><a class="admonition-anchor-link" href="basic/mermaid.html#admonition-note"></a></p>
-</div>
-<div>
-<p>Rust is a multi-paradigm, general-purpose programming language designed for performance and safety, especially safe concurrency.</p>
-</div>
-</div>
+<pre><code class="language-admonish note">Rust is a multi-paradigm, general-purpose programming language designed for performance and safety, especially safe concurrency.
+</code></pre>
 <p><code>abstract</code>, <code>summary</code>, <code>tldr</code></p>
-<div id="admonition-abstract" class="admonition admonish-abstract">
-<div class="admonition-title">
-<p>Abstract</p>
-<p><a class="admonition-anchor-link" href="basic/mermaid.html#admonition-abstract"></a></p>
-</div>
-<div>
-<p>Rust is a multi-paradigm, general-purpose programming language designed for performance and safety, especially safe concurrency.</p>
-</div>
-</div>
+<pre><code class="language-admonish abstract">Rust is a multi-paradigm, general-purpose programming language designed for performance and safety, especially safe concurrency.
+</code></pre>
 <p><code>info</code>, <code>todo</code></p>
-<div id="admonition-info" class="admonition admonish-info">
-<div class="admonition-title">
-<p>Info</p>
-<p><a class="admonition-anchor-link" href="basic/mermaid.html#admonition-info"></a></p>
-</div>
-<div>
-<p>Rust is a multi-paradigm, general-purpose programming language designed for performance and safety, especially safe concurrency.</p>
-</div>
-</div>
+<pre><code class="language-admonish info">Rust is a multi-paradigm, general-purpose programming language designed for performance and safety, especially safe concurrency.
+</code></pre>
 <p><code>tip</code>, <code>hint</code>, <code>important</code></p>
-<div id="admonition-tip" class="admonition admonish-tip">
-<div class="admonition-title">
-<p>Tip</p>
-<p><a class="admonition-anchor-link" href="basic/mermaid.html#admonition-tip"></a></p>
-</div>
-<div>
-<p>Rust is a multi-paradigm, general-purpose programming language designed for performance and safety, especially safe concurrency.</p>
-</div>
-</div>
+<pre><code class="language-admonish tip">Rust is a multi-paradigm, general-purpose programming language designed for performance and safety, especially safe concurrency.
+</code></pre>
 <p><code>success</code>, <code>check</code>, <code>done</code></p>
-<div id="admonition-success" class="admonition admonish-success">
-<div class="admonition-title">
-<p>Success</p>
-<p><a class="admonition-anchor-link" href="basic/mermaid.html#admonition-success"></a></p>
-</div>
-<div>
-<p>Rust is a multi-paradigm, general-purpose programming language designed for performance and safety, especially safe concurrency.</p>
-</div>
-</div>
+<pre><code class="language-admonish success">Rust is a multi-paradigm, general-purpose programming language designed for performance and safety, especially safe concurrency.
+</code></pre>
 <p><code>question</code>, <code>help</code>, <code>faq</code></p>
-<div id="admonition-question" class="admonition admonish-question">
-<div class="admonition-title">
-<p>Question</p>
-<p><a class="admonition-anchor-link" href="basic/mermaid.html#admonition-question"></a></p>
-</div>
-<div>
-<p>Rust is a multi-paradigm, general-purpose programming language designed for performance and safety, especially safe concurrency.</p>
-</div>
-</div>
+<pre><code class="language-admonish question">Rust is a multi-paradigm, general-purpose programming language designed for performance and safety, especially safe concurrency.
+</code></pre>
 <p><code>warning</code>, <code>caution</code>, <code>attention</code></p>
-<div id="admonition-warning" class="admonition admonish-warning">
-<div class="admonition-title">
-<p>Warning</p>
-<p><a class="admonition-anchor-link" href="basic/mermaid.html#admonition-warning"></a></p>
-</div>
-<div>
-<p>Rust is a multi-paradigm, general-purpose programming language designed for performance and safety, especially safe concurrency.</p>
-</div>
-</div>
+<pre><code class="language-admonish warning">Rust is a multi-paradigm, general-purpose programming language designed for performance and safety, especially safe concurrency.
+</code></pre>
 <p><code>failure</code>, <code>fail</code>, <code>missing</code></p>
-<div id="admonition-failure" class="admonition admonish-failure">
-<div class="admonition-title">
-<p>Failure</p>
-<p><a class="admonition-anchor-link" href="basic/mermaid.html#admonition-failure"></a></p>
-</div>
-<div>
-<p>Rust is a multi-paradigm, general-purpose programming language designed for performance and safety, especially safe concurrency.</p>
-</div>
-</div>
+<pre><code class="language-admonish failure">Rust is a multi-paradigm, general-purpose programming language designed for performance and safety, especially safe concurrency.
+</code></pre>
 <p><code>danger</code>, <code>error</code></p>
-<div id="admonition-danger" class="admonition admonish-danger">
-<div class="admonition-title">
-<p>Danger</p>
-<p><a class="admonition-anchor-link" href="basic/mermaid.html#admonition-danger"></a></p>
-</div>
-<div>
-<p>Rust is a multi-paradigm, general-purpose programming language designed for performance and safety, especially safe concurrency.</p>
-</div>
-</div>
+<pre><code class="language-admonish danger">Rust is a multi-paradigm, general-purpose programming language designed for performance and safety, especially safe concurrency.
+</code></pre>
 <p><code>bug</code></p>
-<div id="admonition-bug" class="admonition admonish-bug">
-<div class="admonition-title">
-<p>Bug</p>
-<p><a class="admonition-anchor-link" href="basic/mermaid.html#admonition-bug"></a></p>
-</div>
-<div>
-<p>Rust is a multi-paradigm, general-purpose programming language designed for performance and safety, especially safe concurrency.</p>
-</div>
-</div>
+<pre><code class="language-admonish bug">Rust is a multi-paradigm, general-purpose programming language designed for performance and safety, especially safe concurrency.
+</code></pre>
 <p><code>example</code></p>
-<div id="admonition-example" class="admonition admonish-example">
-<div class="admonition-title">
-<p>Example</p>
-<p><a class="admonition-anchor-link" href="basic/mermaid.html#admonition-example"></a></p>
-</div>
-<div>
-<p>Rust is a multi-paradigm, general-purpose programming language designed for performance and safety, especially safe concurrency.</p>
-</div>
-</div>
+<pre><code class="language-admonish example">Rust is a multi-paradigm, general-purpose programming language designed for performance and safety, especially safe concurrency.
+</code></pre>
 <p><code>quote</code>, <code>cite</code></p>
-<div id="admonition-quote" class="admonition admonish-quote">
-<div class="admonition-title">
-<p>Quote</p>
-<p><a class="admonition-anchor-link" href="basic/mermaid.html#admonition-quote"></a></p>
-</div>
-<div>
-<p>Rust is a multi-paradigm, general-purpose programming language designed for performance and safety, especially safe concurrency.</p>
-</div>
-</div>
+<pre><code class="language-admonish quote">Rust is a multi-paradigm, general-purpose programming language designed for performance and safety, especially safe concurrency.
+</code></pre>
 <h1 id="bienvenue-sur-notre-site-de-développement-3d-"><a class="header" href="#bienvenue-sur-notre-site-de-développement-3d-">Bienvenue sur notre site de développement 3D !</a></h1>
 <p>Bienvenue sur notre site dédié au développement 3D. Ici, vous trouverez des ressources, des tutoriels et des informations utiles pour vous lancer dans le monde passionnant de la 3D.</p>
-<div id="admonition-info-1" class="admonition admonish-info">
-<div class="admonition-title">
-<p>Info</p>
-<p><a class="admonition-anchor-link" href="basic/mermaid.html#admonition-info-1"></a></p>
-</div>
-<div>
-<p>A beautifully styled message.</p>
-</div>
-</div>
-<div id="admonition-un-example" class="admonition admonish-example">
-<div class="admonition-title">
-<p>Un example</p>
-<p><a class="admonition-anchor-link" href="basic/mermaid.html#admonition-un-example"></a></p>
-</div>
-<div>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-massa, nec semper lorem quam in massa.</p>
-</div>
-</div>
-<div id="admonition-une-note" class="admonition admonish-note">
-<div class="admonition-title">
-<p>Une note</p>
-<p><a class="admonition-anchor-link" href="basic/mermaid.html#admonition-une-note"></a></p>
-</div>
-<div>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-massa, nec semper lorem quam in massa.</p>
-</div>
-</div>
-<div id="admonition-un-warning" class="admonition admonish-warning">
-<div class="admonition-title">
-<p>Un warning</p>
-<p><a class="admonition-anchor-link" href="basic/mermaid.html#admonition-un-warning"></a></p>
-</div>
-<div>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-massa, nec semper lorem quam in massa.</p>
-</div>
-</div>
-<details id="admonition-collapsing-note" class="admonition admonish-note">
-<summary class="admonition-title">
-<p>Collapsing note</p>
-<p><a class="admonition-anchor-link" href="basic/mermaid.html#admonition-collapsing-note"></a></p>
-</summary>
-<div>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-massa, nec semper lorem quam in massa.</p>
-</div>
-</details>
-<div id="admonition-le-javascript-cest-yolo-préférez-typescript" class="admonition admonish-danger">
-<div class="admonition-title">
-<p>Le javascript c’est yolo préférez Typescript</p>
-<p><a class="admonition-anchor-link" href="basic/mermaid.html#admonition-le-javascript-cest-yolo-préférez-typescript"></a></p>
-</div>
-<div>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-massa, nec semper lorem quam in massa.</p>
-</div>
-</div>
-<div id="admonition-_referencing_-and-dereferencing" class="admonition admonish-tip">
-<div class="admonition-title">
-<p><em>Referencing</em> and <i>dereferencing</i></p>
-<p><a class="admonition-anchor-link" href="basic/mermaid.html#admonition-_referencing_-and-dereferencing"></a></p>
-</div>
-<div>
-<p>The opposite of <em>referencing</em> by using <code>&amp;</code> is <em>dereferencing</em>, which is
-accomplished with the <span style="color: hotpink">dereference operator</span>, <code>*</code>.</p>
-</div>
-</div>
-<div id="admonition-bug-1" class="admonition admonish-bug">
-<div class="admonition-title">
-<p>Bug</p>
-<p><a class="admonition-anchor-link" href="basic/mermaid.html#admonition-bug-1"></a></p>
-</div>
-<div>
-<p>This syntax won’t work in Python 3:</p>
-<pre><code class="language-python">print &quot;Hello, world!&quot;
+<pre><code class="language-admonish info">A beautifully styled message.
 </code></pre>
-</div>
-</div>
+<pre><code class="language-admonish example &quot;Un example&quot;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+massa, nec semper lorem quam in massa.
+</code></pre>
+<pre><code class="language-admonish note &quot;Une note&quot;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+massa, nec semper lorem quam in massa.
+</code></pre>
+<pre><code class="language-admonish warning &quot;Un warning&quot;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+massa, nec semper lorem quam in massa.
+</code></pre>
+<pre><code class="language-admonish note collapsible=true title=&quot;Collapsing note&quot;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+massa, nec semper lorem quam in massa.
+</code></pre>
+<pre><code class="language-admonish danger &quot;Le javascript c'est yolo préférez Typescript&quot;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+massa, nec semper lorem quam in massa.
+</code></pre>
+<pre><code class="language-admonish tip title=&quot;_Referencing_ and &lt;i&gt;dereferencing&lt;/i&gt;&quot;">The opposite of *referencing* by using `&amp;` is *dereferencing*, which is
+accomplished with the &lt;span style=&quot;color: hotpink&quot;&gt;dereference operator&lt;/span&gt;, `*`.
+</code></pre>
+<pre><code class="language-admonish bug">This syntax won't work in Python 3:
+```python
+print &quot;Hello, world!&quot;
+```
+</code></pre>
 <h2 id="À-propos-de-nous"><a class="header" href="#À-propos-de-nous">À propos de nous</a></h2>
 <p>Nous sommes une équipe passionnée par la 3D et nous avons pour mission de partager nos connaissances avec la communauté. Vous trouverez ici des articles, des exemples de code et des démonstrations pour vous aider à démarrer votre voyage dans le développement 3D.</p>
-<pre class="mermaid">graph LR
+<pre><code class="language-mermaid">graph LR
   A[Start] --&gt; B{Error?};
   B --&gt;|Yes| C[Hmm...];
   C --&gt; D[Debug];
   D --&gt; B;
   B ----&gt;|No| E[Yay!];
-</pre>
+</code></pre>
 <h2 id="pour-commencer"><a class="header" href="#pour-commencer">Pour commencer</a></h2>
 <p>Si vous êtes nouveau dans le domaine de la 3D, ne vous inquiétez pas ! Notre page <a href="basic/getting-started/getting-started.html">“Getting Started”</a> vous guidera à travers les étapes essentielles pour démarrer rapidement.</p>
 <h2 id="restons-en-contact"><a class="header" href="#restons-en-contact">Restons en contact</a></h2>
