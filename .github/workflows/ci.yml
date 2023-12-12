@@ -42,10 +42,10 @@ jobs:
         pip install mdbook-pdf-outline
 
         cargo install mdbook-mermaid
-        mdbook-mermaid install ./
+        mdbook-mermaid install ./assets/mermaid/
 
         cargo install mdbook-admonish
-        mdbook-admonish install ./
+        mdbook-admonish install ./assets/admonish/
 
     # Setting --> Pages --> Build and deployment --> Github Actions
     - name: Setup Pages
