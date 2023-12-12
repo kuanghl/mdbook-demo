@@ -38,7 +38,7 @@ no-section-label = true
 edit-url-template = "https://github.com/kuanghl/mdbook-demo/edit/master/src/{path}"
 additional-css = [
     "./assets/catppuccin/catppuccin.css", "./assets/catppuccin/catppuccin-admonish.css",
-    "./assets/admonish/mdbook-admonish.css",
+    "./assets/admonish/mdbook-admonish.css", "./mdbook-admonish.css", "./theme/catppuccin.css", "./theme/catppuccin-admonish.css",
     ]
 additional-js = [
     "./assets/help/helper.js", "./assets/help/support.js", 
