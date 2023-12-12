@@ -34,6 +34,8 @@ default-theme = "mocha"
 preferred-dark-theme = "mocha"
 git-repository-url = "https://github.com/kuanghl/mdbook-demo"
 git-repository-icon = "fa-github"
+no-section-label = true
+edit-url-template = "https://github.com/kuanghl/mdbook-demo/edit/master/src/{path}"
 additional-css = [
     "./assets/catppuccin/catppuccin.css", "./assets/catppuccin/catppuccin-admonish.css",
     "./assets/admonish/mdbook-admonish.css",
