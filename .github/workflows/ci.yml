@@ -40,9 +40,12 @@ jobs:
 
     - name: Setup env and Build
       run: |
+        sudo apt-get update
+        sudo apt-get install language-pack-zh-hans
+        sudo update-locale LANG=zh_CN.UTF-8
+
         pip install mdbook-pdf-outline
         export PATH="$PATH:$(pwd)/bin"
-        echo $PATH
         mdbook build
 
     - name: Upload artifact
