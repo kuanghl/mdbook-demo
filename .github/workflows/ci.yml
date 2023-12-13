@@ -32,18 +32,15 @@ jobs:
       uses: peaceiris/actions-mdbook@v1
       with:
         mdbook-version: 'latest'
-
-    - name: Setup mdbook-env install
-      run: |
-        export PATH="$PATH:$(pwd)/bin"
  
     # Setting --> Pages --> Build and deployment --> Github Actions
     - name: Setup Pages
       id: pages
       uses: actions/configure-pages@v3
 
-    - name: Build src into books
+    - name: Setup env and Build
       run: |
+        pip install mdbook-pdf-outline
         export PATH="$PATH:$(pwd)/bin"
         echo $PATH
         mdbook build
