@@ -36,7 +36,8 @@ jobs:
     - name: Setup mdbook-env install
       run: |
         export PATH="$PATH:$(pwd)/bin"
-
+        echo $(pwd)
+ 
     # Setting --> Pages --> Build and deployment --> Github Actions
     - name: Setup Pages
       id: pages
