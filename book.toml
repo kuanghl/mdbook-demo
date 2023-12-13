@@ -9,6 +9,7 @@ title = "mdbook-demo"
 build-dir = "books"
 create-missing = true
 use-default-preprocessors = false
+# extra-watch-dirs = ["po"]
 
 [preprocessor.catppuccin]
 assets_version = "2.1.0" # DO NOT EDIT: Managed by `mdbook-catppuccin install`
@@ -17,8 +18,27 @@ assets_version = "2.1.0" # DO NOT EDIT: Managed by `mdbook-catppuccin install`
 command = "mdbook-toc"
 renderer = ["html"]
 
-[preprocessor.links]
-after = ["katex", "gettext"]
+# 会卡死, todo...
+# [preprocessor.katex]
+# after = ["toc"]
+# KaTeX options.
+# output = "html"
+# leqno = false
+# fleqn = false
+# throw-on-error = true
+# error-color = "#cc0000"
+# min-rule-thickness = -1.0
+# max-size = "Infinity"
+# max-expand = 1000
+# trust = false
+# Extra options.
+# no-css = false
+# include-src = false
+# block-delimiter = { left = "$$", right = "$$" }
+# inline-delimiter = { left = "$", right = "$" }
+
+[preprocessor.gettext]
+after = ["toc"]
 
 [preprocessor.admonish]
 command = "mdbook-admonish"
@@ -26,6 +46,31 @@ assets_version = "3.0.1" # do not edit: managed by `mdbook-admonish install`
 
 [preprocessor.mermaid]
 command = "mdbook-mermaid"
+
+# 有时可以访问，有时不能
+# [preprocessor.kroki-preprocessor]
+# Example endpoint configuration
+# endpoint = "https://kroki.io"
+
+# 导致pdf出现黑边, todo ...
+# [preprocessor.svgbob]
+# svgbob configuration:
+# doc: https://docs.rs/svgbob/latest/svgbob/struct.Settings.html
+# default values: https://github.com/ivanceras/svgbob/blob/master/packages/svgbob/src/settings.rs#L29-L38
+# font_size = 14
+# font_family = "Iosevka Fixed, monospace"
+# fill_color = "black"
+# background = "transparent"               # default overridden, differs from svgbob's default
+# stroke_color = "var(--fg)"               # default overridden, differs from svgbob's default
+# stroke_width = 2.0
+# scale = 8.0
+# enhance_circuitries = true
+# include_backdrop = true
+# include_styles = true
+# include_defs = true
+# merge_line_with_shapes = true
+# preprocessor configuration:
+# code_block = "bob"                       # render only code-blocks marked as "bob", e.g.: ```bob
 
 [output.html]
 mathjax-support = true
@@ -37,12 +82,11 @@ git-repository-icon = "fa-github"
 no-section-label = true
 edit-url-template = "https://github.com/kuanghl/mdbook-demo/edit/master/src/{path}"
 additional-css = [
-    "./assets/catppuccin/catppuccin.css", "./assets/catppuccin/catppuccin-admonish.css",
-    "./assets/admonish/mdbook-admonish.css", "./mdbook-admonish.css", "./theme/catppuccin.css", "./theme/catppuccin-admonish.css",
+    "./mdbook-admonish.css", "./theme/catppuccin.css", "./theme/catppuccin-admonish.css", 
     ]
 additional-js = [
     "./assets/help/helper.js", "./assets/help/support.js", 
-    "./assets/mermaid/mermaid.min.js", "./assets/mermaid/mermaid-init.js",
+    "./mermaid.min.js", "./mermaid-init.js",
     ]
 
 [output.html.search]
@@ -76,20 +120,23 @@ static_site_url = "https://aye10032.gitbook.io/computernetwork/"
 ## Check Chrome Devtools Protocol Docs for the explanation of the following params:
 ## https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-printToPDF
 landscape = false
+# format = "A4"
 display-header-footer = true
 print-background = true
-theme = ""
-scale = 0.8
+theme = "Light"
+scale = 1  # 画面比例
 paper-width = 8
 paper-height = 10
 margin-top = 0.5
-margin-bottom = 0.5
+margin-bottom = 1.0
 margin-left = 0.5
 margin-right = 0.5
 page-ranges = ""
 ignore-invalid-page-ranges = false
-header-template = "<h3 style='font-size:8px; margin-left: 48%' class='title'></h3>"
-footer-template = "<p style='font-size:10px; margin-left: 48%'><span class='pageNumber'></span> / <span class='totalPages'></span></p>"
+# header-template = "<h3 style='font-size:8px; margin-left: 48%' class='title'></h3>"
+# footer-template = "<p style='font-size:10px; margin-left: 48%'><span class='pageNumber'></span> / <span class='totalPages'></span></p>"
+header-template = "<div style='width: 100%; font-size:8px;'><h3 style='position: absolute; left: 10%;' class='date'</h3> <h3 style='position: absolute; left: 35%;' class='title'</h3> <h3 style='position: absolute; left: 60%;' class='authors'>kuanghl</h3> <hr style='position: absolute; left: 5%; border: none; border-bottom: 1px solid black; position: absolute; top: 3.25vh; width: 65%;'></div>"
+footer-template = "<h3 style='font-size:10px; margin-left: 48%'><span class='pageNumber'></span> / <span class='totalPages'></span></h3> <hr style='position: absolute; left: 5%; border: none; border-bottom: 1px solid black; position: absolute; top: 71vh; width: 65%;'>"
 prefer-css-page-size = true
 
 [output.pdf-outline]

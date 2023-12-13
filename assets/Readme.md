@@ -1,3 +1,0 @@
-- [mdbook-catppuccin](https://github.com/catppuccin/mdBook.git)
-- [mdbook-admonish](https://github.com/tommilligan/mdbook-admonish.git)
-- [mdbook-mermaid](https://github.com/badboy/mdbook-mermaid.git)

@@ -35,20 +35,7 @@ jobs:
 
     - name: Setup mdbook-env install
       run: |
-        cargo install mdbook-toc
-        cargo install mdbook-katex
-        cargo install mdbook-linkcheck
-        cargo install mdbook-pdf
-        pip install mdbook-pdf-outline
-
-        cargo install mdbook-mermaid
-        mdbook-mermaid install
-
-        cargo install mdbook-admonish
-        mdbook-admonish install
-
-        cargo install mdbook-catppuccin
-        mdbook-catppuccin install
+        export PATH="$PATH:$(pwd)/bin"
 
     # Setting --> Pages --> Build and deployment --> Github Actions
     - name: Setup Pages
