@@ -10,7 +10,9 @@
 - [mdbook-svgbob](https://github.com/boozook/mdbook-svgbob.git)
 - [mdbook-kroki-preprocessor](https://github.com/JoelCourtney/mdbook-kroki-preprocessor.git)
 - [mdbook-i18n-helpers](https://github.com/google/mdbook-i18n-helpers.git)
-- [](https://github.com/max-heller/mdbook-pandoc.git)
+- [mdbook-pandoc](https://github.com/max-heller/mdbook-pandoc.git)
+
+- License-MIT. Give me a star, if this case is useful to you.
 
 ### GPT Translation.
 
@@ -21,4 +23,16 @@ python3 -m venv ~/lang
 source ~/lang/bin/activate
 pip install -r requirements.txt
 ./translations.py
+./translations.sh xx
 ```
+
+### How to use.
+
+```sh
+git clone https://github.com/kuanghl/mdbook-demo.git
+```
+- 1. A new repository.
+- 2. `Setting --> Pages --> Build and deployment --> Github Actions`.
+- 3. Edit `src/SUMMARY.md` and `.md` file.
+- 4. Edit `book.toml`
+- 5. Push the demo to your repository.
