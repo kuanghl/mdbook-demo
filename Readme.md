@@ -11,8 +11,15 @@
 - [mdbook-kroki-preprocessor](https://github.com/JoelCourtney/mdbook-kroki-preprocessor.git)
 - [mdbook-i18n-helpers](https://github.com/google/mdbook-i18n-helpers.git)
 - [mdbook-pandoc](https://github.com/max-heller/mdbook-pandoc.git)
-
 - License-MIT. Give me a star, if this case is useful to you.
+
+### Local env.
+
+```sh
+export PATH="$PATH:$(pwd)/bin"
+sudo apt install chromium-browser
+pip install mdbook-pdf-outline
+```
 
 ### GPT Translation.
 
