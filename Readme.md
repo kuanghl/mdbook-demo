@@ -12,6 +12,11 @@
 - [mdbook-i18n-helpers](https://github.com/google/mdbook-i18n-helpers.git)
 - [mdbook-pandoc](https://github.com/max-heller/mdbook-pandoc.git)
 - License-MIT. Give me a star, if this case is useful to you.
+- Build mdbooks plugins in rust.
+  ```sh
+  cargo build --release
+  cargo build
+  ```
 
 ### Local env.
 
