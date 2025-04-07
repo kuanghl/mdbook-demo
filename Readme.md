@@ -48,3 +48,18 @@ git clone https://github.com/kuanghl/mdbook-demo.git
 - 3. Edit `src/SUMMARY.md` and `.md` file.
 - 4. Edit `book.toml`
 - 5. Push the demo to your repository.
+
+###  Local test.
+
+```sh
+sudo apt-get update
+sudo apt-get install language-pack-zh-hans
+sudo update-locale LANG=zh_CN.UTF-8
+sudo apt-get install chromium-browser
+
+pip install mdbook-pdf-outline
+export PATH="$PATH:$(pwd)/bin"
+
+mdbook build
+mdbook serve --open
+```
