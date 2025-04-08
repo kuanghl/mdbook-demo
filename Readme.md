@@ -65,3 +65,8 @@ export PATH="$PATH:$(pwd)/bin"
 mdbook build
 mdbook serve --open
 ```
+
+### Note.
+
+> Put `katex.min.css` in root folder, otherwise the format incorrect.
+

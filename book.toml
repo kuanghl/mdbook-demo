@@ -18,24 +18,6 @@ assets_version = "2.1.0" # DO NOT EDIT: Managed by `mdbook-catppuccin install`
 command = "mdbook-toc"
 renderer = ["html"]
 
-# 会卡死, todo...
-# [preprocessor.katex]
-# after = ["toc"]
-# KaTeX options.
-# output = "html"
-# leqno = false
-# fleqn = false
-# throw-on-error = true
-# error-color = "#cc0000"
-# min-rule-thickness = -1.0
-# max-size = "Infinity"
-# max-expand = 1000
-# trust = false
-# Extra options.
-# no-css = false
-# include-src = false
-# block-delimiter = { left = "$$", right = "$$" }
-# inline-delimiter = { left = "$", right = "$" }
 [preprocessor.katex]
 after = ["links"]
 no-css = true
@@ -87,7 +69,7 @@ no-section-label = true
 edit-url-template = "https://github.com/kuanghl/mdbook-demo/edit/master/src/{path}"
 additional-css = [
     "./theme/mdbook-admonish.css", "./theme/catppuccin.css", "./theme/catppuccin-admonish.css", 
-    "./theme/katex.min.css",
+    "katex.min.css",
     ]
 additional-js = [
     "./assets/help/helper.js", "./assets/help/support.js", 
