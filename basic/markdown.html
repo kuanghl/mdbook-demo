@@ -1,0 +1,1050 @@
+<!DOCTYPE HTML>
+<html lang="en" class="mocha" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>markdown - mdbook-demo</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="The example book covers examples.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././theme/mdbook-admonish.css">
+        <link rel="stylesheet" href=".././theme/catppuccin.css">
+        <link rel="stylesheet" href=".././theme/catppuccin-admonish.css">
+        <link rel="stylesheet" href="../katex.min.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "mocha" : "mocha";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('mocha')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="test/chapter_1.html">mdbook_demo</a></li><li class="chapter-item "><a href="3rd/pybind11/00.pybind11介绍.html">pybind11</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="3rd/pybind11/01.改动日志.html">改动日志</a></li><li class="chapter-item "><a href="3rd/pybind11/02.更新指南.html">更新指南</a></li><li class="chapter-item "><a href="3rd/pybind11/03.安装说明.html">安装说明</a></li><li class="chapter-item "><a href="3rd/pybind11/04.首次尝试.html">首次尝试</a></li><li class="chapter-item "><a href="3rd/pybind11/05.面对对象编程.html">面对对象编程</a></li><li class="chapter-item "><a href="3rd/pybind11/06.构建系统.html">构建系统</a></li><li class="chapter-item "><a href="3rd/pybind11/07.函数.html">函数</a></li><li class="chapter-item "><a href="3rd/pybind11/08.类.html">类</a></li><li class="chapter-item "><a href="3rd/pybind11/09.异常.html">异常</a></li><li class="chapter-item "><a href="3rd/pybind11/10.智能指针.html">智能指针</a></li><li class="chapter-item "><a href="3rd/pybind11/11.类型转换.html">类型转换</a></li><li class="chapter-item "><a href="3rd/pybind11/12.Python的C++接口.html">Python的C++接口</a></li><li class="chapter-item "><a href="3rd/pybind11/13.内嵌解释器.html">内嵌解释器</a></li><li class="chapter-item "><a href="3rd/pybind11/14.杂项.html">杂项</a></li><li class="chapter-item "><a href="3rd/pybind11/15.FAQ.html">FAQ</a></li><li class="chapter-item "><a href="3rd/pybind11/16.案例.html">案例</a></li><li class="chapter-item "><a href="3rd/pybind11/pybind11_demo.html">pybind11 demo</a></li></ol></li><li class="chapter-item "><a href="basic/markdown.html">markdown</a></li><li class="chapter-item "><a href="basic/mermaid.html">mermaid</a></li><li class="chapter-item "><a href="test/chapter_3.html">Katex</a></li><li class="chapter-item "><a href="test/chapter_2.html">Test</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="latte">Latte</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="frappe">Frappé</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="macchiato">Macchiato</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mocha">Mocha</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">mdbook-demo</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/kuanghl/mdbook-demo" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/kuanghl/mdbook-demo/edit/master/src/./src/basic/markdown.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="快速上手mermaid流程图"><a class="header" href="#快速上手mermaid流程图">快速上手Mermaid流程图</a></h1>
+<p>本文主要介绍了如何快速上手 <code>Mermaid</code> 流程图,不用贴图上传也不用拖拉点拽绘制,基于源码实时渲染流程图,操作简单易上手,广泛被集成于主流编辑器,包括 <code>markdown</code> 写作环境.</p>
+<p>通过本节内容你将学习到以下主要内容:</p>
+<ul>
+<li>了解什么是流程图以及<code>Mermaid</code>流程图;</li>
+<li>掌握并能记住如何绘制<code>Mermaid</code>流程图;</li>
+<li>了解 <code>Gitbook</code> 写作环境的相关集成插件.</li>
+</ul>
+<h2 id="什么是mermaid流程图"><a class="header" href="#什么是mermaid流程图">什么是Mermaid流程图</a></h2>
+<p><strong>关键词</strong></p>
+<pre><code class="language-mardown">- 项目地址
+- 在线编辑
+- 官方文档
+</code></pre>
+<p>千言万语不如一张图,使用图形展示事物处理流程的图形称之为<strong>流程图</strong>.</p>
+<p><code>Mermaid</code>是一个基于 <code>Javascript</code> 的图解和制图工具.它基于 <code>markdown</code> 语法来简化和加速生成流程图的过程,也不止于生成流程图.</p>
+<p><strong>源码</strong></p>
+<pre><code>graph TD
+  A[Christmas] --&gt;|Get money| B(Go shopping)
+  B --&gt; C{Let me think}
+  C --&gt;|One| D[Laptop]
+  C --&gt;|Two| E[iPhone]
+  C --&gt;|Three| F[fa:fa-car Car]
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph TD
+  A[Christmas] --&gt;|Get money| B(Go shopping)
+  B --&gt; C{Let me think}
+  C --&gt;|One| D[Laptop]
+  C --&gt;|Two| E[iPhone]
+  C --&gt;|Three| F[fa:fa-car Car]
+</pre>
+<ul>
+<li>项目地址: <a href="https://github.com/mermaid-js/mermaid">https://github.com/mermaid-js/mermaid</a></li>
+<li>在线编辑: <a href="https://mermaidjs.github.io/mermaid-live-editor/">https://mermaidjs.github.io/mermaid-live-editor/</a></li>
+<li>官方文档: <a href="https://mermaid-js.github.io/mermaid/#/flowchart">https://mermaid-js.github.io/mermaid/#/flowchart</a></li>
+<li>官方参考: <a href="https://mermaid.nodejs.cn/syntax/flowchart.html">https://mermaid.nodejs.cn/syntax/flowchart.html</a></li>
+</ul>
+<h2 id="mermaid流程图快速入门"><a class="header" href="#mermaid流程图快速入门">Mermaid流程图快速入门</a></h2>
+<h3 id="布局方向"><a class="header" href="#布局方向">布局方向</a></h3>
+<p><strong>关键词</strong></p>
+<pre><code class="language-markdown">+ TB
++ BT
++ LR
++ RL
+</code></pre>
+<pre class="mermaid">    flowchart TB
+    subgraph 从左到右
+        direction LR
+        声明图像类型1 --&gt; 声明排列方向1 --&gt; 声明图像内容1
+    end
+    subgraph 从右到左
+        direction RL
+        声明图像类型2 --&gt; 声明排列方向2 --&gt; 声明图像内容2
+    end
+    subgraph 上下分明
+        direction LR
+        subgraph 从上到下
+        direction TB
+        声明图像类型3 --&gt; 声明排列方向3 --&gt; 声明图像内容3
+        end
+        subgraph 从下到上
+        direction BT
+        声明图像类型4 --&gt; 声明排列方向4 --&gt; 声明图像内容4
+        end
+        从上到下 --&gt; 从下到上
+    end
+    从左到右 --&gt; 从右到左 --&gt; 上下分明
+</pre>
+<p>流程图布局方向,由四种基本方向组成,分别是英文单词: <code>top</code>(上), <code>bottom</code>(下),<code>left</code>(左)和 <code>right</code>(右).其中可选值: <code>TB</code> (从上到下),<code>BT</code> (从下到上),<code>LR</code> (从左往右)和 <code>RL</code> (从右往左)四种.</p>
+<blockquote>
+<p><strong>核心</strong>: 仅支持上下左右四个垂直方向,是英文单词首字母大写缩写.</p>
+</blockquote>
+<ul>
+<li>TB</li>
+</ul>
+<blockquote>
+<p>从上到下: from <strong>T</strong>op to <strong>B</strong>ottom</p>
+</blockquote>
+<p><strong>源码</strong></p>
+<pre><code>graph TB
+    Start --&gt; Stop
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph TB
+    Start --&gt; Stop
+</pre>
+<ul>
+<li>BT</li>
+</ul>
+<blockquote>
+<p>从下到上: from <strong>B</strong>ottom to <strong>T</strong>op</p>
+</blockquote>
+<p><strong>源码</strong></p>
+<pre><code>graph BT
+    Start --&gt; Stop
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph BT
+    Start --&gt; Stop
+</pre>
+<ul>
+<li>LR</li>
+</ul>
+<blockquote>
+<p>从左往右: from <strong>L</strong>eft to <strong>R</strong>ight</p>
+</blockquote>
+<p><strong>源码</strong></p>
+<pre><code>graph LR
+    Start --&gt; Stop
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph LR
+    Start --&gt; Stop
+</pre>
+<ul>
+<li>RL</li>
+</ul>
+<blockquote>
+<p>从右往左: from <strong>R</strong>ight to <strong>L</strong>eft</p>
+</blockquote>
+<p><strong>源码</strong></p>
+<pre><code>graph RL
+    Start --&gt; Stop
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph RL
+    Start --&gt; Stop
+</pre>
+<h3 id="形状"><a class="header" href="#形状">形状</a></h3>
+<p><strong>关键词</strong></p>
+<pre><code class="language-markdown">- 节点形状
+    + [矩形]
+        - [[暂不支持]]
+        - [(圆柱)]
+        - [{暂不支持}]
+        - [/平行四边形/]
+        - [\平行四边形\]
+        - [/梯形\]
+        - [\梯形/]
+    + (圆角矩形)
+        - ((圆形))
+        - ([体育场])
+        - ({暂不支持})
+    + {菱形}
+        - {{六边形}}
+        - {[暂不支持]}
+        - {(暂不支持)}
+    + &gt;不对称矩形]
+</code></pre>
+<pre class="mermaid">graph 
+    id0
+    id1[矩形]
+    id2(圆角矩形)
+    id3([椭圆])
+    id4[[矩形嵌套]]
+    id5[(圆柱)]
+    id6((圆))
+    id7&gt;不对称矩形]
+    id8{菱形}
+    id9{{六边形}}
+    id10[/平行四边形1/]
+    id11[\平行四边形2\]
+    id12[/梯形1\]
+    id13[\梯形2/]
+    id14(((双圆)))
+    A@{ shape: manual-file, label: &quot;File Handling&quot;}
+    B@{ shape: manual-input, label: &quot;User Input&quot;}
+    C@{ shape: docs, label: &quot;Multiple Documents&quot;}
+    D@{ shape: procs, label: &quot;Process Automation&quot;}
+    E@{ shape: paper-tape, label: &quot;Paper Records&quot;}
+</pre>
+<p>流程图节点形状,默认支持矩形和圆两种基本形状,包括基本形状的简单变体,支持嵌套组合形式,其中 <code>[]</code> 表示矩形,<code>()</code> 表示圆弧,<code>{}</code> 表示尖角(窃以为 <code>&lt;&gt;</code> 更适合)等等.</p>
+<blockquote>
+<p><strong>核心</strong>: 最外层代表主形状,内层辅助修饰.</p>
+</blockquote>
+<h4 id="一次性节点"><a class="header" href="#一次性节点">一次性节点</a></h4>
+<p>一次性节点,默认表现为矩形节点,其文本内容直接显示 <code>id</code> 的值,适合后续不会出现多次引用的情况.</p>
+<blockquote>
+<p><code>id</code> 建议直接写成有意义的文本描述而不是当成唯一标识.</p>
+</blockquote>
+<p><strong>源码</strong></p>
+<pre><code>graph TD
+    id
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph TD
+    id
+</pre>
+<h4 id="可重复节点"><a class="header" href="#可重复节点">可重复节点</a></h4>
+<p>可重复节点,指定节点形状,其文本内容不再是 <code>id</code> 的值而是 <code>&lt;node shape&gt;</code> 的值,适合后续出现多次引用相同节点的情况.</p>
+<blockquote>
+<p><code>id</code> 代表节点的唯一标识,当前节点的文本描述由 <code>&lt;node shape&gt;</code> 的值指定,建议 <code>id</code> 写成有意义的唯一标识.</p>
+</blockquote>
+<ul>
+<li>矩形</li>
+</ul>
+<blockquote>
+<p>一般格式: <code>[node description]</code> ,<code>[]</code> 中括号表示节点是<strong>矩形</strong>形状,<code>node description</code> 是节点的描述文本.</p>
+</blockquote>
+<p><strong>源码</strong></p>
+<pre><code>graph LR
+    id1[This is the text in the box]
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph LR
+    id1[This is the text in the box]
+</pre>
+<ul>
+<li>圆角矩形</li>
+</ul>
+<blockquote>
+<p>一般格式: <code>(node description)</code> ,<code>()</code> 小括号表示节点是<strong>圆角矩形</strong>形状,<code>node description</code> 是节点的描述文本.</p>
+</blockquote>
+<p><strong>源码</strong></p>
+<pre><code>graph LR
+    id1(This is the text in the box)
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph LR
+    id1(This is the text in the box)
+</pre>
+<ul>
+<li>体育场</li>
+</ul>
+<blockquote>
+<p>一般格式: <code>([node description])</code> ,<code>()</code> 小括号嵌套 <code>[]</code> 中括号表示节点是大弧度的圆角矩形形状,也就是<strong>体育场</strong>形状,<code>node description</code> 是节点的描述文本.</p>
+</blockquote>
+<p><strong>源码</strong></p>
+<pre><code>graph LR
+    id1([This is the text in the box])
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph LR
+    id1([This is the text in the box])
+</pre>
+<ul>
+<li>圆柱</li>
+</ul>
+<blockquote>
+<p>一般格式: <code>[(node description)]</code> ,<code>[]</code> 中括号嵌套 <code>()</code> 小括号表示节点是<strong>圆柱</strong>形状,<code>node description</code> 是节点的描述文本.</p>
+</blockquote>
+<p><strong>源码</strong></p>
+<pre><code>graph LR
+    id1[(Database)]
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph LR
+    id1[(Database)]
+</pre>
+<ul>
+<li>圆形</li>
+</ul>
+<blockquote>
+<p>一般格式: <code>((node description))</code> ,<code>()</code> 小括号嵌套 <code>()</code> 小括号表示节点是<strong>圆形</strong>形状,<code>node description</code> 是节点的描述文本.</p>
+</blockquote>
+<p><strong>源码</strong></p>
+<pre><code>graph LR
+    id1((This is the text in the circle))
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph LR
+    id1((This is the text in the circle))
+</pre>
+<ul>
+<li>不对称矩形</li>
+</ul>
+<blockquote>
+<p>一般格式: <code>&gt;node description]</code> ,左边是右尖括号 <code>&gt;</code> ,右边是右中括号 <code>]</code> 表示<strong>不对称矩形</strong>形状,<code>node description</code> 是节点的描述文本.</p>
+</blockquote>
+<p><strong>源码</strong></p>
+<pre><code>graph LR
+    id1&gt;This is the text in the box]
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph LR
+    id1&gt;This is the text in the box]
+</pre>
+<ul>
+<li>菱形</li>
+</ul>
+<blockquote>
+<p>一般格式: <code>{node description}</code> ,<code>{}</code> 大括号表示<strong>菱形</strong>形状,<code>node description</code> 是节点的描述文本.</p>
+</blockquote>
+<p><strong>源码</strong></p>
+<pre><code>graph LR
+    id1{This is the text in the box}
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph LR
+    id1{This is the text in the box}
+</pre>
+<ul>
+<li>六角形</li>
+</ul>
+<blockquote>
+<p>一般格式: <code>{</code>{<code>node description</code>}<code>}</code> ,<code>{}</code> 大括号嵌套 <code>{}</code> 大括号表示<strong>六角形</strong>形状,<code>node description</code> 是节点的描述文本.</p>
+</blockquote>
+<p><strong>源码</strong></p>
+<pre><code>graph LR
+    id1\{\{This is the text in the box\}\}
+</code></pre>
+<blockquote>
+<p><code>Gitbook</code> 语法中双大括号 <code>{}</code> 表示特殊意义,上述源码只能转义处理,实际上并不需要 <code>\</code> 进行转义.</p>
+</blockquote>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph LR
+    id1{{This is the text in the box}}
+</pre>
+<ul>
+<li>平行四边形</li>
+</ul>
+<blockquote>
+<p>一般格式: <code>[/node description/]</code> ,<code>[]</code> 中括号嵌套 <code>//</code> 左斜杠表示<strong>左斜平行四边形</strong>形状,<code>node description</code> 是节点的描述文本.</p>
+</blockquote>
+<p><strong>源码</strong></p>
+<pre><code>graph TD
+    id1[/This is the text in the box/]
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph TD
+    id1[/This is the text in the box/]
+</pre>
+<ul>
+<li>平行四边形</li>
+</ul>
+<blockquote>
+<p>一般格式: <code>[\node description\]</code> ,<code>[]</code> 中括号嵌套 <code>\\</code> 右斜杠表示<strong>右斜平行四边形</strong>形状,<code>node description</code> 是节点的描述文本.</p>
+</blockquote>
+<p><strong>源码</strong></p>
+<pre><code>graph TD
+    id1[\This is the text in the box\]
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph TD
+    id1[\This is the text in the box\]
+</pre>
+<ul>
+<li>梯形</li>
+</ul>
+<blockquote>
+<p>一般格式: <code>[/node description\]</code> ,<code>[]</code> 中括号嵌套 <code>/\</code> 左右斜杠表示<strong>上短下长梯形</strong>形状,<code>node description</code> 是节点的描述文本.</p>
+</blockquote>
+<p><strong>源码</strong></p>
+<pre><code>graph TD
+    A[/Christmas\]
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph TD
+    A[/Christmas\]
+</pre>
+<ul>
+<li>另一种梯形</li>
+</ul>
+<blockquote>
+<p>一般格式: <code>[\node description/]</code> ,<code>[]</code> 中括号嵌套 <code>\/</code> 右左斜杠表示<strong>上长下短梯形</strong>形状,<code>node description</code> 是节点的描述文本.</p>
+</blockquote>
+<p><strong>源码</strong></p>
+<pre><code>graph TD
+    B[\Go shopping/]
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph TD
+    B[\Go shopping/]
+</pre>
+<h3 id="连接线"><a class="header" href="#连接线">连接线</a></h3>
+<p><strong>关键词</strong></p>
+<pre><code class="language-markdown">+ 实线/虚线
+    - --
+    - -.
++ 有箭头/无箭头
+    - &gt;
+    - -
++ 有描述/无描述
+    - 实线
+        + --描述文字
+        + |描述文字|
+    - 虚线
+        + -.描述文字
+        + |描述文字|
++ 加粗
+    - ==
++ 组合形式
+    - --&gt;
+    - ---
+    - -.-&gt;
+    - -.-
+    - 有描述实线有箭头
+        + --描述文字--&gt;
+        + --&gt;|描述文字|
+    - 有描述实线无箭头
+        + --描述文字---
+        + ---|描述文字|
+    - 有描述虚线有箭头
+        + -.描述文字-.-&gt;
+        + -.-&gt;|描述文字|
+    - 有描述虚线无箭头
+        + -.描述文字-.-
+        + -.-|描述文字|
+    - ==&gt;
+    - ===
+    - 有描述加粗实线有箭头(2)
+        + ==描述文字==&gt;
+        + ==&gt;|描述文字|
+    - 有描述加粗实线无箭头(2)
+        + ==描述文字===
+        + ===|描述文字|
+</code></pre>
+<pre class="mermaid">graph TB
+    c1--&gt;a2
+    subgraph one
+    a1--&gt;a2
+    c1--&gt;c2
+    end
+    subgraph two
+    b1--&gt;b2
+    end
+    subgraph fourth
+    A1 -- text --&gt; B1
+    A2 ~~~ B2
+    A3 --&gt;|text| B3
+    A4 ==&gt; B4
+    A5 --- B5
+    A6 -.-&gt; B6
+    A7 e1@==&gt; B7
+    e1@{ animate: true }
+    A8 o--o B8
+    A9 &lt;--&gt; B9
+    A10 x--x B10
+    end
+    one --&gt; two
+    two --&gt; c2
+</pre>
+<p>流程图连接线样式,支持实线和虚线以及有箭头样式和无箭头样式,除此之外还支持添加连接线描述文字,其中 <code>--</code> 代表实线,实线中间多一点 <code>-.-</code> 代表虚线,添加箭头用右尖括号 <code>&gt;</code> ,没有箭头继续用短横线 <code>-</code>.</p>
+<blockquote>
+<p><strong>核心</strong>: 先实线再虚线,先有箭头再去箭头,左边位置添加描述文字需要区分实现还是虚线,右边位置添加描述文字格式一致.</p>
+</blockquote>
+<ul>
+<li>有箭头无描述实线</li>
+</ul>
+<blockquote>
+<p>一般格式: <code>--&gt;</code> ,其中 <code>--</code> 表示实线,<code>&gt;</code> 表示有箭头.</p>
+</blockquote>
+<p><strong>源码</strong></p>
+<pre><code>graph LR
+    A--&gt;B
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph LR
+    A--&gt;B
+</pre>
+<ul>
+<li>无箭头实线</li>
+</ul>
+<blockquote>
+<p>一般格式: <code>---</code> ,其中 <code>--</code> 表示实线,<code>-</code> 表示无箭头.</p>
+</blockquote>
+<p><strong>源码</strong></p>
+<pre><code>graph LR
+    A --- B
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph LR
+    A --- B
+</pre>
+<ul>
+<li>带描述的有箭头实线</li>
+</ul>
+<blockquote>
+<p>一般格式: <code>--connection line description--&gt;</code> ,其中左边的 <code>--</code> 添加到<strong>实线左边位置</strong>,右边的 <code>--&gt;</code> 表示<strong>带箭头的实线</strong>.</p>
+</blockquote>
+<p><strong>源码</strong></p>
+<pre><code>graph LR
+    A-- text --&gt;B
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph LR
+    A-- text --&gt;B
+</pre>
+<blockquote>
+<p>一般格式: <code>|connection line description|</code> ,其中 <code>||</code> 添加到<strong>连接线右边位置</strong>.</p>
+</blockquote>
+<p><strong>源码</strong></p>
+<pre><code>graph LR
+    A--&gt;|text|B
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph LR
+    A--&gt;|text|B
+</pre>
+<ul>
+<li>带描述的无箭头实线</li>
+</ul>
+<blockquote>
+<p>一般格式: <code>--connection line description</code> ,其中左边的 <code>--</code> 添加到<strong>实线左边位置</strong>,右边的 <code>---</code> 表示<strong>不带箭头的实线</strong>.</p>
+</blockquote>
+<p><strong>源码</strong></p>
+<pre><code>graph LR
+    A-- This is the text ---B
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph LR
+    A-- This is the text ---B
+</pre>
+<blockquote>
+<p>一般格式: <code>|connection line description|</code> ,其中 <code>||</code> 添加到<strong>连接线右边位置</strong>.</p>
+</blockquote>
+<p><strong>源码</strong></p>
+<pre><code>graph LR
+    A---|This is the text|B
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph LR
+    A---|This is the text|B
+</pre>
+<ul>
+<li>有箭头虚线</li>
+</ul>
+<blockquote>
+<p>一般格式: <code>-.connection line description.-&gt;</code> ,其中左边的 <code>-.</code> 添加到<strong>虚线左边位置</strong>,右边的 <code>.-&gt;</code> 表示<strong>带箭头的虚线</strong>.</p>
+</blockquote>
+<p><strong>源码</strong></p>
+<pre><code>graph LR
+   A-. text .-&gt; B
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph LR
+   A-. text .-&gt; B
+</pre>
+<ul>
+<li>有箭头加粗实线</li>
+</ul>
+<blockquote>
+<p>一般格式: <code>==&gt;</code> ,表示加粗实线.</p>
+</blockquote>
+<p><strong>源码</strong></p>
+<pre><code>graph LR
+   A ==&gt; B
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph LR
+   A ==&gt; B
+</pre>
+<ul>
+<li>带描述的有箭头加粗实线</li>
+</ul>
+<blockquote>
+<p>一般格式: <code>==connection line description</code> ,左边的 <code>==</code> 添加到加粗实现左边,右边的 <code>==&gt;</code> 代表加粗实线.</p>
+</blockquote>
+<p><strong>源码</strong></p>
+<pre><code>graph LR
+   A == text ==&gt; B
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph LR
+   A == text ==&gt; B
+</pre>
+<ul>
+<li>带描述的有箭头加粗实线</li>
+</ul>
+<blockquote>
+<p>一般格式: <code>|connection line description|</code> ,其中 <code>||</code> 添加到<strong>连接线右边位置</strong>.</p>
+</blockquote>
+<p><strong>源码</strong></p>
+<pre><code>graph LR
+   A ==&gt;|text| B
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph LR
+   A ==&gt;|text| B
+</pre>
+<h3 id="高级用法"><a class="header" href="#高级用法">高级用法</a></h3>
+<p><strong>关键词</strong></p>
+<pre><code class="language-markdown">+ --&gt;--&gt;
++ &amp;
++ ""
++ %%
++ subgraph
+</code></pre>
+<pre class="mermaid">graph LR
+%% this is a comment A -- text --&gt; B{node}
+   A -- text --&gt; B -- text2 --&gt; C[&quot;This is the (text) in the box&quot;]
+</pre>
+<ul>
+<li>多节点链式连接</li>
+</ul>
+<p><strong>源码</strong></p>
+<p>支持链式连接方式,<code>A--&gt;B--&gt;C</code> 等价于 <code>A--&gt;B</code> 和 <code>B--&gt;C</code> 形式.</p>
+<pre><code>graph LR
+   A -- text --&gt; B -- text2 --&gt; C
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph LR
+   A -- text --&gt; B -- text2 --&gt; C
+</pre>
+<ul>
+<li>多节点共同连接</li>
+</ul>
+<p>支持共同连接方式,<code>A--&gt;B &amp; C</code> 等价于 <code>A--&gt;B</code> 和 <code>A--&gt;C</code> 形式.</p>
+<p><strong>源码</strong></p>
+<pre><code>graph LR
+   a --&gt; b &amp; c--&gt; d
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph LR
+   a --&gt; b &amp; c--&gt; d
+</pre>
+<ul>
+<li>多节点相互连接</li>
+</ul>
+<p>多节点共同连接的变体形式,<code>A &amp; B --&gt; C &amp; D</code> 等价于 <code>A--&gt;C</code> ,<code>A--&gt;D</code>,<code>B--&gt;C</code> 和 <code>B--&gt;D</code> 四种组合形式.</p>
+<p><strong>源码</strong></p>
+<pre><code>graph TB
+    A &amp; B--&gt; C &amp; D
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph TB
+    A &amp; B--&gt; C &amp; D
+</pre>
+<ul>
+<li>双引号包裹特殊字符</li>
+</ul>
+<p>连接线描述文字存在特殊字符使用双引号 <code>""</code> 包裹处理,如遇到 <code>[]</code> 和 <code>()</code> 以及 <code>{}</code> 等特殊字符情况.</p>
+<p><strong>源码</strong></p>
+<pre><code>graph LR
+    id1["This is the (text) in the box"]
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph LR
+    id1[&quot;This is the (text) in the box&quot;]
+</pre>
+<ul>
+<li>双引号包裹转义字符</li>
+</ul>
+<p>支持 <code>Html</code> 转移字符</p>
+<p><strong>源码</strong></p>
+<pre><code>graph LR
+    A["A double quote:#quot;"] --&gt;B["A dec char:#9829;"]
+</code></pre>
+<p><strong>效果</strong></p>
+<pre class="mermaid">graph LR
+    A[&quot;A double quote:#quot;&quot;] --&gt;B[&quot;A dec char:#9829;&quot;]
+</pre>
+<ul>
+<li>嵌套子流程图</li>
+</ul>
+<p><strong>定义</strong></p>
+<pre><code>subgraph title
+    graph definition
+end
+</code></pre>
+<p><strong>示例</strong></p>
+<pre><code>graph TB
+    c1--&gt;a2
+    subgraph one
+    a1--&gt;a2
+    end
+    subgraph two
+    b1--&gt;b2
+    end
+    subgraph three
+    c1--&gt;c2
+    end
+</code></pre>
+<pre class="mermaid">graph TB
+    c1--&gt;a2
+    subgraph one
+    a1--&gt;a2
+    end
+    subgraph two
+    b1--&gt;b2
+    end
+    subgraph three
+    c1--&gt;c2
+    end
+</pre>
+<ul>
+<li>注释语法</li>
+</ul>
+<p>注释以 <code>%%</code> 开头并且独占一行.</p>
+<pre><code>graph LR
+%% this is a comment A -- text --&gt; B{node}
+   A -- text --&gt; B -- text2 --&gt; C
+</code></pre>
+<pre class="mermaid">graph LR
+%% this is a comment A -- text --&gt; B{node}
+   A -- text --&gt; B -- text2 --&gt; C
+</pre>
+<h2 id="快速入门流程图回顾总结"><a class="header" href="#快速入门流程图回顾总结">快速入门流程图回顾总结</a></h2>
+<p><strong>关键词</strong></p>
+<pre><code class="language-mardown">- 英文单词缩写
+- 几何化形状
+- 有限语法
+</code></pre>
+<pre class="mermaid">mindmap
+  root((mindmap))
+    Origins
+      Long history
+      ::icon(fa fa-book)
+      Popularisation
+        British popular psychology author Tony Buzan
+    Research
+      On effectiveness&lt;br/&gt;and features
+      On Automatic creation
+        Uses
+            Creative techniques
+            Strategic planning
+            Argument mapping
+    Tools
+      Pen and paper
+      Mermaid
+</pre>
+<p><code>Mermaid</code> 是一款开源的制图工具,可使用 <code>Markdown</code> 语法绘制流程图,支持更改流程图节点形状,添加描述文字以及更改连接线样式等等.</p>
+<h3 id="英文单词缩写"><a class="header" href="#英文单词缩写">英文单词缩写</a></h3>
+<blockquote>
+<p>四种布局方向的值是英文单词首字母大写缩写形式,默认仅支持垂直方向.</p>
+</blockquote>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">中文</th><th style="text-align: center">英文</th><th style="text-align: center">示例</th></tr></thead><tbody>
+<tr><td style="text-align: center">图解</td><td style="text-align: center">graph</td><td style="text-align: center"><code>graph</code> 流程图类型标识</td></tr>
+<tr><td style="text-align: center">子图</td><td style="text-align: center">subgraph</td><td style="text-align: center"><code>subgraph</code> 嵌套子流程图标识</td></tr>
+<tr><td style="text-align: center">上</td><td style="text-align: center">top</td><td style="text-align: center"><code>TB</code> 或 <code>BT</code> ,从上到下或从下到上的布局方向</td></tr>
+<tr><td style="text-align: center">下</td><td style="text-align: center">bottom</td><td style="text-align: center"><code>BT</code> 或 <code>TB</code>,从下到上或从上到下的布局方向</td></tr>
+<tr><td style="text-align: center">左</td><td style="text-align: center">left</td><td style="text-align: center"><code>LR</code> 或 <code>RL</code>,从左往右或从右往左的布局方向</td></tr>
+<tr><td style="text-align: center">右</td><td style="text-align: center">right</td><td style="text-align: center"><code>RL</code> 或 <code>LR</code>,从右往左或从左往右的布局方向</td></tr>
+</tbody></table>
+</div>
+<h3 id="几何化形状"><a class="header" href="#几何化形状">几何化形状</a></h3>
+<blockquote>
+<p>键盘符号形象化几何形状,组合形式表示形状的叠加,其中最外层符号是主形状,嵌套符号是辅助形状.</p>
+</blockquote>
+<ul>
+<li>基本单元</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">表示法</th><th style="text-align: center">含义</th><th style="text-align: center">类型</th><th style="text-align: center">备注</th></tr></thead><tbody>
+<tr><td style="text-align: center"><code>[]</code></td><td style="text-align: center">矩形</td><td style="text-align: center">节点形状</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>()</code></td><td style="text-align: center">圆角矩形</td><td style="text-align: center">节点形状</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>{}</code></td><td style="text-align: center">菱形</td><td style="text-align: center">节点形状</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>&lt;&gt;</code></td><td style="text-align: center">菱形</td><td style="text-align: center">节点形状</td><td style="text-align: center">不支持</td></tr>
+<tr><td style="text-align: center"><code>--</code></td><td style="text-align: center">实线</td><td style="text-align: center">连接线样式</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>-.</code></td><td style="text-align: center">虚线</td><td style="text-align: center">连接线样式</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>==</code></td><td style="text-align: center">加粗实线</td><td style="text-align: center">连接线样式</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>=:</code></td><td style="text-align: center">加粗虚线</td><td style="text-align: center">连接线样式</td><td style="text-align: center">不支持</td></tr>
+<tr><td style="text-align: center"><code>&gt;</code></td><td style="text-align: center">有箭头</td><td style="text-align: center">连接线样式</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>-</code></td><td style="text-align: center">无箭头</td><td style="text-align: center">连接线样式</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>双竖线</code></td><td style="text-align: center">右边连接线描述文字</td><td style="text-align: center">连接线描述文字</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>--</code></td><td style="text-align: center">左边实线连接线描述文字</td><td style="text-align: center">连接线描述文字</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>-.</code></td><td style="text-align: center">左边虚线连接线描述文字</td><td style="text-align: center">连接线描述文字</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>==</code></td><td style="text-align: center">左边加粗实线连接线描述文字</td><td style="text-align: center">连接线描述文字</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>=:</code></td><td style="text-align: center">左边加粗虚线连接线描述文字</td><td style="text-align: center">连接线描述文字</td><td style="text-align: center">不支持</td></tr>
+</tbody></table>
+</div>
+<ul>
+<li>组合单元</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">表示法</th><th style="text-align: center">含义</th><th style="text-align: center">类型</th><th style="text-align: center">备注</th></tr></thead><tbody>
+<tr><td style="text-align: center"><code>[[]]</code></td><td style="text-align: center">正方形</td><td style="text-align: center">节点形状</td><td style="text-align: center">不支持</td></tr>
+<tr><td style="text-align: center"><code>[()]</code></td><td style="text-align: center">圆柱体</td><td style="text-align: center">节点形状</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>[{}]</code></td><td style="text-align: center">棱柱体</td><td style="text-align: center">节点形状</td><td style="text-align: center">不支持</td></tr>
+<tr><td style="text-align: center"><code>(())</code></td><td style="text-align: center">圆形</td><td style="text-align: center">节点形状</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>([])</code></td><td style="text-align: center">体育场</td><td style="text-align: center">节点形状</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>({})</code></td><td style="text-align: center">圆弧</td><td style="text-align: center">节点形状</td><td style="text-align: center">不支持</td></tr>
+<tr><td style="text-align: center"><code>双大括号</code></td><td style="text-align: center">六边形</td><td style="text-align: center">节点形状</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>{[]}</code></td><td style="text-align: center">正多边形</td><td style="text-align: center">节点形状</td><td style="text-align: center">不支持</td></tr>
+<tr><td style="text-align: center"><code>{()}</code></td><td style="text-align: center">圆弧</td><td style="text-align: center">节点形状</td><td style="text-align: center">不支持</td></tr>
+<tr><td style="text-align: center"><code>--&gt;</code></td><td style="text-align: center">实线带箭头</td><td style="text-align: center">连接线样式</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>---</code></td><td style="text-align: center">实线无箭头</td><td style="text-align: center">连接线样式</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>-.&gt;</code></td><td style="text-align: center">虚线带箭头</td><td style="text-align: center">连接线样式</td><td style="text-align: center">不支持</td></tr>
+<tr><td style="text-align: center"><code>-.-&gt;</code></td><td style="text-align: center">虚线带箭头</td><td style="text-align: center">连接线样式</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>.-&gt;</code></td><td style="text-align: center">虚线带箭头</td><td style="text-align: center">连接线样式</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>-.-</code></td><td style="text-align: center">虚线无箭头</td><td style="text-align: center">连接线样式</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>.-</code></td><td style="text-align: center">虚线无箭头</td><td style="text-align: center">连接线样式</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>==&gt;</code></td><td style="text-align: center">加粗实线带箭头</td><td style="text-align: center">连接线样式</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>===</code></td><td style="text-align: center">加粗实线无箭头</td><td style="text-align: center">连接线样式</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>=:&gt;</code></td><td style="text-align: center">加粗虚线带箭头</td><td style="text-align: center">连接线样式</td><td style="text-align: center">不支持</td></tr>
+<tr><td style="text-align: center"><code>=:=&gt;</code></td><td style="text-align: center">加粗虚线带箭头</td><td style="text-align: center">连接线样式</td><td style="text-align: center">不支持</td></tr>
+<tr><td style="text-align: center"><code>=:=</code></td><td style="text-align: center">加粗虚线无箭头</td><td style="text-align: center">连接线样式</td><td style="text-align: center">不支持</td></tr>
+<tr><td style="text-align: center"><code>:=</code></td><td style="text-align: center">加粗虚线无箭头</td><td style="text-align: center">连接线样式</td><td style="text-align: center">不支持</td></tr>
+<tr><td style="text-align: center"><code>双竖线</code></td><td style="text-align: center">右边连接线描述文字</td><td style="text-align: center">连接线描述文字</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>--connection line description--&gt;</code></td><td style="text-align: center">左边实线带箭头连接线描述文字</td><td style="text-align: center">连接线描述文字</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>-.connection line description-.-&gt;</code></td><td style="text-align: center">左边虚线带箭头连接线描述文字</td><td style="text-align: center">连接线描述文字</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>--connection line description---</code></td><td style="text-align: center">左边实线无箭头连接线描述文字</td><td style="text-align: center">连接线描述文字</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>-.connection line description-.-</code></td><td style="text-align: center">左边虚线无箭头连接线描述文字</td><td style="text-align: center">连接线描述文字</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>==connection line description==&gt;</code></td><td style="text-align: center">左边加粗实线带箭头连接线描述文字</td><td style="text-align: center">连接线描述文字</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>=:connection line description=:=&gt;</code></td><td style="text-align: center">左边加粗虚线带箭头连接线描述文字</td><td style="text-align: center">连接线描述文字</td><td style="text-align: center">不支持</td></tr>
+<tr><td style="text-align: center"><code>==connection line description===</code></td><td style="text-align: center">左边加粗实线无箭头连接线描述文字</td><td style="text-align: center">连接线描述文字</td><td style="text-align: center">支持</td></tr>
+<tr><td style="text-align: center"><code>=:connection line description=:=</code></td><td style="text-align: center">左边加粗虚线无箭头连接线描述文字</td><td style="text-align: center">连接线描述文字</td><td style="text-align: center">不支持</td></tr>
+</tbody></table>
+</div>
+<h3 id="有限语法"><a class="header" href="#有限语法">有限语法</a></h3>
+<p>不论是节点形状还是连接线样式,语法支持是有限的,并不是随意组合的叠加状态,也可能随着后续更新会支持更多,一切以官方文档为主.</p>
+<p>除了提供最基础的操作节点的能力之外,还可以根据 <code>JS</code> 和 <code>CSS</code> 相关知识高度自定义流程图行为表现,具体可参考官方文档.</p>
+<blockquote>
+<p>官方文档: <a href="https://mermaid-js.github.io/mermaid/#/flowchart?id=styling-and-classes">https://mermaid-js.github.io/mermaid/#/flowchart?id=styling-and-classes</a></p>
+</blockquote>
+<ul>
+<li>交互能力 Interaction : <a href="https://mermaid-js.github.io/mermaid/#/flowchart?id=interaction">https://mermaid-js.github.io/mermaid/#/flowchart?id=interaction</a></li>
+<li>外观样式 Styling and classes : <a href="https://mermaid-js.github.io/mermaid/#/flowchart?id=interaction">https://mermaid-js.github.io/mermaid/#/flowchart?id=interaction</a></li>
+<li>字体支持 Basic support for fontawesome: <a href="https://mermaid-js.github.io/mermaid/#/flowchart?id=basic-support-for-fontawesome">https://mermaid-js.github.io/mermaid/#/flowchart?id=basic-support-for-fontawesome</a></li>
+<li>空格分隔 <a href="https://mermaid-js.github.io/mermaid/#/flowchart?id=graph-declarations-with-spaces-between-vertices-and-link-and-without-semicolon">https://mermaid-js.github.io/mermaid/#/flowchart?id=graph-declarations-with-spaces-between-vertices-and-link-and-without-semicolon</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../3rd/pybind11/pybind11_demo.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../basic/mermaid.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../3rd/pybind11/pybind11_demo.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../basic/mermaid.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../ace.js"></script>
+        <script src="../editor.js"></script>
+        <script src="../mode-rust.js"></script>
+        <script src="../theme-dawn.js"></script>
+        <script src="../theme-tomorrow_night.js"></script>
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src=".././assets/help/helper.js"></script>
+        <script src=".././assets/help/support.js"></script>
+        <script src=".././assets/mermaid/mermaid.min.js"></script>
+        <script src=".././assets/mermaid/mermaid-init.js"></script>
+
+
+    </div>
+    </body>
+</html>
