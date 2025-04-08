@@ -59,6 +59,7 @@ sudo apt-get install language-pack-zh-hans
 sudo update-locale LANG=zh_CN.UTF-8
 sudo apt-get install chromium-browser
 
+cargo uninstall mdbook
 pip install mdbook-pdf-outline
 export PATH="$PATH:$(pwd)/bin"
 
@@ -69,4 +70,4 @@ mdbook serve --open
 ### Note.
 
 > Put `katex.min.css` in root folder, otherwise the format incorrect.
-
+> `cargo uninstall mdbook` keep 0.4.36, otherwise the format incorrect.
