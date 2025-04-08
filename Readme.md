@@ -12,6 +12,7 @@
 - [mdbook-kroki-preprocessor](https://github.com/JoelCourtney/mdbook-kroki-preprocessor.git)
 - [mdbook-i18n-helpers](https://github.com/google/mdbook-i18n-helpers.git)
 - [mdbook-pandoc](https://github.com/max-heller/mdbook-pandoc.git)
+- [cloud-translate](https://github.com/mgeisler/cloud-translate.git)
 - License-MIT. Give me a star, if this case is useful to you.
 - Build mdbooks plugins in rust.
   ```sh
