@@ -4,12 +4,17 @@ language = "en"
 multilingual = false
 src = "./src"
 title = "mdbook-demo"
+description = "The example book covers examples."
 
 [build]
 build-dir = "books"
 create-missing = true
 use-default-preprocessors = false
 # extra-watch-dirs = ["po"]
+
+[preprocessor.index]
+
+[preprocessor.links]
 
 [preprocessor.catppuccin]
 assets_version = "2.1.0" # DO NOT EDIT: Managed by `mdbook-catppuccin install`
