@@ -22,6 +22,7 @@
   - [pybind11 demo](./3rd/pybind11/pybind11_demo.md)
 - [markdown](./basic/markdown.md)
 - [mermaid](./basic/mermaid.md)
+- [Katex](./test/chapter_3.md)
 - [Test](./test/chapter_2.md)
 
   

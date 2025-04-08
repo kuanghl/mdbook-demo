@@ -36,6 +36,10 @@ renderer = ["html"]
 # include-src = false
 # block-delimiter = { left = "$$", right = "$$" }
 # inline-delimiter = { left = "$", right = "$" }
+[preprocessor.katex]
+after = ["links"]
+no-css = true
+include-src = true
 
 [preprocessor.gettext]
 after = ["toc"]
@@ -82,11 +86,12 @@ git-repository-icon = "fa-github"
 no-section-label = true
 edit-url-template = "https://github.com/kuanghl/mdbook-demo/edit/master/src/{path}"
 additional-css = [
-    "./mdbook-admonish.css", "./theme/catppuccin.css", "./theme/catppuccin-admonish.css", 
+    "./theme/mdbook-admonish.css", "./theme/catppuccin.css", "./theme/catppuccin-admonish.css", 
+    "./theme/katex.min.css",
     ]
 additional-js = [
     "./assets/help/helper.js", "./assets/help/support.js", 
-    "./mermaid.min.js", "./mermaid-init.js",
+    "./assets/mermaid/mermaid.min.js", "./assets/mermaid/mermaid-init.js",
     ]
 
 [output.html.search]

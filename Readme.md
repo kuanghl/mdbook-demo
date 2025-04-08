@@ -4,6 +4,7 @@
 - [mdbook-mermaid](https://github.com/badboy/mdbook-mermaid.git)
 - [mdbook-pdf](https://github.com/HollowMan6/mdbook-pdf.git)
 - [mdbook-katex](https://github.com/lzanini/mdbook-katex.git)
+- [mdbook_katex_static_css](https://github.com/SichangHe/mdbook_katex_static_css.git)
 - [mdbook-linkcheck](https://github.com/Michael-F-Bryan/mdbook-linkcheck.git)
 - [mdbook-toc](https://github.com/badboy/mdbook-toc.git)
 - [mdbook-latex](https://github.com/lbeckman314/mdbook-latex.git)
@@ -16,6 +17,7 @@
   ```sh
   cargo build --release
   cargo build
+  # get the binaries of execution to the bin.
   ```
 
 ### Local env.

@@ -7,7 +7,7 @@
 
 
         <!-- Custom HTML head -->
-
+        
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
@@ -29,9 +29,10 @@
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="./mdbook-admonish.css">
+        <link rel="stylesheet" href="./theme/mdbook-admonish.css">
         <link rel="stylesheet" href="./theme/catppuccin.css">
         <link rel="stylesheet" href="./theme/catppuccin-admonish.css">
+        <link rel="stylesheet" href="./theme/katex.min.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -93,7 +94,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item "><a href="test/chapter_1.html">mdbook_demo</a></li><li class="chapter-item "><a href="3rd/pybind11/00.pybind11介绍.html">pybind11</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="3rd/pybind11/01.改动日志.html">改动日志</a></li><li class="chapter-item "><a href="3rd/pybind11/02.更新指南.html">更新指南</a></li><li class="chapter-item "><a href="3rd/pybind11/03.安装说明.html">安装说明</a></li><li class="chapter-item "><a href="3rd/pybind11/04.首次尝试.html">首次尝试</a></li><li class="chapter-item "><a href="3rd/pybind11/05.面对对象编程.html">面对对象编程</a></li><li class="chapter-item "><a href="3rd/pybind11/06.构建系统.html">构建系统</a></li><li class="chapter-item "><a href="3rd/pybind11/07.函数.html">函数</a></li><li class="chapter-item "><a href="3rd/pybind11/08.类.html">类</a></li><li class="chapter-item "><a href="3rd/pybind11/09.异常.html">异常</a></li><li class="chapter-item "><a href="3rd/pybind11/10.智能指针.html">智能指针</a></li><li class="chapter-item "><a href="3rd/pybind11/11.类型转换.html">类型转换</a></li><li class="chapter-item "><a href="3rd/pybind11/12.Python的C++接口.html">Python的C++接口</a></li><li class="chapter-item "><a href="3rd/pybind11/13.内嵌解释器.html">内嵌解释器</a></li><li class="chapter-item "><a href="3rd/pybind11/14.杂项.html">杂项</a></li><li class="chapter-item "><a href="3rd/pybind11/15.FAQ.html">FAQ</a></li><li class="chapter-item "><a href="3rd/pybind11/16.案例.html">案例</a></li><li class="chapter-item "><a href="3rd/pybind11/pybind11_demo.html">pybind11 demo</a></li></ol></li><li class="chapter-item "><a href="basic/markdown.html">markdown</a></li><li class="chapter-item "><a href="basic/mermaid.html">mermaid</a></li><li class="chapter-item "><a href="test/chapter_2.html">Test</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="test/chapter_1.html" class="active">mdbook_demo</a></li><li class="chapter-item "><a href="3rd/pybind11/00.pybind11介绍.html">pybind11</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="3rd/pybind11/01.改动日志.html">改动日志</a></li><li class="chapter-item "><a href="3rd/pybind11/02.更新指南.html">更新指南</a></li><li class="chapter-item "><a href="3rd/pybind11/03.安装说明.html">安装说明</a></li><li class="chapter-item "><a href="3rd/pybind11/04.首次尝试.html">首次尝试</a></li><li class="chapter-item "><a href="3rd/pybind11/05.面对对象编程.html">面对对象编程</a></li><li class="chapter-item "><a href="3rd/pybind11/06.构建系统.html">构建系统</a></li><li class="chapter-item "><a href="3rd/pybind11/07.函数.html">函数</a></li><li class="chapter-item "><a href="3rd/pybind11/08.类.html">类</a></li><li class="chapter-item "><a href="3rd/pybind11/09.异常.html">异常</a></li><li class="chapter-item "><a href="3rd/pybind11/10.智能指针.html">智能指针</a></li><li class="chapter-item "><a href="3rd/pybind11/11.类型转换.html">类型转换</a></li><li class="chapter-item "><a href="3rd/pybind11/12.Python的C++接口.html">Python的C++接口</a></li><li class="chapter-item "><a href="3rd/pybind11/13.内嵌解释器.html">内嵌解释器</a></li><li class="chapter-item "><a href="3rd/pybind11/14.杂项.html">杂项</a></li><li class="chapter-item "><a href="3rd/pybind11/15.FAQ.html">FAQ</a></li><li class="chapter-item "><a href="3rd/pybind11/16.案例.html">案例</a></li><li class="chapter-item "><a href="3rd/pybind11/pybind11_demo.html">pybind11 demo</a></li></ol></li><li class="chapter-item "><a href="basic/markdown.html">markdown</a></li><li class="chapter-item "><a href="basic/mermaid.html">mermaid</a></li><li class="chapter-item "><a href="test/chapter_3.html">Katex</a></li><li class="chapter-item "><a href="test/chapter_2.html">Test</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -123,7 +124,7 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                <div id="menu-bar-hover-placeholder"></div>
+                                <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
                         <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
@@ -204,15 +205,12 @@
 <h1 id="chapter-6"><a class="header" href="#chapter-6">Chapter 6</a></h1>
 <h2 id="section-1-5"><a class="header" href="#section-1-5">Section 1</a></h2>
 <h2 id="section-2-5"><a class="header" href="#section-2-5">Section 2</a></h2>
-<p>Here is an inline example, $ \pi(\theta) $,</p>
+<p>Here is an inline example, <data class="katex-src" value=" \pi(\theta) "><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mclose">)</span></span></span></span></data>,</p>
 <p>an equation,</p>
-<p>$$ \nabla f(x) \in \mathbb{R}^n, $$</p>
+<p><data class="katex-src" value=" \nabla f(x) \in \mathbb{R}^n, "><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∇</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.9088em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7144em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mpunct">,</span></span></span></span></span></data></p>
 <p>and a regular $ symbol.</p>
-<p>Define $f(x)$:</p>
-<p>$$
-f(x)=x^2\
-x\in\R
-$$</p>
+<p>Define <data class="katex-src" value="f(x)"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span></data>:</p>
+<p><data class="katex-src" value="&#10;f(x)=x^2\\&#10;x\in\R&#10;"><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8641em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6889em;"></span><span class="mord mathbb">R</span></span></span></span></span></data></p>
 <pre><code class="language-kroki-mermaid">graph TD
   A[ Anyone ] --&gt;|Can help | B( Go to github.com/yuzutech/kroki )
   B --&gt; C{ How to contribute? }
@@ -284,8 +282,8 @@ $$</p>
         <!-- Custom JS scripts -->
         <script src="./assets/help/helper.js"></script>
         <script src="./assets/help/support.js"></script>
-        <script src="./mermaid.min.js"></script>
-        <script src="./mermaid-init.js"></script>
+        <script src="./assets/mermaid/mermaid.min.js"></script>
+        <script src="./assets/mermaid/mermaid-init.js"></script>
 
 
     </div>

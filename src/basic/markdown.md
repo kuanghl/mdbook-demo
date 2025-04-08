@@ -47,6 +47,7 @@ graph TD
 - 项目地址: [https://github.com/mermaid-js/mermaid](https://github.com/mermaid-js/mermaid)
 - 在线编辑: [https://mermaidjs.github.io/mermaid-live-editor/](https://mermaidjs.github.io/mermaid-live-editor/)
 - 官方文档: [https://mermaid-js.github.io/mermaid/#/flowchart](https://mermaid-js.github.io/mermaid/#/flowchart)
+- 官方参考: [https://mermaid.nodejs.cn/syntax/flowchart.html](https://mermaid.nodejs.cn/syntax/flowchart.html)
 
 ## Mermaid流程图快速入门
 
@@ -62,11 +63,30 @@ graph TD
 ```
 
 ```mermaid
-+ TB
-+ BT
-+ LR
-+ RL
+    flowchart TB
+    subgraph 从左到右
+        direction LR
+        声明图像类型1 --> 声明排列方向1 --> 声明图像内容1
+    end
+    subgraph 从右到左
+        direction RL
+        声明图像类型2 --> 声明排列方向2 --> 声明图像内容2
+    end
+    subgraph 上下分明
+        direction LR
+        subgraph 从上到下
+        direction TB
+        声明图像类型3 --> 声明排列方向3 --> 声明图像内容3
+        end
+        subgraph 从下到上
+        direction BT
+        声明图像类型4 --> 声明排列方向4 --> 声明图像内容4
+        end
+        从上到下 --> 从下到上
+    end
+    从左到右 --> 从右到左 --> 上下分明
 ```
+
 流程图布局方向,由四种基本方向组成,分别是英文单词: `top`(上), `bottom`(下),`left`(左)和 `right`(右).其中可选值: `TB` (从上到下),`BT` (从下到上),`LR` (从左往右)和 `RL` (从右往左)四种.
 
 > **核心**: 仅支持上下左右四个垂直方向,是英文单词首字母大写缩写.
@@ -169,24 +189,27 @@ graph RL
 ```
 
 ```mermaid
-- 节点形状
-    + [矩形]
-        - [[暂不支持]]
-        - [(圆柱)]
-        - [{暂不支持}]
-        - [/平行四边形/]
-        - [\平行四边形\]
-        - [/梯形\]
-        - [\梯形/]
-    + (圆角矩形)
-        - ((圆形))
-        - ([体育场])
-        - ({暂不支持})
-    + {菱形}
-        - {{六边形}}
-        - {[暂不支持]}
-        - {(暂不支持)}
-    + >不对称矩形]
+graph 
+    id0
+    id1[矩形]
+    id2(圆角矩形)
+    id3([椭圆])
+    id4[[矩形嵌套]]
+    id5[(圆柱)]
+    id6((圆))
+    id7>不对称矩形]
+    id8{菱形}
+    id9{{六边形}}
+    id10[/平行四边形1/]
+    id11[\平行四边形2\]
+    id12[/梯形1\]
+    id13[\梯形2/]
+    id14(((双圆)))
+    A@{ shape: manual-file, label: "File Handling"}
+    B@{ shape: manual-input, label: "User Input"}
+    C@{ shape: docs, label: "Multiple Documents"}
+    D@{ shape: procs, label: "Process Automation"}
+    E@{ shape: paper-tape, label: "Paper Records"}
 ```
 
 流程图节点形状,默认支持矩形和圆两种基本形状,包括基本形状的简单变体,支持嵌套组合形式,其中 `[]` 表示矩形,`()` 表示圆弧,`{}` 表示尖角(窃以为 `<>` 更适合)等等.
@@ -363,7 +386,7 @@ graph LR
 
 ```mermaid
 graph LR
-    id1\{\{This is the text in the box\}\}
+    id1{{This is the text in the box}}
 ```
 
 - 平行四边形
@@ -485,48 +508,31 @@ graph TD
         + ===|描述文字|
 ```
 
-
 ```mermaid
-+ 实线/虚线
-    - --
-    - -.
-+ 有箭头/无箭头
-    - >
-    - -
-+ 有描述/无描述
-    - 实线
-        + --描述文字
-        + |描述文字|
-    - 虚线
-        + -.描述文字
-        + |描述文字|
-+ 加粗
-    - ==
-+ 组合形式
-    - -->
-    - ---
-    - -.->
-    - -.-
-    - 有描述实线有箭头
-        + --描述文字-->
-        + -->|描述文字|
-    - 有描述实线无箭头
-        + --描述文字---
-        + ---|描述文字|
-    - 有描述虚线有箭头
-        + -.描述文字-.->
-        + -.->|描述文字|
-    - 有描述虚线无箭头
-        + -.描述文字-.-
-        + -.-|描述文字|
-    - ==>
-    - ===
-    - 有描述加粗实线有箭头(2)
-        + ==描述文字==>
-        + ==>|描述文字|
-    - 有描述加粗实线无箭头(2)
-        + ==描述文字===
-        + ===|描述文字|
+graph TB
+    c1-->a2
+    subgraph one
+    a1-->a2
+    c1-->c2
+    end
+    subgraph two
+    b1-->b2
+    end
+    subgraph fourth
+    A1 -- text --> B1
+    A2 ~~~ B2
+    A3 -->|text| B3
+    A4 ==> B4
+    A5 --- B5
+    A6 -.-> B6
+    A7 e1@==> B7
+    e1@{ animate: true }
+    A8 o--o B8
+    A9 <--> B9
+    A10 x--x B10
+    end
+    one --> two
+    two --> c2
 ```
 
 
@@ -722,11 +728,9 @@ graph LR
 ```
 
 ```mermaid
-+ -->-->
-+ &
-+ ""
-+ %%
-+ subgraph
+graph LR
+%% this is a comment A -- text --> B{node}
+   A -- text --> B -- text2 --> C["This is the (text) in the box"]
 ```
 
 - 多节点链式连接
@@ -885,7 +889,25 @@ graph LR
 - 有限语法
 ```
 
-![mermaid-flow-chart-summary-simplemindmap.png](./images/mermaid-flow-chart-summary-simplemindmap.png)
+```mermaid
+mindmap
+  root((mindmap))
+    Origins
+      Long history
+      ::icon(fa fa-book)
+      Popularisation
+        British popular psychology author Tony Buzan
+    Research
+      On effectiveness<br/>and features
+      On Automatic creation
+        Uses
+            Creative techniques
+            Strategic planning
+            Argument mapping
+    Tools
+      Pen and paper
+      Mermaid
+```
 
 `Mermaid` 是一款开源的制图工具,可使用 `Markdown` 语法绘制流程图,支持更改流程图节点形状,添加描述文字以及更改连接线样式等等.
 
