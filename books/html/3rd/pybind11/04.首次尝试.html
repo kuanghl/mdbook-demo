@@ -7,7 +7,7 @@
 
 
         <!-- Custom HTML head -->
-        
+
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
@@ -94,7 +94,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item "><a href="../../test/chapter_1.html">mdbook_demo</a></li><li class="chapter-item expanded "><a href="../../3rd/pybind11/00.pybind11介绍.html">pybind11</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../3rd/pybind11/01.改动日志.html">改动日志</a></li><li class="chapter-item "><a href="../../3rd/pybind11/02.更新指南.html">更新指南</a></li><li class="chapter-item "><a href="../../3rd/pybind11/03.安装说明.html">安装说明</a></li><li class="chapter-item expanded "><a href="../../3rd/pybind11/04.首次尝试.html" class="active">首次尝试</a></li><li class="chapter-item "><a href="../../3rd/pybind11/05.面对对象编程.html">面对对象编程</a></li><li class="chapter-item "><a href="../../3rd/pybind11/06.构建系统.html">构建系统</a></li><li class="chapter-item "><a href="../../3rd/pybind11/07.函数.html">函数</a></li><li class="chapter-item "><a href="../../3rd/pybind11/08.类.html">类</a></li><li class="chapter-item "><a href="../../3rd/pybind11/09.异常.html">异常</a></li><li class="chapter-item "><a href="../../3rd/pybind11/10.智能指针.html">智能指针</a></li><li class="chapter-item "><a href="../../3rd/pybind11/11.类型转换.html">类型转换</a></li><li class="chapter-item "><a href="../../3rd/pybind11/12.Python的C++接口.html">Python的C++接口</a></li><li class="chapter-item "><a href="../../3rd/pybind11/13.内嵌解释器.html">内嵌解释器</a></li><li class="chapter-item "><a href="../../3rd/pybind11/14.杂项.html">杂项</a></li><li class="chapter-item "><a href="../../3rd/pybind11/15.FAQ.html">FAQ</a></li><li class="chapter-item "><a href="../../3rd/pybind11/16.案例.html">案例</a></li><li class="chapter-item "><a href="../../3rd/pybind11/pybind11_demo.html">pybind11 demo</a></li></ol></li><li class="chapter-item "><a href="../../basic/markdown.html">markdown</a></li><li class="chapter-item "><a href="../../basic/mermaid.html">mermaid</a></li><li class="chapter-item "><a href="../../test/chapter_3.html">Katex</a></li><li class="chapter-item "><a href="../../test/chapter_2.html">Test</a></li></ol>
+                <ol class="chapter"><li class="chapter-item "><a href="test/chapter_1.html">mdbook_demo</a></li><li class="chapter-item "><a href="3rd/pybind11/00.pybind11介绍.html">pybind11</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="3rd/pybind11/01.改动日志.html">改动日志</a></li><li class="chapter-item "><a href="3rd/pybind11/02.更新指南.html">更新指南</a></li><li class="chapter-item "><a href="3rd/pybind11/03.安装说明.html">安装说明</a></li><li class="chapter-item "><a href="3rd/pybind11/04.首次尝试.html">首次尝试</a></li><li class="chapter-item "><a href="3rd/pybind11/05.面对对象编程.html">面对对象编程</a></li><li class="chapter-item "><a href="3rd/pybind11/06.构建系统.html">构建系统</a></li><li class="chapter-item "><a href="3rd/pybind11/07.函数.html">函数</a></li><li class="chapter-item "><a href="3rd/pybind11/08.类.html">类</a></li><li class="chapter-item "><a href="3rd/pybind11/09.异常.html">异常</a></li><li class="chapter-item "><a href="3rd/pybind11/10.智能指针.html">智能指针</a></li><li class="chapter-item "><a href="3rd/pybind11/11.类型转换.html">类型转换</a></li><li class="chapter-item "><a href="3rd/pybind11/12.Python的C++接口.html">Python的C++接口</a></li><li class="chapter-item "><a href="3rd/pybind11/13.内嵌解释器.html">内嵌解释器</a></li><li class="chapter-item "><a href="3rd/pybind11/14.杂项.html">杂项</a></li><li class="chapter-item "><a href="3rd/pybind11/15.FAQ.html">FAQ</a></li><li class="chapter-item "><a href="3rd/pybind11/16.案例.html">案例</a></li><li class="chapter-item "><a href="3rd/pybind11/pybind11_demo.html">pybind11 demo</a></li></ol></li><li class="chapter-item "><a href="basic/markdown.html">markdown</a></li><li class="chapter-item "><a href="basic/mermaid.html">mermaid</a></li><li class="chapter-item "><a href="test/chapter_3.html">Katex</a></li><li class="chapter-item "><a href="test/chapter_2.html">Test</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -124,7 +124,7 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
                         <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
@@ -234,8 +234,8 @@ int add(int i, int j) {
 }
 
 PYBIND11_MODULE(example, m) {
-    m.doc() = &quot;pybind11 example plugin&quot;; // optional module docstring
-    m.def(&quot;add&quot;, &amp;add, &quot;A function which adds two numbers&quot;);
+    m.doc() = "pybind11 example plugin"; // optional module docstring
+    m.def("add", &amp;add, "A function which adds two numbers");
 }
 </code></pre>
 <p><code>PYBIND11_MODULE</code>会创建一个函数，它在Python中使用<code>import</code>语句时被调用。宏的第一个参数是模块名（example），不使用引号包住；第二个参数是类型为<code>py::module_</code>的变量（m），它是创建绑定的主要接口。<code>module_::def()</code>方法，则会生成add函数的Python绑定代码。</p>
@@ -257,8 +257,8 @@ PYBIND11_MODULE(example, m) {
 </code></pre>
 <h3 id="44-关键字参数"><a class="header" href="#44-关键字参数">4.4 关键字参数</a></h3>
 <p>这里，我们对上面的C++代码做一点改造，就可以通知Python关于参数的名称（如本例中的“i”和“j”）。</p>
-<pre><code class="language-c++">m.def(&quot;add&quot;, &amp;add, &quot;A function which adds two numbers&quot;,
-      py::arg(&quot;i&quot;), py::arg(&quot;j&quot;));
+<pre><code class="language-c++">m.def("add", &amp;add, "A function which adds two numbers",
+      py::arg("i"), py::arg("j"));
 </code></pre>
 <p>arg是可用于将元数据传递到module::def()的几个特殊标记类之一。使用上面修改后的代码，我们可以在调用函数时使用关键字参数，以增加代码可读性，特别是对那些带有多个参数的函数。</p>
 <pre><code class="language-python">import example
@@ -277,10 +277,10 @@ FUNCTIONS
 </code></pre>
 <p>还可以使用更加简短的方式给参数命名：</p>
 <pre><code class="language-c++">// regular notation
-m.def(&quot;add1&quot;, &amp;add, py::arg(&quot;i&quot;), py::arg(&quot;j&quot;));
+m.def("add1", &amp;add, py::arg("i"), py::arg("j"));
 // shorthand
 using namespace pybind11::literals;
-m.def(&quot;add2&quot;, &amp;add, &quot;i&quot;_a, &quot;j&quot;_a);
+m.def("add2", &amp;add, "i"_a, "j"_a);
 </code></pre>
 <p>后缀<code>_a</code>会生成一个等价于<code>arg</code>方法的字面量。使用这个后缀时，需要调用<code>using namespace pybind11::literals</code>来声明后缀所在的命名空间。这样除了<code>literals</code>外，不会从pybind11命名空间引入其他不必要的东西。</p>
 <h3 id="45-默认参数"><a class="header" href="#45-默认参数">4.5 默认参数</a></h3>
@@ -290,8 +290,8 @@ m.def(&quot;add2&quot;, &amp;add, &quot;i&quot;_a, &quot;j&quot;_a);
 }
 </code></pre>
 <p>pybind11不能自动地提取默认参数，因为它不属于函数类型信息的一部分。我们需要借助<code>arg</code>来实现这一功能：</p>
-<pre><code class="language-c++">m.def(&quot;add&quot;, &amp;add, &quot;A function which adds two numbers&quot;,
-      py::arg(&quot;i&quot;) = 1, py::arg(&quot;j&quot;) = 2);
+<pre><code class="language-c++">m.def("add", &amp;add, "A function which adds two numbers",
+      py::arg("i") = 1, py::arg("j") = 2);
 </code></pre>
 <p>默认值同样也会在文档中展示：</p>
 <pre><code class="language-python">&gt;&gt;&gt; help(example)
@@ -306,16 +306,16 @@ FUNCTIONS
 </code></pre>
 <p>更简短的声明方式：</p>
 <pre><code class="language-c++">// regular notation
-m.def(&quot;add1&quot;, &amp;add, py::arg(&quot;i&quot;) = 1, py::arg(&quot;j&quot;) = 2);
+m.def("add1", &amp;add, py::arg("i") = 1, py::arg("j") = 2);
 // shorthand
-m.def(&quot;add2&quot;, &amp;add, &quot;i&quot;_a=1, &quot;j&quot;_a=2);
+m.def("add2", &amp;add, "i"_a=1, "j"_a=2);
 </code></pre>
 <h3 id="46-导出变量"><a class="header" href="#46-导出变量">4.6 导出变量</a></h3>
 <p>我们可以使用<code>attr</code>函数来注册需要导出到Python模块中的C++变量。内建类型和常规对象（后面会细讲）会在指定attriutes时自动转换，也可以使用<code>py::cast</code>来显式转换。</p>
 <pre><code class="language-c++">PYBIND11_MODULE(example, m) {
-    m.attr(&quot;the_answer&quot;) = 42;
-    py::object world = py::cast(&quot;World&quot;);
-    m.attr(&quot;what&quot;) = world;
+    m.attr("the_answer") = 42;
+    py::object world = py::cast("World");
+    m.attr("what") = world;
 }
 ``
 
@@ -359,22 +359,6 @@ Python中使用如下：
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 
