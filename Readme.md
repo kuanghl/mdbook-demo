@@ -55,17 +55,27 @@ git clone https://github.com/kuanghl/mdbook-demo.git
 ###  Local test.
 
 ```sh
+# linux
 sudo apt-get update
 sudo apt-get install language-pack-zh-hans
 sudo update-locale LANG=zh_CN.UTF-8
 sudo apt-get install chromium-browser
-
 cargo uninstall mdbook
 pip install mdbook-pdf-outline
 export PATH="$PATH:$(pwd)/bin"
-
 mdbook build
 mdbook serve --open
+
+# windows
+# katex incorrect in windows
+# vscode open workspace
+# open terminal
+pip install mdbook-pdf-outline
+set PATH=%PATH%;%CD%\bin_win
+$env:PATH += ";$(Get-Location)\bin_win"
+cd mdbook-demo
+mdbook.exe build
+mdbook.exe serve --open
 ```
 
 ### Note.

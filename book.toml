@@ -127,8 +127,34 @@ page-ranges = ""
 ignore-invalid-page-ranges = false
 # header-template = "<h3 style='font-size:8px; margin-left: 48%' class='title'></h3>"
 # footer-template = "<p style='font-size:10px; margin-left: 48%'><span class='pageNumber'></span> / <span class='totalPages'></span></p>"
-header-template = "<div style='width: 100%; font-size:8px;'><h3 style='position: absolute; left: 10%;' class='date'</h3> <h3 style='position: absolute; left: 35%;' class='title'</h3> <h3 style='position: absolute; left: 60%;' class='authors'>kuanghl</h3> <hr style='position: absolute; left: 5%; border: none; border-bottom: 1px solid black; position: absolute; top: 3.25vh; width: 65%;'></div>"
-footer-template = "<h3 style='font-size:10px; margin-left: 48%'><span class='pageNumber'></span> / <span class='totalPages'></span></h3> <hr style='position: absolute; left: 5%; border: none; border-bottom: 1px solid black; position: absolute; top: 71vh; width: 65%;'>"
+header-template = """<div style='position: relative; width: 100%; padding: 10px 0; box-sizing: border-box;'>
+                        <div style='display: flex; justify-content: space-between; align-items: center; padding: 0 5%;'>
+                            <span style='font-size: 10px;' class='date'></span>
+                            <span style='font-size: 10px;' class='title'></span>
+                            <span style='font-size: 10px;'>kuanghl</span>
+                        </div>
+                        <hr style='border: none; border-top: 1px solid black; margin-top: 5px; width: 90%; margin-left: auto; margin-right: auto;'>
+                    </div>"""
+# footer-template = """<div style='position: relative; width: 100%; padding: 10px 0; box-sizing: border-box;'>
+#                        <div style='display: flex; justify-content: space-between; align-items: center; padding: 0 5%;'>
+#                            <span style='font-size: 10px;'>版本号</span>
+#                            <span style='font-size: 10px;'>
+#                               <span class='pageNumber'></span> / <span class='totalPages'></span>
+#                            </span>
+#                            <span style='font-size: 10px;'>BSN</span>
+#                        </div>
+#                        <hr style='border: none; border-top: 1px solid black; margin-top: 5px; width: 90%; margin-left: auto; margin-right: auto;'>
+#                    </div>"""
+footer-template = """<div style="position: relative; width: 100%; padding: 10px 0; box-sizing: border-box;">
+                        <hr style="border: none; border-bottom: 1px solid black; width: 90%; margin: 0 auto 5px auto;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 5%;">
+                            <span style="font-size: 10px;">版本号</span>
+                            <span style="font-size: 10px;">
+                                <span class='pageNumber'></span> / <span class='totalPages'></span>
+                            </span>
+                            <span style="font-size: 10px;">BSN</span>
+                        </div>
+                    </div>"""
 prefer-css-page-size = true
 
 [output.pdf-outline]
