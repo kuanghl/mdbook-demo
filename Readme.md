@@ -67,7 +67,7 @@ mdbook build
 mdbook serve --open
 
 # windows
-# katex incorrect in windows
+# katex incorrect in windows 
 # vscode open workspace
 # open terminal
 pip install mdbook-pdf-outline
@@ -81,4 +81,7 @@ mdbook.exe serve --open
 ### Note.
 
 > Put `katex.min.css` in root folder, otherwise the format incorrect.
+
 > `cargo uninstall mdbook` keep 0.4.36, otherwise the format incorrect.
+
+> `mdbook-katex` use `x86_64-pc-windows-gnu.zip` version, otherwise the katex format incorrect.
