@@ -5,6 +5,11 @@ on:
     branches: 
       - main
       - master
+    paths-ignore:
+      - .gitignore
+      - README.md
+      - Readme.md
+      - LICENSE
   pull_request:
     branches: [ master ]
 
