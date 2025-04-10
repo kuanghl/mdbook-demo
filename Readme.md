@@ -65,9 +65,10 @@ pip install mdbook-pdf-outline
 export PATH="$PATH:$(pwd)/bin"
 mdbook build
 mdbook serve --open
+mdbook_zh build
+mdbook_zh serve --open
 
 # windows
-# katex incorrect in windows 
 # vscode open workspace
 # open terminal
 pip install mdbook-pdf-outline
@@ -76,6 +77,8 @@ $env:PATH += ";$(Get-Location)\bin_win"
 cd mdbook-demo
 mdbook.exe build
 mdbook.exe serve --open
+mdbook_zh.exe build
+mdbook_zh.exe serve --open
 ```
 
 ### Note.
@@ -85,3 +88,13 @@ mdbook.exe serve --open
 > `cargo uninstall mdbook` keep 0.4.36, otherwise the format incorrect.
 
 > `mdbook-katex` use `x86_64-pc-windows-gnu.zip` version, otherwise the katex format incorrect.
+
+> `mdbook` search chinese support as list.
+
+```ini
+[book]
+authors = ["khl <1365342449@qq.com>"]
+title = "mdbook-demo"
+description = "The example book covers examples."
+language = "zh-Hans" # "en"
+```
