@@ -23,6 +23,7 @@
 - [markdown](./basic/markdown.md)
 - [mermaid](./basic/mermaid.md)
 - [Katex](./test/chapter_3.md)
+- [whichlang](./test/chapter_4.md)
 - [Test](./test/chapter_2.md)
 
   

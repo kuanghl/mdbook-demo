@@ -33,6 +33,7 @@
         <link rel="stylesheet" href="../.././theme/catppuccin.css">
         <link rel="stylesheet" href="../.././theme/catppuccin-admonish.css">
         <link rel="stylesheet" href="../../katex.min.css">
+        <link rel="stylesheet" href="../.././assets/whichlang/whichlang.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -94,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item "><a href="../../test/chapter_1.html">mdbook_demo</a></li><li class="chapter-item expanded "><a href="../../3rd/pybind11/00.pybind11介绍.html">pybind11</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../3rd/pybind11/01.改动日志.html">改动日志</a></li><li class="chapter-item expanded "><a href="../../3rd/pybind11/02.更新指南.html" class="active">更新指南</a></li><li class="chapter-item "><a href="../../3rd/pybind11/03.安装说明.html">安装说明</a></li><li class="chapter-item "><a href="../../3rd/pybind11/04.首次尝试.html">首次尝试</a></li><li class="chapter-item "><a href="../../3rd/pybind11/05.面对对象编程.html">面对对象编程</a></li><li class="chapter-item "><a href="../../3rd/pybind11/06.构建系统.html">构建系统</a></li><li class="chapter-item "><a href="../../3rd/pybind11/07.函数.html">函数</a></li><li class="chapter-item "><a href="../../3rd/pybind11/08.类.html">类</a></li><li class="chapter-item "><a href="../../3rd/pybind11/09.异常.html">异常</a></li><li class="chapter-item "><a href="../../3rd/pybind11/10.智能指针.html">智能指针</a></li><li class="chapter-item "><a href="../../3rd/pybind11/11.类型转换.html">类型转换</a></li><li class="chapter-item "><a href="../../3rd/pybind11/12.Python的C++接口.html">Python的C++接口</a></li><li class="chapter-item "><a href="../../3rd/pybind11/13.内嵌解释器.html">内嵌解释器</a></li><li class="chapter-item "><a href="../../3rd/pybind11/14.杂项.html">杂项</a></li><li class="chapter-item "><a href="../../3rd/pybind11/15.FAQ.html">FAQ</a></li><li class="chapter-item "><a href="../../3rd/pybind11/16.案例.html">案例</a></li><li class="chapter-item "><a href="../../3rd/pybind11/pybind11_demo.html">pybind11 demo</a></li></ol></li><li class="chapter-item "><a href="../../basic/markdown.html">markdown</a></li><li class="chapter-item "><a href="../../basic/mermaid.html">mermaid</a></li><li class="chapter-item "><a href="../../test/chapter_3.html">Katex</a></li><li class="chapter-item "><a href="../../test/chapter_2.html">Test</a></li></ol>
+                <ol class="chapter"><li class="chapter-item "><a href="../../test/chapter_1.html">mdbook_demo</a></li><li class="chapter-item expanded "><a href="../../3rd/pybind11/00.pybind11介绍.html">pybind11</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../3rd/pybind11/01.改动日志.html">改动日志</a></li><li class="chapter-item expanded "><a href="../../3rd/pybind11/02.更新指南.html" class="active">更新指南</a></li><li class="chapter-item "><a href="../../3rd/pybind11/03.安装说明.html">安装说明</a></li><li class="chapter-item "><a href="../../3rd/pybind11/04.首次尝试.html">首次尝试</a></li><li class="chapter-item "><a href="../../3rd/pybind11/05.面对对象编程.html">面对对象编程</a></li><li class="chapter-item "><a href="../../3rd/pybind11/06.构建系统.html">构建系统</a></li><li class="chapter-item "><a href="../../3rd/pybind11/07.函数.html">函数</a></li><li class="chapter-item "><a href="../../3rd/pybind11/08.类.html">类</a></li><li class="chapter-item "><a href="../../3rd/pybind11/09.异常.html">异常</a></li><li class="chapter-item "><a href="../../3rd/pybind11/10.智能指针.html">智能指针</a></li><li class="chapter-item "><a href="../../3rd/pybind11/11.类型转换.html">类型转换</a></li><li class="chapter-item "><a href="../../3rd/pybind11/12.Python的C++接口.html">Python的C++接口</a></li><li class="chapter-item "><a href="../../3rd/pybind11/13.内嵌解释器.html">内嵌解释器</a></li><li class="chapter-item "><a href="../../3rd/pybind11/14.杂项.html">杂项</a></li><li class="chapter-item "><a href="../../3rd/pybind11/15.FAQ.html">FAQ</a></li><li class="chapter-item "><a href="../../3rd/pybind11/16.案例.html">案例</a></li><li class="chapter-item "><a href="../../3rd/pybind11/pybind11_demo.html">pybind11 demo</a></li></ol></li><li class="chapter-item "><a href="../../basic/markdown.html">markdown</a></li><li class="chapter-item "><a href="../../basic/mermaid.html">mermaid</a></li><li class="chapter-item "><a href="../../test/chapter_3.html">Katex</a></li><li class="chapter-item "><a href="../../test/chapter_4.html">whichlang</a></li><li class="chapter-item "><a href="../../test/chapter_2.html">Test</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -218,6 +219,22 @@
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 
@@ -244,6 +261,7 @@
         <script src="../.././assets/help/support.js"></script>
         <script src="../.././assets/mermaid/mermaid.min.js"></script>
         <script src="../.././assets/mermaid/mermaid-init.js"></script>
+        <script src="../.././assets/whichlang/whichlang.js"></script>
 
 
     </div>

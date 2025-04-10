@@ -1,4 +1,5 @@
-### kroki
+# kroki-mermaid
+## kroki
 
 ```kroki-mermaid
 graph TD

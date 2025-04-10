@@ -74,11 +74,12 @@ no-section-label = true
 edit-url-template = "https://github.com/kuanghl/mdbook-demo/edit/master/src/{path}"
 additional-css = [
     "./theme/mdbook-admonish.css", "./theme/catppuccin.css", "./theme/catppuccin-admonish.css", 
-    "katex.min.css",
+    "katex.min.css", "./assets/whichlang/whichlang.css",
     ]
 additional-js = [
     "./assets/help/helper.js", "./assets/help/support.js", 
     "./assets/mermaid/mermaid.min.js", "./assets/mermaid/mermaid-init.js",
+    "./assets/whichlang/whichlang.js",
     ]
 
 [output.html.search]
@@ -159,3 +160,7 @@ prefer-css-page-size = true
 
 [output.pdf-outline]
 like-wkhtmltopdf = true
+
+# 有点儿鸡肋...
+# [output.asciidoc]
+# unified = true

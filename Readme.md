@@ -14,6 +14,8 @@
 - [mdbook-pandoc](https://github.com/max-heller/mdbook-pandoc.git)
 - [cloud-translate](https://github.com/mgeisler/cloud-translate.git)
 - [mdbook_zh](https://github.com/Sunshine40/mdBook.git)
+- [mdbook-whichlang](https://github.com/phoenixr-codes/mdbook-whichlang.git)
+- [mdbook-asciidoc](https://github.com/daviddrysdale/mdbook-asciidoc.git)
 - [mdbook-embedify](https://github.com/MR-Addict/mdbook-embedify.git) 
 - License-MIT. Give me a star, if this case is useful to you.
 - Build mdbooks plugins in rust.
@@ -22,14 +24,6 @@
   cargo build
   # get the binaries of execution to the bin.
   ```
-
-### Local env.
-
-```sh
-export PATH="$PATH:$(pwd)/bin"
-sudo apt install chromium-browser
-pip install mdbook-pdf-outline
-```
 
 ### GPT Translation.
 
