@@ -1,5 +1,7 @@
 # mdbook-whichlang
 
+
+<!-- langtabs-start -->
 ```c
 #include <stdio.h>
 
@@ -7,9 +9,10 @@ int main(void) {
 	printf("Hello World\n");
 }
 ```
+<!-- langtabs-end -->
 
 <!-- langtabs-start -->
-```c++
+```cpp
 #include <iostream>
 
 int main()
@@ -19,40 +22,57 @@ int main()
 ```
 <!-- langtabs-end -->
 
+<!-- langtabs-start -->
 ```javascript
 console.log("Hello World");
 ```
+<!-- langtabs-end -->
 
+<!-- langtabs-start -->
 ```typescript
 console.log("Hello World");
 ```
+<!-- langtabs-end -->
 
+<!-- langtabs-start -->
 ```rescript
 Console.log("Hello World")
 ```
+<!-- langtabs-end -->
 
+<!-- langtabs-start -->
 ```css
 h1 {
   color: blue;
 }
 ```
+<!-- langtabs-end -->
 
+<!-- langtabs-start -->
 ```vim
 set syntax=ruby
 ```
+<!-- langtabs-end -->
 
+<!-- langtabs-start -->
 ```lua,fp=init.lua
 print("Hello World")
 ```
+<!-- langtabs-end -->
 
+<!-- langtabs-start -->
 ```python
 print("Hello World")
 ```
+<!-- langtabs-end -->
 
+<!-- langtabs-start -->
 ```nim
 echo "Hello World"
 ```
+<!-- langtabs-end -->
 
+<!-- langtabs-start -->
 ```zig,fp=hello.zig
 const std = @import("std");
 
@@ -61,7 +81,9 @@ pub fn main() !void {
     try stdout.print("Hello, {s}!\n", .{"world"});
 }
 ```
+<!-- langtabs-end -->
 
+<!-- langtabs-start -->
 ```odin
 package main
 
@@ -71,7 +93,9 @@ main :: proc() {
 	fmt.println("Hellope!")
 }
 ```
+<!-- langtabs-end -->
 
+<!-- langtabs-start -->
 ```wat,fp=hello.wat,icon=%webassembly
 (module
     (import "wasi_unstable" "fd_write"
@@ -93,3 +117,4 @@ main :: proc() {
     )
 )
 ```
+<!-- langtabs-end -->

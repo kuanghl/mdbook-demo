@@ -96,3 +96,10 @@ title = "mdbook-demo"
 description = "The example book covers examples."
 language = "zh-Hans" # "en"
 ```
+
+> `mdbook-whichlang` c++ code blocks change, to judge the c++ code blocks and hightline.
+
+- open `whichlang.js` file and change to below code.
+- from `var siCplusplus = { title: "C++", slug: "cplusplus", get svg() {` to `var siCplusplus = { title: "C++", slug: "cpp", get svg() {`.
+- need \`\`\`cplusplus to  \`\`\`cpp for code blocks.
+- [open .svg picture with text can get the svg drawing information(path)](https://blog.csdn.net/qq_45021462/article/details/113868961), write the information to `whichlang.js` to add new language support.
