@@ -269,7 +269,7 @@ git submodule update --init
 <pre><code class="language-sh">pip install pybind11
 </code></pre>
 <p>这样pybind11将以标准的Python包的形式提供。如果你想在root环境下直接使用pybind11，可以这样做：</p>
-<pre><code class="language-sh">pip install "pybind11[global]"
+<pre><code class="language-sh">pip install &quot;pybind11[global]&quot;
 </code></pre>
 <p>如果你使用系统自带的Python来安装，我们推荐在root环境下安装。这样会在<code>/usr/local/include/pybind11</code> 和 <code>/usr/local/share/cmake/pybind11</code>添加文件，除非你想这样。还是推荐你只在虚拟环境或你的<code>pyproject.toml</code>中使用。</p>
 <h3 id="33-通过conda-forge集成"><a class="header" href="#33-通过conda-forge集成">3.3 通过conda-forge集成</a></h3>
@@ -320,22 +320,6 @@ vcpkg install pybind11
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 

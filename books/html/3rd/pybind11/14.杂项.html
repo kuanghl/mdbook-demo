@@ -293,15 +293,15 @@ public:
 };
 
 PYBIND11_MODULE(example, m) {
-    py::class_&lt;Animal, PyAnimal&gt; animal(m, "Animal");
+    py::class_&lt;Animal, PyAnimal&gt; animal(m, &quot;Animal&quot;);
     animal
         .def(py::init&lt;&gt;())
-        .def("go", &amp;Animal::go);
+        .def(&quot;go&quot;, &amp;Animal::go);
 
-    py::class_&lt;Dog&gt;(m, "Dog", animal)
+    py::class_&lt;Dog&gt;(m, &quot;Dog&quot;, animal)
         .def(py::init&lt;&gt;());
 
-    m.def("call_go", [](Animal *animal) -&gt; std::string {
+    m.def(&quot;call_go&quot;, [](Animal *animal) -&gt; std::string {
         /* Release GIL before calling into (potentially long-running) C++ code */
         py::gil_scoped_release release;
         return call_go(animal);
@@ -309,31 +309,31 @@ PYBIND11_MODULE(example, m) {
 }
 </code></pre>
 <p>我们可以使用<code>call_guard</code>策略来简化<code>call_go</code>的封装：</p>
-<pre><code class="language-c++">m.def("call_go", &amp;call_go, py::call_guard&lt;py::gil_scoped_release&gt;());
+<pre><code class="language-c++">m.def(&quot;call_go&quot;, &amp;call_go, py::call_guard&lt;py::gil_scoped_release&gt;());
 </code></pre>
 <h3 id="143-通过多个模块来划分代码"><a class="header" href="#143-通过多个模块来划分代码">14.3 通过多个模块来划分代码</a></h3>
 <p>通常我们可以直接将绑定代码分隔到多个模块中，即便模块引用的类型在其他模块中定义。有个例外场景，就是当前扩展的类型定义在其他模块中，参见下面的例子：</p>
-<pre><code class="language-c++">py::class_&lt;Pet&gt; pet(m, "Pet");
+<pre><code class="language-c++">py::class_&lt;Pet&gt; pet(m, &quot;Pet&quot;);
 pet.def(py::init&lt;const std::string &amp;&gt;())
-   .def_readwrite("name", &amp;Pet::name);
+   .def_readwrite(&quot;name&quot;, &amp;Pet::name);
 
-py::class_&lt;Dog&gt;(m, "Dog", pet /* &lt;- specify parent */)
+py::class_&lt;Dog&gt;(m, &quot;Dog&quot;, pet /* &lt;- specify parent */)
     .def(py::init&lt;const std::string &amp;&gt;())
-    .def("bark", &amp;Dog::bark);
+    .def(&quot;bark&quot;, &amp;Dog::bark);
 </code></pre>
 <p>假设<code>Pet</code>类的绑定定义在<code>basic</code>模块中，而<code>Dog</code>绑定定义在其他模块。在<code>class_&lt;Dog&gt;</code>中明确与<code>Pet</code>类的继承关系时需要知道<code>Pet</code>，问题是在其他模块定义的<code>Pet</code>不再对<code>Dog</code>可见。我们可以这样处理：</p>
-<pre><code class="language-c++">py::object pet = (py::object) py::module_::import("basic").attr("Pet");
+<pre><code class="language-c++">py::object pet = (py::object) py::module_::import(&quot;basic&quot;).attr(&quot;Pet&quot;);
 
-py::class_&lt;Dog&gt;(m, "Dog", pet)
+py::class_&lt;Dog&gt;(m, &quot;Dog&quot;, pet)
     .def(py::init&lt;const std::string &amp;&gt;())
-    .def("bark", &amp;Dog::bark);
+    .def(&quot;bark&quot;, &amp;Dog::bark);
 </code></pre>
 <p>或者，你可以将基类作为模板参数给<code>class_</code>，让pybind11自动查找到相应的Python类型。但也需要调用一次<code>import</code>函数，确保<code>basic</code>模块的绑定代码已经执行。</p>
-<pre><code class="language-c++">py::module_::import("basic");
+<pre><code class="language-c++">py::module_::import(&quot;basic&quot;);
 
-py::class_&lt;Dog, Pet&gt;(m, "Dog")
+py::class_&lt;Dog, Pet&gt;(m, &quot;Dog&quot;)
     .def(py::init&lt;const std::string &amp;&gt;())
-    .def("bark", &amp;Dog::bark);
+    .def(&quot;bark&quot;, &amp;Dog::bark);
 </code></pre>
 <p>如果存在循环依赖时，上述两种方法都将失效。</p>
 <p>注意，pybind11代码在编译时会默认隐藏符号的可见性（如通过GCC/Clang的<code>-fvisibility=hidden</code>标识），这会干扰访问在其他模块定义的类型的能力。这需要通过手动导出需要被其他模块访问的类型，像这样：</p>
@@ -342,9 +342,9 @@ py::class_&lt;Dog, Pet&gt;(m, "Dog")
 };
 </code></pre>
 <p>在运行时也可以共享任意的C++对象，尽管很少用到该特性。使用capsule机制在模块间共享内部库数据，可以用来存储、修改、访问用户自定义数据。注意，一个模块能够看到其他模块的数据，仅在他们使用相同的pybind11版本编译时才能实现。参考下面的例子：</p>
-<pre><code class="language-c++">auto data = reinterpret_cast&lt;MyData *&gt;(py::get_shared_data("mydata"));
+<pre><code class="language-c++">auto data = reinterpret_cast&lt;MyData *&gt;(py::get_shared_data(&quot;mydata&quot;));
 if (!data)
-    data = static_cast&lt;MyData *&gt;(py::set_shared_data("mydata", new MyData(42)));
+    data = static_cast&lt;MyData *&gt;(py::set_shared_data(&quot;mydata&quot;, new MyData(42)));
 </code></pre>
 <p>如果在几个单独编译的扩展模块中使用了上述代码段，第一个导入的模块将创建<code>MyData</code>实例，并和指针联系起来。后续导入的模块就可以访问该指针指向的数据了。</p>
 <h3 id="144-模块析构"><a class="header" href="#144-模块析构">14.4 模块析构</a></h3>
@@ -353,12 +353,12 @@ if (!data)
     // perform cleanup here -- this function is called with the GIL held
 };
 
-m.add_object("_cleanup", py::capsule(cleanup_callback));
+m.add_object(&quot;_cleanup&quot;, py::capsule(cleanup_callback));
 </code></pre>
 <p>该方法一个潜在地缺陷是，在cleanup函数调用时，模块公开的类实例可能仍存活着（这是否可以接受通常取决于应用程序）。</p>
 <p>或者，我们可以将capsule存储在类型对象中，确保它不会在回收该类型的所有实例之前被调用：</p>
 <pre><code class="language-c++">auto cleanup_callback = []() { /* ... */ };
-m.attr("BaseClass").attr("_cleanup") = py::capsule(cleanup_callback);
+m.attr(&quot;BaseClass&quot;).attr(&quot;_cleanup&quot;) = py::capsule(cleanup_callback);
 </code></pre>
 <p>上面的方法都在Python中暴露了一个<code>_cleanup</code>的危险属性，从API的角度来看，这种做法并不受欢迎（Python过早的显式调用它可能会导致未定义行为）。这可以通过使用cleanup函数回调的弱引用来规避。</p>
 <pre><code class="language-c++">// Register a callback function that is invoked when the BaseClass object is collected
@@ -371,7 +371,7 @@ py::cpp_function cleanup_callback(
 );
 
 // Create a weak reference with a cleanup callback and initially leak it
-(void) py::weakref(m.attr("BaseClass"), cleanup_callback).release();
+(void) py::weakref(m.attr(&quot;BaseClass&quot;), cleanup_callback).release();
 </code></pre>
 
                     </main>
@@ -403,22 +403,6 @@ py::cpp_function cleanup_callback(
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 
