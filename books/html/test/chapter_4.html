@@ -256,14 +256,16 @@
 
 </style>
 <h1 id="mdbook-whichlang"><a class="header" href="#mdbook-whichlang">mdbook-whichlang</a></h1>
+<!-- langtabs-start -->
 <pre><code class="language-c">#include &lt;stdio.h&gt;
 
 int main(void) {
 	printf(&quot;Hello World\n&quot;);
 }
 </code></pre>
+<!-- langtabs-end -->
 <!-- langtabs-start -->
-<pre><code class="language-c++">#include &lt;iostream&gt;
+<pre><code class="language-cpp">#include &lt;iostream&gt;
 
 int main()
 {
@@ -271,24 +273,41 @@ int main()
 }
 </code></pre>
 <!-- langtabs-end -->
+<!-- langtabs-start -->
 <pre><code class="language-javascript">console.log(&quot;Hello World&quot;);
 </code></pre>
+<!-- langtabs-end -->
+<!-- langtabs-start -->
 <pre><code class="language-typescript">console.log(&quot;Hello World&quot;);
 </code></pre>
+<!-- langtabs-end -->
+<!-- langtabs-start -->
 <pre><code class="language-rescript">Console.log(&quot;Hello World&quot;)
 </code></pre>
+<!-- langtabs-end -->
+<!-- langtabs-start -->
 <pre><code class="language-css">h1 {
   color: blue;
 }
 </code></pre>
+<!-- langtabs-end -->
+<!-- langtabs-start -->
 <pre><code class="language-vim">set syntax=ruby
 </code></pre>
+<!-- langtabs-end -->
+<!-- langtabs-start -->
 <pre><code class="language-lua fp=init.lua">print(&quot;Hello World&quot;)
 </code></pre>
+<!-- langtabs-end -->
+<!-- langtabs-start -->
 <pre><code class="language-python">print(&quot;Hello World&quot;)
 </code></pre>
+<!-- langtabs-end -->
+<!-- langtabs-start -->
 <pre><code class="language-nim">echo &quot;Hello World&quot;
 </code></pre>
+<!-- langtabs-end -->
+<!-- langtabs-start -->
 <pre><code class="language-zig fp=hello.zig">const std = @import(&quot;std&quot;);
 
 pub fn main() !void {
@@ -296,6 +315,8 @@ pub fn main() !void {
     try stdout.print(&quot;Hello, {s}!\n&quot;, .{&quot;world&quot;});
 }
 </code></pre>
+<!-- langtabs-end -->
+<!-- langtabs-start -->
 <pre><code class="language-odin">package main
 
 import &quot;core:fmt&quot;
@@ -304,6 +325,8 @@ main :: proc() {
 	fmt.println(&quot;Hellope!&quot;)
 }
 </code></pre>
+<!-- langtabs-end -->
+<!-- langtabs-start -->
 <pre><code class="language-wat fp=hello.wat icon=%webassembly">(module
     (import &quot;wasi_unstable&quot; &quot;fd_write&quot;
         (func $fd_write (param i32 i32 i32 i32) (result i32))
@@ -324,7 +347,7 @@ main :: proc() {
     )
 )
 </code></pre>
-
+<!-- langtabs-end -->
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
