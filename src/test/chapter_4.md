@@ -1,4 +1,4 @@
-# Examples
+# mdbook-whichlang
 
 ```c
 #include <stdio.h>
@@ -8,6 +8,7 @@ int main(void) {
 }
 ```
 
+<!-- langtabs-start -->
 ```c++
 #include <iostream>
 
@@ -16,6 +17,7 @@ int main()
    std::cout << "Hello World" << std::endl;
 }
 ```
+<!-- langtabs-end -->
 
 ```javascript
 console.log("Hello World");

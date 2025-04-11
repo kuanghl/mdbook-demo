@@ -16,6 +16,12 @@ use-default-preprocessors = false
 
 [preprocessor.links]
 
+[preprocessor.alerts]
+
+# devicons cdn慢卡顿
+# [preprocessor.langtabs]
+# command = "mdbook-langtabs"
+
 [preprocessor.catppuccin]
 assets_version = "2.1.0" # DO NOT EDIT: Managed by `mdbook-catppuccin install`
 
@@ -73,13 +79,18 @@ git-repository-icon = "fa-github"
 no-section-label = true
 edit-url-template = "https://github.com/kuanghl/mdbook-demo/edit/master/src/{path}"
 additional-css = [
-    "./theme/mdbook-admonish.css", "./theme/catppuccin.css", "./theme/catppuccin-admonish.css", 
-    "katex.min.css", "./assets/whichlang/whichlang.css",
+    "./theme/mdbook-admonish.css", 
+    "./theme/catppuccin.css", "./theme/catppuccin-admonish.css", 
+    "katex.min.css", 
+    "./assets/whichlang/whichlang.css",
+    # "./assets/langtabs/langtabs.css",
     ]
 additional-js = [
-    "./assets/help/helper.js", "./assets/help/support.js", 
+    "./assets/help/helper.js", 
+    "./assets/help/support.js", 
     "./assets/mermaid/mermaid.min.js", "./assets/mermaid/mermaid-init.js",
-    "./assets/whichlang/whichlang.js",
+    "./assets/whichlang/whichlang.js", 
+    # "./assets/langtabs/langtabs.js", 
     ]
 
 [output.html.search]

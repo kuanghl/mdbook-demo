@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item "><a href="../../test/chapter_1.html">mdbook_demo</a></li><li class="chapter-item expanded "><a href="../../3rd/pybind11/00.pybind11介绍.html">pybind11</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../3rd/pybind11/01.改动日志.html">改动日志</a></li><li class="chapter-item "><a href="../../3rd/pybind11/02.更新指南.html">更新指南</a></li><li class="chapter-item "><a href="../../3rd/pybind11/03.安装说明.html">安装说明</a></li><li class="chapter-item "><a href="../../3rd/pybind11/04.首次尝试.html">首次尝试</a></li><li class="chapter-item "><a href="../../3rd/pybind11/05.面对对象编程.html">面对对象编程</a></li><li class="chapter-item "><a href="../../3rd/pybind11/06.构建系统.html">构建系统</a></li><li class="chapter-item "><a href="../../3rd/pybind11/07.函数.html">函数</a></li><li class="chapter-item "><a href="../../3rd/pybind11/08.类.html">类</a></li><li class="chapter-item "><a href="../../3rd/pybind11/09.异常.html">异常</a></li><li class="chapter-item "><a href="../../3rd/pybind11/10.智能指针.html">智能指针</a></li><li class="chapter-item "><a href="../../3rd/pybind11/11.类型转换.html">类型转换</a></li><li class="chapter-item "><a href="../../3rd/pybind11/12.Python的C++接口.html">Python的C++接口</a></li><li class="chapter-item "><a href="../../3rd/pybind11/13.内嵌解释器.html">内嵌解释器</a></li><li class="chapter-item expanded "><a href="../../3rd/pybind11/14.杂项.html" class="active">杂项</a></li><li class="chapter-item "><a href="../../3rd/pybind11/15.FAQ.html">FAQ</a></li><li class="chapter-item "><a href="../../3rd/pybind11/16.案例.html">案例</a></li><li class="chapter-item "><a href="../../3rd/pybind11/pybind11_demo.html">pybind11 demo</a></li></ol></li><li class="chapter-item "><a href="../../basic/markdown.html">markdown</a></li><li class="chapter-item "><a href="../../basic/mermaid.html">mermaid</a></li><li class="chapter-item "><a href="../../test/chapter_3.html">Katex</a></li><li class="chapter-item "><a href="../../test/chapter_4.html">whichlang</a></li><li class="chapter-item "><a href="../../test/chapter_2.html">Test</a></li></ol>
+                <ol class="chapter"><li class="chapter-item "><a href="../../test/chapter_1.html">mdbook_mathjax</a></li><li class="chapter-item expanded "><a href="../../3rd/pybind11/00.pybind11介绍.html">pybind11</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../3rd/pybind11/01.改动日志.html">改动日志</a></li><li class="chapter-item "><a href="../../3rd/pybind11/02.更新指南.html">更新指南</a></li><li class="chapter-item "><a href="../../3rd/pybind11/03.安装说明.html">安装说明</a></li><li class="chapter-item "><a href="../../3rd/pybind11/04.首次尝试.html">首次尝试</a></li><li class="chapter-item "><a href="../../3rd/pybind11/05.面对对象编程.html">面对对象编程</a></li><li class="chapter-item "><a href="../../3rd/pybind11/06.构建系统.html">构建系统</a></li><li class="chapter-item "><a href="../../3rd/pybind11/07.函数.html">函数</a></li><li class="chapter-item "><a href="../../3rd/pybind11/08.类.html">类</a></li><li class="chapter-item "><a href="../../3rd/pybind11/09.异常.html">异常</a></li><li class="chapter-item "><a href="../../3rd/pybind11/10.智能指针.html">智能指针</a></li><li class="chapter-item "><a href="../../3rd/pybind11/11.类型转换.html">类型转换</a></li><li class="chapter-item "><a href="../../3rd/pybind11/12.Python的C++接口.html">Python的C++接口</a></li><li class="chapter-item "><a href="../../3rd/pybind11/13.内嵌解释器.html">内嵌解释器</a></li><li class="chapter-item expanded "><a href="../../3rd/pybind11/14.杂项.html" class="active">杂项</a></li><li class="chapter-item "><a href="../../3rd/pybind11/15.FAQ.html">FAQ</a></li><li class="chapter-item "><a href="../../3rd/pybind11/16.案例.html">案例</a></li><li class="chapter-item "><a href="../../3rd/pybind11/pybind11_demo.html">pybind11 demo</a></li></ol></li><li class="chapter-item "><a href="../../basic/markdown.html">markdown</a></li><li class="chapter-item "><a href="../../basic/admonish.html">admonish</a></li><li class="chapter-item "><a href="../../test/chapter_3.html">Katex</a></li><li class="chapter-item "><a href="../../test/chapter_4.html">whichlang</a></li><li class="chapter-item "><a href="../../test/chapter_5.html">langtabs</a></li><li class="chapter-item "><a href="../../test/chapter_2.html">kroki-mermaid</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -188,7 +188,74 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h2 id="14-杂项"><a class="header" href="#14-杂项">14. 杂项</a></h2>
+                        <style>
+.mdbook-alerts {
+  padding: 8px 16px;
+  margin-bottom: 16px;
+  border-left: 0.25em solid var(--mdbook-alerts-color);
+}
+
+.mdbook-alerts > *:first-child {
+  margin-top: 0;
+}
+
+.mdbook-alerts > *:last-child {
+  margin-bottom: 0;
+}
+
+.mdbook-alerts-title {
+  display: flex;
+  font-weight: 600;
+  align-items: center;
+  line-height: 1;
+  color: var(--mdbook-alerts-color);
+  text-transform: capitalize;
+}
+
+.mdbook-alerts-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.2em;
+  background-color: currentColor;
+  -webkit-mask: no-repeat center / 100%;
+  mask: no-repeat center / 100%;
+  -webkit-mask-image: var(--mdbook-alerts-icon);
+  mask-image: var(--mdbook-alerts-icon);
+}
+
+.mdbook-alerts-note {
+  --mdbook-alerts-color: rgb(9, 105, 218);
+  /* https://icon-sets.iconify.design/material-symbols/info-outline-rounded/ */
+  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 17q.425 0 .713-.288T13 16v-4q0-.425-.288-.712T12 11q-.425 0-.712.288T11 12v4q0 .425.288.713T12 17m0-8q.425 0 .713-.288T13 8q0-.425-.288-.712T12 7q-.425 0-.712.288T11 8q0 .425.288.713T12 9m0 13q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22m0-2q3.35 0 5.675-2.325T20 12q0-3.35-2.325-5.675T12 4Q8.65 4 6.325 6.325T4 12q0 3.35 2.325 5.675T12 20m0-8"%2F%3E%3C%2Fsvg%3E');
+}
+
+.mdbook-alerts-tip {
+  --mdbook-alerts-color: rgb(26, 127, 55);
+  /* https://icon-sets.iconify.design/material-symbols/lightbulb-outline-rounded/ */
+  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 22q-.825 0-1.412-.587T10 20h4q0 .825-.587 1.413T12 22m-3-3q-.425 0-.712-.288T8 18q0-.425.288-.712T9 17h6q.425 0 .713.288T16 18q0 .425-.288.713T15 19zm-.75-3q-1.725-1.025-2.738-2.75T4.5 9.5q0-3.125 2.188-5.312T12 2q3.125 0 5.313 2.188T19.5 9.5q0 2.025-1.012 3.75T15.75 16zm.6-2h6.3q1.125-.8 1.738-1.975T17.5 9.5q0-2.3-1.6-3.9T12 4Q9.7 4 8.1 5.6T6.5 9.5q0 1.35.613 2.525T8.85 14M12 14"%2F%3E%3C%2Fsvg%3E');
+}
+
+.mdbook-alerts-important {
+  --mdbook-alerts-color: rgb(130, 80, 223);
+  /* https://icon-sets.iconify.design/material-symbols/chat-info-outline-rounded/ */
+  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 7q.425 0 .713-.288T13 6q0-.425-.288-.712T12 5q-.425 0-.712.288T11 6q0 .425.288.713T12 7m0 8q.425 0 .713-.288T13 14v-4q0-.425-.288-.712T12 9q-.425 0-.712.288T11 10v4q0 .425.288.713T12 15m-6 3l-2.3 2.3q-.475.475-1.088.213T2 19.575V4q0-.825.588-1.412T4 2h16q.825 0 1.413.588T22 4v12q0 .825-.587 1.413T20 18zm-.85-2H20V4H4v13.125zM4 16V4z"%2F%3E%3C%2Fsvg%3E');
+}
+
+.mdbook-alerts-warning {
+  --mdbook-alerts-color: rgb(154, 103, 0);
+  /* https://icon-sets.iconify.design/material-symbols/warning-outline-rounded/ */
+  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M2.725 21q-.275 0-.5-.137t-.35-.363q-.125-.225-.137-.488t.137-.512l9.25-16q.15-.25.388-.375T12 3q.25 0 .488.125t.387.375l9.25 16q.15.25.138.513t-.138.487q-.125.225-.35.363t-.5.137zm1.725-2h15.1L12 6zM12 18q.425 0 .713-.288T13 17q0-.425-.288-.712T12 16q-.425 0-.712.288T11 17q0 .425.288.713T12 18m0-3q.425 0 .713-.288T13 14v-3q0-.425-.288-.712T12 10q-.425 0-.712.288T11 11v3q0 .425.288.713T12 15m0-2.5"%2F%3E%3C%2Fsvg%3E');
+}
+
+.mdbook-alerts-caution {
+  --mdbook-alerts-color: rgb(207, 34, 46);
+  /* https://icon-sets.iconify.design/material-symbols/brightness-alert-outline-rounded/ */
+  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 17q.425 0 .713-.288T13 16q0-.425-.288-.712T12 15q-.425 0-.712.288T11 16q0 .425.288.713T12 17m0-4q.425 0 .713-.288T13 12V8q0-.425-.288-.712T12 7q-.425 0-.712.288T11 8v4q0 .425.288.713T12 13m-3.35 7H6q-.825 0-1.412-.587T4 18v-2.65L2.075 13.4q-.275-.3-.425-.662T1.5 12q0-.375.15-.737t.425-.663L4 8.65V6q0-.825.588-1.412T6 4h2.65l1.95-1.925q.3-.275.663-.425T12 1.5q.375 0 .738.15t.662.425L15.35 4H18q.825 0 1.413.588T20 6v2.65l1.925 1.95q.275.3.425.663t.15.737q0 .375-.15.738t-.425.662L20 15.35V18q0 .825-.587 1.413T18 20h-2.65l-1.95 1.925q-.3.275-.662.425T12 22.5q-.375 0-.737-.15t-.663-.425zm.85-2l2.5 2.5l2.5-2.5H18v-3.5l2.5-2.5L18 9.5V6h-3.5L12 3.5L9.5 6H6v3.5L3.5 12L6 14.5V18zm2.5-6"%2F%3E%3C%2Fsvg%3E');
+}
+
+</style>
+<h2 id="14-杂项"><a class="header" href="#14-杂项">14. 杂项</a></h2>
 <h3 id="141-关于便利宏的说明"><a class="header" href="#141-关于便利宏的说明">14.1 关于便利宏的说明</a></h3>
 <p>pybind11提供了一些便利宏如<code>PYBIND11_DECLARE_HOLDER_TYPE()</code>和<code>PYBIND11_OVERRIDE_*</code>。由于这些宏只是在预处理中计算(预处理程序没有类型的概念)，它们会被模板参数中的逗号搞混。如：</p>
 <pre><code class="language-c++">PYBIND11_OVERRIDE(MyReturnType&lt;T1, T2&gt;, Class&lt;T3, T4&gt;, func)
@@ -226,15 +293,15 @@ public:
 };
 
 PYBIND11_MODULE(example, m) {
-    py::class_&lt;Animal, PyAnimal&gt; animal(m, &quot;Animal&quot;);
+    py::class_&lt;Animal, PyAnimal&gt; animal(m, "Animal");
     animal
         .def(py::init&lt;&gt;())
-        .def(&quot;go&quot;, &amp;Animal::go);
+        .def("go", &amp;Animal::go);
 
-    py::class_&lt;Dog&gt;(m, &quot;Dog&quot;, animal)
+    py::class_&lt;Dog&gt;(m, "Dog", animal)
         .def(py::init&lt;&gt;());
 
-    m.def(&quot;call_go&quot;, [](Animal *animal) -&gt; std::string {
+    m.def("call_go", [](Animal *animal) -&gt; std::string {
         /* Release GIL before calling into (potentially long-running) C++ code */
         py::gil_scoped_release release;
         return call_go(animal);
@@ -242,31 +309,31 @@ PYBIND11_MODULE(example, m) {
 }
 </code></pre>
 <p>我们可以使用<code>call_guard</code>策略来简化<code>call_go</code>的封装：</p>
-<pre><code class="language-c++">m.def(&quot;call_go&quot;, &amp;call_go, py::call_guard&lt;py::gil_scoped_release&gt;());
+<pre><code class="language-c++">m.def("call_go", &amp;call_go, py::call_guard&lt;py::gil_scoped_release&gt;());
 </code></pre>
 <h3 id="143-通过多个模块来划分代码"><a class="header" href="#143-通过多个模块来划分代码">14.3 通过多个模块来划分代码</a></h3>
 <p>通常我们可以直接将绑定代码分隔到多个模块中，即便模块引用的类型在其他模块中定义。有个例外场景，就是当前扩展的类型定义在其他模块中，参见下面的例子：</p>
-<pre><code class="language-c++">py::class_&lt;Pet&gt; pet(m, &quot;Pet&quot;);
+<pre><code class="language-c++">py::class_&lt;Pet&gt; pet(m, "Pet");
 pet.def(py::init&lt;const std::string &amp;&gt;())
-   .def_readwrite(&quot;name&quot;, &amp;Pet::name);
+   .def_readwrite("name", &amp;Pet::name);
 
-py::class_&lt;Dog&gt;(m, &quot;Dog&quot;, pet /* &lt;- specify parent */)
+py::class_&lt;Dog&gt;(m, "Dog", pet /* &lt;- specify parent */)
     .def(py::init&lt;const std::string &amp;&gt;())
-    .def(&quot;bark&quot;, &amp;Dog::bark);
+    .def("bark", &amp;Dog::bark);
 </code></pre>
 <p>假设<code>Pet</code>类的绑定定义在<code>basic</code>模块中，而<code>Dog</code>绑定定义在其他模块。在<code>class_&lt;Dog&gt;</code>中明确与<code>Pet</code>类的继承关系时需要知道<code>Pet</code>，问题是在其他模块定义的<code>Pet</code>不再对<code>Dog</code>可见。我们可以这样处理：</p>
-<pre><code class="language-c++">py::object pet = (py::object) py::module_::import(&quot;basic&quot;).attr(&quot;Pet&quot;);
+<pre><code class="language-c++">py::object pet = (py::object) py::module_::import("basic").attr("Pet");
 
-py::class_&lt;Dog&gt;(m, &quot;Dog&quot;, pet)
+py::class_&lt;Dog&gt;(m, "Dog", pet)
     .def(py::init&lt;const std::string &amp;&gt;())
-    .def(&quot;bark&quot;, &amp;Dog::bark);
+    .def("bark", &amp;Dog::bark);
 </code></pre>
 <p>或者，你可以将基类作为模板参数给<code>class_</code>，让pybind11自动查找到相应的Python类型。但也需要调用一次<code>import</code>函数，确保<code>basic</code>模块的绑定代码已经执行。</p>
-<pre><code class="language-c++">py::module_::import(&quot;basic&quot;);
+<pre><code class="language-c++">py::module_::import("basic");
 
-py::class_&lt;Dog, Pet&gt;(m, &quot;Dog&quot;)
+py::class_&lt;Dog, Pet&gt;(m, "Dog")
     .def(py::init&lt;const std::string &amp;&gt;())
-    .def(&quot;bark&quot;, &amp;Dog::bark);
+    .def("bark", &amp;Dog::bark);
 </code></pre>
 <p>如果存在循环依赖时，上述两种方法都将失效。</p>
 <p>注意，pybind11代码在编译时会默认隐藏符号的可见性（如通过GCC/Clang的<code>-fvisibility=hidden</code>标识），这会干扰访问在其他模块定义的类型的能力。这需要通过手动导出需要被其他模块访问的类型，像这样：</p>
@@ -275,9 +342,9 @@ py::class_&lt;Dog, Pet&gt;(m, &quot;Dog&quot;)
 };
 </code></pre>
 <p>在运行时也可以共享任意的C++对象，尽管很少用到该特性。使用capsule机制在模块间共享内部库数据，可以用来存储、修改、访问用户自定义数据。注意，一个模块能够看到其他模块的数据，仅在他们使用相同的pybind11版本编译时才能实现。参考下面的例子：</p>
-<pre><code class="language-c++">auto data = reinterpret_cast&lt;MyData *&gt;(py::get_shared_data(&quot;mydata&quot;));
+<pre><code class="language-c++">auto data = reinterpret_cast&lt;MyData *&gt;(py::get_shared_data("mydata"));
 if (!data)
-    data = static_cast&lt;MyData *&gt;(py::set_shared_data(&quot;mydata&quot;, new MyData(42)));
+    data = static_cast&lt;MyData *&gt;(py::set_shared_data("mydata", new MyData(42)));
 </code></pre>
 <p>如果在几个单独编译的扩展模块中使用了上述代码段，第一个导入的模块将创建<code>MyData</code>实例，并和指针联系起来。后续导入的模块就可以访问该指针指向的数据了。</p>
 <h3 id="144-模块析构"><a class="header" href="#144-模块析构">14.4 模块析构</a></h3>
@@ -286,12 +353,12 @@ if (!data)
     // perform cleanup here -- this function is called with the GIL held
 };
 
-m.add_object(&quot;_cleanup&quot;, py::capsule(cleanup_callback));
+m.add_object("_cleanup", py::capsule(cleanup_callback));
 </code></pre>
 <p>该方法一个潜在地缺陷是，在cleanup函数调用时，模块公开的类实例可能仍存活着（这是否可以接受通常取决于应用程序）。</p>
 <p>或者，我们可以将capsule存储在类型对象中，确保它不会在回收该类型的所有实例之前被调用：</p>
 <pre><code class="language-c++">auto cleanup_callback = []() { /* ... */ };
-m.attr(&quot;BaseClass&quot;).attr(&quot;_cleanup&quot;) = py::capsule(cleanup_callback);
+m.attr("BaseClass").attr("_cleanup") = py::capsule(cleanup_callback);
 </code></pre>
 <p>上面的方法都在Python中暴露了一个<code>_cleanup</code>的危险属性，从API的角度来看，这种做法并不受欢迎（Python过早的显式调用它可能会导致未定义行为）。这可以通过使用cleanup函数回调的弱引用来规避。</p>
 <pre><code class="language-c++">// Register a callback function that is invoked when the BaseClass object is collected
@@ -304,7 +371,7 @@ py::cpp_function cleanup_callback(
 );
 
 // Create a weak reference with a cleanup callback and initially leak it
-(void) py::weakref(m.attr(&quot;BaseClass&quot;), cleanup_callback).release();
+(void) py::weakref(m.attr("BaseClass"), cleanup_callback).release();
 </code></pre>
 
                     </main>
@@ -336,6 +403,22 @@ py::cpp_function cleanup_callback(
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

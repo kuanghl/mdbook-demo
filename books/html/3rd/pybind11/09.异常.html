@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item "><a href="../../test/chapter_1.html">mdbook_demo</a></li><li class="chapter-item expanded "><a href="../../3rd/pybind11/00.pybind11介绍.html">pybind11</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../3rd/pybind11/01.改动日志.html">改动日志</a></li><li class="chapter-item "><a href="../../3rd/pybind11/02.更新指南.html">更新指南</a></li><li class="chapter-item "><a href="../../3rd/pybind11/03.安装说明.html">安装说明</a></li><li class="chapter-item "><a href="../../3rd/pybind11/04.首次尝试.html">首次尝试</a></li><li class="chapter-item "><a href="../../3rd/pybind11/05.面对对象编程.html">面对对象编程</a></li><li class="chapter-item "><a href="../../3rd/pybind11/06.构建系统.html">构建系统</a></li><li class="chapter-item "><a href="../../3rd/pybind11/07.函数.html">函数</a></li><li class="chapter-item "><a href="../../3rd/pybind11/08.类.html">类</a></li><li class="chapter-item expanded "><a href="../../3rd/pybind11/09.异常.html" class="active">异常</a></li><li class="chapter-item "><a href="../../3rd/pybind11/10.智能指针.html">智能指针</a></li><li class="chapter-item "><a href="../../3rd/pybind11/11.类型转换.html">类型转换</a></li><li class="chapter-item "><a href="../../3rd/pybind11/12.Python的C++接口.html">Python的C++接口</a></li><li class="chapter-item "><a href="../../3rd/pybind11/13.内嵌解释器.html">内嵌解释器</a></li><li class="chapter-item "><a href="../../3rd/pybind11/14.杂项.html">杂项</a></li><li class="chapter-item "><a href="../../3rd/pybind11/15.FAQ.html">FAQ</a></li><li class="chapter-item "><a href="../../3rd/pybind11/16.案例.html">案例</a></li><li class="chapter-item "><a href="../../3rd/pybind11/pybind11_demo.html">pybind11 demo</a></li></ol></li><li class="chapter-item "><a href="../../basic/markdown.html">markdown</a></li><li class="chapter-item "><a href="../../basic/mermaid.html">mermaid</a></li><li class="chapter-item "><a href="../../test/chapter_3.html">Katex</a></li><li class="chapter-item "><a href="../../test/chapter_4.html">whichlang</a></li><li class="chapter-item "><a href="../../test/chapter_2.html">Test</a></li></ol>
+                <ol class="chapter"><li class="chapter-item "><a href="../../test/chapter_1.html">mdbook_mathjax</a></li><li class="chapter-item expanded "><a href="../../3rd/pybind11/00.pybind11介绍.html">pybind11</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../3rd/pybind11/01.改动日志.html">改动日志</a></li><li class="chapter-item "><a href="../../3rd/pybind11/02.更新指南.html">更新指南</a></li><li class="chapter-item "><a href="../../3rd/pybind11/03.安装说明.html">安装说明</a></li><li class="chapter-item "><a href="../../3rd/pybind11/04.首次尝试.html">首次尝试</a></li><li class="chapter-item "><a href="../../3rd/pybind11/05.面对对象编程.html">面对对象编程</a></li><li class="chapter-item "><a href="../../3rd/pybind11/06.构建系统.html">构建系统</a></li><li class="chapter-item "><a href="../../3rd/pybind11/07.函数.html">函数</a></li><li class="chapter-item "><a href="../../3rd/pybind11/08.类.html">类</a></li><li class="chapter-item expanded "><a href="../../3rd/pybind11/09.异常.html" class="active">异常</a></li><li class="chapter-item "><a href="../../3rd/pybind11/10.智能指针.html">智能指针</a></li><li class="chapter-item "><a href="../../3rd/pybind11/11.类型转换.html">类型转换</a></li><li class="chapter-item "><a href="../../3rd/pybind11/12.Python的C++接口.html">Python的C++接口</a></li><li class="chapter-item "><a href="../../3rd/pybind11/13.内嵌解释器.html">内嵌解释器</a></li><li class="chapter-item "><a href="../../3rd/pybind11/14.杂项.html">杂项</a></li><li class="chapter-item "><a href="../../3rd/pybind11/15.FAQ.html">FAQ</a></li><li class="chapter-item "><a href="../../3rd/pybind11/16.案例.html">案例</a></li><li class="chapter-item "><a href="../../3rd/pybind11/pybind11_demo.html">pybind11 demo</a></li></ol></li><li class="chapter-item "><a href="../../basic/markdown.html">markdown</a></li><li class="chapter-item "><a href="../../basic/admonish.html">admonish</a></li><li class="chapter-item "><a href="../../test/chapter_3.html">Katex</a></li><li class="chapter-item "><a href="../../test/chapter_4.html">whichlang</a></li><li class="chapter-item "><a href="../../test/chapter_5.html">langtabs</a></li><li class="chapter-item "><a href="../../test/chapter_2.html">kroki-mermaid</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -188,7 +188,74 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h2 id="9-异常"><a class="header" href="#9-异常">9. 异常</a></h2>
+                        <style>
+.mdbook-alerts {
+  padding: 8px 16px;
+  margin-bottom: 16px;
+  border-left: 0.25em solid var(--mdbook-alerts-color);
+}
+
+.mdbook-alerts > *:first-child {
+  margin-top: 0;
+}
+
+.mdbook-alerts > *:last-child {
+  margin-bottom: 0;
+}
+
+.mdbook-alerts-title {
+  display: flex;
+  font-weight: 600;
+  align-items: center;
+  line-height: 1;
+  color: var(--mdbook-alerts-color);
+  text-transform: capitalize;
+}
+
+.mdbook-alerts-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.2em;
+  background-color: currentColor;
+  -webkit-mask: no-repeat center / 100%;
+  mask: no-repeat center / 100%;
+  -webkit-mask-image: var(--mdbook-alerts-icon);
+  mask-image: var(--mdbook-alerts-icon);
+}
+
+.mdbook-alerts-note {
+  --mdbook-alerts-color: rgb(9, 105, 218);
+  /* https://icon-sets.iconify.design/material-symbols/info-outline-rounded/ */
+  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 17q.425 0 .713-.288T13 16v-4q0-.425-.288-.712T12 11q-.425 0-.712.288T11 12v4q0 .425.288.713T12 17m0-8q.425 0 .713-.288T13 8q0-.425-.288-.712T12 7q-.425 0-.712.288T11 8q0 .425.288.713T12 9m0 13q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22m0-2q3.35 0 5.675-2.325T20 12q0-3.35-2.325-5.675T12 4Q8.65 4 6.325 6.325T4 12q0 3.35 2.325 5.675T12 20m0-8"%2F%3E%3C%2Fsvg%3E');
+}
+
+.mdbook-alerts-tip {
+  --mdbook-alerts-color: rgb(26, 127, 55);
+  /* https://icon-sets.iconify.design/material-symbols/lightbulb-outline-rounded/ */
+  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 22q-.825 0-1.412-.587T10 20h4q0 .825-.587 1.413T12 22m-3-3q-.425 0-.712-.288T8 18q0-.425.288-.712T9 17h6q.425 0 .713.288T16 18q0 .425-.288.713T15 19zm-.75-3q-1.725-1.025-2.738-2.75T4.5 9.5q0-3.125 2.188-5.312T12 2q3.125 0 5.313 2.188T19.5 9.5q0 2.025-1.012 3.75T15.75 16zm.6-2h6.3q1.125-.8 1.738-1.975T17.5 9.5q0-2.3-1.6-3.9T12 4Q9.7 4 8.1 5.6T6.5 9.5q0 1.35.613 2.525T8.85 14M12 14"%2F%3E%3C%2Fsvg%3E');
+}
+
+.mdbook-alerts-important {
+  --mdbook-alerts-color: rgb(130, 80, 223);
+  /* https://icon-sets.iconify.design/material-symbols/chat-info-outline-rounded/ */
+  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 7q.425 0 .713-.288T13 6q0-.425-.288-.712T12 5q-.425 0-.712.288T11 6q0 .425.288.713T12 7m0 8q.425 0 .713-.288T13 14v-4q0-.425-.288-.712T12 9q-.425 0-.712.288T11 10v4q0 .425.288.713T12 15m-6 3l-2.3 2.3q-.475.475-1.088.213T2 19.575V4q0-.825.588-1.412T4 2h16q.825 0 1.413.588T22 4v12q0 .825-.587 1.413T20 18zm-.85-2H20V4H4v13.125zM4 16V4z"%2F%3E%3C%2Fsvg%3E');
+}
+
+.mdbook-alerts-warning {
+  --mdbook-alerts-color: rgb(154, 103, 0);
+  /* https://icon-sets.iconify.design/material-symbols/warning-outline-rounded/ */
+  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M2.725 21q-.275 0-.5-.137t-.35-.363q-.125-.225-.137-.488t.137-.512l9.25-16q.15-.25.388-.375T12 3q.25 0 .488.125t.387.375l9.25 16q.15.25.138.513t-.138.487q-.125.225-.35.363t-.5.137zm1.725-2h15.1L12 6zM12 18q.425 0 .713-.288T13 17q0-.425-.288-.712T12 16q-.425 0-.712.288T11 17q0 .425.288.713T12 18m0-3q.425 0 .713-.288T13 14v-3q0-.425-.288-.712T12 10q-.425 0-.712.288T11 11v3q0 .425.288.713T12 15m0-2.5"%2F%3E%3C%2Fsvg%3E');
+}
+
+.mdbook-alerts-caution {
+  --mdbook-alerts-color: rgb(207, 34, 46);
+  /* https://icon-sets.iconify.design/material-symbols/brightness-alert-outline-rounded/ */
+  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 17q.425 0 .713-.288T13 16q0-.425-.288-.712T12 15q-.425 0-.712.288T11 16q0 .425.288.713T12 17m0-4q.425 0 .713-.288T13 12V8q0-.425-.288-.712T12 7q-.425 0-.712.288T11 8v4q0 .425.288.713T12 13m-3.35 7H6q-.825 0-1.412-.587T4 18v-2.65L2.075 13.4q-.275-.3-.425-.662T1.5 12q0-.375.15-.737t.425-.663L4 8.65V6q0-.825.588-1.412T6 4h2.65l1.95-1.925q.3-.275.663-.425T12 1.5q.375 0 .738.15t.662.425L15.35 4H18q.825 0 1.413.588T20 6v2.65l1.925 1.95q.275.3.425.663t.15.737q0 .375-.15.738t-.425.662L20 15.35V18q0 .825-.587 1.413T18 20h-2.65l-1.95 1.925q-.3.275-.662.425T12 22.5q-.375 0-.737-.15t-.663-.425zm.85-2l2.5 2.5l2.5-2.5H18v-3.5l2.5-2.5L18 9.5V6h-3.5L12 3.5L9.5 6H6v3.5L3.5 12L6 14.5V18zm2.5-6"%2F%3E%3C%2Fsvg%3E');
+}
+
+</style>
+<h2 id="9-异常"><a class="header" href="#9-异常">9. 异常</a></h2>
 <h3 id="91-c内置异常到python异常的转换"><a class="header" href="#91-c内置异常到python异常的转换">9.1 C++内置异常到Python异常的转换</a></h3>
 <p>当Python通过pybind11调用C++代码时，pybind11将捕获C++异常，并将其翻译为对应的Python异常后抛出。这样Python代码就能够处理它们。</p>
 <p>pybind11定义了<code>std::exception</code>及其标准子类，和一些特殊异常到Python异常的翻译。由于它们不是真正的Python异常，所以不能使用Python C API来检查。相反，它们是纯C++异常，当它们到达异常处理器时，pybind11将其翻译为对应的Python异常。</p>
@@ -216,15 +283,15 @@
 <p>这里有个特殊的异常，当入参不能转化为Python对象时，<code>handle::call()</code>将抛出<code>cast_error</code>异常。</p>
 <h3 id="92-注册自定义异常翻译"><a class="header" href="#92-注册自定义异常翻译">9.2 注册自定义异常翻译</a></h3>
 <p>如果上述默认异常转换策略不够用，pybind11也提供了注册自定义异常翻译的支持。类似于pybind11 class，异常翻译也可以定义在模块内或global。要注册一个使用C++异常的<code>what()</code>方法将C++到Python的异常转换，可以使用下面的方法：</p>
-<pre><code class="language-c++">py::register_exception&lt;CppExp&gt;(module, &quot;PyExp&quot;);
+<pre><code class="language-c++">py::register_exception&lt;CppExp&gt;(module, "PyExp");
 </code></pre>
 <p>这个调用在指定模块创建了一个名称为PyExp的Python异常，并自动将CppExp相关的异常转换为PyExp异常。</p>
 <p>相似的函数可以注册模块内的异常翻译：</p>
-<pre><code class="language-c++">py::register_local_exception&lt;CppExp&gt;(module, &quot;PyExp&quot;);
+<pre><code class="language-c++">py::register_local_exception&lt;CppExp&gt;(module, "PyExp");
 </code></pre>
 <p>方法的第三个参数handle可以指定异常的基类：</p>
-<pre><code class="language-c++">py::register_exception&lt;CppExp&gt;(module, &quot;PyExp&quot;, PyExc_RuntimeError);
-py::register_local_exception&lt;CppExp&gt;(module, &quot;PyExp&quot;, PyExc_RuntimeError);
+<pre><code class="language-c++">py::register_exception&lt;CppExp&gt;(module, "PyExp", PyExc_RuntimeError);
+py::register_local_exception&lt;CppExp&gt;(module, "PyExp", PyExc_RuntimeError);
 </code></pre>
 <p>这样，PyExp异常可以捕获PyExp和RuntimeError。</p>
 <p>Python内置的异常类型可以参考Python文档<a href="https://docs.python.org/3/c-api/exceptions.html#standard-exceptions">Standard Exceptions</a>，默认的基类为<code>PyExc_Exception</code>。</p>
@@ -233,7 +300,7 @@ py::register_local_exception&lt;CppExp&gt;(module, &quot;PyExp&quot;, PyExc_Runt
 <p>Inside the translator, <code>std::rethrow_exception</code> should be used within a try block to re-throw the exception. One or more catch clauses to catch the appropriate exceptions should then be used with each clause using <code>PyErr_SetString</code> to set a Python exception or <code>ex(string)</code> to set the python exception to a custom exception type (see below).</p>
 <p>To declare a custom Python exception type, declare a <code>py::exception</code> variable and use this in the associated exception translator (note: it is often useful to make this a static declaration when using it inside a lambda expression without requiring capturing).</p>
 <p>The following example demonstrates this for a hypothetical exception classes <code>MyCustomException</code> and <code>OtherException</code>: the first is translated to a custom python exception <code>MyCustomError</code>, while the second is translated to a standard python RuntimeError:</p>
-<pre><code>static py::exception&lt;MyCustomException&gt; exc(m, &quot;MyCustomError&quot;);
+<pre><code>static py::exception&lt;MyCustomException&gt; exc(m, "MyCustomError");
 py::register_exception_translator([](std::exception_ptr p) {
     try {
         if (p) std::rethrow_exception(p);
@@ -253,7 +320,7 @@ py::register_exception_translator([](std::exception_ptr p) {
   try {
       if (p) std::rethrow_exception(p);
   } catch (const std::invalid_argument &amp;e) {
-      PyErr_SetString(&quot;module1 handled this&quot;)
+      PyErr_SetString("module1 handled this")
   }
 }
 </code></pre>
@@ -262,7 +329,7 @@ py::register_exception_translator([](std::exception_ptr p) {
   try {
       if (p) std::rethrow_exception(p);
   } catch (const std::invalid_argument &amp;e) {
-      PyErr_SetString(&quot;module2 handled this&quot;)
+      PyErr_SetString("module2 handled this")
   }
 }
 </code></pre>
@@ -277,15 +344,15 @@ py::register_exception_translator([](std::exception_ptr p) {
 </div>
 <p>举个例子：</p>
 <pre><code class="language-c++">try {
-    // open(&quot;missing.txt&quot;, &quot;r&quot;)
-    auto file = py::module_::import(&quot;io&quot;).attr(&quot;open&quot;)(&quot;missing.txt&quot;, &quot;r&quot;);
-    auto text = file.attr(&quot;read&quot;)();
-    file.attr(&quot;close&quot;)();
+    // open("missing.txt", "r")
+    auto file = py::module_::import("io").attr("open")("missing.txt", "r");
+    auto text = file.attr("read")();
+    file.attr("close")();
 } catch (py::error_already_set &amp;e) {
     if (e.matches(PyExc_FileNotFoundError)) {
-        py::print(&quot;missing.txt not found&quot;);
+        py::print("missing.txt not found");
     } else if (e.matches(PyExc_PermissionError)) {
-        py::print(&quot;missing.txt found but not accessible&quot;);
+        py::print("missing.txt found but not accessible");
     } else {
         throw;
     }
@@ -293,36 +360,36 @@ py::register_exception_translator([](std::exception_ptr p) {
 </code></pre>
 <p>该方法并不适用与C++到Python的翻译，Python侧抛出的异常总是被翻译为<code>error_already_set</code>.</p>
 <pre><code class="language-c++">try {
-    py::eval(&quot;raise ValueError('The Ring')&quot;);
+    py::eval("raise ValueError('The Ring')");
 } catch (py::value_error &amp;boromir) {
     // Boromir never gets the ring
     assert(false);
 } catch (py::error_already_set &amp;frodo) {
     // Frodo gets the ring
-    py::print(&quot;I will take the ring&quot;);
+    py::print("I will take the ring");
 }
 
 try {
     // py::value_error is a request for pybind11 to raise a Python exception
-    throw py::value_error(&quot;The ball&quot;);
+    throw py::value_error("The ball");
 } catch (py::error_already_set &amp;cat) {
     // cat won't catch the ball since
     // py::value_error is not a Python exception
     assert(false);
 } catch (py::value_error &amp;dog) {
     // dog will catch the ball
-    py::print(&quot;Run Spot run&quot;);
+    py::print("Run Spot run");
     throw;  // Throw it again (pybind11 will raise ValueError)
 }
 </code></pre>
 <h3 id="95-处理python-c-api的错误"><a class="header" href="#95-处理python-c-api的错误">9.5 处理Python C API的错误</a></h3>
 <p>尽可能地使用pybind11 wrappers代替直接调用Python C API。如果确实需要直接使用Python C API，除了需要手动管理引用计数外，还必须遵守pybind11的错误处理协议。</p>
 <p>在调用Python C API后，如果Python返回错误，需要调用<code>throw py::error_already_set();</code>语句，让pybind11来处理异常并传递给Python解释器。这包括对错误设置函数的调用，如<code>PyErr_SetString</code>。</p>
-<pre><code class="language-c++">PyErr_SetString(PyExc_TypeError, &quot;C API type error demo&quot;);
+<pre><code class="language-c++">PyErr_SetString(PyExc_TypeError, "C API type error demo");
 throw py::error_already_set();
 
 // But it would be easier to simply...
-throw py::type_error(&quot;pybind11 wrapper type error&quot;);
+throw py::type_error("pybind11 wrapper type error");
 </code></pre>
 <p>也可以调用<code>PyErr_Clear</code>来忽略错误。</p>
 <p>任何Python错误必须被抛出或清除，否则Python/pybind11将处于无效的状态。</p>
@@ -331,13 +398,13 @@ throw py::type_error(&quot;pybind11 wrapper type error&quot;);
 <pre><code class="language-python">try:
     print(1 / 0)
 except Exception as exc:
-    raise RuntimeError(&quot;could not divide by zero&quot;) from exc
+    raise RuntimeError("could not divide by zero") from exc
 </code></pre>
 <p>pybind11 2.8版本，你可以使用<code>py::raise_from</code>函数来完成相同的事。它设置当前Python错误指示器，所以要继续传播异常，你应该<code>throw py::error_already_set()</code>（Python 3 only）。</p>
 <pre><code class="language-c++">try {
-    py::eval(&quot;print(1 / 0&quot;));
+    py::eval("print(1 / 0"));
 } catch (py::error_already_set &amp;e) {
-    py::raise_from(e, PyExc_RuntimeError, &quot;could not divide by zero&quot;);
+    py::raise_from(e, PyExc_RuntimeError, "could not divide by zero");
     throw py::error_already_set();
 }
 </code></pre>
@@ -389,6 +456,22 @@ except Exception as exc:
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

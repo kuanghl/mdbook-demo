@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item "><a href="../../test/chapter_1.html">mdbook_demo</a></li><li class="chapter-item expanded "><a href="../../3rd/pybind11/00.pybind11介绍.html">pybind11</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../3rd/pybind11/01.改动日志.html">改动日志</a></li><li class="chapter-item "><a href="../../3rd/pybind11/02.更新指南.html">更新指南</a></li><li class="chapter-item "><a href="../../3rd/pybind11/03.安装说明.html">安装说明</a></li><li class="chapter-item "><a href="../../3rd/pybind11/04.首次尝试.html">首次尝试</a></li><li class="chapter-item "><a href="../../3rd/pybind11/05.面对对象编程.html">面对对象编程</a></li><li class="chapter-item "><a href="../../3rd/pybind11/06.构建系统.html">构建系统</a></li><li class="chapter-item "><a href="../../3rd/pybind11/07.函数.html">函数</a></li><li class="chapter-item "><a href="../../3rd/pybind11/08.类.html">类</a></li><li class="chapter-item "><a href="../../3rd/pybind11/09.异常.html">异常</a></li><li class="chapter-item "><a href="../../3rd/pybind11/10.智能指针.html">智能指针</a></li><li class="chapter-item "><a href="../../3rd/pybind11/11.类型转换.html">类型转换</a></li><li class="chapter-item "><a href="../../3rd/pybind11/12.Python的C++接口.html">Python的C++接口</a></li><li class="chapter-item expanded "><a href="../../3rd/pybind11/13.内嵌解释器.html" class="active">内嵌解释器</a></li><li class="chapter-item "><a href="../../3rd/pybind11/14.杂项.html">杂项</a></li><li class="chapter-item "><a href="../../3rd/pybind11/15.FAQ.html">FAQ</a></li><li class="chapter-item "><a href="../../3rd/pybind11/16.案例.html">案例</a></li><li class="chapter-item "><a href="../../3rd/pybind11/pybind11_demo.html">pybind11 demo</a></li></ol></li><li class="chapter-item "><a href="../../basic/markdown.html">markdown</a></li><li class="chapter-item "><a href="../../basic/mermaid.html">mermaid</a></li><li class="chapter-item "><a href="../../test/chapter_3.html">Katex</a></li><li class="chapter-item "><a href="../../test/chapter_4.html">whichlang</a></li><li class="chapter-item "><a href="../../test/chapter_2.html">Test</a></li></ol>
+                <ol class="chapter"><li class="chapter-item "><a href="../../test/chapter_1.html">mdbook_mathjax</a></li><li class="chapter-item expanded "><a href="../../3rd/pybind11/00.pybind11介绍.html">pybind11</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../3rd/pybind11/01.改动日志.html">改动日志</a></li><li class="chapter-item "><a href="../../3rd/pybind11/02.更新指南.html">更新指南</a></li><li class="chapter-item "><a href="../../3rd/pybind11/03.安装说明.html">安装说明</a></li><li class="chapter-item "><a href="../../3rd/pybind11/04.首次尝试.html">首次尝试</a></li><li class="chapter-item "><a href="../../3rd/pybind11/05.面对对象编程.html">面对对象编程</a></li><li class="chapter-item "><a href="../../3rd/pybind11/06.构建系统.html">构建系统</a></li><li class="chapter-item "><a href="../../3rd/pybind11/07.函数.html">函数</a></li><li class="chapter-item "><a href="../../3rd/pybind11/08.类.html">类</a></li><li class="chapter-item "><a href="../../3rd/pybind11/09.异常.html">异常</a></li><li class="chapter-item "><a href="../../3rd/pybind11/10.智能指针.html">智能指针</a></li><li class="chapter-item "><a href="../../3rd/pybind11/11.类型转换.html">类型转换</a></li><li class="chapter-item "><a href="../../3rd/pybind11/12.Python的C++接口.html">Python的C++接口</a></li><li class="chapter-item expanded "><a href="../../3rd/pybind11/13.内嵌解释器.html" class="active">内嵌解释器</a></li><li class="chapter-item "><a href="../../3rd/pybind11/14.杂项.html">杂项</a></li><li class="chapter-item "><a href="../../3rd/pybind11/15.FAQ.html">FAQ</a></li><li class="chapter-item "><a href="../../3rd/pybind11/16.案例.html">案例</a></li><li class="chapter-item "><a href="../../3rd/pybind11/pybind11_demo.html">pybind11 demo</a></li></ol></li><li class="chapter-item "><a href="../../basic/markdown.html">markdown</a></li><li class="chapter-item "><a href="../../basic/admonish.html">admonish</a></li><li class="chapter-item "><a href="../../test/chapter_3.html">Katex</a></li><li class="chapter-item "><a href="../../test/chapter_4.html">whichlang</a></li><li class="chapter-item "><a href="../../test/chapter_5.html">langtabs</a></li><li class="chapter-item "><a href="../../test/chapter_2.html">kroki-mermaid</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -188,7 +188,74 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h2 id="13-内嵌解释器"><a class="header" href="#13-内嵌解释器">13. 内嵌解释器</a></h2>
+                        <style>
+.mdbook-alerts {
+  padding: 8px 16px;
+  margin-bottom: 16px;
+  border-left: 0.25em solid var(--mdbook-alerts-color);
+}
+
+.mdbook-alerts > *:first-child {
+  margin-top: 0;
+}
+
+.mdbook-alerts > *:last-child {
+  margin-bottom: 0;
+}
+
+.mdbook-alerts-title {
+  display: flex;
+  font-weight: 600;
+  align-items: center;
+  line-height: 1;
+  color: var(--mdbook-alerts-color);
+  text-transform: capitalize;
+}
+
+.mdbook-alerts-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.2em;
+  background-color: currentColor;
+  -webkit-mask: no-repeat center / 100%;
+  mask: no-repeat center / 100%;
+  -webkit-mask-image: var(--mdbook-alerts-icon);
+  mask-image: var(--mdbook-alerts-icon);
+}
+
+.mdbook-alerts-note {
+  --mdbook-alerts-color: rgb(9, 105, 218);
+  /* https://icon-sets.iconify.design/material-symbols/info-outline-rounded/ */
+  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 17q.425 0 .713-.288T13 16v-4q0-.425-.288-.712T12 11q-.425 0-.712.288T11 12v4q0 .425.288.713T12 17m0-8q.425 0 .713-.288T13 8q0-.425-.288-.712T12 7q-.425 0-.712.288T11 8q0 .425.288.713T12 9m0 13q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22m0-2q3.35 0 5.675-2.325T20 12q0-3.35-2.325-5.675T12 4Q8.65 4 6.325 6.325T4 12q0 3.35 2.325 5.675T12 20m0-8"%2F%3E%3C%2Fsvg%3E');
+}
+
+.mdbook-alerts-tip {
+  --mdbook-alerts-color: rgb(26, 127, 55);
+  /* https://icon-sets.iconify.design/material-symbols/lightbulb-outline-rounded/ */
+  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 22q-.825 0-1.412-.587T10 20h4q0 .825-.587 1.413T12 22m-3-3q-.425 0-.712-.288T8 18q0-.425.288-.712T9 17h6q.425 0 .713.288T16 18q0 .425-.288.713T15 19zm-.75-3q-1.725-1.025-2.738-2.75T4.5 9.5q0-3.125 2.188-5.312T12 2q3.125 0 5.313 2.188T19.5 9.5q0 2.025-1.012 3.75T15.75 16zm.6-2h6.3q1.125-.8 1.738-1.975T17.5 9.5q0-2.3-1.6-3.9T12 4Q9.7 4 8.1 5.6T6.5 9.5q0 1.35.613 2.525T8.85 14M12 14"%2F%3E%3C%2Fsvg%3E');
+}
+
+.mdbook-alerts-important {
+  --mdbook-alerts-color: rgb(130, 80, 223);
+  /* https://icon-sets.iconify.design/material-symbols/chat-info-outline-rounded/ */
+  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 7q.425 0 .713-.288T13 6q0-.425-.288-.712T12 5q-.425 0-.712.288T11 6q0 .425.288.713T12 7m0 8q.425 0 .713-.288T13 14v-4q0-.425-.288-.712T12 9q-.425 0-.712.288T11 10v4q0 .425.288.713T12 15m-6 3l-2.3 2.3q-.475.475-1.088.213T2 19.575V4q0-.825.588-1.412T4 2h16q.825 0 1.413.588T22 4v12q0 .825-.587 1.413T20 18zm-.85-2H20V4H4v13.125zM4 16V4z"%2F%3E%3C%2Fsvg%3E');
+}
+
+.mdbook-alerts-warning {
+  --mdbook-alerts-color: rgb(154, 103, 0);
+  /* https://icon-sets.iconify.design/material-symbols/warning-outline-rounded/ */
+  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M2.725 21q-.275 0-.5-.137t-.35-.363q-.125-.225-.137-.488t.137-.512l9.25-16q.15-.25.388-.375T12 3q.25 0 .488.125t.387.375l9.25 16q.15.25.138.513t-.138.487q-.125.225-.35.363t-.5.137zm1.725-2h15.1L12 6zM12 18q.425 0 .713-.288T13 17q0-.425-.288-.712T12 16q-.425 0-.712.288T11 17q0 .425.288.713T12 18m0-3q.425 0 .713-.288T13 14v-3q0-.425-.288-.712T12 10q-.425 0-.712.288T11 11v3q0 .425.288.713T12 15m0-2.5"%2F%3E%3C%2Fsvg%3E');
+}
+
+.mdbook-alerts-caution {
+  --mdbook-alerts-color: rgb(207, 34, 46);
+  /* https://icon-sets.iconify.design/material-symbols/brightness-alert-outline-rounded/ */
+  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 17q.425 0 .713-.288T13 16q0-.425-.288-.712T12 15q-.425 0-.712.288T11 16q0 .425.288.713T12 17m0-4q.425 0 .713-.288T13 12V8q0-.425-.288-.712T12 7q-.425 0-.712.288T11 8v4q0 .425.288.713T12 13m-3.35 7H6q-.825 0-1.412-.587T4 18v-2.65L2.075 13.4q-.275-.3-.425-.662T1.5 12q0-.375.15-.737t.425-.663L4 8.65V6q0-.825.588-1.412T6 4h2.65l1.95-1.925q.3-.275.663-.425T12 1.5q.375 0 .738.15t.662.425L15.35 4H18q.825 0 1.413.588T20 6v2.65l1.925 1.95q.275.3.425.663t.15.737q0 .375-.15.738t-.425.662L20 15.35V18q0 .825-.587 1.413T18 20h-2.65l-1.95 1.925q-.3.275-.662.425T12 22.5q-.375 0-.737-.15t-.663-.425zm.85-2l2.5 2.5l2.5-2.5H18v-3.5l2.5-2.5L18 9.5V6h-3.5L12 3.5L9.5 6H6v3.5L3.5 12L6 14.5V18zm2.5-6"%2F%3E%3C%2Fsvg%3E');
+}
+
+</style>
+<h2 id="13-内嵌解释器"><a class="header" href="#13-内嵌解释器">13. 内嵌解释器</a></h2>
 <p>虽然pybind11主要聚焦于使用C++扩展Python，反过来也是可以的，可以内嵌Python解释器到C++程序中。前面章节讲解的pybind11内容仍然适用。本节将介绍嵌入所需的一些额外内容。</p>
 <h3 id="131-准备开始"><a class="header" href="#131-准备开始">13.1 准备开始</a></h3>
 <p>创建一个内嵌解释器的程序，可以在Cmake中添加<code>pybind11::embed</code>来支持。</p>
@@ -207,7 +274,7 @@ namespace py = pybind11;
 int main() {
     py::scoped_interpreter guard{}; // start the interpreter and keep it alive
 
-    py::print(&quot;Hello, World!&quot;); // use the Python API
+    py::print("Hello, World!"); // use the Python API
 }
 </code></pre>
 <p>需要在使用任意Python API前初始化解释器，包括pybind11 Python函数和类。RAII guard类<code>scoped_interpreter</code>可用来管理解释器的生命周期。在guard类销毁时，解释器将会关闭并占用的内存。必须在所有Python函数前调用它。</p>
@@ -219,11 +286,11 @@ namespace py = pybind11;
 int main() {
     py::scoped_interpreter guard{};
 
-    py::exec(R&quot;(
-        kwargs = dict(name=&quot;World&quot;, number=42)
-        message = &quot;Hello, {name}! The answer is {number}&quot;.format(**kwargs)
+    py::exec(R"(
+        kwargs = dict(name="World", number=42)
+        message = "Hello, {name}! The answer is {number}".format(**kwargs)
         print(message)
-    )&quot;);
+    )");
 }
 </code></pre>
 <p>也可以使用pybind11 API来实现相同的功能（参考12章）。</p>
@@ -234,8 +301,8 @@ using namespace py::literals;
 int main() {
     py::scoped_interpreter guard{};
 
-    auto kwargs = py::dict(&quot;name&quot;_a=&quot;World&quot;, &quot;number&quot;_a=42);
-    auto message = &quot;Hello, {name}! The answer is {number}&quot;_s.format(**kwargs);
+    auto kwargs = py::dict("name"_a="World", "number"_a=42);
+    auto message = "Hello, {name}! The answer is {number}"_s.format(**kwargs);
     py::print(message);
 }
 </code></pre>
@@ -249,29 +316,29 @@ using namespace py::literals;
 int main() {
     py::scoped_interpreter guard{};
 
-    auto locals = py::dict(&quot;name&quot;_a=&quot;World&quot;, &quot;number&quot;_a=42);
-    py::exec(R&quot;(
-        message = &quot;Hello, {name}! The answer is {number}&quot;.format(**locals())
-    )&quot;, py::globals(), locals);
+    auto locals = py::dict("name"_a="World", "number"_a=42);
+    py::exec(R"(
+        message = "Hello, {name}! The answer is {number}".format(**locals())
+    )", py::globals(), locals);
 
-    auto message = locals[&quot;message&quot;].cast&lt;std::string&gt;();
+    auto message = locals["message"].cast&lt;std::string&gt;();
     std::cout &lt;&lt; message;
 }
 </code></pre>
 <h3 id="123-导入模块"><a class="header" href="#123-导入模块">12.3 导入模块</a></h3>
 <p>使用<code>module_::import()</code>可以导入Python模块。</p>
-<pre><code class="language-c++">py::module_ sys = py::module_::import(&quot;sys&quot;);
-py::print(sys.attr(&quot;path&quot;));
+<pre><code class="language-c++">py::module_ sys = py::module_::import("sys");
+py::print(sys.attr("path"));
 </code></pre>
 <p>为方便起见，内嵌解释器时，会将当前工作路径包含到<code>sys.path</code>中。这样我们可以方便地导入本地Python文件。</p>
-<pre><code class="language-python">&quot;&quot;&quot;calc.py located in the working directory&quot;&quot;&quot;
+<pre><code class="language-python">"""calc.py located in the working directory"""
 
 
 def add(i, j):
     return i + j
 </code></pre>
-<pre><code class="language-c++">py::module_ calc = py::module_::import(&quot;calc&quot;);
-py::object result = calc.attr(&quot;add&quot;)(1, 2);
+<pre><code class="language-c++">py::module_ calc = py::module_::import("calc");
+py::object result = calc.attr("add")(1, 2);
 int n = result.cast&lt;int&gt;();
 assert(n == 3);
 </code></pre>
@@ -283,7 +350,7 @@ namespace py = pybind11;
 
 PYBIND11_EMBEDDED_MODULE(fast_calc, m) {
     // `m` is a `py::module_` which is used to bind functions and classes
-    m.def(&quot;add&quot;, [](int i, int j) {
+    m.def("add", [](int i, int j) {
         return i + j;
     });
 }
@@ -291,14 +358,14 @@ PYBIND11_EMBEDDED_MODULE(fast_calc, m) {
 int main() {
     py::scoped_interpreter guard{};
 
-    auto fast_calc = py::module_::import(&quot;fast_calc&quot;);
-    auto result = fast_calc.attr(&quot;add&quot;)(1, 2).cast&lt;int&gt;();
+    auto fast_calc = py::module_::import("fast_calc");
+    auto result = fast_calc.attr("add")(1, 2).cast&lt;int&gt;();
     assert(result == 3);
 }
 </code></pre>
 <p>Unlike extension modules where only a single binary module can be created, on the embedded side an unlimited number of modules can be added using multiple <code>PYBIND11_EMBEDDED_MODULE</code> definitions (as long as they have unique names).</p>
 <p>These modules are added to Python’s list of builtins, so they can also be imported in pure Python files loaded by the interpreter. Everything interacts naturally:</p>
-<pre><code class="language-c++">&quot;&quot;&quot;py_module.py located in the working directory&quot;&quot;&quot;
+<pre><code class="language-c++">"""py_module.py located in the working directory"""
 import cpp_module
 
 a = cpp_module.a
@@ -307,25 +374,25 @@ b = a + 1
 namespace py = pybind11;
 
 PYBIND11_EMBEDDED_MODULE(cpp_module, m) {
-    m.attr(&quot;a&quot;) = 1;
+    m.attr("a") = 1;
 }
 
 int main() {
     py::scoped_interpreter guard{};
 
-    auto py_module = py::module_::import(&quot;py_module&quot;);
+    auto py_module = py::module_::import("py_module");
 
-    auto locals = py::dict(&quot;fmt&quot;_a=&quot;{} + {} = {}&quot;, **py_module.attr(&quot;__dict__&quot;));
-    assert(locals[&quot;a&quot;].cast&lt;int&gt;() == 1);
-    assert(locals[&quot;b&quot;].cast&lt;int&gt;() == 2);
+    auto locals = py::dict("fmt"_a="{} + {} = {}", **py_module.attr("__dict__"));
+    assert(locals["a"].cast&lt;int&gt;() == 1);
+    assert(locals["b"].cast&lt;int&gt;() == 2);
 
-    py::exec(R&quot;(
+    py::exec(R"(
         c = a + b
         message = fmt.format(a, b, c)
-    )&quot;, py::globals(), locals);
+    )", py::globals(), locals);
 
-    assert(locals[&quot;c&quot;].cast&lt;int&gt;() == 3);
-    assert(locals[&quot;message&quot;].cast&lt;std::string&gt;() == &quot;1 + 2 = 3&quot;);
+    assert(locals["c"].cast&lt;int&gt;() == 3);
+    assert(locals["message"].cast&lt;std::string&gt;() == "1 + 2 = 3");
 }
 </code></pre>
 <h3 id="125-解释器的生命周期"><a class="header" href="#125-解释器的生命周期">12.5 解释器的生命周期</a></h3>
@@ -366,6 +433,22 @@ int main() {
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 
