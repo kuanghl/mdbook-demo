@@ -28,6 +28,8 @@
 
 ## Section 2
 
+![rust picture](https://vinciyan.github.io/mdbook-image-viewer/1659948245306.png)
+
 # Chapter 6
 
 ## Section 1

@@ -2,7 +2,7 @@
 authors = ["khl <1365342449@qq.com>"]
 title = "mdbook-demo"
 description = "The example book covers examples."
-language = "zh-Hans" # "en"
+language = 'zh' # "zh-Hans" # "en"
 multilingual = false
 src = "./src"
 
@@ -17,6 +17,8 @@ use-default-preprocessors = false
 [preprocessor.links]
 
 [preprocessor.alerts]
+
+[preprocessor.image-viewer]
 
 # devicons cdn慢卡顿
 # [preprocessor.langtabs]
@@ -77,12 +79,13 @@ preferred-dark-theme = "mocha"
 git-repository-url = "https://github.com/kuanghl/mdbook-demo"
 git-repository-icon = "fa-github"
 no-section-label = true
-edit-url-template = "https://github.com/kuanghl/mdbook-demo/edit/master/src/{path}"
+edit-url-template = "https://github.com/kuanghl/mdbook-demo/edit/master/{path}"
 additional-css = [
     "./theme/mdbook-admonish.css", 
     "./theme/catppuccin.css", "./theme/catppuccin-admonish.css", 
     "katex.min.css", 
     "./assets/whichlang/whichlang.css",
+    "./assets/translate/translate.css",
     # "./assets/langtabs/langtabs.css",
     ]
 additional-js = [
@@ -90,6 +93,7 @@ additional-js = [
     "./assets/help/support.js", 
     "./assets/mermaid/mermaid.min.js", "./assets/mermaid/mermaid-init.js",
     "./assets/whichlang/whichlang.js", 
+    "./assets/translate/translate_button.js", 
     # "./assets/langtabs/langtabs.js", 
     ]
 

@@ -1,6 +1,9 @@
 #!/usr/bin/bash
 #!/bin/sh
 
+# https://translationproject.org/team/index.html
+# zh_CN/es
+
 PARAM1=$1
 PARAM2=$2
 

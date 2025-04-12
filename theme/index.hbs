@@ -171,6 +171,7 @@
                     <h1 class="menu-title">{{ book_title }}</h1>
 
                     <div class="right-buttons">
+
                         {{#if print_enable}}
                         <a href="{{ path_to_root }}print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
@@ -186,6 +187,10 @@
                             <i id="git-edit-button" class="fa fa-edit"></i>
                         </a>
                         {{/if}}
+
+                        <a id="translate" class="icon-button" type="button" title="Change language" aria-label="Change language">
+                            <i class="fa fa-language"></i> 
+                        </a>
 
                     </div>
                 </div>
@@ -319,6 +324,8 @@
         <script src="{{ path_to_root }}clipboard.min.js"></script>
         <script src="{{ path_to_root }}highlight.js"></script>
         <script src="{{ path_to_root }}book.js"></script>
+
+        <script src="https://cdn.staticfile.net/translate.js/3.14.0/translate.js"></script>
 
         <!-- Custom JS scripts -->
         {{#each additional_js}}

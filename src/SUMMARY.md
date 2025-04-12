@@ -1,9 +1,8 @@
 # Summary
 
-
-- [mdbook_mathjax](./test/chapter_1.md)
-- [pybind11](./3rd/pybind11/00.pybind11介绍.md)
-  - [改动日志](./3rd/pybind11/01.改动日志.md)
+- [Mdbook Mathjax](./test/chapter_1.md)
+- [Pybind11](./3rd/pybind11/00.pybind11介绍.md)
+- [改动日志](./3rd/pybind11/01.改动日志.md)
   - [更新指南](./3rd/pybind11/02.更新指南.md)
   - [安装说明](./3rd/pybind11/03.安装说明.md)
   - [首次尝试](./3rd/pybind11/04.首次尝试.md)
@@ -20,11 +19,11 @@
   - [FAQ](./3rd/pybind11/15.FAQ.md)
   - [案例](./3rd/pybind11/16.案例.md)
   - [pybind11 demo](./3rd/pybind11/pybind11_demo.md)
-- [markdown](./basic/markdown.md)
-- [admonish](./basic/admonish.md)
+- [Markdown](./basic/markdown.md)
+- [Admonish](./basic/admonish.md)
 - [Katex](./test/chapter_3.md)
-- [whichlang](./test/chapter_4.md)
-- [langtabs](./test/chapter_5.md)
-- [kroki-mermaid](./test/chapter_2.md)
+- [Whichlang](./test/chapter_4.md)
+- [Langtabs](./test/chapter_5.md)
+- [Kroki-mermaid](./test/chapter_2.md)
 
   

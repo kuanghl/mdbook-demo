@@ -19,6 +19,7 @@
 - [mdbook-alerts](https://github.com/lambdalisue/rs-mdbook-alerts.git)
 - [mdbook-asciidoc](https://github.com/daviddrysdale/mdbook-asciidoc.git)
 - [mdbook-embedify](https://github.com/MR-Addict/mdbook-embedify.git) 
+- [comprehensive-rust](https://github.com/google/comprehensive-rust.git)
 - License-MIT. Give me a star, if this case is useful to you.
 - Build mdbooks plugins in rust.
   ```sh
@@ -55,7 +56,7 @@ git clone https://github.com/kuanghl/mdbook-demo.git
 ```sh
 # linux
 sudo apt-get update
-sudo apt-get install language-pack-zh-hans
+sudo apt-get install language-pack-zh-hans gettext
 sudo update-locale LANG=zh_CN.UTF-8
 sudo apt-get install chromium-browser
 cargo uninstall mdbook
