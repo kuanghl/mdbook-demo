@@ -318,7 +318,7 @@
 }
 
 </style>
-<h1 id="guide"><a class="header" href="#guide">Guide</a></h1>
+<h1 id="kroki-mermaid"><a class="header" href="#kroki-mermaid">kroki-mermaid</a></h1>
 <h2 id="kroki"><a class="header" href="#kroki">kroki</a></h2>
 <pre><code class="language-kroki-mermaid">graph TD
   A[ Anyone ] --&gt;|Can help | B( Go to github.com/yuzutech/kroki )
@@ -554,22 +554,6 @@ if (window.MutationObserver) {
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 
