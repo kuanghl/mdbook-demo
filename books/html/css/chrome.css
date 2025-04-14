@@ -1,5 +1,7 @@
 /* CSS for UI elements (a.k.a. chrome) */
 
+@import 'variables.css';
+
 html {
     scrollbar-color: var(--scrollbar) var(--bg);
 }
@@ -369,10 +371,6 @@ ul#searchresults li {
 }
 ul#searchresults li.focus {
     background-color: var(--searchresults-li-bg);
-}
-ul#searchresults li a em {
-    font-weight: bold;
-    font-style: normal;
 }
 ul#searchresults span.teaser {
     display: block;

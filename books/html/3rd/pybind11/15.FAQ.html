@@ -355,7 +355,7 @@ void increment_ptr(int *i)
 }
 </code></pre>
 <p>绑定代码为:</p>
-<pre><code class="language-c++">m.def("foo", 
+<pre><code class="language-c++">m.def(&quot;foo&quot;, 
     [](int i) {
         int rv = foo(i); 
         return std::make_tuple(rv, i); 
@@ -375,7 +375,7 @@ PYBIND11_MODULE(example, m) {
 </code></pre>
 <p><code>ex1.cpp</code>:</p>
 <pre><code class="language-c++">void init_ex1(py::module_ &amp;m) {
-    m.def("add", 
+    m.def(&quot;add&quot;, 
         [](int a, int b) { 
             return a + b; 
         });
@@ -383,7 +383,7 @@ PYBIND11_MODULE(example, m) {
 </code></pre>
 <p><code>ex2.cpp</code>:</p>
 <pre><code class="language-c++">void init_ex2(py::module_ &amp;m) {
-    m.def("sub", 
+    m.def(&quot;sub&quot;, 
     [](int a, int b) { 
         return a - b; 
     });
@@ -443,7 +443,7 @@ pybind们通常只想为那些实际从外部调用的函数导出符号。这�
 端是否已发出信号。这个函数只检查一个标志，所以它的影响可以忽略不计。接收到信号后，您必须通过抛出 py::error_already_set 显式中断执行（这将传播现有的
 KeyboardInterrupt），或者清除错误（您通常不希望这样做）：</p>
 <pre><code class="language-c++">PYBIND11_MODULE(example, m){
-    m.def("long running_func", 
+    m.def(&quot;long running_func&quot;, 
         [](){
             for (;;) 
             {
@@ -714,22 +714,6 @@ if (window.MutationObserver) {
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 

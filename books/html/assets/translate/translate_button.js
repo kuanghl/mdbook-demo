@@ -8,7 +8,7 @@
 // translate.service.use("client.edge");
 
 // 语言选择下拉框
-translate.selectLanguageTag.languages = 'english,chinese_simplified,korean';
+// translate.selectLanguageTag.languages = 'english,chinese_simplified,korean';
 
 // 忽略翻译的class id
 translate.ignore.class.push("icon-button");
