@@ -337,7 +337,7 @@ namespace py = pybind11;
 int main() {
     py::scoped_interpreter guard{}; // start the interpreter and keep it alive
 
-    py::print(&quot;Hello, World!&quot;); // use the Python API
+    py::print("Hello, World!"); // use the Python API
 }
 </code></pre>
 <p>需要在使用任意Python API前初始化解释器，包括pybind11 Python函数和类。RAII guard类<code>scoped_interpreter</code>可用来管理解释器的生命周期。在guard类销毁时，解释器将会关闭并占用的内存。必须在所有Python函数前调用它。</p>
@@ -349,11 +349,11 @@ namespace py = pybind11;
 int main() {
     py::scoped_interpreter guard{};
 
-    py::exec(R&quot;(
-        kwargs = dict(name=&quot;World&quot;, number=42)
-        message = &quot;Hello, {name}! The answer is {number}&quot;.format(**kwargs)
+    py::exec(R"(
+        kwargs = dict(name="World", number=42)
+        message = "Hello, {name}! The answer is {number}".format(**kwargs)
         print(message)
-    )&quot;);
+    )");
 }
 </code></pre>
 <p>也可以使用pybind11 API来实现相同的功能（参考12章）。</p>
@@ -364,8 +364,8 @@ using namespace py::literals;
 int main() {
     py::scoped_interpreter guard{};
 
-    auto kwargs = py::dict(&quot;name&quot;_a=&quot;World&quot;, &quot;number&quot;_a=42);
-    auto message = &quot;Hello, {name}! The answer is {number}&quot;_s.format(**kwargs);
+    auto kwargs = py::dict("name"_a="World", "number"_a=42);
+    auto message = "Hello, {name}! The answer is {number}"_s.format(**kwargs);
     py::print(message);
 }
 </code></pre>
@@ -379,29 +379,29 @@ using namespace py::literals;
 int main() {
     py::scoped_interpreter guard{};
 
-    auto locals = py::dict(&quot;name&quot;_a=&quot;World&quot;, &quot;number&quot;_a=42);
-    py::exec(R&quot;(
-        message = &quot;Hello, {name}! The answer is {number}&quot;.format(**locals())
-    )&quot;, py::globals(), locals);
+    auto locals = py::dict("name"_a="World", "number"_a=42);
+    py::exec(R"(
+        message = "Hello, {name}! The answer is {number}".format(**locals())
+    )", py::globals(), locals);
 
-    auto message = locals[&quot;message&quot;].cast&lt;std::string&gt;();
+    auto message = locals["message"].cast&lt;std::string&gt;();
     std::cout &lt;&lt; message;
 }
 </code></pre>
 <h3 id="123-导入模块"><a class="header" href="#123-导入模块">12.3 导入模块</a></h3>
 <p>使用<code>module_::import()</code>可以导入Python模块。</p>
-<pre><code class="language-c++">py::module_ sys = py::module_::import(&quot;sys&quot;);
-py::print(sys.attr(&quot;path&quot;));
+<pre><code class="language-c++">py::module_ sys = py::module_::import("sys");
+py::print(sys.attr("path"));
 </code></pre>
 <p>为方便起见，内嵌解释器时，会将当前工作路径包含到<code>sys.path</code>中。这样我们可以方便地导入本地Python文件。</p>
-<pre><code class="language-python">&quot;&quot;&quot;calc.py located in the working directory&quot;&quot;&quot;
+<pre><code class="language-python">"""calc.py located in the working directory"""
 
 
 def add(i, j):
     return i + j
 </code></pre>
-<pre><code class="language-c++">py::module_ calc = py::module_::import(&quot;calc&quot;);
-py::object result = calc.attr(&quot;add&quot;)(1, 2);
+<pre><code class="language-c++">py::module_ calc = py::module_::import("calc");
+py::object result = calc.attr("add")(1, 2);
 int n = result.cast&lt;int&gt;();
 assert(n == 3);
 </code></pre>
@@ -413,7 +413,7 @@ namespace py = pybind11;
 
 PYBIND11_EMBEDDED_MODULE(fast_calc, m) {
     // `m` is a `py::module_` which is used to bind functions and classes
-    m.def(&quot;add&quot;, [](int i, int j) {
+    m.def("add", [](int i, int j) {
         return i + j;
     });
 }
@@ -421,14 +421,14 @@ PYBIND11_EMBEDDED_MODULE(fast_calc, m) {
 int main() {
     py::scoped_interpreter guard{};
 
-    auto fast_calc = py::module_::import(&quot;fast_calc&quot;);
-    auto result = fast_calc.attr(&quot;add&quot;)(1, 2).cast&lt;int&gt;();
+    auto fast_calc = py::module_::import("fast_calc");
+    auto result = fast_calc.attr("add")(1, 2).cast&lt;int&gt;();
     assert(result == 3);
 }
 </code></pre>
 <p>Unlike extension modules where only a single binary module can be created, on the embedded side an unlimited number of modules can be added using multiple <code>PYBIND11_EMBEDDED_MODULE</code> definitions (as long as they have unique names).</p>
 <p>These modules are added to Python’s list of builtins, so they can also be imported in pure Python files loaded by the interpreter. Everything interacts naturally:</p>
-<pre><code class="language-c++">&quot;&quot;&quot;py_module.py located in the working directory&quot;&quot;&quot;
+<pre><code class="language-c++">"""py_module.py located in the working directory"""
 import cpp_module
 
 a = cpp_module.a
@@ -437,25 +437,25 @@ b = a + 1
 namespace py = pybind11;
 
 PYBIND11_EMBEDDED_MODULE(cpp_module, m) {
-    m.attr(&quot;a&quot;) = 1;
+    m.attr("a") = 1;
 }
 
 int main() {
     py::scoped_interpreter guard{};
 
-    auto py_module = py::module_::import(&quot;py_module&quot;);
+    auto py_module = py::module_::import("py_module");
 
-    auto locals = py::dict(&quot;fmt&quot;_a=&quot;{} + {} = {}&quot;, **py_module.attr(&quot;__dict__&quot;));
-    assert(locals[&quot;a&quot;].cast&lt;int&gt;() == 1);
-    assert(locals[&quot;b&quot;].cast&lt;int&gt;() == 2);
+    auto locals = py::dict("fmt"_a="{} + {} = {}", **py_module.attr("__dict__"));
+    assert(locals["a"].cast&lt;int&gt;() == 1);
+    assert(locals["b"].cast&lt;int&gt;() == 2);
 
-    py::exec(R&quot;(
+    py::exec(R"(
         c = a + b
         message = fmt.format(a, b, c)
-    )&quot;, py::globals(), locals);
+    )", py::globals(), locals);
 
-    assert(locals[&quot;c&quot;].cast&lt;int&gt;() == 3);
-    assert(locals[&quot;message&quot;].cast&lt;std::string&gt;() == &quot;1 + 2 = 3&quot;);
+    assert(locals["c"].cast&lt;int&gt;() == 3);
+    assert(locals["message"].cast&lt;std::string&gt;() == "1 + 2 = 3");
 }
 </code></pre>
 <h3 id="125-解释器的生命周期"><a class="header" href="#125-解释器的生命周期">12.5 解释器的生命周期</a></h3>
@@ -689,6 +689,22 @@ if (window.MutationObserver) {
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

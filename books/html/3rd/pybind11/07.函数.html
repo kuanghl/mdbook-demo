@@ -328,12 +328,12 @@ Data *get_data() { return _data; /* (pointer to a static data structure) */ }
 ...
 
 /* Binding code */
-m.def(&quot;get_data&quot;, &amp;get_data); // &lt;-- KABOOM, will cause crash when called from Python
+m.def("get_data", &amp;get_data); // &lt;-- KABOOM, will cause crash when called from Python
 </code></pre>
 <p>当Python侧调用<code>get_data()</code>方法时，返回值（原生C++类型）必须被转换为合适的Python类型。在这个例子中，默认的返回值策略（<code>return_value_policy::automatic</code>）使得pybind11获取到了静态变量<code>_data</code>的所有权。</p>
 <p>当Python垃圾收集器最终删除<code>_data</code>的Python封装时，pybind11将尝试删除C++实例（通过operator delete()）。这时，这个程序将以某种隐蔽的错误并涉及静默数据破坏的方式崩溃。</p>
 <p>对于上面的例子，我们应该指定返回值策略为<code>return_value_policy::reference</code>，这样全局变量的实例仅仅被引用，而不涉及到所有权的转移：</p>
-<pre><code class="language-c++">m.def(&quot;get_data&quot;, &amp;get_data, py::return_value_policy::reference);
+<pre><code class="language-c++">m.def("get_data", &amp;get_data, py::return_value_policy::reference);
 </code></pre>
 <p>另一方面，引用策略在多数其他场合并不是正确的策略，忽略所有权的归属可能导致资源泄漏。作为一个使用pybind11的开发者，熟悉不同的返回值策略及其适用场合尤为重要。下面的表格将提供所有策略的概览：</p>
 <div class="table-wrapper"><table><thead><tr><th>返回值策略</th><th>描述</th></tr></thead><tbody>
@@ -347,13 +347,13 @@ m.def(&quot;get_data&quot;, &amp;get_data); // &lt;-- KABOOM, will cause crash w
 </tbody></table>
 </div>
 <p>返回值策略也可以应用于属性：</p>
-<pre><code class="language-c++">class_&lt;MyClass&gt;(m, &quot;MyClass&quot;)
-    .def_property(&quot;data&quot;, &amp;MyClass::getData, &amp;MyClass::setData,
+<pre><code class="language-c++">class_&lt;MyClass&gt;(m, "MyClass")
+    .def_property("data", &amp;MyClass::getData, &amp;MyClass::setData,
                   py::return_value_policy::copy);
 </code></pre>
 <p>在技术层面，上述代码会将策略同时应用于getter和setter函数，但是setter函数并不关心返回值策略，这样做仅仅出于语法简洁的考虑。或者，你可以通过<code>cpp_function</code>构造函数来传递目标参数：</p>
-<pre><code class="language-c++">class_&lt;MyClass&gt;(m, &quot;MyClass&quot;)
-    .def_property(&quot;data&quot;
+<pre><code class="language-c++">class_&lt;MyClass&gt;(m, "MyClass")
+    .def_property("data"
         py::cpp_function(&amp;MyClass::getData, py::return_value_policy::copy),
         py::cpp_function(&amp;MyClass::setData)
     );
@@ -372,20 +372,20 @@ m.def(&quot;get_data&quot;, &amp;get_data); // &lt;-- KABOOM, will cause crash w
 <p>当nurse不是一个pybind11注册类型时，实现依赖于创建对nurse对象弱引用的能力。如果nurse对象不是pybind11注册类型，也不支持弱引用，程序将会抛出异常。</p>
 <p>如果你使用一个错误的参数索引，程序将会抛出“Could not cativate keep_alive!“警告的运行时异常。这时，你应该review你代码中使用的索引。</p>
 <p>参见下面的例子：一个list append操作，将新添加元素的生命周期绑定到添加的容器对象上：</p>
-<pre><code class="language-c++">py::class_&lt;List&gt;(m, &quot;List&quot;).def(&quot;append&quot;, &amp;List::append, py::keep_alive&lt;1, 2&gt;());
+<pre><code class="language-c++">py::class_&lt;List&gt;(m, "List").def("append", &amp;List::append, py::keep_alive&lt;1, 2&gt;());
 </code></pre>
 <p>为了一致性，构造函数的实参索引也是相同的。索引1仍表示this指针，索引0表示返回值（构造函数的返回值被认为是void）。下面的示例将构造函数入参的生命周期绑定到被构造对象上。</p>
-<pre><code class="language-c++">py::class_&lt;Nurse&gt;(m, &quot;Nurse&quot;).def(py::init&lt;Patient &amp;&gt;(), py::keep_alive&lt;1, 2&gt;());
+<pre><code class="language-c++">py::class_&lt;Nurse&gt;(m, "Nurse").def(py::init&lt;Patient &amp;&gt;(), py::keep_alive&lt;1, 2&gt;());
 </code></pre>
 <blockquote>
 <p>Note: <code>keep_alive</code>与Boost.Python中的<code>with_custodian_and_ward</code>和<code>with_custodian_and_ward_postcall</code>相似。</p>
 </blockquote>
 <h4 id="call-guard"><a class="header" href="#call-guard">Call guard</a></h4>
 <p><code>call_guard&lt;T&gt;</code>策略允许任意T类型的scope guard应用于整个函数调用。示例如下：</p>
-<pre><code class="language-c++">m.def(&quot;foo&quot;, foo, py::call_guard&lt;T&gt;());
+<pre><code class="language-c++">m.def("foo", foo, py::call_guard&lt;T&gt;());
 </code></pre>
 <p>上面的代码等价于：</p>
-<pre><code class="language-c++">m.def(&quot;foo&quot;, [](args...) {
+<pre><code class="language-c++">m.def("foo", [](args...) {
     T scope_guard;
     return foo(args...); // forwarded arguments
 });
@@ -400,15 +400,15 @@ m.def(&quot;get_data&quot;, &amp;get_data); // &lt;-- KABOOM, will cause crash w
 <pre><code class="language-c++">void print_dict(const py::dict&amp; dict) {
     /* Easily interact with Python types */
     for (auto item : dict)
-        std::cout &lt;&lt; &quot;key=&quot; &lt;&lt; std::string(py::str(item.first)) &lt;&lt; &quot;, &quot;
-                  &lt;&lt; &quot;value=&quot; &lt;&lt; std::string(py::str(item.second)) &lt;&lt; std::endl;
+        std::cout &lt;&lt; "key=" &lt;&lt; std::string(py::str(item.first)) &lt;&lt; ", "
+                  &lt;&lt; "value=" &lt;&lt; std::string(py::str(item.second)) &lt;&lt; std::endl;
 }
 
 // it can be exported as follow:
-m.def(&quot;print_dict&quot;, &amp;print_dict);
+m.def("print_dict", &amp;print_dict);
 </code></pre>
 <p>在Python中使用如下：</p>
-<pre><code class="language-python">&gt;&gt;&gt; print_dict({&quot;foo&quot;: 123, &quot;bar&quot;: &quot;hello&quot;})
+<pre><code class="language-python">&gt;&gt;&gt; print_dict({"foo": 123, "bar": "hello"})
 key=foo, value=123
 key=bar, value=hello
 </code></pre>
@@ -425,13 +425,13 @@ key=bar, value=hello
 }
 
 /// Binding code
-m.def(&quot;generic&quot;, &amp;generic);
+m.def("generic", &amp;generic);
 </code></pre>
 <p><code>py::args</code>继承自<code>py::tuple</code>，<code>py::kwargs</code>继承自<code>py::dict</code>。</p>
 <p>更多示例参考<code>test/test_kwargs_and_defualts.cpp</code>。</p>
 <h3 id="75-再探默认参数"><a class="header" href="#75-再探默认参数">7.5 再探默认参数</a></h3>
 <p>前面的章节已经讨论了默认参数的基本用法。关于实现有一个值得关注的点，就是默认参数在声明时就被转换为Python对象了。看看下面的例子：</p>
-<pre><code class="language-c++">py::class_&lt;MyClass&gt;(&quot;MyClass&quot;).def(&quot;myFunction&quot;, py::arg(&quot;arg&quot;) = SomeType(123));
+<pre><code class="language-c++">py::class_&lt;MyClass&gt;("MyClass").def("myFunction", py::arg("arg") = SomeType(123));
 </code></pre>
 <p>这个例子里，必须保证SomeType类型已经被binding了（通过py::class_<SomeType>），不然就会抛出异常。</p>
 <p>另一个值得注意的事情就是，生成的函数签名将使用对象的<code>__repr__</code>方法来处理默认参数值。如果对象没有提供该方法，那么函数签名将不能直观的看出默认参数值。</p>
@@ -442,14 +442,14 @@ m.def(&quot;generic&quot;, &amp;generic);
 
 </code></pre>
 <p>要处理这个问题，我们需要定义<code>SomeType.__repr__</code>方法，或者使用<code>arg_v</code>给默认参数手动添加方便阅读的注释。</p>
-<pre><code class="language-c++">py::class_&lt;MyClass&gt;(&quot;MyClass&quot;)
-    .def(&quot;myFunction&quot;, py::arg_v(&quot;arg&quot;, SomeType(123), &quot;SomeType(123)&quot;));
+<pre><code class="language-c++">py::class_&lt;MyClass&gt;("MyClass")
+    .def("myFunction", py::arg_v("arg", SomeType(123), "SomeType(123)"));
 ``
 
 有时，可能需要使用空指针作为默认参数：
 ​```c++
-py::class_&lt;MyClass&gt;(&quot;MyClass&quot;)
-    .def(&quot;myFunction&quot;, py::arg(&quot;arg&quot;) = static_cast&lt;SomeType *&gt;(nullptr));
+py::class_&lt;MyClass&gt;("MyClass")
+    .def("myFunction", py::arg("arg") = static_cast&lt;SomeType *&gt;(nullptr));
 </code></pre>
 <h3 id="76-keyword-only参数"><a class="header" href="#76-keyword-only参数">7.6 Keyword-only参数</a></h3>
 <p>Python3提供了keyword-only参数（在函数定义中使用<code>*</code>作为匿名参数）：</p>
@@ -462,14 +462,14 @@ f(1, b=2)  # good
 f(1, 2)  # TypeError: f() takes 1 positional argument but 2 were given
 </code></pre>
 <p>pybind11提供了<code>py::kw_only</code>对象来实现相同的功能：</p>
-<pre><code class="language-c++">m.def(&quot;f&quot;, [](int a, int b) { /* ... */ },
-      py::arg(&quot;a&quot;), py::kw_only(), py::arg(&quot;b&quot;));
+<pre><code class="language-c++">m.def("f", [](int a, int b) { /* ... */ },
+      py::arg("a"), py::kw_only(), py::arg("b"));
 </code></pre>
 <p>注意，该特性不能与<code>py::args</code>一起使用。</p>
 <h3 id="77-positional-only参数"><a class="header" href="#77-positional-only参数">7.7 Positional-only参数</a></h3>
 <p>python3.8引入了Positional-only参数语法，pybind11通过<code>py::pos_only()</code>来提供相同的功能：</p>
-<pre><code class="language-c++">m.def(&quot;f&quot;, [](int a, int b) { /* ... */ },
-       py::arg(&quot;a&quot;), py::pos_only(), py::arg(&quot;b&quot;));
+<pre><code class="language-c++">m.def("f", [](int a, int b) { /* ... */ },
+       py::arg("a"), py::pos_only(), py::arg("b"));
 </code></pre>
 <p>现在，你不能通过关键字来给定<code>a</code>参数。该特性可以和keyword-only参数一起使用。</p>
 <h3 id="78-non-converting参数"><a class="header" href="#78-non-converting参数">7.8 Non-converting参数</a></h3>
@@ -481,15 +481,15 @@ f(1, 2)  # TypeError: f() takes 1 positional argument but 2 were given
 <li>Calling a function taking an Eigen matrix reference with a numpy array of the wrong type or of an incompatible data layout.</li>
 </ul>
 <p>有时这种转换并不是我们期望的，我们可能更希望绑定代码抛出错误，而不是转换参数。通过<code>py::arg</code>来调用<code>.noconvert()</code>方法可以实现这个事情。</p>
-<pre><code class="language-c++">m.def(&quot;floats_only&quot;, [](double f) { return 0.5 * f; }, py::arg(&quot;f&quot;).noconvert());
-m.def(&quot;floats_preferred&quot;, [](double f) { return 0.5 * f; }, py::arg(&quot;f&quot;));
+<pre><code class="language-c++">m.def("floats_only", [](double f) { return 0.5 * f; }, py::arg("f").noconvert());
+m.def("floats_preferred", [](double f) { return 0.5 * f; }, py::arg("f"));
 </code></pre>
 <p>尝试进行转换时，将抛出<code>TypeError</code>异常：</p>
 <pre><code class="language-python">&gt;&gt;&gt; floats_preferred(4)
 2.0
 &gt;&gt;&gt; floats_only(4)
 Traceback (most recent call last):
-  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
 TypeError: floats_only(): incompatible function arguments. The following argument types are supported:
     1. (f: float) -&gt; float
 
@@ -499,18 +499,18 @@ Invoked with: 4
 <h3 id="79-允许禁止空参数"><a class="header" href="#79-允许禁止空参数">7.9 允许/禁止空参数</a></h3>
 <p>当函数接受由<code>py::class_</code>注册的C++类型的指针或shared holder(如指针指针等)，pybind11允许将Python的None传递给函数，等同于C++中传递nullptr给函数。</p>
 <p>我们可以使用<code>py::arg</code>对象的<code>.none</code>方法来显式地使能或禁止该行为。</p>
-<pre><code class="language-c++">py::class_&lt;Dog&gt;(m, &quot;Dog&quot;).def(py::init&lt;&gt;());
-py::class_&lt;Cat&gt;(m, &quot;Cat&quot;).def(py::init&lt;&gt;());
-m.def(&quot;bark&quot;, [](Dog *dog) -&gt; std::string {
-    if (dog) return &quot;woof!&quot;; /* Called with a Dog instance */
-    else return &quot;(no dog)&quot;; /* Called with None, dog == nullptr */
-}, py::arg(&quot;dog&quot;).none(true));
-m.def(&quot;meow&quot;, [](Cat *cat) -&gt; std::string {
+<pre><code class="language-c++">py::class_&lt;Dog&gt;(m, "Dog").def(py::init&lt;&gt;());
+py::class_&lt;Cat&gt;(m, "Cat").def(py::init&lt;&gt;());
+m.def("bark", [](Dog *dog) -&gt; std::string {
+    if (dog) return "woof!"; /* Called with a Dog instance */
+    else return "(no dog)"; /* Called with None, dog == nullptr */
+}, py::arg("dog").none(true));
+m.def("meow", [](Cat *cat) -&gt; std::string {
     // Can't be called with None argument
-    return &quot;meow&quot;;
-}, py::arg(&quot;cat&quot;).none(false));
+    return "meow";
+}, py::arg("cat").none(false));
 </code></pre>
-<p>这样，Python调用<code>bark(None)</code>将返回<code>&quot;(no dog)&quot;</code>，调用<code>meow(None)</code>将抛出异常<code>TypeError</code>。</p>
+<p>这样，Python调用<code>bark(None)</code>将返回<code>"(no dog)"</code>，调用<code>meow(None)</code>将抛出异常<code>TypeError</code>。</p>
 <pre><code class="language-python">&gt;&gt;&gt; from animals import Dog, Cat, bark, meow
 &gt;&gt;&gt; bark(Dog())
 'woof!'
@@ -520,7 +520,7 @@ m.def(&quot;meow&quot;, [](Cat *cat) -&gt; std::string {
 '(no dog)'
 &gt;&gt;&gt; meow(None)
 Traceback (most recent call last):
-  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
 TypeError: meow(): incompatible function arguments. The following argument types are supported:
     1. (cat: animals.Cat) -&gt; str
 
@@ -760,6 +760,22 @@ if (window.MutationObserver) {
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 
