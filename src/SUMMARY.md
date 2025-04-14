@@ -25,5 +25,6 @@
 - [Whichlang](./test/chapter_4.md)
 - [Langtabs](./test/chapter_5.md)
 - [Kroki-mermaid](./test/chapter_2.md)
+- [Markdown-emoji](./test/chapter_6.md)
 
   

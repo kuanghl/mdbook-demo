@@ -20,6 +20,8 @@ use-default-preprocessors = false
 
 [preprocessor.image-viewer]
 
+[preprocessor.emojicodes]
+
 # devicons cdn慢卡顿
 # [preprocessor.langtabs]
 # command = "mdbook-langtabs"

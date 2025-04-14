@@ -20,6 +20,7 @@
 - [mdbook-asciidoc](https://github.com/daviddrysdale/mdbook-asciidoc.git)
 - [mdbook-embedify](https://github.com/MR-Addict/mdbook-embedify.git) 
 - [comprehensive-rust](https://github.com/google/comprehensive-rust.git)
+- [mdbook-emojicodes](https://github.com/blyxyas/mdbook-emojicodes.git)
 - License-MIT. Give me a star, if this case is useful to you.
 - Build mdbooks plugins in rust.
   ```sh
