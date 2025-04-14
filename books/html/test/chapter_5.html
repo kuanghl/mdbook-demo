@@ -322,17 +322,17 @@
 <h2 id="some-code"><a class="header" href="#some-code">Some code</a></h2>
 <p>let’s try with a simple example:</p>
 <!-- langtabs-start -->
-<pre><code class="language-swift reds">LogChannel(n"DEBUG", "hello world");
+<pre><code class="language-swift reds">LogChannel(n&quot;DEBUG&quot;, &quot;hello world&quot;);
 </code></pre>
-<pre><code class="language-swift">print("Hello, World!") 
+<pre><code class="language-swift">print(&quot;Hello, World!&quot;) 
 </code></pre>
-<pre><pre class="playground"><code class="language-rust">fn main() { println!("hello world"); }</code></pre></pre>
-<pre><code class="language-lua">print("Hello World")
+<pre><pre class="playground"><code class="language-rust">fn main() { println!(&quot;hello world&quot;); }</code></pre></pre>
+<pre><code class="language-lua">print(&quot;Hello World&quot;)
 </code></pre>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
 int main() {
-    std::cout &lt;&lt; "Hello World!";
+    std::cout &lt;&lt; &quot;Hello World!&quot;;
     return 0;
 }
 </code></pre>
@@ -341,7 +341,7 @@ int main() {
     - property
 </code></pre>
 <pre><code class="language-json">{
-  "some": { "interesting": ["property"] }
+  &quot;some&quot;: { &quot;interesting&quot;: [&quot;property&quot;] }
 }
 </code></pre>
 <pre><code class="language-xml">&lt;some&gt;
@@ -363,7 +363,7 @@ int main() {
   .GetStatusEffectSystem(this.GetGame())
   .ApplyStatusEffect(
     this.GetEntityID(),
-    t"BaseStatusEffect.SplinterAddicted",
+    t&quot;BaseStatusEffect.SplinterAddicted&quot;,
     this.GetRecordID(),
     this.GetEntityID());
 </code></pre>
@@ -375,31 +375,31 @@ int main() {
 <p>Here’s a simple “Hello World” example in different languages:</p>
 <!-- langtabs-start -->
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    println!("Hello, World!");
+    println!(&quot;Hello, World!&quot;);
 }</code></pre></pre>
 <pre><code class="language-python">def main():
-    print("Hello, World!")
+    print(&quot;Hello, World!&quot;)
 
-if __name__ == "__main__":
+if __name__ == &quot;__main__&quot;:
     main()
 </code></pre>
 <pre><code class="language-javascript">function main() {
-    console.log("Hello, World!");
+    console.log(&quot;Hello, World!&quot;);
 }
 
 main();
 </code></pre>
 <pre><code class="language-go">package main
 
-import "fmt"
+import &quot;fmt&quot;
 
 func main() {
-    fmt.Println("Hello, World!")
+    fmt.Println(&quot;Hello, World!&quot;)
 }
 </code></pre>
 <pre><code class="language-java">public class HelloWorld {
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+        System.out.println(&quot;Hello, World!&quot;);
     }
 }
 </code></pre>
@@ -415,14 +415,14 @@ func main() {
 }
 
 fn main() {
-    println!("5! = {}", factorial(5)); // Outputs: 5! = 120
+    println!(&quot;5! = {}&quot;, factorial(5)); // Outputs: 5! = 120
 }</code></pre></pre>
 <pre><code class="language-python">def factorial(n):
     if n &lt;= 1:
         return 1
     return n * factorial(n - 1)
 
-print(f"5! = {factorial(5)}")  # Outputs: 5! = 120
+print(f&quot;5! = {factorial(5)}&quot;)  # Outputs: 5! = 120
 </code></pre>
 <pre><code class="language-javascript">function factorial(n) {
     if (n &lt;= 1) return 1;
@@ -433,7 +433,7 @@ console.log(`5! = ${factorial(5)}`);  // Outputs: 5! = 120
 </code></pre>
 <pre><code class="language-go">package main
 
-import "fmt"
+import &quot;fmt&quot;
 
 func factorial(n uint64) uint64 {
     if n &lt;= 1 {
@@ -443,7 +443,7 @@ func factorial(n uint64) uint64 {
 }
 
 func main() {
-    fmt.Printf("5! = %d\n", factorial(5))  // Outputs: 5! = 120
+    fmt.Printf(&quot;5! = %d\n&quot;, factorial(5))  // Outputs: 5! = 120
 }
 </code></pre>
 <pre><code class="language-java">public class FactorialExample {
@@ -453,7 +453,7 @@ func main() {
     }
     
     public static void main(String[] args) {
-        System.out.println("5! = " + factorial(5));  // Outputs: 5! = 120
+        System.out.println(&quot;5! = &quot; + factorial(5));  // Outputs: 5! = 120
     }
 }
 </code></pre>
@@ -490,7 +490,7 @@ fn main() {
     stack.push(3);
     
     while let Some(item) = stack.pop() {
-        println!("Popped: {}", item);
+        println!(&quot;Popped: {}&quot;, item);
     }
 }</code></pre></pre>
 <pre><code class="language-python">class Stack:
@@ -515,7 +515,7 @@ stack.push(2)
 stack.push(3)
 
 while not stack.is_empty():
-    print(f"Popped: {stack.pop()}")
+    print(f&quot;Popped: {stack.pop()}&quot;)
 </code></pre>
 <pre><code class="language-javascript">class Stack {
     constructor() {
@@ -550,7 +550,7 @@ while (!stack.isEmpty()) {
 </code></pre>
 <pre><code class="language-go">package main
 
-import "fmt"
+import &quot;fmt&quot;
 
 type Stack struct {
     items []int
@@ -583,7 +583,7 @@ func main() {
     
     for !stack.IsEmpty() {
         item, _ := stack.Pop()
-        fmt.Printf("Popped: %d\n", item)
+        fmt.Printf(&quot;Popped: %d\n&quot;, item)
     }
 }
 </code></pre>
@@ -616,7 +616,7 @@ public class StackExample {
         stack.push(3);
         
         while (!stack.isEmpty()) {
-            System.out.println("Popped: " + stack.pop());
+            System.out.println(&quot;Popped: &quot; + stack.pop());
         }
     }
 }
@@ -845,22 +845,6 @@ if (window.MutationObserver) {
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 

@@ -6,15 +6,8 @@
 
 //设置机器翻译服务通道，直接客户端本身，不依赖服务端 。相关说明参考 http://translate.zvo.cn/43086.html
 // translate.service.use("client.edge");
-
-// 忽略翻译的class id
 translate.ignore.class.push("icon-button");
 translate.ignore.class.push("theme-popup");
-translate.ignore.class.push('MathJax'); 
-translate.ignore.class.push('katex-src'); 
-translate.ignore.class.push('katex-display');
-translate.ignore.class.push('chapter-item');
-
 //进行翻译
 translate.execute();
 translate.request.listener.start();
