@@ -48,10 +48,15 @@ assets_version = "3.0.1" # do not edit: managed by `mdbook-admonish install`
 [preprocessor.mermaid]
 command = "mdbook-mermaid"
 
-# 有时可以访问，有时不能
-# [preprocessor.kroki-preprocessor]
+# 编译时卡顿,由于访问https://kroki.io
+[preprocessor.kroki-preprocessor]
 # Example endpoint configuration
-# endpoint = "https://kroki.io"
+# endpoint = "https://kroki.io"      # serve
+# endpoint = "http://localhost:8000" # local docker
+
+# 有些动态的或者函数式的图在pdf会留空
+# 切换章节加载网页有延迟
+[preprocessor.echarts]
 
 # 导致pdf出现黑边, todo ...
 # [preprocessor.svgbob]
@@ -87,7 +92,7 @@ additional-css = [
     "./theme/catppuccin.css", "./theme/catppuccin-admonish.css", 
     "katex.min.css", 
     "./assets/whichlang/whichlang.css",
-    "./assets/translate/translate.css",
+    "./assets/translate/translate.css",       # 翻译加载网页变慢
     # "./assets/langtabs/langtabs.css",
     ]
 additional-js = [
@@ -95,7 +100,7 @@ additional-js = [
     "./assets/help/support.js", 
     "./assets/mermaid/mermaid.min.js", "./assets/mermaid/mermaid-init.js",
     "./assets/whichlang/whichlang.js", 
-    "./assets/translate/translate_button.js", 
+    "./assets/translate/translate_button.js",  # 翻译加载网页变慢
     # "./assets/langtabs/langtabs.js", 
     ]
 

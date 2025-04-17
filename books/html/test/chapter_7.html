@@ -1,0 +1,1066 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="mocha" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>ECharts - mdbook-demo</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="The example book covers examples.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././theme/mdbook-admonish.css">
+        <link rel="stylesheet" href=".././theme/catppuccin.css">
+        <link rel="stylesheet" href=".././theme/catppuccin-admonish.css">
+        <link rel="stylesheet" href="../katex.min.css">
+        <link rel="stylesheet" href=".././assets/whichlang/whichlang.css">
+        <link rel="stylesheet" href=".././assets/translate/translate.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "mocha" : "mocha";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('mocha')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../test/chapter_1.html">Mdbook Mathjax</a></li><li class="chapter-item "><a href="../3rd/pybind11/00.pybind11介绍.html">Pybind11</a></li><li class="chapter-item "><a href="../3rd/pybind11/01.改动日志.html">改动日志</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../3rd/pybind11/02.更新指南.html">更新指南</a></li><li class="chapter-item "><a href="../3rd/pybind11/03.安装说明.html">安装说明</a></li><li class="chapter-item "><a href="../3rd/pybind11/04.首次尝试.html">首次尝试</a></li><li class="chapter-item "><a href="../3rd/pybind11/05.面对对象编程.html">面对对象编程</a></li><li class="chapter-item "><a href="../3rd/pybind11/06.构建系统.html">构建系统</a></li><li class="chapter-item "><a href="../3rd/pybind11/07.函数.html">函数</a></li><li class="chapter-item "><a href="../3rd/pybind11/08.类.html">类</a></li><li class="chapter-item "><a href="../3rd/pybind11/09.异常.html">异常</a></li><li class="chapter-item "><a href="../3rd/pybind11/10.智能指针.html">智能指针</a></li><li class="chapter-item "><a href="../3rd/pybind11/11.类型转换.html">类型转换</a></li><li class="chapter-item "><a href="../3rd/pybind11/12.Python的C++接口.html">Python的C++接口</a></li><li class="chapter-item "><a href="../3rd/pybind11/13.内嵌解释器.html">内嵌解释器</a></li><li class="chapter-item "><a href="../3rd/pybind11/14.杂项.html">杂项</a></li><li class="chapter-item "><a href="../3rd/pybind11/15.FAQ.html">FAQ</a></li><li class="chapter-item "><a href="../3rd/pybind11/16.案例.html">案例</a></li><li class="chapter-item "><a href="../3rd/pybind11/pybind11_demo.html">pybind11 demo</a></li></ol></li><li class="chapter-item "><a href="../basic/markdown.html">Markdown</a></li><li class="chapter-item "><a href="../basic/admonish.html">Admonish</a></li><li class="chapter-item "><a href="../test/chapter_3.html">Katex</a></li><li class="chapter-item "><a href="../test/chapter_4.html">Whichlang</a></li><li class="chapter-item "><a href="../test/chapter_5.html">Langtabs</a></li><li class="chapter-item "><a href="../test/chapter_2.html">Kroki-mermaid</a></li><li class="chapter-item expanded "><a href="../test/chapter_7.html" class="active">ECharts</a></li><li class="chapter-item "><a href="../test/chapter_6.html">Markdown-emoji</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="latte">Latte</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="frappe">Frappé</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="macchiato">Macchiato</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mocha">Mocha</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">mdbook-demo</h1>
+
+                    <div class="right-buttons">
+
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/kuanghl/mdbook-demo" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/kuanghl/mdbook-demo/edit/master/./src/test/chapter_7.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                        <a id="translate" class="icon-button" type="button" title="Change language" aria-label="Change language">
+                            <i class="fa fa-language"></i> 
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <style>
+.miv_mdbook-image-viewer {
+    cursor: pointer;
+}
+.miv_modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0,0,0,0.9);
+}
+.miv_modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.miv_modal-content img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    cursor: move;
+    transition: transform 0.1s ease-out;
+    touch-action: none;
+}
+.miv_close {
+    position: fixed;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    z-index: 1001;
+}
+.miv_close:hover,
+.miv_close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+@media (max-width: 768px) {
+    .miv_modal-content img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
+</style>
+<style>
+.mdbook-alerts {
+  padding: 8px 16px;
+  margin-bottom: 16px;
+  border-left: 0.25em solid var(--mdbook-alerts-color);
+}
+
+.mdbook-alerts > *:first-child {
+  margin-top: 0;
+}
+
+.mdbook-alerts > *:last-child {
+  margin-bottom: 0;
+}
+
+.mdbook-alerts-title {
+  display: flex;
+  font-weight: 600;
+  align-items: center;
+  line-height: 1;
+  color: var(--mdbook-alerts-color);
+  text-transform: capitalize;
+}
+
+.mdbook-alerts-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.2em;
+  background-color: currentColor;
+  -webkit-mask: no-repeat center / 100%;
+  mask: no-repeat center / 100%;
+  -webkit-mask-image: var(--mdbook-alerts-icon);
+  mask-image: var(--mdbook-alerts-icon);
+}
+
+.mdbook-alerts-note {
+  --mdbook-alerts-color: rgb(9, 105, 218);
+  /* https://icon-sets.iconify.design/material-symbols/info-outline-rounded/ */
+  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 17q.425 0 .713-.288T13 16v-4q0-.425-.288-.712T12 11q-.425 0-.712.288T11 12v4q0 .425.288.713T12 17m0-8q.425 0 .713-.288T13 8q0-.425-.288-.712T12 7q-.425 0-.712.288T11 8q0 .425.288.713T12 9m0 13q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22m0-2q3.35 0 5.675-2.325T20 12q0-3.35-2.325-5.675T12 4Q8.65 4 6.325 6.325T4 12q0 3.35 2.325 5.675T12 20m0-8"%2F%3E%3C%2Fsvg%3E');
+}
+
+.mdbook-alerts-tip {
+  --mdbook-alerts-color: rgb(26, 127, 55);
+  /* https://icon-sets.iconify.design/material-symbols/lightbulb-outline-rounded/ */
+  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 22q-.825 0-1.412-.587T10 20h4q0 .825-.587 1.413T12 22m-3-3q-.425 0-.712-.288T8 18q0-.425.288-.712T9 17h6q.425 0 .713.288T16 18q0 .425-.288.713T15 19zm-.75-3q-1.725-1.025-2.738-2.75T4.5 9.5q0-3.125 2.188-5.312T12 2q3.125 0 5.313 2.188T19.5 9.5q0 2.025-1.012 3.75T15.75 16zm.6-2h6.3q1.125-.8 1.738-1.975T17.5 9.5q0-2.3-1.6-3.9T12 4Q9.7 4 8.1 5.6T6.5 9.5q0 1.35.613 2.525T8.85 14M12 14"%2F%3E%3C%2Fsvg%3E');
+}
+
+.mdbook-alerts-important {
+  --mdbook-alerts-color: rgb(130, 80, 223);
+  /* https://icon-sets.iconify.design/material-symbols/chat-info-outline-rounded/ */
+  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 7q.425 0 .713-.288T13 6q0-.425-.288-.712T12 5q-.425 0-.712.288T11 6q0 .425.288.713T12 7m0 8q.425 0 .713-.288T13 14v-4q0-.425-.288-.712T12 9q-.425 0-.712.288T11 10v4q0 .425.288.713T12 15m-6 3l-2.3 2.3q-.475.475-1.088.213T2 19.575V4q0-.825.588-1.412T4 2h16q.825 0 1.413.588T22 4v12q0 .825-.587 1.413T20 18zm-.85-2H20V4H4v13.125zM4 16V4z"%2F%3E%3C%2Fsvg%3E');
+}
+
+.mdbook-alerts-warning {
+  --mdbook-alerts-color: rgb(154, 103, 0);
+  /* https://icon-sets.iconify.design/material-symbols/warning-outline-rounded/ */
+  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M2.725 21q-.275 0-.5-.137t-.35-.363q-.125-.225-.137-.488t.137-.512l9.25-16q.15-.25.388-.375T12 3q.25 0 .488.125t.387.375l9.25 16q.15.25.138.513t-.138.487q-.125.225-.35.363t-.5.137zm1.725-2h15.1L12 6zM12 18q.425 0 .713-.288T13 17q0-.425-.288-.712T12 16q-.425 0-.712.288T11 17q0 .425.288.713T12 18m0-3q.425 0 .713-.288T13 14v-3q0-.425-.288-.712T12 10q-.425 0-.712.288T11 11v3q0 .425.288.713T12 15m0-2.5"%2F%3E%3C%2Fsvg%3E');
+}
+
+.mdbook-alerts-caution {
+  --mdbook-alerts-color: rgb(207, 34, 46);
+  /* https://icon-sets.iconify.design/material-symbols/brightness-alert-outline-rounded/ */
+  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 17q.425 0 .713-.288T13 16q0-.425-.288-.712T12 15q-.425 0-.712.288T11 16q0 .425.288.713T12 17m0-4q.425 0 .713-.288T13 12V8q0-.425-.288-.712T12 7q-.425 0-.712.288T11 8v4q0 .425.288.713T12 13m-3.35 7H6q-.825 0-1.412-.587T4 18v-2.65L2.075 13.4q-.275-.3-.425-.662T1.5 12q0-.375.15-.737t.425-.663L4 8.65V6q0-.825.588-1.412T6 4h2.65l1.95-1.925q.3-.275.663-.425T12 1.5q.375 0 .738.15t.662.425L15.35 4H18q.825 0 1.413.588T20 6v2.65l1.925 1.95q.275.3.425.663t.15.737q0 .375-.15.738t-.425.662L20 15.35V18q0 .825-.587 1.413T18 20h-2.65l-1.95 1.925q-.3.275-.662.425T12 22.5q-.375 0-.737-.15t-.663-.425zm.85-2l2.5 2.5l2.5-2.5H18v-3.5l2.5-2.5L18 9.5V6h-3.5L12 3.5L9.5 6H6v3.5L3.5 12L6 14.5V18zm2.5-6"%2F%3E%3C%2Fsvg%3E');
+}
+
+</style>
+<h2 id="echarts-multi-function"><a class="header" href="#echarts-multi-function">echarts-multi-function</a></h2>
+<div>
+    <div id="310616d3d32942a0b77ae432ae27ab9f" style="height: 500px;"></div>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            var chartDom_310616d3d32942a0b77ae432ae27ab9f = document.getElementById('310616d3d32942a0b77ae432ae27ab9f');
+var chart_310616d3d32942a0b77ae432ae27ab9f = echarts.init(chartDom_310616d3d32942a0b77ae432ae27ab9f, null, {
+  renderer: 'svg'
+});
+var option;
+const easingFuncs = {
+  linear: function (k) {
+    return k;
+  },
+  quadraticIn: function (k) {
+    return k * k;
+  },
+  quadraticOut: function (k) {
+    return k * (2 - k);
+  },
+  quadraticInOut: function (k) {
+    if ((k *= 2) < 1) {
+      return 0.5 * k * k;
+    }
+    return -0.5 * (--k * (k - 2) - 1);
+  },
+  cubicIn: function (k) {
+    return k * k * k;
+  },
+  cubicOut: function (k) {
+    return --k * k * k + 1;
+  },
+  cubicInOut: function (k) {
+    if ((k *= 2) < 1) {
+      return 0.5 * k * k * k;
+    }
+    return 0.5 * ((k -= 2) * k * k + 2);
+  },
+  quarticIn: function (k) {
+    return k * k * k * k;
+  },
+  quarticOut: function (k) {
+    return 1 - --k * k * k * k;
+  },
+  quarticInOut: function (k) {
+    if ((k *= 2) < 1) {
+      return 0.5 * k * k * k * k;
+    }
+    return -0.5 * ((k -= 2) * k * k * k - 2);
+  },
+  quinticIn: function (k) {
+    return k * k * k * k * k;
+  },
+  quinticOut: function (k) {
+    return --k * k * k * k * k + 1;
+  },
+  quinticInOut: function (k) {
+    if ((k *= 2) < 1) {
+      return 0.5 * k * k * k * k * k;
+    }
+    return 0.5 * ((k -= 2) * k * k * k * k + 2);
+  },
+  sinusoidalIn: function (k) {
+    return 1 - Math.cos((k * Math.PI) / 2);
+  },
+  sinusoidalOut: function (k) {
+    return Math.sin((k * Math.PI) / 2);
+  },
+  sinusoidalInOut: function (k) {
+    return 0.5 * (1 - Math.cos(Math.PI * k));
+  },
+  exponentialIn: function (k) {
+    return k === 0 ? 0 : Math.pow(1024, k - 1);
+  },
+  exponentialOut: function (k) {
+    return k === 1 ? 1 : 1 - Math.pow(2, -10 * k);
+  },
+  exponentialInOut: function (k) {
+    if (k === 0) {
+      return 0;
+    }
+    if (k === 1) {
+      return 1;
+    }
+    if ((k *= 2) < 1) {
+      return 0.5 * Math.pow(1024, k - 1);
+    }
+    return 0.5 * (-Math.pow(2, -10 * (k - 1)) + 2);
+  },
+  circularIn: function (k) {
+    return 1 - Math.sqrt(1 - k * k);
+  },
+  circularOut: function (k) {
+    return Math.sqrt(1 - --k * k);
+  },
+  circularInOut: function (k) {
+    if ((k *= 2) < 1) {
+      return -0.5 * (Math.sqrt(1 - k * k) - 1);
+    }
+    return 0.5 * (Math.sqrt(1 - (k -= 2) * k) + 1);
+  },
+  elasticIn: function (k) {
+    var s;
+    var a = 0.1;
+    var p = 0.4;
+    if (k === 0) {
+      return 0;
+    }
+    if (k === 1) {
+      return 1;
+    }
+    if (!a || a < 1) {
+      a = 1;
+      s = p / 4;
+    } else {
+      s = (p * Math.asin(1 / a)) / (2 * Math.PI);
+    }
+    return -(
+      a *
+      Math.pow(2, 10 * (k -= 1)) *
+      Math.sin(((k - s) * (2 * Math.PI)) / p)
+    );
+  },
+  elasticOut: function (k) {
+    var s;
+    var a = 0.1;
+    var p = 0.4;
+    if (k === 0) {
+      return 0;
+    }
+    if (k === 1) {
+      return 1;
+    }
+    if (!a || a < 1) {
+      a = 1;
+      s = p / 4;
+    } else {
+      s = (p * Math.asin(1 / a)) / (2 * Math.PI);
+    }
+    return (
+      a * Math.pow(2, -10 * k) * Math.sin(((k - s) * (2 * Math.PI)) / p) + 1
+    );
+  },
+  elasticInOut: function (k) {
+    var s;
+    var a = 0.1;
+    var p = 0.4;
+    if (k === 0) {
+      return 0;
+    }
+    if (k === 1) {
+      return 1;
+    }
+    if (!a || a < 1) {
+      a = 1;
+      s = p / 4;
+    } else {
+      s = (p * Math.asin(1 / a)) / (2 * Math.PI);
+    }
+    if ((k *= 2) < 1) {
+      return (
+        -0.5 *
+        (a *
+          Math.pow(2, 10 * (k -= 1)) *
+          Math.sin(((k - s) * (2 * Math.PI)) / p))
+      );
+    }
+    return (
+      a *
+        Math.pow(2, -10 * (k -= 1)) *
+        Math.sin(((k - s) * (2 * Math.PI)) / p) *
+        0.5 +
+      1
+    );
+  },
+  // 在某一动画开始沿指示的路径进行动画处理前稍稍收回该动画的移动
+  backIn: function (k) {
+    var s = 1.70158;
+    return k * k * ((s + 1) * k - s);
+  },
+  backOut: function (k) {
+    var s = 1.70158;
+    return --k * k * ((s + 1) * k + s) + 1;
+  },
+  backInOut: function (k) {
+    var s = 1.70158 * 1.525;
+    if ((k *= 2) < 1) {
+      return 0.5 * (k * k * ((s + 1) * k - s));
+    }
+    return 0.5 * ((k -= 2) * k * ((s + 1) * k + s) + 2);
+  },
+  // 创建弹跳效果
+  bounceIn: function (k) {
+    return 1 - easingFuncs.bounceOut(1 - k);
+  },
+  bounceOut: function (k) {
+    if (k < 1 / 2.75) {
+      return 7.5625 * k * k;
+    } else if (k < 2 / 2.75) {
+      return 7.5625 * (k -= 1.5 / 2.75) * k + 0.75;
+    } else if (k < 2.5 / 2.75) {
+      return 7.5625 * (k -= 2.25 / 2.75) * k + 0.9375;
+    } else {
+      return 7.5625 * (k -= 2.625 / 2.75) * k + 0.984375;
+    }
+  },
+  bounceInOut: function (k) {
+    if (k < 0.5) {
+      return easingFuncs.bounceIn(k * 2) * 0.5;
+    }
+    return easingFuncs.bounceOut(k * 2 - 1) * 0.5 + 0.5;
+  }
+};
+const N_POINT = 30;
+const grids = [];
+const xAxes = [];
+const yAxes = [];
+const series = [];
+const titles = [];
+let count = 0;
+Object.keys(easingFuncs).forEach(function (easingName) {
+  var easingFunc = easingFuncs[easingName];
+  var data = [];
+  for (var i = 0; i <= N_POINT; i++) {
+    var x = i / N_POINT;
+    var y = easingFunc(x);
+    data.push([x, y]);
+  }
+  grids.push({
+    show: true,
+    borderWidth: 0,
+    shadowColor: 'rgba(0, 0, 0, 0.3)',
+    shadowBlur: 2
+  });
+  xAxes.push({
+    type: 'value',
+    show: false,
+    min: 0,
+    max: 1,
+    gridIndex: count
+  });
+  yAxes.push({
+    type: 'value',
+    show: false,
+    min: -0.4,
+    max: 1.4,
+    gridIndex: count
+  });
+  series.push({
+    name: easingName,
+    type: 'line',
+    xAxisIndex: count,
+    yAxisIndex: count,
+    data: data,
+    showSymbol: false,
+    animationEasing: easingName,
+    animationDuration: 1000
+  });
+  titles.push({
+    textAlign: 'center',
+    text: easingName,
+    textStyle: {
+      fontSize: 12,
+      fontWeight: 'normal'
+    }
+  });
+  count++;
+});
+var rowNumber = Math.ceil(Math.sqrt(count));
+grids.forEach(function (grid, idx) {
+  grid.left = ((idx % rowNumber) / rowNumber) * 100 + 0.5 + '%';
+  grid.top = (Math.floor(idx / rowNumber) / rowNumber) * 100 + 0.5 + '%';
+  grid.width = (1 / rowNumber) * 100 - 1 + '%';
+  grid.height = (1 / rowNumber) * 100 - 1 + '%';
+  titles[idx].left = parseFloat(grid.left) + parseFloat(grid.width) / 2 + '%';
+  titles[idx].top = parseFloat(grid.top) + '%';
+});
+option = {
+  title: titles.concat([
+    {
+      text: 'Different Easing Functions',
+      top: 'bottom',
+      left: 'center'
+    }
+  ]),
+  grid: grids,
+  xAxis: xAxes,
+  yAxis: yAxes,
+  series: series
+};
+option && chart_310616d3d32942a0b77ae432ae27ab9f.setOption(option);
+        });
+    </script>
+</div>
+<h2 id="echarts-function"><a class="header" href="#echarts-function">echarts-function</a></h2>
+<div>
+    <div id="ebadc0ba2f664c1883cb9582cd2de9d6" style="height: 500px;"></div>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            var chartDom_ebadc0ba2f664c1883cb9582cd2de9d6 = document.getElementById('ebadc0ba2f664c1883cb9582cd2de9d6');
+var chart_ebadc0ba2f664c1883cb9582cd2de9d6 = echarts.init(chartDom_ebadc0ba2f664c1883cb9582cd2de9d6, null, {
+  renderer: 'svg'
+});
+var option;
+function func(x) {
+  x /= 10;
+  return Math.sin(x) * Math.cos(x * 2 + 1) * Math.sin(x * 3 + 2) * 50;
+}
+function generateData() {
+  let data = [];
+  for (let i = -200; i <= 200; i += 0.1) {
+    data.push([i, func(i)]);
+  }
+  return data;
+}
+option = {
+  animation: false,
+  grid: {
+    top: 40,
+    left: 50,
+    right: 40,
+    bottom: 50
+  },
+  xAxis: {
+    name: 'x',
+    minorTick: {
+      show: true
+    },
+    minorSplitLine: {
+      show: true
+    }
+  },
+  yAxis: {
+    name: 'y',
+    min: -100,
+    max: 100,
+    minorTick: {
+      show: true
+    },
+    minorSplitLine: {
+      show: true
+    }
+  },
+  dataZoom: [
+    {
+      show: true,
+      type: 'inside',
+      filterMode: 'none',
+      xAxisIndex: [0],
+      startValue: -20,
+      endValue: 20
+    },
+    {
+      show: true,
+      type: 'inside',
+      filterMode: 'none',
+      yAxisIndex: [0],
+      startValue: -20,
+      endValue: 20
+    }
+  ],
+  series: [
+    {
+      type: 'line',
+      showSymbol: false,
+      clip: true,
+      data: generateData()
+    }
+  ]
+};
+option && chart_ebadc0ba2f664c1883cb9582cd2de9d6.setOption(option);
+        });
+    </script>
+</div>
+<h2 id="echarts-dataset"><a class="header" href="#echarts-dataset">echarts-dataset</a></h2>
+<div>
+    <div id="2011cdf5b55644e385fef9af3f90017d" style="height: 500px;"></div>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            var chartDom_2011cdf5b55644e385fef9af3f90017d = document.getElementById('2011cdf5b55644e385fef9af3f90017d');
+var chart_2011cdf5b55644e385fef9af3f90017d = echarts.init(chartDom_2011cdf5b55644e385fef9af3f90017d, null, {
+  renderer: 'svg'
+});
+var option;
+setTimeout(function () {
+  option = {
+    legend: {},
+    tooltip: {
+      trigger: 'axis',
+      showContent: false
+    },
+    dataset: {
+      source: [
+        ['product', '2012', '2013', '2014', '2015', '2016', '2017'],
+        ['Milk Tea', 56.5, 82.1, 88.7, 70.1, 53.4, 85.1],
+        ['Matcha Latte', 51.1, 51.4, 55.1, 53.3, 73.8, 68.7],
+        ['Cheese Cocoa', 40.1, 62.2, 69.5, 36.4, 45.2, 32.5],
+        ['Walnut Brownie', 25.2, 37.1, 41.2, 18, 33.9, 49.1]
+      ]
+    },
+    xAxis: { type: 'category' },
+    yAxis: { gridIndex: 0 },
+    grid: { top: '55%' },
+    series: [
+      {
+        type: 'line',
+        smooth: true,
+        seriesLayoutBy: 'row',
+        emphasis: { focus: 'series' }
+      },
+      {
+        type: 'line',
+        smooth: true,
+        seriesLayoutBy: 'row',
+        emphasis: { focus: 'series' }
+      },
+      {
+        type: 'line',
+        smooth: true,
+        seriesLayoutBy: 'row',
+        emphasis: { focus: 'series' }
+      },
+      {
+        type: 'line',
+        smooth: true,
+        seriesLayoutBy: 'row',
+        emphasis: { focus: 'series' }
+      },
+      {
+        type: 'pie',
+        id: 'pie',
+        radius: '30%',
+        center: ['50%', '25%'],
+        emphasis: {
+          focus: 'self'
+        },
+        label: {
+          formatter: '{b}: {@2012} ({d}%)'
+        },
+        encode: {
+          itemName: 'product',
+          value: '2012',
+          tooltip: '2012'
+        }
+      }
+    ]
+  };
+  chart_2011cdf5b55644e385fef9af3f90017d.on('updateAxisPointer', function (event) {
+    const xAxisInfo = event.axesInfo[0];
+    if (xAxisInfo) {
+      const dimension = xAxisInfo.value + 1;
+      chart_2011cdf5b55644e385fef9af3f90017d.setOption({
+        series: {
+          id: 'pie',
+          label: {
+            formatter: '{b}: {@[' + dimension + ']} ({d}%)'
+          },
+          encode: {
+            value: dimension,
+            tooltip: dimension
+          }
+        }
+      });
+    }
+  });
+  chart_2011cdf5b55644e385fef9af3f90017d.setOption(option);
+});
+option && chart_2011cdf5b55644e385fef9af3f90017d.setOption(option);
+        });
+    </script>
+</div>
+<script>
+let miv_isDragging = false;
+let miv_startX, miv_startY, miv_translateX = 0, miv_translateY = 0, miv_scale = 1;
+let miv_lastTouchDistance = 0;
+let miv_modalImg;
+let miv_doubleTapTimer = null;
+let miv_lastTap = 0;    
+function createModal() {
+    if (!document.getElementById('miv_imageModal')) {
+        const modal = document.createElement('div');
+        modal.id = 'miv_imageModal';
+        modal.className = 'miv_modal';
+        modal.innerHTML = `
+            <span class="miv_close" onclick="miv_closeModal()">&times;</span>
+            <div class="miv_modal-content">
+                <img id="miv_modalImage">
+            </div>
+        `;
+        document.body.appendChild(modal);
+    }
+}    
+function miv_startDrag(e) {
+    miv_isDragging = true;
+    miv_startX = e.type.includes('mouse') ? e.clientX - miv_translateX : e.touches[0].clientX - miv_translateX;
+    miv_startY = e.type.includes('mouse') ? e.clientY - miv_translateY : e.touches[0].clientY - miv_translateY;
+    if (miv_modalImg) miv_modalImg.style.cursor = 'grabbing';
+}    
+function miv_drag(e) {
+    if (!miv_isDragging) return;
+    e.preventDefault();
+    const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+    const clientY = e.type.includes('mouse') ? e.clientY : e.touches[0].clientY;
+    miv_translateX = clientX - miv_startX;
+    miv_translateY = clientY - miv_startY;
+    miv_updateImageTransform();
+}    
+function miv_endDrag() {
+    miv_isDragging = false;
+    if (miv_modalImg) miv_modalImg.style.cursor = 'move';
+}    
+function miv_startTouch(e) {
+    if (e.touches.length === 2) {
+        miv_lastTouchDistance = miv_getTouchDistance(e.touches);
+    } else if (e.touches.length === 1) {
+        miv_startDrag(e);
+        const currentTime = new Date().getTime();
+        const tapLength = currentTime - miv_lastTap;
+        clearTimeout(miv_doubleTapTimer);
+        if (tapLength < 300 && tapLength > 0) {
+            e.preventDefault();
+            miv_resetZoom();
+        } else {
+            miv_doubleTapTimer = setTimeout(() => {
+                clearTimeout(miv_doubleTapTimer);
+            }, 300);
+        }
+        miv_lastTap = currentTime;
+    }
+}    
+function miv_moveTouch(e) {
+    e.preventDefault();
+    if (e.touches.length === 2) {
+        const touchDistance = miv_getTouchDistance(e.touches);
+        const scaleDiff = touchDistance / miv_lastTouchDistance;
+        miv_scale *= scaleDiff;
+        miv_scale = Math.min(Math.max(miv_scale, 0.1), 10);
+        miv_lastTouchDistance = touchDistance;        
+        const touchCenter = miv_getTouchCenter(e.touches);
+        miv_translateX += touchCenter.x - (miv_translateX + touchCenter.x) * scaleDiff;
+        miv_translateY += touchCenter.y - (miv_translateY + touchCenter.y) * scaleDiff;        
+        miv_updateImageTransform();
+    } else if (e.touches.length === 1) {
+        miv_drag(e);
+    }
+}
+function miv_endTouch(e) {
+    if (e.touches.length === 0) {
+        miv_endDrag();
+    } else if (e.touches.length === 1) {
+        miv_startDrag(e);
+    }
+}
+function miv_getTouchDistance(touches) {
+    return Math.hypot(
+        touches[0].pageX - touches[1].pageX,
+        touches[0].pageY - touches[1].pageY
+    );
+}
+function miv_getTouchCenter(touches) {
+    return {
+        x: (touches[0].clientX + touches[1].clientX) / 2,
+        y: (touches[0].clientY + touches[1].clientY) / 2
+    };
+}
+function miv_zoom(e) {
+    e.preventDefault();
+    if (!miv_modalImg) return;
+    const rect = miv_modalImg.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    const zoomIntensity = 0.1;
+    const wheel = e.deltaY < 0 ? 1 : -1;
+    const zoom = Math.exp(wheel * zoomIntensity);
+    const newScale = miv_scale * zoom;
+    if (newScale > 0.1 && newScale < 10) {
+        const scaleChange = newScale - miv_scale;
+        miv_translateX -= (mouseX - rect.width / 2) * scaleChange;
+        miv_translateY -= (mouseY - rect.height / 2) * scaleChange;
+        miv_scale = newScale;
+        miv_updateImageTransform();
+    }
+}
+function miv_resetZoom() {
+    miv_scale = 1;
+    miv_translateX = 0;
+    miv_translateY = 0;
+    miv_updateImageTransform();
+}
+function miv_updateImageTransform() {
+    if (miv_modalImg) {
+        miv_modalImg.style.transform = `translate(${miv_translateX}px, ${miv_translateY}px) scale(${miv_scale})`;
+    }
+}
+function miv_openModal(imageSrc) {
+    createModal();
+    const modal = document.getElementById('miv_imageModal');
+    miv_modalImg = document.getElementById('miv_modalImage');
+    const modalContent = modal.querySelector('.miv_modal-content');    
+    if (!modal || !miv_modalImg || !modalContent) {
+        console.error('Modal elements not found');
+        return;
+    }    
+    modal.style.display = 'block';
+    miv_modalImg.src = imageSrc;    
+    miv_resetZoom();        
+    miv_modalImg.addEventListener('mousedown', miv_startDrag);
+    document.addEventListener('mousemove', miv_drag);
+    document.addEventListener('mouseup', miv_endDrag);
+    miv_modalImg.addEventListener('dragstart', (e) => e.preventDefault());    
+    miv_modalImg.addEventListener('touchstart', miv_startTouch);
+    miv_modalImg.addEventListener('touchmove', miv_moveTouch);
+    miv_modalImg.addEventListener('touchend', miv_endTouch);
+    modalContent.addEventListener('wheel', miv_zoom);    
+    miv_modalImg.addEventListener('dblclick', miv_resetZoom);
+}
+function miv_closeModal() {
+    const modal = document.getElementById('miv_imageModal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+    if (miv_modalImg) {
+        miv_modalImg.style.transform = 'translate(0, 0) scale(1)';        
+        miv_modalImg.removeEventListener('mousedown', miv_startDrag);
+        miv_modalImg.removeEventListener('touchstart', miv_startTouch);
+        miv_modalImg.removeEventListener('touchmove', miv_moveTouch);
+        miv_modalImg.removeEventListener('touchend', miv_endTouch);
+        miv_modalImg.removeEventListener('dblclick', miv_resetZoom);
+    }
+    document.removeEventListener('mousemove', miv_drag);
+    document.removeEventListener('mouseup', miv_endDrag);
+    const modalContent = document.querySelector('.miv_modal-content');
+    if (modalContent) {
+        modalContent.removeEventListener('wheel', miv_zoom);
+    }
+}
+function handleGlobalClick(event) {
+    const modal = document.getElementById('miv_imageModal');
+    if (modal && event.target == modal) {
+        miv_closeModal();
+    }
+}
+function initializeImageViewers() {
+    const images = document.querySelectorAll('.miv_mdbook-image-viewer');
+    images.forEach(img => {
+        img.addEventListener('click', () => miv_openModal(img.src));
+    });
+}
+document.addEventListener('DOMContentLoaded', function() {
+    createModal();
+    initializeImageViewers();
+    document.addEventListener('click', handleGlobalClick);
+});
+// Re-initialize image viewers when the page content changes (for mdBook)
+if (window.MutationObserver) {
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.type === 'childList') {
+                initializeImageViewers();
+            }
+        });
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+}
+</script>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../test/chapter_2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../test/chapter_6.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../test/chapter_2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../test/chapter_6.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../ace.js"></script>
+        <script src="../editor.js"></script>
+        <script src="../mode-rust.js"></script>
+        <script src="../theme-dawn.js"></script>
+        <script src="../theme-tomorrow_night.js"></script>
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <script src="https://cdn.staticfile.net/translate.js/3.14.0/translate.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/echarts@5.6.0/dist/echarts.min.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src=".././assets/help/helper.js"></script>
+        <script src=".././assets/help/support.js"></script>
+        <script src=".././assets/mermaid/mermaid.min.js"></script>
+        <script src=".././assets/mermaid/mermaid-init.js"></script>
+        <script src=".././assets/whichlang/whichlang.js"></script>
+        <script src=".././assets/translate/translate_button.js"></script>
+
+
+    </div>
+    </body>
+</html>

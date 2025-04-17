@@ -21,6 +21,7 @@
 - [mdbook-embedify](https://github.com/MR-Addict/mdbook-embedify.git) 
 - [comprehensive-rust](https://github.com/google/comprehensive-rust.git)
 - [mdbook-emojicodes](https://github.com/blyxyas/mdbook-emojicodes.git)
+- [mdbook-echarts](https://github.com/zhuangbiaowei/mdbook-echarts.git)
 - License-MIT. Give me a star, if this case is useful to you.
 - Build mdbooks plugins in rust.
   ```sh
@@ -29,7 +30,7 @@
   # get the binaries of execution to the bin.
   ```
 
-### GPT Translation.
+### Some HostEnv.
 
 - env setup
 
@@ -39,6 +40,15 @@ source ~/lang/bin/activate
 pip install -r requirements.txt
 ./translations.py
 ./translations.sh xx
+
+# Linux/macOS
+sudo apt-get install pkg-config libssl-dev
+openssl version
+pkg-config --modversion openssl
+where openssl
+export OPENSSL_DIR=/usr/lib/ssl
+export OPENSSL_LIB_DIR=/usr/lib/x86_64-linux-gnu
+export OPENSSL_INCLUDE_DIR=/usr/include/openssl
 ```
 
 ### How to use.

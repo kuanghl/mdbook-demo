@@ -7,8 +7,8 @@
 //设置机器翻译服务通道，直接客户端本身，不依赖服务端 。相关说明参考 http://translate.zvo.cn/43086.html
 // translate.service.use("client.edge");
 
-// 语言选择下拉框
-// translate.selectLanguageTag.languages = 'english,chinese_simplified,korean';
+// 语言选择下拉框korean/japan/russia/spanish/german/france
+translate.selectLanguageTag.languages = 'english,chinese_simplified';
 
 // 忽略翻译的class id
 translate.ignore.class.push("icon-button");
@@ -17,6 +17,8 @@ translate.ignore.class.push('MathJax');
 translate.ignore.class.push('katex-src'); 
 translate.ignore.class.push('katex-display');
 translate.ignore.class.push('chapter-item');
+translate.ignore.class.push('mermaid'); 
+translate.ignore.tag.push('text');
 
 //进行翻译
 translate.execute();
