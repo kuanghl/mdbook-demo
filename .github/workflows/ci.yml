@@ -52,13 +52,6 @@ jobs:
         sudo update-locale LANG=zh_CN.UTF-8
         sudo apt-get install chromium-browser
 
-        openssl version
-        whereis openssl
-        export OPENSSL_DIR=/usr/lib/ssl
-        export OPENSSL_LIB_DIR=/usr/lib/x86_64-linux-gnu
-        export OPENSSL_INCLUDE_DIR=/usr/include/openssl
-        export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
-
         pip install mdbook-pdf-outline
         export PATH="$PATH:$(pwd)/bin"
         mdbook build
