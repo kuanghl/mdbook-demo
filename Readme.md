@@ -45,7 +45,7 @@ pip install -r requirements.txt
 sudo apt-get install pkg-config libssl-dev
 openssl version
 pkg-config --modversion openssl
-where openssl
+whereis openssl
 export OPENSSL_DIR=/usr/lib/ssl
 export OPENSSL_LIB_DIR=/usr/lib/x86_64-linux-gnu
 export OPENSSL_INCLUDE_DIR=/usr/include/openssl
