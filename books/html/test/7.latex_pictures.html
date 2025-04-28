@@ -397,24 +397,24 @@ to[R=$R_2$, i&gt;_=$i_2$]
 
 \begin{tikzcd}
   T
-  \arrow[drr, bend left, "x"]
-  \arrow[ddr, bend right, "y"]
-  \arrow[dr, dotted, "{(x,y)}" description] &amp; &amp; \\
-  K &amp; X \times_Z Y \arrow[r, "p"] \arrow[d, "q"]
-  &amp; X \arrow[d, "f"] \\
-  &amp; Y \arrow[r, "g"]
+  \arrow[drr, bend left, &quot;x&quot;]
+  \arrow[ddr, bend right, &quot;y&quot;]
+  \arrow[dr, dotted, &quot;{(x,y)}&quot; description] &amp; &amp; \\
+  K &amp; X \times_Z Y \arrow[r, &quot;p&quot;] \arrow[d, &quot;q&quot;]
+  &amp; X \arrow[d, &quot;f&quot;] \\
+  &amp; Y \arrow[r, &quot;g&quot;]
   &amp; Z
 \end{tikzcd}
 
 \quad \quad
 
 \begin{tikzcd}[row sep=2.5em]
-A' \arrow[rr,"f'"] \arrow[dr,swap,"a"] \arrow[dd,swap,"g'"] &amp;&amp;
-  B' \arrow[dd,swap,"h'" near start] \arrow[dr,"b"] \\
-&amp; A \arrow[rr,crossing over,"f" near start] &amp;&amp;
-  B \arrow[dd,"h"] \\
-C' \arrow[rr,"k'" near end] \arrow[dr,swap,"c"] &amp;&amp; D' \arrow[dr,swap,"d"] \\
-&amp; C \arrow[rr,"k"] \arrow[uu,&lt;-,crossing over,"g" near end]&amp;&amp; D
+A' \arrow[rr,&quot;f'&quot;] \arrow[dr,swap,&quot;a&quot;] \arrow[dd,swap,&quot;g'&quot;] &amp;&amp;
+  B' \arrow[dd,swap,&quot;h'&quot; near start] \arrow[dr,&quot;b&quot;] \\
+&amp; A \arrow[rr,crossing over,&quot;f&quot; near start] &amp;&amp;
+  B \arrow[dd,&quot;h&quot;] \\
+C' \arrow[rr,&quot;k'&quot; near end] \arrow[dr,swap,&quot;c&quot;] &amp;&amp; D' \arrow[dr,swap,&quot;d&quot;] \\
+&amp; C \arrow[rr,&quot;k&quot;] \arrow[uu,&lt;-,crossing over,&quot;g&quot; near end]&amp;&amp; D
 \end{tikzcd}
 
 \end{document}
@@ -587,10 +587,10 @@ minimum height =30pt ,draw=purple] (10) at(6,0){$a_2^{(4)}$};
     (A) edge [red, thick]  (B)
     (C) edge [blue, thick] (D)
     (E) edge [thick]       (F)
-    pic ["$\alpha$", draw, fill=yellow]   {angle = F--X--A}
-    pic ["$\beta$",  draw, fill=green!30] {angle = B--X--F}
-    pic ["$\gamma$", draw, fill=yellow]   {angle = E--Y--D}
-    pic ["$\delta$", draw, fill=green!30] {angle = C--Y--E};
+    pic [&quot;$\alpha$&quot;, draw, fill=yellow]   {angle = F--X--A}
+    pic [&quot;$\beta$&quot;,  draw, fill=green!30] {angle = B--X--F}
+    pic [&quot;$\gamma$&quot;, draw, fill=yellow]   {angle = E--Y--D}
+    pic [&quot;$\delta$&quot;, draw, fill=green!30] {angle = C--Y--E};
 
 \node at ($ (D)!.5!(B) $) [right=1cm,text width=6cm,rounded corners,fill=red!20,inner sep=1ex]
     {
@@ -892,22 +892,6 @@ if (window.MutationObserver) {
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 
