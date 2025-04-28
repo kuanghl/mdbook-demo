@@ -96,7 +96,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item "><a href="../test/chapter_1.html">Mdbook Mathjax</a></li><li class="chapter-item "><a href="../3rd/pybind11/00.pybind11介绍.html">Pybind11</a></li><li class="chapter-item "><a href="../3rd/pybind11/01.改动日志.html">改动日志</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../3rd/pybind11/02.更新指南.html">更新指南</a></li><li class="chapter-item "><a href="../3rd/pybind11/03.安装说明.html">安装说明</a></li><li class="chapter-item "><a href="../3rd/pybind11/04.首次尝试.html">首次尝试</a></li><li class="chapter-item "><a href="../3rd/pybind11/05.面对对象编程.html">面对对象编程</a></li><li class="chapter-item "><a href="../3rd/pybind11/06.构建系统.html">构建系统</a></li><li class="chapter-item "><a href="../3rd/pybind11/07.函数.html">函数</a></li><li class="chapter-item "><a href="../3rd/pybind11/08.类.html">类</a></li><li class="chapter-item "><a href="../3rd/pybind11/09.异常.html">异常</a></li><li class="chapter-item "><a href="../3rd/pybind11/10.智能指针.html">智能指针</a></li><li class="chapter-item "><a href="../3rd/pybind11/11.类型转换.html">类型转换</a></li><li class="chapter-item "><a href="../3rd/pybind11/12.Python的C++接口.html">Python的C++接口</a></li><li class="chapter-item "><a href="../3rd/pybind11/13.内嵌解释器.html">内嵌解释器</a></li><li class="chapter-item "><a href="../3rd/pybind11/14.杂项.html">杂项</a></li><li class="chapter-item "><a href="../3rd/pybind11/15.FAQ.html">FAQ</a></li><li class="chapter-item "><a href="../3rd/pybind11/16.案例.html">案例</a></li><li class="chapter-item "><a href="../3rd/pybind11/pybind11_demo.html">pybind11 demo</a></li></ol></li><li class="chapter-item "><a href="../basic/markdown.html">Markdown</a></li><li class="chapter-item expanded "><a href="../basic/admonish.html" class="active">Admonish</a></li><li class="chapter-item "><a href="../test/chapter_3.html">Katex</a></li><li class="chapter-item "><a href="../test/chapter_4.html">Whichlang</a></li><li class="chapter-item "><a href="../test/chapter_5.html">Langtabs</a></li><li class="chapter-item "><a href="../test/chapter_2.html">Kroki-mermaid</a></li><li class="chapter-item "><a href="../test/chapter_7.html">ECharts</a></li><li class="chapter-item "><a href="../test/chapter_6.html">Markdown-emoji</a></li></ol>
+                <ol class="chapter"><li class="chapter-item "><a href="../3rd/pybind11/00.pybind11介绍.html">Pybind11</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../3rd/pybind11/01.改动日志.html">改动日志</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../3rd/pybind11/02.更新指南.html">更新指南</a></li><li class="chapter-item "><a href="../3rd/pybind11/03.安装说明.html">安装说明</a></li><li class="chapter-item "><a href="../3rd/pybind11/pybind11_demo.html">pybind11 demo</a></li></ol></li></ol></li><li class="chapter-item "><a href="../basic/markdown.html">Markdown</a></li><li class="chapter-item expanded "><a href="../basic/admonish.html" class="active">Admonish</a></li><li class="chapter-item "><a href="../test/0.mathjax.html">Mathjax</a></li><li class="chapter-item "><a href="../test/1.katex.html">Katex</a></li><li class="chapter-item "><a href="../test/2.whichlang.html">Whichlang</a></li><li class="chapter-item "><a href="../test/3.langtabs.html">Langtabs</a></li><li class="chapter-item "><a href="../test/4.kroki.html">Kroki</a></li><li class="chapter-item "><a href="../test/5.echarts.html">ECharts</a></li><li class="chapter-item "><a href="../test/6.bytefield.html">Bytefield</a></li><li class="chapter-item "><a href="../test/7.latex_pictures.html">Latex Pictures</a></li><li class="chapter-item "><a href="../test/8.latex_document.html">Latex Document</a></li><li class="chapter-item "><a href="../test/9.wavedrom.html">WaveDrom</a></li><li class="chapter-item "><a href="../test/10.emoji.html">Emoji</a></li><li class="chapter-item "><a href="../test/11.typst.html">Typst</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -533,13 +533,15 @@ accomplished with the <span style="color: hotpink">dereference operator</span>, 
 </div>
 <h2 id="À-propos-de-nous"><a class="header" href="#À-propos-de-nous">À propos de nous</a></h2>
 <p>Nous sommes une équipe passionnée par la 3D et nous avons pour mission de partager nos connaissances avec la communauté. Vous trouverez ici des articles, des exemples de code et des démonstrations pour vous aider à démarrer votre voyage dans le développement 3D.</p>
-<pre class="mermaid">graph LR
+<div class="mermaid-container" style="text-align: center">
+<div class="mermaid">graph LR
   A[Start] --&gt; B{Error?};
   B --&gt;|Yes| C[Hmm...];
   C --&gt; D[Debug];
   D --&gt; B;
   B ----&gt;|No| E[Yay!];
-</pre>
+</div>
+</div>
 <h2 id="pour-commencer"><a class="header" href="#pour-commencer">Pour commencer</a></h2>
 <p>Si vous êtes nouveau dans le domaine de la 3D, ne vous inquiétez pas ! Notre page <a href="getting-started/getting-started.html">“Getting Started”</a> vous guidera à travers les étapes essentielles pour démarrer rapidement.</p>
 <h2 id="restons-en-contact"><a class="header" href="#restons-en-contact">Restons en contact</a></h2>
@@ -747,7 +749,7 @@ if (window.MutationObserver) {
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../test/chapter_3.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../test/0.mathjax.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -761,7 +763,7 @@ if (window.MutationObserver) {
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../test/chapter_3.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../test/0.mathjax.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -790,7 +792,27 @@ if (window.MutationObserver) {
         <script src="../book.js"></script>
 
         <script src="https://cdn.staticfile.net/translate.js/3.14.0/translate.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/echarts@5.6.0/dist/echarts.min.js"></script>
+
+        <!-- bytefeild -->
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.querySelectorAll('code.language-bytefield').forEach(n => {
+                n.outerHTML = bytefield.generate(n.innerText, { 'embedded': true });
+            });
+        });
+        </script>
+
+        <!-- latex -->
+        <script type="module">
+            import { LaTeXJSComponent } from "https://cdn.jsdelivr.net/npm/latex.js/dist/latex.mjs"
+            customElements.define("latex-js", LaTeXJSComponent)
+        </script>
+
+        <style>
+            latex-js {
+                width: 100%;
+            }
+        </style>
 
         <!-- Custom JS scripts -->
         <script src=".././assets/help/helper.js"></script>
@@ -799,6 +821,8 @@ if (window.MutationObserver) {
         <script src=".././assets/mermaid/mermaid-init.js"></script>
         <script src=".././assets/whichlang/whichlang.js"></script>
         <script src=".././assets/translate/translate_button.js"></script>
+        <script src=".././assets/echarts/echarts.min.js"></script>
+        <script src=".././assets/bytefield/bytefield-svg.js"></script>
 
 
     </div>
