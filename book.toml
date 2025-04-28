@@ -49,7 +49,7 @@ assets_version = "3.0.1" # do not edit: managed by `mdbook-admonish install`
 command = "mdbook-mermaid"
 
 # 编译时卡顿,由于访问https://kroki.io
-[preprocessor.kroki-preprocessor]
+# [preprocessor.kroki-preprocessor]
 # Example endpoint configuration
 # endpoint = "https://kroki.io"      # serve
 # endpoint = "http://localhost:8000" # local docker
@@ -57,26 +57,9 @@ command = "mdbook-mermaid"
 # 有些动态的或者函数式的图在pdf会留空
 # 切换章节加载网页有延迟
 [preprocessor.echarts]
+after = ["katex"]
 
-# 导致pdf出现黑边, todo ...
-# [preprocessor.svgbob]
-# svgbob configuration:
-# doc: https://docs.rs/svgbob/latest/svgbob/struct.Settings.html
-# default values: https://github.com/ivanceras/svgbob/blob/master/packages/svgbob/src/settings.rs#L29-L38
-# font_size = 14
-# font_family = "Iosevka Fixed, monospace"
-# fill_color = "black"
-# background = "transparent"               # default overridden, differs from svgbob's default
-# stroke_color = "var(--fg)"               # default overridden, differs from svgbob's default
-# stroke_width = 2.0
-# scale = 8.0
-# enhance_circuitries = true
-# include_backdrop = true
-# include_styles = true
-# include_defs = true
-# merge_line_with_shapes = true
-# preprocessor configuration:
-# code_block = "bob"                       # render only code-blocks marked as "bob", e.g.: ```bob
+[preprocessor.wavedrom-rs]
 
 [output.html]
 mathjax-support = true
@@ -101,6 +84,8 @@ additional-js = [
     "./assets/mermaid/mermaid.min.js", "./assets/mermaid/mermaid-init.js",
     "./assets/whichlang/whichlang.js", 
     "./assets/translate/translate_button.js",  # 翻译加载网页变慢
+    "./assets/echarts/echarts.min.js", 
+    "./assets/bytefield/bytefield-svg.js",
     # "./assets/langtabs/langtabs.js", 
     ]
 
@@ -179,6 +164,7 @@ footer-template = """<div style="position: relative; width: 100%; padding: 10px 
                         </div>
                     </div>"""
 prefer-css-page-size = true
+generate-document-outline = false
 
 [output.pdf-outline]
 like-wkhtmltopdf = true

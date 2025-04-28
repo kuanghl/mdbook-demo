@@ -1,4 +1,7 @@
 ### Reference.
+
+1. mdbook plugins.
+
 - [mdbook-catppuccin](https://github.com/catppuccin/mdBook.git)
 - [mdbook-admonish](https://github.com/tommilligan/mdbook-admonish.git)
 - [mdbook-mermaid](https://github.com/badboy/mdbook-mermaid.git)
@@ -22,6 +25,9 @@
 - [comprehensive-rust](https://github.com/google/comprehensive-rust.git)
 - [mdbook-emojicodes](https://github.com/blyxyas/mdbook-emojicodes.git)
 - [mdbook-echarts](https://github.com/zhuangbiaowei/mdbook-echarts.git)
+- [mdbook-pikchr](https://github.com/podsvirov/mdbook-pikchr.git)
+- [bytefield-svg](https://github.com/LMinJae/bytefield-svg-browser-wrapper.git)
+- [wavedrom-rs](https://github.com/coastalwhite/wavedrom-rs.git)
 - License-MIT. Give me a star, if this case is useful to you.
 - Build mdbooks plugins in rust.
   ```sh
@@ -29,6 +35,44 @@
   cargo build
   # get the binaries of execution to the bin.
   ```
+
+2. other tools.
+
+- [typst-as-library](https://github.com/tfachmann/typst-as-library.git)
+- [tectonic](https://github.com/tectonic-typesetting/tectonic.git)
+- [typst](https://github.com/typst/typst.git)
+- [pdf2img](https://github.com/shawkui/pdf2img)
+```sh
+# tectonic: https://erasin.wang/latex-quick/
+# V1 https://tectonic-typesetting.github.io/book/latest/ref/v1cli.html
+./tectonic --help
+./tectonic ./dft-choices.tex
+./tectonic ./dft-choices.tex -o ../
+# V2 https://tectonic-typesetting.github.io/book/latest/ref/v2cli.html
+tectonic -X new latexproject
+cd latexproject
+tectonic -X compile ./dft-choices.tex
+tectonic -X build
+
+# typst: https://lib.rs/crates/typst-cli
+./typst --help
+./typst compile atomistic-gpu-batching.typ
+./typst compile atomistic-gpu-batching.typ atomistic-gpu-batching.pdf
+./typst compile atomistic-gpu-batching.typ atomistic-gpu-batching.svg
+./typst compile atomistic-gpu-batching.typ atomistic-gpu-batching.png
+./typst watch atomistic-gpu-batching.typ 
+
+# pdftocairo: https://www.linux-man.cn/command/pdftocairo/
+pdftocairo -v
+pdftocairo -h
+pdftocairo {{path/to/file.pdf}} -jpeg
+pdftocairo {{path/to/file.pdf}} {{output.pdf}} -pdf -expand
+pdftocairo {{path/to/file.pdf}} {{output.svg}} -svg -f {{first_page}} -l {{last_page}}
+pdftocairo {{path/to/file.pdf}} {{output.png}} -png -r 200
+pdftocairo {{path/to/file.pdf}} -tiff -gray -paper A3
+pdftocairo {{path/to/file.pdf}} -png -x {{x_pixels}} -y {{y_pixels}}
+pdftocairo dist/atomistic-gpu-batching.pdf ./../output.svg -svg -r 600
+```
 
 ### Some HostEnv.
 
@@ -60,10 +104,10 @@ git clone https://github.com/kuanghl/mdbook-demo.git
 sudo apt-get update
 sudo apt-get install language-pack-zh-hans gettext
 sudo update-locale LANG=zh_CN.UTF-8
-sudo apt-get install chromium-browser
+sudo apt-get install chromium-browser poppler-utils
 cargo uninstall mdbook
 pip install mdbook-pdf-outline
-export PATH="$PATH:$(pwd)/bin"
+export PATH="$PATH:$(pwd)/bin:$(pwd)/bin/tools"
 mdbook build
 mdbook serve --open
 mdbook_zh build
@@ -73,8 +117,8 @@ mdbook_zh serve --open
 # vscode open workspace
 # open terminal
 pip install mdbook-pdf-outline
-set PATH=%PATH%;%CD%\bin_win
-$env:PATH += ";$(Get-Location)\bin_win"
+set PATH=%PATH%;%CD%\bin_win;%CD%\bin_win\tools;;%CD%\bin_win\tools\pdftocairo
+$env:PATH += ";$(Get-Location)\bin_win;$(Get-Location)\bin_win\tools;$(Get-Location)\bin_win\tools\pdftocairo"
 cd mdbook-demo
 mdbook.exe build
 mdbook.exe serve --open

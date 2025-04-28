@@ -326,7 +326,27 @@
         <script src="{{ path_to_root }}book.js"></script>
 
         <script src="https://cdn.staticfile.net/translate.js/3.14.0/translate.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/echarts@5.6.0/dist/echarts.min.js"></script>
+
+        <!-- bytefeild -->
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.querySelectorAll('code.language-bytefield').forEach(n => {
+                n.outerHTML = bytefield.generate(n.innerText, { 'embedded': true });
+            });
+        });
+        </script>
+
+        <!-- latex -->
+        <script type="module">
+            import { LaTeXJSComponent } from "https://cdn.jsdelivr.net/npm/latex.js/dist/latex.mjs"
+            customElements.define("latex-js", LaTeXJSComponent)
+        </script>
+
+        <style>
+            latex-js {
+                width: 100%;
+            }
+        </style>
 
         <!-- Custom JS scripts -->
         {{#each additional_js}}
