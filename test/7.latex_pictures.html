@@ -332,15 +332,15 @@ amssymb
 tikz-3dplot
 </code></pre>
 <h2 id="tikz-demo1"><a class="header" href="#tikz-demo1">tikz demo1</a></h2>
-<pre><code class="language-latex tikz">% demo1
+<div><details><summary>demo1_0.tex</summary>
+<div id="CommonMark-latex tikz"></div>
+<pre><code class="language-latex tikz">
+% demo1
 \documentclass[tikz]{standalone}
-
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.16}
-
 \begin{document}
-
-\begin{tikzpicture}
+\begin{tikzpicture}[scale=2]
 \begin{axis}[colormap/viridis]
 \addplot3[
 	surf,
@@ -350,81 +350,225 @@ tikz-3dplot
 {exp(-x^2-y^2)*x};
 \end{axis}
 \end{tikzpicture}
-
 \end{document}
-</code></pre>
+</code></pre></details></div>
+<div align=center>
+<img src="./../images/Latex_Pictures/demo1_0.svg" alt="Latex Pictures" class="miv_mdbook-image-viewer" onclick="miv_openModal(this.src)">
+</div>
 <h2 id="tikz-demo2"><a class="header" href="#tikz-demo2">tikz demo2</a></h2>
-<pre><code class="language-latex tikz">% demo2
+<div><details><summary>demo2_1.tex</summary>
+<div id="CommonMark-latex tikz"></div>
+<pre><code class="language-latex tikz">
+% demo2
 \documentclass[tikz]{standalone}
-
 \begin{document}
   \begin{tikzpicture}[domain=0:4]
     \draw[very thin,color=gray] (-0.1,-1.1) grid (3.9,3.9);
-    \draw[-&gt;] (-0.2,0) -- (4.2,0) node[right] {$x$};
-    \draw[-&gt;] (0,-1.2) -- (0,4.2) node[above] {$f(x)$};
+    \draw[->] (-0.2,0) -- (4.2,0) node[right] {$x$};
+    \draw[->] (0,-1.2) -- (0,4.2) node[above] {$f(x)$};
     \draw[color=red]    plot (\x,\x)             node[right] {$f(x) =x$};
     \draw[color=blue]   plot (\x,{sin(\x r)})    node[right] {$f(x) = \sin x$};
     \draw[color=orange] plot (\x,{0.05*exp(\x)}) node[right] {$f(x) = \frac{1}{20} \mathrm e^x$};
   \end{tikzpicture}
 \end{document}
-</code></pre>
+</code></pre></details></div>
+<div align=center>
+<img src="./../images/Latex_Pictures/demo2_1.svg" alt="Latex Pictures" class="miv_mdbook-image-viewer" onclick="miv_openModal(this.src)">
+</div>
 <h2 id="tikz-demo3"><a class="header" href="#tikz-demo3">tikz demo3</a></h2>
-<pre><code class="language-latex tikz">% demo3
-\documentclass[tikz]{standalone}
-
-\usepackage{circuitikz}
+<div><details><summary>demo3_2.tex</summary>
+<div id="CommonMark-latex tikz"></div>
+<pre><code class="language-latex tikz">
+% demo3
+\documentclass[margin=10pt]{standalone}
+\usepackage[siunitx]{circuitikz}
 \begin{document}
-
-\begin{circuitikz}[american, voltage shift=0.5]
+\begin{tikzpicture}[scale=2]
 \draw (0,0)
 to[isource, l=$I_0$, v=$V_0$] (0,3)
 to[short, -*, i=$I_0$] (2,3)
-to[R=$R_1$, i&gt;_=$i_1$] (2,0) -- (0,0);
+to[R=$R_1$, i>_=$i_1$] (2,0) -- (0,0);
 \draw (2,3) -- (4,3)
-to[R=$R_2$, i&gt;_=$i_2$]
+to[R=$R_2$, i>_=$i_2$]
 (4,0) to[short, -*] (2,0);
-\end{circuitikz}
-
+\end{tikzpicture}
 \end{document}
-</code></pre>
+</code></pre></details></div>
+<div align=center>
+<img src="./../images/Latex_Pictures/demo3_2.svg" alt="Latex Pictures" class="miv_mdbook-image-viewer" onclick="miv_openModal(this.src)">
+</div>
 <h2 id="tikz-demo4"><a class="header" href="#tikz-demo4">tikz demo4</a></h2>
-<pre><code class="language-latex tikz">% demo4
-\documentclass[tikz]{standalone}
-
-\usepackage{tikz-cd}
-
+<div><details><summary>demo4_3.tex</summary>
+<div id="CommonMark-latex tikz"></div>
+<pre><code class="language-latex tikz">
+% demo4
+% Poincaré Diagram: Classification of Phase Portraits in the (det A,Tr A)-plane
+% Author: Gernot Salzer, 22 Jan 2017
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{decorations.markings}
+\tikzset
+ {every pin/.style = {pin edge = {<-}},    % pins are arrows from label to point
+  > = stealth,                            % arrow tips look like stealth bombers
+  flow/.style =    % everything marked as "flow" will be decorated with an arrow
+   {decoration = {markings, mark=at position #1 with {\arrow{>}}},
+    postaction = {decorate}
+   },
+  flow/.default = 0.5,          % default position of the arrow is in the middle
+  main/.style = {line width=1pt}                    % thick lines for main graph
+ }
+% \newtemplate[Scaling, default 0.18]{\NameOfTemplate}{Caption}{Code}
+%
+% Typesets Code and stores it in the box \NameOfTemplate.
+% This way we avoid nested tikzpictures when inserting the templates into the
+% main picture, since nesting is not guaranteed to work.
+\newcommand\newtemplate[4][0.18]%
+ {\newsavebox#2%
+  \savebox#2%
+   {\begin{tabular}{@{}c@{}}
+      \begin{tikzpicture}[scale=#1]
+      #4
+      \end{tikzpicture}\\[-1ex]
+      \templatecaption{#3}\\[-1ex]
+    \end{tabular}%
+   }%
+ }
+\newcommand\template[1]{\usebox{#1}}             % use the Code stored in box #1
+\newcommand\templatecaption[1]{{\sffamily\scriptsize#1}}       % typeset caption
+\newcommand\Tr{\mathop{\mathrm{Tr}}}
+\newtemplate\sink{sink}%
+ {\foreach \sx in {+,-}                   % for right/left half do:
+   {\draw[flow] (\sx4,0) -- (0,0);        %   draw half of horizontal axis
+    \draw[flow] (0,\sx4) -- (0,0);        %   draw half of vertical axis
+    \foreach \sy in {+,-}                 %   for upper/lower quadrant do:
+      \foreach \a/\b in {2/1,3/0.44}      %     draw two half-parabolas
+        \draw[flow,domain=\sx\a:0] plot (\x, {\sy\b*\x*\x});
+   }
+ }
+\newtemplate\source{source}%
+ {\foreach \sx in {+,-}                   % for right/left half do:
+   {\draw[flow] (0,0) -- (\sx4,0);        %   draw half of horizontal axis
+    \draw[flow] (0,0) -- (0,\sx4);        %   draw half of vertical axis
+    \foreach \sy in {+,-}                 %   for upper/lower quadrant do:
+      \foreach \a/\b in {2/1,3/0.44}      %     draw two half-parabolas
+        \draw[flow,domain=0:\sx\a] plot (\x, {\sy\b*\x*\x});
+   }
+ }
+\newtemplate\stablefp{line of stable fixed points}%
+ {\draw (-4,0) -- (4,0);                  % draw horizontal axis
+  \foreach \sy in {+,-}                   % for upper/lower half do:
+   {\draw[flow] (0,\sy4) -- (0,0);        %   draw half of vertical axis
+    \foreach \x in {-3,-2,-1,1,2,3}       %   draw six vertical half-lines
+      \draw[flow] (\x,\sy3) -- (\x,0);
+   }
+ }
+\newtemplate\unstablefp{line of unstable fixed points}%
+ {\draw (-4,0) -- (4,0);                  % draw horizontal axis
+  \foreach \sy in {+,-}                   % for upper/lower half do:
+   {\draw[flow] (0,0) -- (0,\sy4);        %   draw half of vertical axis
+    \foreach \x in {-3,-2,-1,1,2,3}       %   draw six vertical half-lines
+      \draw[flow] (\x,0) -- (\x,\sy3);
+   }
+ }
+\newtemplate\spiralsink{spiral sink}%
+ {\draw (-4,0) -- (4,0);                  % draw horizontal axis
+  \draw (0,-4) -- (0,4);                  % draw vertical axis
+  \draw [samples=100,smooth,domain=27:7]  % draw spiral
+       plot ({\x r}:{0.005*\x*\x});       % Using "flow" here gives "Dimension
+  \def\x{26}                              %        too large", so we draw a tiny
+  \draw[->] ({\x r}:{0.005*\x*\x}) -- +(0.01,-0.01);%     tangent for the arrow.
+ }
+\newtemplate\spiralsource{spiral source}%
+ {\draw (-4,0) -- (4,0);                  % draw horizontal axis
+  \draw (0,-4) -- (0,4);                  % draw vertical axis
+  \draw [samples=100,smooth,domain=10:28] % draw spiral
+       plot ({-\x r}:{0.005*\x*\x});      % Using "flow" here gives "Dimension
+  \def\x{27.5}                            %        too large", so we draw a tiny
+  \draw[<-] ({-\x r}:{0.005*\x*\x}) -- +(0.01,-0.008);%   tangent for the arrow.
+ }
+\newtemplate[0.15]\centre{center}% British spelling since \center is in use
+ {\draw (-4,0) -- (4,0);                  % draw horizontal axis
+  \draw (0,-4) -- (0,4);                  % draw vertical axis
+  \foreach \r in {1,2,3}                  % draw three circles
+    \draw[flow=0.63] (\r,0) arc (0:-360:\r cm);
+ }
+\newtemplate\saddle{saddle}%
+ {\foreach \sx in {+,-}                   % for right/left half do:
+   {\draw[flow] (\sx4,0) -- (0,0);        %   draw half of horizontal axis
+    \draw[flow] (0,0) -- (0,\sx4);        %   draw half of vertical axis
+    \foreach \sy in {+,-}                 %   for upper/lower quadrant do:
+      \foreach \a/\b/\c/\d in {2.8/0.3/0.7/0.6, 3.9/0.4/1.3/1.1}
+        \draw[flow] (\sx\a,\sy\b)         %     draw two bent lines
+          .. controls (\sx\c,\sy\d) and (\sx\d,\sy\c)
+          .. (\sx\b,\sy\a);
+   }
+ }
+\newtemplate\degensink{degenerate sink}%
+ {\draw (0,-4) -- (0,4);                  % draw vertical axis
+  \foreach \s in {+,-}                    % for upper/lower half do:
+   {\draw[flow] (\s4,0) -- (0,0);         %   draw half of horizontal axis
+    \foreach \a/\b/\c/\d in {3.5/4/1.5/1, 2.5/2/1/0.8}
+      \draw[flow] (\s-3.5,\s\a)           %   draw two bent lines
+        .. controls (\s\b,\s\c) and (\s\b,\s\d)
+        .. (0,0);
+   }
+ }
+\newtemplate\degensource{degenerate source}%
+ {\draw (0,-4) -- (0,4);                  % draw vertical axis
+  \foreach \s in {+,-}                    % for upper/lower half do:
+   {\draw[flow] (0,0) -- (\s4,0);         %   draw half of horizontal axis
+    \foreach \a/\b/\c/\d in {3.5/4/1.5/1, 2.5/2/1/0.8}
+      \draw[flow] (0,0)                   %   draw two bent lines
+        .. controls (\s\b,\s\d) and (\s\b,\s\c)
+        .. (\s-3.5,\s\a);
+   }
+ }
 \begin{document}
-
-\begin{tikzcd}
-  T
-  \arrow[drr, bend left, &quot;x&quot;]
-  \arrow[ddr, bend right, &quot;y&quot;]
-  \arrow[dr, dotted, &quot;{(x,y)}&quot; description] &amp; &amp; \\
-  K &amp; X \times_Z Y \arrow[r, &quot;p&quot;] \arrow[d, &quot;q&quot;]
-  &amp; X \arrow[d, &quot;f&quot;] \\
-  &amp; Y \arrow[r, &quot;g&quot;]
-  &amp; Z
-\end{tikzcd}
-
-\quad \quad
-
-\begin{tikzcd}[row sep=2.5em]
-A' \arrow[rr,&quot;f'&quot;] \arrow[dr,swap,&quot;a&quot;] \arrow[dd,swap,&quot;g'&quot;] &amp;&amp;
-  B' \arrow[dd,swap,&quot;h'&quot; near start] \arrow[dr,&quot;b&quot;] \\
-&amp; A \arrow[rr,crossing over,&quot;f&quot; near start] &amp;&amp;
-  B \arrow[dd,&quot;h&quot;] \\
-C' \arrow[rr,&quot;k'&quot; near end] \arrow[dr,swap,&quot;c&quot;] &amp;&amp; D' \arrow[dr,swap,&quot;d&quot;] \\
-&amp; C \arrow[rr,&quot;k&quot;] \arrow[uu,&lt;-,crossing over,&quot;g&quot; near end]&amp;&amp; D
-\end{tikzcd}
-
+\begin{tikzpicture}[line cap=round,line join=round]
+  % MAIN DIAGRAM
+  \draw [main,->] (0,-0.3) -- (0,4.7)                            % vertical axis
+    node [label={[above]$\scriptstyle\det A$}] {}
+    node [label={[above,yshift=0.8cm]%
+      {\sffamily\large Poincar\'e Diagram: Classification of Phase
+      Portraits in the $(\det A,\Tr A)$-plane}}] {};
+  \draw [main,->] (-5,0) -- (5,0)                              % horizontal axis
+    node [label={[right,yshift=-0.5ex]$\scriptstyle\Tr A$}] {}; 
+  \draw [main, domain=-4:4] plot (\x, {0.25*\x*\x});                % main graph
+  \node at (-4,4) [pin={[above]$\scriptstyle\Delta=0$}] {};
+  \node at ( 4,4) [pin={[above,align=left]%
+    {$\scriptstyle\Delta=0:\;\det A=\frac{1}{4}(\Tr A)^2$}}] {};
+  % TEMPLATES describing areas
+  \node at ( 0  ,-1.4) {\template\saddle};
+  \node at (-4  , 1  ) {\template\sink};
+  \node at ( 4  , 1  ) {\template\source}; 
+  \node at (-1.8, 3.7) {\template\spiralsink};
+  \node at ( 1.8, 3.7) {\template\spiralsource};
+  % TEMPLATES labeling lines and points
+  \node at ( 0  , 1.2) [pin={[draw,right,xshift=0.3cm]%
+    \template\centre}] {};
+  \node at (-3  , 0  ) [pin={[draw,below,yshift=-1cm]%
+    \template\stablefp}] {};
+  \node at ( 3  , 0  ) [pin={[draw,below,yshift=-1cm]%
+    \template\unstablefp}] {};
+  \node at (-3.5,{0.25*3.5*3.5}) [pin={[draw,left,xshift=-1.15cm,yshift=-0.3cm]%
+    \template\degensink}] {};
+  \node at ( 3.5,{0.25*3.5*3.5}) [pin={[draw,right,xshift=0.9cm,yshift=-0.3cm]%
+    \template\degensource}] {};
+  \node at ( 0  , 0  ) [pin={[draw,above left,align=center,xshift=-0.3cm]%
+    \templatecaption{uniform}\\[-1ex]\templatecaption{motion}}] {};
+\end{tikzpicture}
 \end{document}
-</code></pre>
+</code></pre></details></div>
+<div align=center>
+<img src="./../images/Latex_Pictures/demo4_3.svg" alt="Latex Pictures" class="miv_mdbook-image-viewer" onclick="miv_openModal(this.src)">
+</div>
 <h2 id="tikz-demo5"><a class="header" href="#tikz-demo5">tikz demo5</a></h2>
-<pre><code class="language-latex tikz">% demo5
+<div><details><summary>demo5_4.tex</summary>
+<div id="CommonMark-latex tikz"></div>
+<pre><code class="language-latex tikz">
+% demo5
 \documentclass[tikz]{standalone}
-
 \begin{document}
-\begin{tikzpicture}
+\begin{tikzpicture}[scale=2]
 \node[circle,
 minimum width =30pt ,
 minimum height =30pt ,draw=blue] (1) at(0,2){$x_1$};
@@ -455,89 +599,81 @@ minimum height =30pt ,draw=purple] (9) at(6,2){$a_1^{(4)}$};
 \node[circle,
 minimum width =30pt ,
 minimum height =30pt ,draw=purple] (10) at(6,0){$a_2^{(4)}$};
-\draw[-&gt;] (1) --(3);
-\draw[-&gt;] (1) --(4);
-\draw[-&gt;] (1) --(5);
-\draw[-&gt;] (2) --(3);
-\draw[-&gt;] (2) --(4);
-\draw[-&gt;] (2) --(5);
-\draw[-&gt;] (3) --(6);
-\draw[-&gt;] (3) --(7);
-\draw[-&gt;] (3) --(8);
-\draw[-&gt;] (4) --(6);
-\draw[-&gt;] (4) --(7);
-\draw[-&gt;] (4) --(8);
-\draw[-&gt;] (5) --(6);
-\draw[-&gt;] (5) --(7);
-\draw[-&gt;] (5) --(8);
-\draw[-&gt;] (6) --(9);
-\draw[-&gt;] (6) --(10);
-\draw[-&gt;] (7) --(9);
-\draw[-&gt;] (7) --(10);
-\draw[-&gt;] (8) --(9);
-\draw[-&gt;] (8) --(10);
+\draw[->] (1) --(3);
+\draw[->] (1) --(4);
+\draw[->] (1) --(5);
+\draw[->] (2) --(3);
+\draw[->] (2) --(4);
+\draw[->] (2) --(5);
+\draw[->] (3) --(6);
+\draw[->] (3) --(7);
+\draw[->] (3) --(8);
+\draw[->] (4) --(6);
+\draw[->] (4) --(7);
+\draw[->] (4) --(8);
+\draw[->] (5) --(6);
+\draw[->] (5) --(7);
+\draw[->] (5) --(8);
+\draw[->] (6) --(9);
+\draw[->] (6) --(10);
+\draw[->] (7) --(9);
+\draw[->] (7) --(10);
+\draw[->] (8) --(9);
+\draw[->] (8) --(10);
 \end{tikzpicture}
 \end{document}
-</code></pre>
+</code></pre></details></div>
+<div align=center>
+<img src="./../images/Latex_Pictures/demo5_4.svg" alt="Latex Pictures" class="miv_mdbook-image-viewer" onclick="miv_openModal(this.src)">
+</div>
 <h2 id="tikz-demo6"><a class="header" href="#tikz-demo6">tikz demo6</a></h2>
-<pre><code class="language-latex tikz">% demo6
+<div><details><summary>demo6_5.tex</summary>
+<div id="CommonMark-latex tikz"></div>
+<pre><code class="language-latex tikz">
+% demo6
 % Author: Till Tantau
 % Source: The PGF/TikZ manual
 \documentclass[tikz]{standalone}
-
 \begin{document}
 \pagestyle{empty}
 \begin{tikzpicture}[scale=3,cap=round]
 % Local definitions
 \def\costhirty{0.8660256}
-
 % Colors
 \colorlet{anglecolor}{green!50!black}
 \colorlet{sincolor}{red}
 \colorlet{tancolor}{orange!80!black}
 \colorlet{coscolor}{blue}
-
 % Styles
 \tikzstyle{axes}=[]
 \tikzstyle{important line}=[very thick]
 \tikzstyle{information text}=[rounded corners,fill=red!10,inner sep=1ex]
-
 % The graphic
 \draw[style=help lines,step=0.5cm] (-1.4,-1.4) grid (1.4,1.4);
-
 \draw (0,0) circle (1cm);
-
 \begin{scope}[style=axes]
-    \draw[-&gt;] (-1.5,0) -- (1.5,0) node[right] {$x$};
-    \draw[-&gt;] (0,-1.5) -- (0,1.5) node[above] {$y$};
-
+    \draw[->] (-1.5,0) -- (1.5,0) node[right] {$x$};
+    \draw[->] (0,-1.5) -- (0,1.5) node[above] {$y$};
     \foreach \x/\xtext in {-1, -.5/-\frac{1}{2}, 1}
     \draw[xshift=\x cm] (0pt,1pt) -- (0pt,-1pt) node[below,fill=white]
             {$\xtext$};
-
     \foreach \y/\ytext in {-1, -.5/-\frac{1}{2}, .5/\frac{1}{2}, 1}
     \draw[yshift=\y cm] (1pt,0pt) -- (-1pt,0pt) node[left,fill=white]
             {$\ytext$};
 \end{scope}
-
 \filldraw[fill=green!20,draw=anglecolor] (0,0) -- (3mm,0pt) arc(0:30:3mm);
 \draw (15:2mm) node[anglecolor] {$\alpha$};
-
 \draw[style=important line,sincolor]
     (30:1cm) -- node[left=1pt,fill=white] {$\sin \alpha$} +(0,-.5);
-
 \draw[style=important line,coscolor]
     (0,0) -- node[below=2pt,fill=white] {$\cos \alpha$} (\costhirty,0);
-
 \draw[style=important line,tancolor] (1,0) --
     node [right=1pt,fill=white]
     {
     $\displaystyle \tan \alpha \color{black}=
     \frac{{\color{sincolor}\sin \alpha}}{\color{coscolor}\cos \alpha}$
     } (intersection of 0,0--30:1cm and 1,0--1,1) coordinate (t);
-
 \draw (0,0) -- (t);
-
 \draw[xshift=1.85cm] node [right,text width=6cm,style=information text]
     {
     The {\color{anglecolor} angle $\alpha$} is $30^\circ$ in the
@@ -561,37 +697,36 @@ minimum height =30pt ,draw=purple] (10) at(6,0){$a_2^{(4)}$};
     \]%
     };
 \end{tikzpicture}
-
 \end{document}
-</code></pre>
+</code></pre></details></div>
+<div align=center>
+<img src="./../images/Latex_Pictures/demo6_5.svg" alt="Latex Pictures" class="miv_mdbook-image-viewer" onclick="miv_openModal(this.src)">
+</div>
 <h2 id="tikz-demo7"><a class="header" href="#tikz-demo7">tikz demo7</a></h2>
-<pre><code class="language-latex tikz">% demo7
+<div><details><summary>demo7_6.tex</summary>
+<div id="CommonMark-latex tikz"></div>
+<pre><code class="language-latex tikz">
+% demo7
 \documentclass[tikz]{standalone}
-
 \usetikzlibrary {angles,calc,quotes}
-
 \begin{document}
-\begin{tikzpicture}[angle radius=.75cm]
-
+\begin{tikzpicture}[angle radius=.75cm, scale=2]
 \node (A) at (-2,0)     [red,left]   {$A$};
 \node (B) at ( 3,.5)    [red,right]  {$B$};
 \node (C) at (-2,2)     [blue,left]  {$C$};
 \node (D) at ( 3,2.5)   [blue,right] {$D$};
 \node (E) at (60:-5mm)  [below]      {$E$};
 \node (F) at (60:3.5cm) [above]      {$F$};
-
 \coordinate (X) at (intersection cs:first line={(A)--(B)}, second line={(E)--(F)});
 \coordinate (Y) at (intersection cs:first line={(C)--(D)}, second line={(E)--(F)});
-
 \path
     (A) edge [red, thick]  (B)
     (C) edge [blue, thick] (D)
     (E) edge [thick]       (F)
-    pic [&quot;$\alpha$&quot;, draw, fill=yellow]   {angle = F--X--A}
-    pic [&quot;$\beta$&quot;,  draw, fill=green!30] {angle = B--X--F}
-    pic [&quot;$\gamma$&quot;, draw, fill=yellow]   {angle = E--Y--D}
-    pic [&quot;$\delta$&quot;, draw, fill=green!30] {angle = C--Y--E};
-
+    pic ["$\alpha$", draw, fill=yellow]   {angle = F--X--A}
+    pic ["$\beta$",  draw, fill=green!30] {angle = B--X--F}
+    pic ["$\gamma$", draw, fill=yellow]   {angle = E--Y--D}
+    pic ["$\delta$", draw, fill=green!30] {angle = C--Y--E};
 \node at ($ (D)!.5!(B) $) [right=1cm,text width=6cm,rounded corners,fill=red!20,inner sep=1ex]
     {
     When we assume that $\color{red}AB$ and $\color{blue}CD$ are
@@ -600,60 +735,69 @@ minimum height =30pt ,draw=purple] (10) at(6,0){$a_2^{(4)}$};
     };
 \end{tikzpicture}
 \end{document}
-</code></pre>
+</code></pre></details></div>
+<div align=center>
+<img src="./../images/Latex_Pictures/demo7_6.svg" alt="Latex Pictures" class="miv_mdbook-image-viewer" onclick="miv_openModal(this.src)">
+</div>
 <h2 id="tikz-demo8"><a class="header" href="#tikz-demo8">tikz demo8</a></h2>
-<pre><code class="language-latex tikz">% demo8
+<div><details><summary>demo8_7.tex</summary>
+<div id="CommonMark-latex tikz"></div>
+<pre><code class="language-latex tikz">
+% demo8
 \documentclass[tikz]{standalone}
-
 \usepackage{chemfig}
 \begin{document}
-
-\chemfig{[:-90]HN(-[::-45](-[::-45]R)=[::+45]O)&gt;[::+45]*4(-(=O)-N*5(-(&lt;:(=[::-60]O)-[::+60]OH)-(&lt;[::+0])(&lt;:[::-108])-S&gt;)--)}
-
+\chemfig{[:-90]HN(-[::-45](-[::-45]R)=[::+45]O)>[::+45]*4(-(=O)-N*5(-(<:(=[::-60]O)-[::+60]OH)-(<[::+0])(<:[::-108])-S>)--)}
 \end{document}
-</code></pre>
+</code></pre></details></div>
+<div align=center>
+<img src="./../images/Latex_Pictures/demo8_7.svg" alt="Latex Pictures" class="miv_mdbook-image-viewer" onclick="miv_openModal(this.src)">
+</div>
 <h2 id="tikz-demo9"><a class="header" href="#tikz-demo9">tikz demo9</a></h2>
-<pre><code class="language-latex tikz">\documentclass[tikz]{standalone}
-
+<div><details><summary>samples_8.tex</summary>
+<div id="CommonMark-latex tikz"></div>
+<pre><code class="language-latex tikz">
+\documentclass[tikz]{standalone}
+\definecolor{DarkBlue}{rgb}{0,0,0.5} % 添加缺失的颜色定义
 \begin{document}
-
-\begin{tikzpicture}
-
+\begin{tikzpicture}[scale=2]
   \node (so32) [align=center] at (-5,-1) {heterotic\\$SO(32)$};
   \node (e8e8) [align=center] at (-3,4) {heterotic\\$E(8) \times E(8)$};
   \node (tiia) [align=center] at (4,3) {Type II A};
   \node (tiib) [align=center] at (5,-2) {Type II B};
   \node (ti) [align=center] at (0,-5) {Type I};
-
-  \draw[bend left,&lt;-&gt;] (so32) to node [below right,align=center] {compac-\\tification} (e8e8);
-  \draw[bend left,&lt;-&gt;] (e8e8) to node [below left] {M-theory} (tiia);
-  \draw[bend left,&lt;-&gt;] (tiia) to node [below left] {T-duality} (tiib);
-  \draw[bend left,&lt;-&gt;] (tiib) to node [above left,align=center] {orientifold\\action $\Omega$} (ti);
-  \draw[bend left,&lt;-&gt;] (ti) to node [above right] {S-duality} (so32);
-
+  \draw[bend left,<->] (so32) to node [below right,align=center] {compac-\\tification} (e8e8);
+  \draw[bend left,<->] (e8e8) to node [below left] {M-theory} (tiia);
+  \draw[bend left,<->] (tiia) to node [below left] {T-duality} (tiib);
+  \draw[bend left,<->] (tiib) to node [above left,align=center] {orientifold\\action $\Omega$} (ti);
+  \draw[bend left,<->] (ti) to node [above right] {S-duality} (so32);
   \begin{scope}
-    \clip[bend right]
-    (so32.east)
-    to (e8e8.south)
-    to (tiia.south)
-    to (tiib.west)
-    to (ti.north)
-    to (so32.east);
-    \foreach \c in {so32.east,e8e8.south,tiia.south,tiib.west,ti.north,so32.east}{%
+    % 修正路径绘制方式
+    \clip (so32.east) to [bend right] (e8e8.south)
+      to [bend right] (tiia.south)
+      to [bend right] (tiib.west)
+      to [bend right] (ti.north)
+      to [bend right] cycle; % 闭合路径
+    \foreach \c in {so32.east,e8e8.south,tiia.south,tiib.west,ti.north}{%
         \foreach \r in {1,...,6}{%
-            \draw[DarkBlue] (\c) circle (\r*0.15cm);
+            \draw[DarkBlue] (\c) circle (\r*0.15cm); % 使用已定义的颜色
           }
       }
   \end{scope}
-
-  \draw[bend right,very thick,gray,fill,fill opacity=0.3] (so32.east) to (e8e8.south) to (tiia.south) to (tiib.west) to (ti.north) to (so32.east);
-
+  % 修正路径绘制方式
+  \draw[bend right,very thick,gray,fill,fill opacity=0.3] 
+    (so32.east) to [bend right] (e8e8.south)
+    to [bend right] (tiia.south)
+    to [bend right] (tiib.west)
+    to [bend right] (ti.north)
+    to [bend right] cycle; % 闭合路径
   \node (mth) [align=center] at (0,0) {parameter space of\\[2ex]{\Large \textbf{M-Theory}}};
-
 \end{tikzpicture}
-
 \end{document}
-</code></pre>
+</code></pre></details></div>
+<div align=center>
+<img src="./../images/Latex_Pictures/samples_8.svg" alt="Latex Pictures" class="miv_mdbook-image-viewer" onclick="miv_openModal(this.src)">
+</div>
 <h2 id="texnote"><a class="header" href="#texnote">TexNote.</a></h2>
 <pre><code class="language-sh"># latex    c/c++/rust
 \#     ==&gt; \\\#

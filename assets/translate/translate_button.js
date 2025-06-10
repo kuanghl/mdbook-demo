@@ -21,5 +21,9 @@ translate.ignore.class.push('mermaid');
 translate.ignore.tag.push('text');
 
 //进行翻译
+// translate.selectLanguageTag.selectOnChange = function(event){
+//     var language = event.target.value;
+//     translate.changeLanguage(language);
+// };
 translate.execute();
 translate.request.listener.start();
