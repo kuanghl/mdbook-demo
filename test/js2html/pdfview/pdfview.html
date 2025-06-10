@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Show PDF</title>
+	<meta charset="utf-8" />
+	<script type="text/javascript" src='pdfobject.min.js'></script>
+	<style type="text/css">
+		html,body,#pdf_viewer{
+			width: 80%;
+			height: 80%;
+			margin:0 auto;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+
+<h2><a>pdf_viewer</a></h2>
+<div id="pdf_viewer"></div>
+<script type="text/javascript">
+    let options = {
+        page: 2 //navigate to page 2 when the PDF is opened
+    };
+	if(PDFObject.supportsPDFs){
+		PDFObject.embed("nvidia-rtx-blackwell-gpu-architecture.pdf", "#pdf_viewer", options);
+	}
+</script>
+
+<h2><a>pikchr-demo1</a></h2>
+<div style="margin:0 auto; max-width: 567px "><svg xmlns='http://www.w3.org/2000/svg' style='font-size:initial;' viewBox="0 0 567.908 489.591">
+<path d="M20.16,137.154L128.16,137.154L128.16,65.1543L20.16,65.1543Z"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="74.16" y="101.154" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">box</text>
+<path d="M179.16,137.154L257.16,137.154A15 15 0 0 0 272.16 122.154L272.16,80.1543A15 15 0 0 0 257.16 65.1543L179.16,65.1543A15 15 0 0 0 164.16 80.1543L164.16,122.154A15 15 0 0 0 179.16 137.154Z"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="218.16" y="80.9943" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">box (with</text>
+<text x="218.16" y="101.154" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">rounded</text>
+<text x="218.16" y="121.314" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">corners)</text>
+<circle cx="362.16" cy="101.154" r="36"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="362.16" y="101.154" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">circle</text>
+<ellipse cx="506.16" cy="101.154" rx="54" ry="36"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="506.16" y="101.154" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">ellipse</text>
+<path d="M38.16,281.154L110.16,281.154A36 36 0 0 0 146.16 245.154A36 36 0 0 0 110.16 209.154L38.16,209.154A36 36 0 0 0 2.16 245.154A36 36 0 0 0 38.16 281.154Z"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="74.16" y="245.154" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">oval</text>
+<path d="M218.16,317.154A36 36 0 0 0 254.16 281.154L254.16,209.154A36 36 0 0 0 218.16 173.154A36 36 0 0 0 182.16 209.154L182.16,281.154A36 36 0 0 0 218.16 317.154Z"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="218.16" y="224.994" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">(tall &amp;</text>
+<text x="218.16" y="245.154" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">thin)</text>
+<text x="218.16" y="265.314" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">oval</text>
+<path d="M308.16,219.954L308.16,270.354A54 10.8 0 0 0 416.16 270.354L416.16,219.954A54 10.8 0 0 0 308.16 219.954A54 10.8 0 0 0 416.16 219.954"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="362.16" y="253.254" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">cylinder</text>
+<path d="M470.16,299.154L542.16,299.154L542.16,212.754L520.56,191.154L470.16,191.154Z"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<path d="M520.56,191.154L520.56,212.754L542.16,212.754"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="506.16" y="245.154" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">file</text>
+<circle cx="74.16" cy="389.154" r="2.16" style="fill:rgb(0,0,0);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="74.16" y="379.074" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">dot</text>
+<path d="M176.207,389.154L248.207,389.154"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="212.207" y="377.454" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">lines</text>
+<polygon points="386.254,389.154 374.734,393.474 374.734,384.834" style="fill:rgb(0,0,0)"/>
+<path d="M314.254,389.154L380.494,389.154"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="350.254" y="377.454" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">arrows</text>
+<path d="M452.302,389.154 L 463.102,389.154 Q 473.902,389.154 484.702,370.448 Q 495.502,351.742 507.814,385.571 Q 520.127,419.4 529.977,392.337 Q 539.828,365.274 550.628,365.274 L 561.428,365.274"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="495.502" y="351.742" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">splines</text>
+<path d="M176.207,406.162L248.207,406.162"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);stroke-dasharray:7.2,7.2;" />
+<path d="M176.207,423.17L248.207,423.17"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);stroke-dasharray:2.16,7.2;" />
+<path d="M176.207,440.178L248.207,440.178"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
+<path d="M176.207,457.186L248.207,457.186"  style="fill:none;stroke-width:3.24;stroke:rgb(0,0,0);" />
+<polygon points="314.254,411.831 325.774,407.511 325.774,416.151" style="fill:rgb(0,0,0)"/>
+<path d="M320.014,411.831L386.254,411.831"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<polygon points="314.254,434.509 325.774,430.189 325.774,438.829" style="fill:rgb(0,0,0)"/>
+<polygon points="386.254,434.509 374.734,438.829 374.734,430.189" style="fill:rgb(0,0,0)"/>
+<path d="M320.014,434.509L380.494,434.509"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<polygon points="561.428,387.951 549.908,392.271 549.908,383.631" style="fill:rgb(0,0,0)"/>
+<path d="M452.302,411.831 L 463.102,411.831 Q 473.902,411.831 484.702,393.125 Q 495.502,374.419 507.814,408.248 Q 520.127,442.077 529.977,415.014 Q 539.828,387.951 547.748,387.951 L 555.668,387.951"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<polygon points="452.302,434.509 463.822,430.189 463.822,438.829" style="fill:rgb(0,0,0)"/>
+<path d="M458.062,434.509 L 465.982,434.509 Q 473.902,434.509 484.702,415.803 Q 495.502,397.096 507.814,430.925 Q 520.127,464.754 529.977,437.691 Q 539.828,410.628 550.628,410.628 L 561.428,410.628"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<polygon points="452.302,457.186 463.822,452.866 463.822,461.506" style="fill:rgb(0,0,0)"/>
+<polygon points="561.428,433.305 549.908,437.625 549.908,428.985" style="fill:rgb(0,0,0)"/>
+<path d="M458.062,457.186 L 465.982,457.186 Q 473.902,457.186 484.702,438.48 Q 495.502,419.774 507.814,453.602 Q 520.127,487.431 529.977,460.368 Q 539.828,433.305 547.748,433.305 L 555.668,433.305"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="281.794" y="19.8" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">Examples Of Pikchr Objects</text>
+</svg>
+</div>
+
+</body>
+</html>

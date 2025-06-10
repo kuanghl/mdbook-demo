@@ -53,6 +53,11 @@ tectonic -X new latexproject
 cd latexproject
 tectonic -X compile ./dft-choices.tex
 tectonic -X build
+# New project
+tectonic -X new project_name
+cd project_name
+tectonic -X build
+tectonic -X watch
 
 # typst: https://lib.rs/crates/typst-cli
 ./typst --help
@@ -61,6 +66,12 @@ tectonic -X build
 ./typst compile atomistic-gpu-batching.typ atomistic-gpu-batching.svg
 ./typst compile atomistic-gpu-batching.typ atomistic-gpu-batching.png
 ./typst watch atomistic-gpu-batching.typ 
+# New project
+# https://typst.app/universe/search/?kind=templates
+typst init @preview/basic-resume:0.2.8
+cd basic-resume
+typst compile main.typ
+typst watch main.typ
 
 # pdftocairo: https://www.linux-man.cn/command/pdftocairo/
 pdftocairo -v

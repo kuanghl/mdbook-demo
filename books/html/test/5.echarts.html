@@ -321,11 +321,11 @@
 <h1 id="echarts"><a class="header" href="#echarts">ECharts</a></h1>
 <h2 id="echarts-multi-function"><a class="header" href="#echarts-multi-function">echarts-multi-function</a></h2>
 <div>
-    <div id="6a6e18f448714bc8adfccd1927aa39bd" style="height: 500px" style="text-align: center;">
+    <div id="617a3ba100d6431bacb50931898952f0" style="height: 500px" style="text-align: center;">
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function() {
-            var chartDom_6a6e18f448714bc8adfccd1927aa39bd = document.getElementById('6a6e18f448714bc8adfccd1927aa39bd');
-var chart_6a6e18f448714bc8adfccd1927aa39bd = echarts.init(chartDom_6a6e18f448714bc8adfccd1927aa39bd, null, {
+            var chartDom_617a3ba100d6431bacb50931898952f0 = document.getElementById('617a3ba100d6431bacb50931898952f0');
+var chart_617a3ba100d6431bacb50931898952f0 = echarts.init(chartDom_617a3ba100d6431bacb50931898952f0, null, {
   renderer: 'svg'
 });
 var option;
@@ -609,18 +609,18 @@ option = {
   yAxis: yAxes,
   series: series
 };
-option && chart_6a6e18f448714bc8adfccd1927aa39bd.setOption(option);
+option && chart_617a3ba100d6431bacb50931898952f0.setOption(option);
         });
     </script>
     </div>
 </div>
 <h2 id="echarts-function"><a class="header" href="#echarts-function">echarts-function</a></h2>
 <div>
-    <div id="fb394b10e8a8405bbab5e70b8d3e5d72" style="height: 500px" style="text-align: center;">
+    <div id="19e36139763e4eea9d6e8b045208cf98" style="height: 500px" style="text-align: center;">
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function() {
-            var chartDom_fb394b10e8a8405bbab5e70b8d3e5d72 = document.getElementById('fb394b10e8a8405bbab5e70b8d3e5d72');
-var chart_fb394b10e8a8405bbab5e70b8d3e5d72 = echarts.init(chartDom_fb394b10e8a8405bbab5e70b8d3e5d72, null, {
+            var chartDom_19e36139763e4eea9d6e8b045208cf98 = document.getElementById('19e36139763e4eea9d6e8b045208cf98');
+var chart_19e36139763e4eea9d6e8b045208cf98 = echarts.init(chartDom_19e36139763e4eea9d6e8b045208cf98, null, {
   renderer: 'svg'
 });
 var option;
@@ -690,18 +690,18 @@ option = {
     }
   ]
 };
-option && chart_fb394b10e8a8405bbab5e70b8d3e5d72.setOption(option);
+option && chart_19e36139763e4eea9d6e8b045208cf98.setOption(option);
         });
     </script>
     </div>
 </div>
 <h2 id="echarts-dataset"><a class="header" href="#echarts-dataset">echarts-dataset</a></h2>
 <div>
-    <div id="93fce12701a948c2925cfebe49d5d6f9" style="height: 500px" style="text-align: center;">
+    <div id="27d8c13d4bcb4b289e3e1a90a1475696" style="height: 500px" style="text-align: center;">
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function() {
-            var chartDom_93fce12701a948c2925cfebe49d5d6f9 = document.getElementById('93fce12701a948c2925cfebe49d5d6f9');
-var chart_93fce12701a948c2925cfebe49d5d6f9 = echarts.init(chartDom_93fce12701a948c2925cfebe49d5d6f9, null, {
+            var chartDom_27d8c13d4bcb4b289e3e1a90a1475696 = document.getElementById('27d8c13d4bcb4b289e3e1a90a1475696');
+var chart_27d8c13d4bcb4b289e3e1a90a1475696 = echarts.init(chartDom_27d8c13d4bcb4b289e3e1a90a1475696, null, {
   renderer: 'svg'
 });
 var option;
@@ -768,11 +768,11 @@ setTimeout(function () {
       }
     ]
   };
-  chart_93fce12701a948c2925cfebe49d5d6f9.on('updateAxisPointer', function (event) {
+  chart_27d8c13d4bcb4b289e3e1a90a1475696.on('updateAxisPointer', function (event) {
     const xAxisInfo = event.axesInfo[0];
     if (xAxisInfo) {
       const dimension = xAxisInfo.value + 1;
-      chart_93fce12701a948c2925cfebe49d5d6f9.setOption({
+      chart_27d8c13d4bcb4b289e3e1a90a1475696.setOption({
         series: {
           id: 'pie',
           label: {
@@ -786,9 +786,9 @@ setTimeout(function () {
       });
     }
   });
-  chart_93fce12701a948c2925cfebe49d5d6f9.setOption(option);
+  chart_27d8c13d4bcb4b289e3e1a90a1475696.setOption(option);
 });
-option && chart_93fce12701a948c2925cfebe49d5d6f9.setOption(option);
+option && chart_27d8c13d4bcb4b289e3e1a90a1475696.setOption(option);
         });
     </script>
     </div>
@@ -1016,6 +1016,22 @@ if (window.MutationObserver) {
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

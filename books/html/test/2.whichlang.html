@@ -323,7 +323,7 @@
 <pre><code class="language-c">#include &lt;stdio.h&gt;
 
 int main(void) {
-	printf(&quot;Hello World\n&quot;);
+	printf("Hello World\n");
 }
 </code></pre>
 <!-- langtabs-end -->
@@ -332,20 +332,20 @@ int main(void) {
 
 int main()
 {
-   std::cout &lt;&lt; &quot;Hello World&quot; &lt;&lt; std::endl;
+   std::cout &lt;&lt; "Hello World" &lt;&lt; std::endl;
 }
 </code></pre>
 <!-- langtabs-end -->
 <!-- langtabs-start -->
-<pre><code class="language-javascript">console.log(&quot;Hello World&quot;);
+<pre><code class="language-javascript">console.log("Hello World");
 </code></pre>
 <!-- langtabs-end -->
 <!-- langtabs-start -->
-<pre><code class="language-typescript">console.log(&quot;Hello World&quot;);
+<pre><code class="language-typescript">console.log("Hello World");
 </code></pre>
 <!-- langtabs-end -->
 <!-- langtabs-start -->
-<pre><code class="language-rescript">Console.log(&quot;Hello World&quot;)
+<pre><code class="language-rescript">Console.log("Hello World")
 </code></pre>
 <!-- langtabs-end -->
 <!-- langtabs-start -->
@@ -359,48 +359,48 @@ int main()
 </code></pre>
 <!-- langtabs-end -->
 <!-- langtabs-start -->
-<pre><code class="language-lua fp=init.lua">print(&quot;Hello World&quot;)
+<pre><code class="language-lua fp=init.lua">print("Hello World")
 </code></pre>
 <!-- langtabs-end -->
 <!-- langtabs-start -->
-<pre><code class="language-python">print(&quot;Hello World&quot;)
+<pre><code class="language-python">print("Hello World")
 </code></pre>
 <!-- langtabs-end -->
 <!-- langtabs-start -->
-<pre><code class="language-nim">echo &quot;Hello World&quot;
+<pre><code class="language-nim">echo "Hello World"
 </code></pre>
 <!-- langtabs-end -->
 <!-- langtabs-start -->
-<pre><code class="language-zig fp=hello.zig">const std = @import(&quot;std&quot;);
+<pre><code class="language-zig fp=hello.zig">const std = @import("std");
 
 pub fn main() !void {
     const stdout = std.io.getStdOut().writer();
-    try stdout.print(&quot;Hello, {s}!\n&quot;, .{&quot;world&quot;});
+    try stdout.print("Hello, {s}!\n", .{"world"});
 }
 </code></pre>
 <!-- langtabs-end -->
 <!-- langtabs-start -->
 <pre><code class="language-odin">package main
 
-import &quot;core:fmt&quot;
+import "core:fmt"
 
 main :: proc() {
-	fmt.println(&quot;Hellope!&quot;)
+	fmt.println("Hellope!")
 }
 </code></pre>
 <!-- langtabs-end -->
 <!-- langtabs-start -->
 <pre><code class="language-wat fp=hello.wat icon=%webassembly">(module
-    (import &quot;wasi_unstable&quot; &quot;fd_write&quot;
+    (import "wasi_unstable" "fd_write"
         (func $fd_write (param i32 i32 i32 i32) (result i32))
     )
 
     (memory 1)
-    (export &quot;memory&quot; (memory 0))
+    (export "memory" (memory 0))
 
-    (data (i32.const 0) &quot;\08\00\00\00\0c\00\00\00Hello World\n&quot;)
+    (data (i32.const 0) "\08\00\00\00\0c\00\00\00Hello World\n")
 
-    (func $main (export &quot;_start&quot;)
+    (func $main (export "_start")
         i32.const 1
         i32.const 0
         i32.const 1
@@ -634,6 +634,22 @@ if (window.MutationObserver) {
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 
