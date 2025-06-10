@@ -26,6 +26,7 @@ code {
     font-family: var(--mono-font) !important;
     font-size: var(--code-font-size);
     direction: ltr !important;
+    border-radius: 0 0 16px 16px;
 }
 
 /* make long words/inline code not x overflow */
