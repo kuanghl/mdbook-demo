@@ -39,7 +39,7 @@
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
-    <body class="sidebar-visible no-js">
+    <body class="sidebar-visible no-js" onload="WaveDrom.ProcessAll()">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -1516,7 +1516,6 @@ if (window.MutationObserver) {
         </style>
 
         <!-- Custom JS scripts -->
-        <script src="../.././assets/help/helper.js"></script>
         <script src="../.././assets/help/support.js"></script>
         <script src="../.././assets/mermaid/mermaid.min.js"></script>
         <script src="../.././assets/mermaid/mermaid-init.js"></script>
@@ -1524,6 +1523,8 @@ if (window.MutationObserver) {
         <script src="../.././assets/translate/translate_button.js"></script>
         <script src="../.././assets/echarts/echarts.min.js"></script>
         <script src="../.././assets/bytefield/bytefield-svg.js"></script>
+        <script src="../.././assets/wavedrom/wavedrom.min.js"></script>
+        <script src="../.././assets/wavedrom/wavedrom.css.js"></script>
 
 
     </div>

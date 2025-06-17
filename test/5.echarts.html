@@ -39,7 +39,7 @@
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
-    <body class="sidebar-visible no-js">
+    <body class="sidebar-visible no-js" onload="WaveDrom.ProcessAll()">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -321,11 +321,11 @@
 <h1 id="echarts"><a class="header" href="#echarts">ECharts</a></h1>
 <h2 id="echarts-multi-function"><a class="header" href="#echarts-multi-function">echarts-multi-function</a></h2>
 <div>
-    <div id="3ac6433ff8ec4820b66ea02a113ef525" style="height: 500px" style="text-align: center;">
+    <div id="1d8c2cde5f254a78b721a2b753a54aeb" style="height: 500px" style="text-align: center;">
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function() {
-            var chartDom_3ac6433ff8ec4820b66ea02a113ef525 = document.getElementById('3ac6433ff8ec4820b66ea02a113ef525');
-var chart_3ac6433ff8ec4820b66ea02a113ef525 = echarts.init(chartDom_3ac6433ff8ec4820b66ea02a113ef525, null, {
+            var chartDom_1d8c2cde5f254a78b721a2b753a54aeb = document.getElementById('1d8c2cde5f254a78b721a2b753a54aeb');
+var chart_1d8c2cde5f254a78b721a2b753a54aeb = echarts.init(chartDom_1d8c2cde5f254a78b721a2b753a54aeb, null, {
   renderer: 'svg'
 });
 var option;
@@ -609,18 +609,18 @@ option = {
   yAxis: yAxes,
   series: series
 };
-option && chart_3ac6433ff8ec4820b66ea02a113ef525.setOption(option);
+option && chart_1d8c2cde5f254a78b721a2b753a54aeb.setOption(option);
         });
     </script>
     </div>
 </div>
 <h2 id="echarts-function"><a class="header" href="#echarts-function">echarts-function</a></h2>
 <div>
-    <div id="2a3828a5709d485880e3f01b2e6b8947" style="height: 500px" style="text-align: center;">
+    <div id="6e587d87bd3449d985d57dd6e189edb8" style="height: 500px" style="text-align: center;">
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function() {
-            var chartDom_2a3828a5709d485880e3f01b2e6b8947 = document.getElementById('2a3828a5709d485880e3f01b2e6b8947');
-var chart_2a3828a5709d485880e3f01b2e6b8947 = echarts.init(chartDom_2a3828a5709d485880e3f01b2e6b8947, null, {
+            var chartDom_6e587d87bd3449d985d57dd6e189edb8 = document.getElementById('6e587d87bd3449d985d57dd6e189edb8');
+var chart_6e587d87bd3449d985d57dd6e189edb8 = echarts.init(chartDom_6e587d87bd3449d985d57dd6e189edb8, null, {
   renderer: 'svg'
 });
 var option;
@@ -690,18 +690,18 @@ option = {
     }
   ]
 };
-option && chart_2a3828a5709d485880e3f01b2e6b8947.setOption(option);
+option && chart_6e587d87bd3449d985d57dd6e189edb8.setOption(option);
         });
     </script>
     </div>
 </div>
 <h2 id="echarts-dataset"><a class="header" href="#echarts-dataset">echarts-dataset</a></h2>
 <div>
-    <div id="76d623cd6fb14b21b7137e64eba20df3" style="height: 500px" style="text-align: center;">
+    <div id="7e23952d4c8d4a5e994a9b8999244913" style="height: 500px" style="text-align: center;">
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function() {
-            var chartDom_76d623cd6fb14b21b7137e64eba20df3 = document.getElementById('76d623cd6fb14b21b7137e64eba20df3');
-var chart_76d623cd6fb14b21b7137e64eba20df3 = echarts.init(chartDom_76d623cd6fb14b21b7137e64eba20df3, null, {
+            var chartDom_7e23952d4c8d4a5e994a9b8999244913 = document.getElementById('7e23952d4c8d4a5e994a9b8999244913');
+var chart_7e23952d4c8d4a5e994a9b8999244913 = echarts.init(chartDom_7e23952d4c8d4a5e994a9b8999244913, null, {
   renderer: 'svg'
 });
 var option;
@@ -768,11 +768,11 @@ setTimeout(function () {
       }
     ]
   };
-  chart_76d623cd6fb14b21b7137e64eba20df3.on('updateAxisPointer', function (event) {
+  chart_7e23952d4c8d4a5e994a9b8999244913.on('updateAxisPointer', function (event) {
     const xAxisInfo = event.axesInfo[0];
     if (xAxisInfo) {
       const dimension = xAxisInfo.value + 1;
-      chart_76d623cd6fb14b21b7137e64eba20df3.setOption({
+      chart_7e23952d4c8d4a5e994a9b8999244913.setOption({
         series: {
           id: 'pie',
           label: {
@@ -786,9 +786,9 @@ setTimeout(function () {
       });
     }
   });
-  chart_76d623cd6fb14b21b7137e64eba20df3.setOption(option);
+  chart_7e23952d4c8d4a5e994a9b8999244913.setOption(option);
 });
-option && chart_76d623cd6fb14b21b7137e64eba20df3.setOption(option);
+option && chart_7e23952d4c8d4a5e994a9b8999244913.setOption(option);
         });
     </script>
     </div>
@@ -1061,7 +1061,6 @@ if (window.MutationObserver) {
         </style>
 
         <!-- Custom JS scripts -->
-        <script src=".././assets/help/helper.js"></script>
         <script src=".././assets/help/support.js"></script>
         <script src=".././assets/mermaid/mermaid.min.js"></script>
         <script src=".././assets/mermaid/mermaid-init.js"></script>
@@ -1069,6 +1068,8 @@ if (window.MutationObserver) {
         <script src=".././assets/translate/translate_button.js"></script>
         <script src=".././assets/echarts/echarts.min.js"></script>
         <script src=".././assets/bytefield/bytefield-svg.js"></script>
+        <script src=".././assets/wavedrom/wavedrom.min.js"></script>
+        <script src=".././assets/wavedrom/wavedrom.css.js"></script>
 
 
     </div>
