@@ -28,6 +28,7 @@
 - [mdbook-pikchr](https://github.com/podsvirov/mdbook-pikchr.git)
 - [bytefield-svg](https://github.com/LMinJae/bytefield-svg-browser-wrapper.git)
 - [wavedrom-rs](https://github.com/coastalwhite/wavedrom-rs.git)
+- [wavedrom](https://github.com/wavedrom/wavedrom.git)
 - License-MIT. Give me a star, if this case is useful to you.
 - Build mdbooks plugins in rust.
   ```sh

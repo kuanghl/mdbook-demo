@@ -59,7 +59,7 @@ command = "mdbook-mermaid"
 [preprocessor.echarts]
 after = ["katex"]
 
-[preprocessor.wavedrom-rs]
+# [preprocessor.wavedrom-rs]
 
 [output.html]
 mathjax-support = true
@@ -79,13 +79,14 @@ additional-css = [
     # "./assets/langtabs/langtabs.css",
     ]
 additional-js = [
-    "./assets/help/helper.js", 
     "./assets/help/support.js", 
     "./assets/mermaid/mermaid.min.js", "./assets/mermaid/mermaid-init.js",
     "./assets/whichlang/whichlang.js", 
     "./assets/translate/translate_button.js",  # 翻译加载网页变慢
     "./assets/echarts/echarts.min.js", 
     "./assets/bytefield/bytefield-svg.js",
+    "./assets/wavedrom/wavedrom.min.js",
+    "./assets/wavedrom/wavedrom.css.js"
     # "./assets/langtabs/langtabs.js", 
     ]
 
