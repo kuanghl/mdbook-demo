@@ -173,3 +173,10 @@ like-wkhtmltopdf = true
 # 有点儿鸡肋...
 # [output.asciidoc]
 # unified = true
+
+# [output.office]
+# # Supported formats: docx, xlsx, pptx. Defaults to all three when omitted.
+# formats = ["docx", "xlsx", "pptx"]
+# # Optional: full path to Chrome/Chromium executable for diagram rendering.
+# # If not set, auto-detects from common install locations and PATH.
+# # browser-path = "/usr/bin/chromium-browser"

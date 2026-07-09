@@ -1,3 +1,5 @@
 book
 books/
-mdbook-kroki
+mdbook-kroki/
+.venv/
+office_oxide/

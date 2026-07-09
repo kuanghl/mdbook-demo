@@ -91,8 +91,8 @@ pdftocairo dist/atomistic-gpu-batching.pdf ./../output.svg -svg -r 600
 - env setup
 
 ```sh
-python3 -m venv ~/lang
-source ~/lang/bin/activate
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 ./translations.py
 ./translations.sh xx
