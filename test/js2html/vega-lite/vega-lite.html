@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Vega-Lite CDN 示例</title>
+  <script src="https://cdn.jsdelivr.net/npm/vega@6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@7"></script>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 900px; margin: 40px auto; padding: 0 20px; }
+    #vis { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>📊 Vega-Lite 单 HTML + CDN 示例</h1>
+  <div id="vis"></div>
+
+  <script>
+    const vlSpec = {
+      $schema: 'https://vega.github.io/schema/vega-lite/v6.json',
+      description: '示例柱状图',
+      data: {
+        values: [
+          {category: 'A', value: 28},
+          {category: 'B', value: 55},
+          {category: 'C', value: 43},
+          {category: 'D', value: 91},
+          {category: 'E', value: 81},
+          {category: 'F', value: 53}
+        ]
+      },
+      mark: 'bar',
+      encoding: {
+        x: {field: 'category', type: 'ordinal', title: '类别'},
+        y: {field: 'value', type: 'quantitative', title: '数值'},
+        color: {field: 'category', type: 'nominal'}
+      }
+    };
+    vegaEmbed('#vis', vlSpec);
+  </script>
+</body>
+</html>

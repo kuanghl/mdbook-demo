@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Viewer — HTML, Markdown, Mermaid, PlantUML & BPMN</title>
+
+    <!-- Mermaid -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+
+    <!-- Marked (Markdown renderer) -->
+    <script src="https://cdn.jsdelivr.net/npm/marked@11/marked.min.js"></script>
+    <!-- PlantUML Encoder -->
+    <script src="https://cdn.jsdelivr.net/npm/plantuml-encoder@1.4.0/dist/plantuml-encoder.min.js"></script>
+    <!-- bpmn.io -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bpmn-js@17.11.1/dist/assets/diagram-js.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bpmn-js@17.11.1/dist/assets/bpmn-font/css/bpmn-embedded.css">
+    <script src="https://cdn.jsdelivr.net/npm/bpmn-js@17.11.1/dist/bpmn-modeler.development.js"></script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 1800px; margin: 0 auto; }
+        h1 { text-align: center; color: white; margin-bottom: 30px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .section-title {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .export-options { display: flex; gap: 10px; flex-wrap: wrap; }
+        .html-container, .diagram-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .editor-wrapper, .preview-wrapper, .diagram-wrapper { display: flex; flex-direction: column; }
+        .label { font-weight: bold; color: #555; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .label.editor::before { content: '✏️'; }
+        .label.preview::before { content: '👁️'; }
+        textarea {
+            width: 100%;
+            height: 400px;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            resize: vertical;
+        }
+        textarea:focus { outline: none; border-color: #667eea; box-shadow: 0 0 10px rgba(102,126,234,0.3); }
+        iframe {
+            width: 100%;
+            height: 400px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            background: white;
+        }
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin: 5px;
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .btn-export { background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%); font-size: 0.9em; padding: 8px 15px; }
+        .btn-group { text-align: center; margin-top: 20px; }
+        .diagram-output {
+            min-height: 400px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            background: #fafafa;
+            overflow: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .diagram-output svg { max-width: 100%; height: auto; }
+        .error-message, .success-message { padding: 15px; border-radius: 8px; margin-top: 10px; display: none; }
+        .error-message { color: #f44336; background: #ffebee; }
+        .success-message { color: #4CAF50; background: #e8f5e9; }
+        .loading { color: #667eea; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+        /* BPMN Styles */
+        #bpmn-header {
+            background: #1e3a5f;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 0 20px 0; border-radius: 10px 10px 0 0;
+        }
+        #bpmn-header h2 { font-size: 1.2em; margin: 0; }
+        #bpmn-toolbar {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+        #bpmn-toolbar .btn { margin: 0; padding: 8px 15px; font-size: 0.85em; }
+        #bpmn-canvas-container {
+            width: 100%;
+            height: 500px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            background: white;
+            overflow: hidden;
+        }
+        #bpmn-canvas-container .djs-container { height: 100%; }
+        #bpmn-status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            padding: 10px;
+            background: #e8edf2;
+            border-radius: 8px;
+            font-size: 0.85em;
+            color: #4a5568;
+        }
+        .bpmn-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .bpmn-modal-overlay.active { display: flex; }
+        .bpmn-modal {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: 90%;
+            max-width: 900px;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .bpmn-modal-header { padding: 16px 20px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; }
+        .bpmn-modal-body { flex: 1; overflow: auto; padding: 16px 20px; }
+        .bpmn-modal-body pre {
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 16px;
+            border-radius: 6px;
+            overflow: auto;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+        .bpmn-modal-footer { padding: 12px 20px; border-top: 1px solid #e2e8f0; display: flex; justify-content: flex-end; gap: 8px; }
+        .bpmn-modal-close { background: none; border: none; font-size: 1.3rem; cursor: pointer; color: #64748b; }
+        .bpmn-modal-close:hover { color: #1a2332; }
+        .bpmn-loading-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(255,255,255,0.7);
+            z-index: 1001;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .bpmn-loading-overlay.active { display: flex; }
+        .bpmn-spinner {
+            width: 36px;
+            height: 36px;
+            border: 3px solid #e2e8f0;
+            border-top-color: #667eea;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .bpmn-toast {
+            position: fixed;
+            top: 60px;
+            right: 20px;
+            z-index: 1002;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            font-size: 0.9em;
+            max-width: 420px;
+            animation: toast-in 0.3s ease;
+        }
+        @keyframes toast-in { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+        .bpmn-toast.error { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+        .bpmn-toast.success { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
+        .bpmn-toast.info { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; }
+        #bpmn-file-input { display: none; }
+
+
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-bottom: 20px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 12px;
+            padding: 6px;
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+        }
+        .tab-btn {
+            flex: 1;
+            min-width: 120px;
+            padding: 12px 16px;
+            border: none;
+            border-radius: 8px;
+            background: transparent;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .tab-btn:hover { background: rgba(255,255,255,0.15); color: #fff; }
+        .tab-btn.active {
+            background: white;
+            color: #667eea;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+        @media (max-width: 700px) {
+            .tab-nav { flex-direction: column; }
+            .tab-btn { text-align: left; }
+        }
+
+        @media (max-width: 1200px) {
+            .html-container, .diagram-container { grid-template-columns: 1fr; }
+        }
+    
+        /* Markdown Preview Styles */
+        .md-preview {
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: #24292f;
+            overflow: auto;
+            height: 400px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            background: white;
+        }
+        .md-preview h1, .md-preview h2, .md-preview h3 { color: #1a1a2e; margin-top: 20px; }
+        .md-preview h1 { font-size: 1.8em; border-bottom: 2px solid #667eea; padding-bottom: 8px; }
+        .md-preview h2 { font-size: 1.4em; border-bottom: 1px solid #e0e0e0; padding-bottom: 6px; }
+        .md-preview h3 { font-size: 1.2em; }
+        .md-preview code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .md-preview pre {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 0.9em;
+        }
+        .md-preview pre code { background: none; padding: 0; color: inherit; }
+        .md-preview table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        .md-preview th, .md-preview td {
+            border: 1px solid #d0d7de;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        .md-preview th { background: #f6f8fa; font-weight: 600; }
+        .md-preview blockquote {
+            border-left: 4px solid #667eea;
+            padding: 8px 16px;
+            color: #57606a;
+            margin: 15px 0;
+        }
+        .md-preview ul, .md-preview ol { padding-left: 24px; margin: 10px 0; }
+        .md-preview a { color: #667eea; }
+        .md-preview img { max-width: 100%; height: auto; border-radius: 6px; }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛠️ Multi-Viewer</h1>
+<div class="tab-nav">
+            <button class="tab-btn active" data-tab="markdown" onclick="switchTab('markdown')">📝 Markdown</button>
+            <button class="tab-btn" data-tab="mermaid" onclick="switchTab('mermaid')">📊 Mermaid</button>
+            <button class="tab-btn" data-tab="plantuml" onclick="switchTab('plantuml')">🔷 PlantUML</button>
+            <button class="tab-btn" data-tab="bpmn" onclick="switchTab('bpmn')">📊 BPMN</button>
+            <button class="tab-btn" data-tab="html" onclick="switchTab('html')">📝 HTML</button>
+        </div>
+
+
+        <div id="tab-html" class="tab-panel">
+<!-- ================================================================
+        HTML EDITOR & PREVIEW
+        ================================================================ -->
+        <div class="section">
+            <h2 class="section-title">
+                <span>📝 HTML Editor & Preview</span>
+                <button class="btn export-btn" onclick="exportHTML()">💾 Export HTML</button>
+            </h2>
+            <div class="html-container">
+                <div class="editor-wrapper">
+                    <div class="label editor">Editor</div>
+                    <textarea id="htmlEditor" spellcheck="false"><!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial; padding: 20px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; }
+        .card { background: white; color: #333; padding: 30px; border-radius: 15px; }
+        h1 { color: #667eea; }
+        button { padding: 12px 25px; background: #667eea; color: white; border: none; border-radius: 8px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Willkommen! 🎉</h1>
+        <p>Live-Vorschau deines HTML-Codes.</p>
+        <button onclick="alert('Hallo! 👋')">Klick mich</button>
+    </div>
+</body>
+</html></textarea>
+                </div>
+                <div class="preview-wrapper">
+                    <div class="label preview">HTML Vorschau</div>
+                    <iframe id="htmlPreview"></iframe>
+                </div>
+            </div>
+            <div style="margin-top:15px; padding:10px; background:#f5f5f5; border-radius:8px;">
+                <input type="checkbox" id="autoUpdate" checked>
+                <label for="autoUpdate">Automatische Vorschau-Aktualisierung</label>
+            </div>
+            <div class="btn-group">
+                <button class="btn" onclick="updatePreview()">🔄 Aktualisieren</button>
+                <button class="btn" onclick="clearEditor()">🗑️ Leeren</button>
+                <button class="btn" onclick="loadHTMLSample()">📋 Beispiel</button>
+            </div>
+            <div id="htmlMessage" class="success-message"></div>
+        </div>
+</div>
+
+
+
+        <div id="tab-markdown" class="tab-panel active">
+<!-- ================================================================
+        MARKDOWN EDITOR & PREVIEW
+        ================================================================ -->
+        <div class="section">
+            <h2 class="section-title">
+                <span>📝 Markdown Editor & Preview</span>
+                <div class="export-options">
+                    <button class="btn export-btn" onclick="exportMarkdown()">💾 Export .md</button>
+                    <button class="btn export-btn" onclick="exportMarkdownHTML()">🌐 Export .html</button>
+                    <button class="btn export-btn" onclick="exportMarkdownDOCX()">📄 Export .doc</button>
+                </div>
+            </h2>
+            <div class="html-container">
+                <div class="editor-wrapper">
+                    <div class="label editor">Markdown Editor</div>
+                    <textarea id="mdEditor" spellcheck="false"># Willkommen beim Markdown-Viewer!
+
+## Text-Formatierung
+**Fett**, *kursiv*, ~~durchgestrichen~~, `inline code`
+
+## Listen
+- Punkt 1
+- Punkt 2
+  - Unterpunkt
+
+1. Erster
+2. Zweiter
+
+## Code-Blöcke
+```python
+def greet(name):
+    return f"Hallo, {name}!"
+```
+
+## Tabellen
+| Spalte A | Spalte B |
+|----------|----------|
+| Wert 1   | Wert 2   |
+| Wert 3   | Wert 4   |
+
+## Zitate
+> Dies ist ein Blockzitat.
+
+## Links
+[GitHub](https://github.com)
+
+**Probiere es aus!** ✨</textarea>
+                </div>
+                <div class="preview-wrapper">
+                    <div class="label preview">Markdown Vorschau</div>
+                    <div id="mdPreview" class="md-preview"><p style="color:#888;">Wird geladen...</p></div>
+                </div>
+            </div>
+            <div style="margin-top:15px; padding:10px; background:#f5f5f5; border-radius:8px;">
+                <input type="checkbox" id="mdAutoUpdate" checked>
+                <label for="mdAutoUpdate">Automatische Vorschau-Aktualisierung</label>
+            </div>
+            <div class="btn-group">
+                <button class="btn" onclick="renderMarkdown()">📝 Rendern</button>
+                <button class="btn" onclick="clearMarkdown()">🗑️ Leeren</button>
+                <button class="btn" onclick="loadMdSample()">📋 Beispiel</button>
+            </div>
+            <div id="mdMessage" class="success-message"></div>
+        </div>
+</div>
+
+
+        <div id="tab-mermaid" class="tab-panel">
+<!-- ================================================================
+        MERMAID VIEWER
+        ================================================================ -->
+        <div class="section">
+            <h2 class="section-title">
+                <span>📊 Mermaid Viewer</span>
+                <div class="export-options">
+                    <button class="btn export-btn" onclick="exportMermaid('svg')">📄 SVG</button>
+                    <button class="btn export-btn" onclick="exportMermaid('png')">🖼️ PNG</button>
+                </div>
+            </h2>
+            <div class="diagram-container">
+                <div class="editor-wrapper">
+                    <div class="label editor">Mermaid Code</div>
+                    <textarea id="mermaidEditor">graph TD
+    A[Start] --> B{Bedingung?}
+    B -->|Ja| C[Aktion]
+    B -->|Nein| D[Alternative]
+    C --> E[Ende]
+    D --> E</textarea>
+                </div>
+                <div class="diagram-wrapper">
+                    <div class="label preview">Mermaid Vorschau</div>
+                    <div id="mermaidOutput" class="diagram-output"><p class="loading">🔄 Wird geladen...</p></div>
+                </div>
+            </div>
+            <div class="btn-group">
+                <button class="btn" onclick="renderMermaid()">📊 Render</button>
+                <button class="btn" onclick="clearMermaid()">🗑️ Leeren</button>
+            </div>
+            <div id="mermaidError" class="error-message"></div>
+            <div id="mermaidSuccess" class="success-message"></div>
+        </div>
+</div>
+
+
+        <div id="tab-plantuml" class="tab-panel">
+<!-- ================================================================
+        PLANTUML VIEWER
+        ================================================================ -->
+        <div class="section">
+            <h2 class="section-title">
+                <span>🔷 PlantUML Viewer</span>
+                <div class="export-options">
+                    <button class="btn export-btn" onclick="exportUML('svg')">📄 SVG</button>
+                    <button class="btn export-btn" onclick="exportUML('png')">🖼️ PNG</button>
+                </div>
+            </h2>
+            <div class="diagram-container">
+                <div class="editor-wrapper">
+                    <div class="label editor">PlantUML Code</div>
+                    <textarea id="umlEditor">@startuml
+class User {
+  +String name
+  +login()
+}
+class Order {
+  +int orderId
+  +createOrder()
+}
+User --> Order : places
+@enduml</textarea>
+                </div>
+                <div class="diagram-wrapper">
+                    <div class="label preview">PlantUML Vorschau</div>
+                    <div id="umlOutput" class="diagram-output"><p class="loading">🔄 Wird geladen...</p></div>
+                </div>
+            </div>
+            <div class="btn-group">
+                <button class="btn" onclick="renderUML()">🔷 Render</button>
+                <button class="btn" onclick="clearUML()">🗑️ Leeren</button>
+            </div>
+            <div id="umlError" class="error-message"></div>
+            <div id="umlSuccess" class="success-message"></div>
+        </div>
+</div>
+
+
+        <div id="tab-bpmn" class="tab-panel">
+<!-- ================================================================
+        BPMN EDITOR
+        ================================================================ -->
+        <div class="section" style="padding: 0; overflow: hidden;">
+            <div id="bpmn-header">
+                <h2>📊 BPMN Editor</h2>
+                <div style="display:flex; gap:10px; align-items:center;">
+                    <span id="bpmn-filename">Unbenannt</span>
+                    <span id="bpmn-save-dot" style="width:8px;height:8px;border-radius:50%;background:#34d399;"></span>
+                </div>
+            </div>
+            <div style="padding: 25px;">
+                <div id="bpmn-toolbar">
+                    <button class="btn" onclick="bpmnOpen()">📂 Öffnen</button>
+                    <button class="btn" onclick="bpmnSave()">💾 Speichern</button>
+                    <span style="width:1px;background:#ddd;margin:0 5px;"></span>
+                    <button class="btn" onclick="bpmnExportSVG()">📐 SVG</button>
+                    <button class="btn" onclick="bpmnExportPNG()">🖼️ PNG</button>
+                    <button class="btn" onclick="bpmnShowXML()">📝 XML</button>
+                    <span style="width:1px;background:#ddd;margin:0 5px;"></span>
+                    <button class="btn" onclick="bpmnUndo()">↩️ Undo</button>
+                    <button class="btn" onclick="bpmnRedo()">↪️ Redo</button>
+                    <span style="width:1px;background:#ddd;margin:0 5px;"></span>
+                    <button class="btn" onclick="bpmnZoomIn()">🔍+</button>
+                    <button class="btn" onclick="bpmnZoomOut()">🔍-</button>
+                    <button class="btn" onclick="bpmnZoomFit()">📏 Fit</button>
+                    <span style="width:1px;background:#ddd;margin:0 5px;"></span>
+                    <button class="btn" onclick="bpmnNew()">🆕 Neu</button>
+                </div>
+                <div id="bpmn-canvas-container"></div>
+                <div id="bpmn-status-bar">
+                    <span id="bpmn-status-msg">✅ BPMN Editor bereit</span>
+                    <span id="bpmn-zoom-level">100%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BPMN Modal -->
+    <div class="bpmn-modal-overlay" id="bpmn-modal">
+        <div class="bpmn-modal">
+            <div class="bpmn-modal-header">
+                <h3>📝 BPMN XML</h3>
+                <button class="bpmn-modal-close" onclick="bpmnCloseModal()">✕</button>
+            </div>
+            <div class="bpmn-modal-body">
+                <pre id="bpmn-xml-content"></pre>
+            </div>
+            <div class="bpmn-modal-footer">
+                <button class="btn" onclick="bpmnCopyXML()">📋 Kopieren</button>
+                <button class="btn" onclick="bpmnDownloadXML()">💾 Herunterladen</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bpmn-loading-overlay" id="bpmn-loading">
+        <div class="bpmn-spinner"></div>
+        <span id="bpmn-loading-text">Lade...</span>
+    </div>
+
+    <input type="file" id="bpmn-file-input" accept=".bpmn,.xml" style="display:none;">
+</div>
+
+
+    <!-- ================================================================
+    JAVASCRIPT
+    ================================================================ -->
+    <script>
+
+    /* ── Tab Navigation ──────────────────────────────────────────── */
+    function switchTab(tabId) {
+        document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+        document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+        var btn = document.querySelector('[data-tab="' + tabId + '"]');
+        var panel = document.getElementById('tab-' + tabId);
+        if (btn) btn.classList.add('active');
+        if (panel) {
+            panel.classList.add('active');
+            // Trigger re-render for diagrams when switching to their tab
+            if (tabId === 'mermaid') {
+                var mo = document.getElementById('mermaidOutput');
+                if (mo && !mo.querySelector('svg')) renderMermaid();
+            }
+            if (tabId === 'plantuml') {
+                var uo = document.getElementById('umlOutput');
+                if (uo && !uo.querySelector('img')) renderUML();
+            }
+            if (tabId === 'bpmn' && !window._bpmnTabVisited) { window._bpmnTabVisited = true; bpmnInit(); }
+        }
+    }
+
+    /* ── Mermaid Initialisierung ──────────────────────────────────── */
+    mermaid.initialize({
+        startOnLoad: false,
+        theme: 'default',
+        securityLevel: 'loose'
+    });
+
+    /* ── HTML Editor ──────────────────────────────────────────────── */
+    var htmlEditor = document.getElementById('htmlEditor');
+    var htmlPreview = document.getElementById('htmlPreview');
+    var autoUpdate = document.getElementById('autoUpdate');
+    var htmlMessage = document.getElementById('htmlMessage');
+
+    function updatePreview() {
+        try {
+            var doc = htmlPreview.contentDocument || htmlPreview.contentWindow.document;
+            doc.open();
+            doc.write(htmlEditor.value);
+            doc.close();
+            showHTMLMessage('✅ Vorschau aktualisiert', 'success');
+        } catch (e) {
+            showHTMLMessage('❌ Fehler: ' + e.message, 'error');
+        }
+    }
+
+    function showHTMLMessage(msg, type) {
+        htmlMessage.textContent = msg;
+        htmlMessage.className = type === 'error' ? 'error-message' : 'success-message';
+        htmlMessage.style.display = 'block';
+        setTimeout(function() { htmlMessage.style.display = 'none'; }, 3000);
+    }
+
+    function clearEditor() {
+        htmlEditor.value = '';
+        updatePreview();
+    }
+
+    function loadHTMLSample() {
+        htmlEditor.value = '<!DOCTYPE html>\n<html>\n<head>\n    <style>\n        body { font-family: Arial; padding: 20px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; }\n        .card { background: white; color: #333; padding: 30px; border-radius: 15px; }\n        h1 { color: #667eea; }\n        button { padding: 12px 25px; background: #667eea; color: white; border: none; border-radius: 8px; cursor: pointer; }\n    </style>\n</head>\n<body>\n    <div class="card">\n        <h1>Willkommen! 🎉</h1>\n        <p>Live-Vorschau deines HTML-Codes.</p>\n        <button onclick="alert(\"Hallo! 👋\")\">Klick mich</button>\n    </div>\n</body>\n</html>';
+        updatePreview();
+    }
+
+    function exportHTML() {
+        var blob = new Blob([htmlEditor.value], { type: 'text/html' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = 'export.html';
+        a.click();
+        URL.revokeObjectURL(url);
+        showHTMLMessage('✅ HTML exportiert', 'success');
+    }
+
+    htmlEditor.addEventListener('input', function() {
+        if (autoUpdate.checked) updatePreview();
+    });
+
+
+    /* ── Markdown Viewer ──────────────────────────────────────────── */
+    var mdEditor = document.getElementById('mdEditor');
+    var mdPreview = document.getElementById('mdPreview');
+    var mdAutoUpdate = document.getElementById('mdAutoUpdate');
+    var mdMessage = document.getElementById('mdMessage');
+    var mdSampleText = mdEditor.value;
+
+    function renderMarkdown() {
+        var code = mdEditor.value.trim();
+        if (!code) { mdPreview.innerHTML = '<p style="color:#888;">(leer)</p>'; return; }
+        try {
+            if (typeof marked === 'undefined') {
+                mdPreview.innerHTML = '<p style="color:#f44336;">marked.js nicht geladen. Internetverbindung prüfen.</p>';
+                return;
+            }
+            marked.setOptions({ breaks: true, gfm: true });
+            mdPreview.innerHTML = marked.parse(code);
+            showMdMessage('Markdown gerendert', 'success');
+        } catch (e) {
+            mdPreview.innerHTML = '<p style="color:#f44336;">Render-Fehler</p>';
+            showMdMessage(e.message, 'error');
+        }
+    }
+
+    function showMdMessage(msg, type) {
+        mdMessage.textContent = type === 'error' ? '❌ ' + msg : '✅ ' + msg;
+        mdMessage.className = type === 'error' ? 'error-message' : 'success-message';
+        mdMessage.style.display = 'block';
+        setTimeout(function() { mdMessage.style.display = 'none'; }, 3000);
+    }
+
+    function clearMarkdown() { mdEditor.value = ''; mdPreview.innerHTML = ''; }
+    function loadMdSample() { mdEditor.value = mdSampleText; renderMarkdown(); }
+
+    function exportMarkdown() {
+        downloadBlob(new Blob([mdEditor.value], { type: 'text/markdown' }), 'dokument.md');
+        showMdMessage('Exportiert als .md', 'success');
+    }
+
+    function exportMarkdownHTML() {
+        if (typeof marked === 'undefined') { showMdMessage('marked.js nicht geladen', 'error'); return; }
+        try {
+            var body = marked.parse(mdEditor.value.trim() || ' ');
+            var full = '<!DOCTYPE html>\n<html lang="de">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<title>Markdown Export</title>\n<style>\nbody{font-family:-apple-system,BlinkMacSystemFont,\'Segoe UI\',sans-serif;max-width:900px;margin:40px auto;padding:20px;line-height:1.6;color:#24292f;}pre{background:#1e293b;color:#e2e8f0;padding:16px;border-radius:8px;overflow-x:auto;}code{background:#f4f4f4;padding:2px 6px;border-radius:4px;}table{border-collapse:collapse;width:100%;}th,td{border:1px solid #d0d7de;padding:8px 12px;}th{background:#f6f8fa;}blockquote{border-left:4px solid #667eea;padding:8px 16px;color:#57606a;}\n</style>\n</head>\n<body>\n' + body + '\n</body>\n</html>';
+            downloadBlob(new Blob([full], { type: 'text/html' }), 'dokument.html');
+            showMdMessage('Exportiert als HTML', 'success');
+        } catch (e) { showMdMessage('Export fehlgeschlagen: ' + e.message, 'error'); }
+    }
+
+    function exportMarkdownDOCX() {
+        var mdContent = mdEditor.value.trim();
+        if (!mdContent) { showMdMessage('Kein Inhalt zum Exportieren', 'error'); return; }
+        if (typeof marked === 'undefined') { showMdMessage('marked.js nicht geladen', 'error'); return; }
+        try {
+            var body = marked.parse(mdContent);
+            var wordHTML = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="UTF-8"><title>Markdown Export</title><!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom></w:WordDocument></xml><![endif]--><style>body{font-family:Calibri,Arial,sans-serif;font-size:12pt;line-height:1.4;color:#333;margin:30pt;}h1{font-size:20pt;margin-top:18pt;}h2{font-size:16pt;margin-top:14pt;}h3{font-size:13pt;margin-top:12pt;}pre{background:#f0f0f0;padding:8pt;font-family:Consolas,monospace;font-size:10pt;border:1pt solid #ddd;}code{background:#f0f0f0;padding:1pt 4pt;font-family:Consolas,monospace;font-size:10pt;}table{border-collapse:collapse;width:100%;margin:10pt 0;}th,td{border:1pt solid #999;padding:4pt 8pt;text-align:left;}th{background:#e0e0e0;font-weight:bold;}blockquote{border-left:3pt solid #999;padding-left:12pt;color:#555;margin:10pt 0;}p{margin:6pt 0;}</style></head><body>' + body + '</body></html>';
+            downloadBlob(new Blob([wordHTML], { type: 'application/msword' }), 'dokument.doc');
+            showMdMessage('✅ Exportiert als Word (.doc)', 'success');
+        } catch (e) { showMdMessage('❌ Export fehlgeschlagen: ' + e.message, 'error'); }
+    }
+
+    mdEditor.addEventListener('input', function() {
+        if (mdAutoUpdate.checked) renderMarkdown();
+    });
+
+    /* ── Mermaid Viewer ───────────────────────────────────────────── */
+    var mermaidEditor = document.getElementById('mermaidEditor');
+    var mermaidOutput = document.getElementById('mermaidOutput');
+    var mermaidError = document.getElementById('mermaidError');
+    var mermaidSuccess = document.getElementById('mermaidSuccess');
+
+    async function renderMermaid() {
+        var code = mermaidEditor.value.trim();
+        if (!code) {
+            showMermaidMsg('Bitte Mermaid-Code eingeben.', 'error');
+            return;
+        }
+        try {
+            var id = 'mermaid-' + Date.now();
+            var { svg } = await mermaid.render(id, code);
+            mermaidOutput.innerHTML = svg;
+            showMermaidMsg('✅ Mermaid-Diagramm gerendert', 'success');
+        } catch (e) {
+            mermaidOutput.innerHTML = '<p style="color:#f44336;">❌ Syntax-Fehler</p>';
+            
+            // Parse error message to find line number
+            var errorMsg = e.message || String(e);
+            var lineMatch = errorMsg.match(/line\s+(\d+)/i) || errorMsg.match(/at line (\d+)/i);
+            var lineNum = lineMatch ? lineMatch[1] : null;
+            
+            var displayMsg = '❌ Mermaid-Fehler';
+            if (lineNum) {
+                displayMsg += ' in Zeile ' + lineNum;
+                // Try to show the problematic line
+                var lines = code.split('\n');
+                var lineIdx = parseInt(lineNum) - 1;
+                if (lineIdx >= 0 && lineIdx < lines.length) {
+                    var badLine = lines[lineIdx].trim();
+                    if (badLine.length > 40) badLine = badLine.substring(0, 40) + '...';
+                    displayMsg += ': "' + badLine + '"';
+                }
+            } else {
+                displayMsg += ': ' + errorMsg.substring(0, 80);
+            }
+            showMermaidMsg(displayMsg, 'error');
+            console.error('[Mermaid] Render-Fehler:', e);
+        }
+    }
+
+    function showMermaidMsg(msg, type) {
+        var el = type === 'error' ? mermaidError : mermaidSuccess;
+        el.textContent = msg;
+        el.style.display = 'block';
+        setTimeout(function() { el.style.display = 'none'; }, 3000);
+    }
+
+    function clearMermaid() { mermaidEditor.value = ''; mermaidOutput.innerHTML = ''; }
+    function exportMermaid(format) {
+        var svgEl = mermaidOutput.querySelector('svg');
+        if (!svgEl) { showMermaidMsg('Bitte erst rendern.', 'error'); return; }
+        if (format === 'svg') {
+            var blob = new Blob([svgEl.outerHTML], { type: 'image/svg+xml' });
+            downloadBlob(blob, 'mermaid-diagramm.svg');
+        } else {
+            exportSVGToPNG(svgEl, 'mermaid-diagramm.png');
+        }
+    }
+
+    /* ── PlantUML Viewer ──────────────────────────────────────────── */
+    var umlEditor = document.getElementById('umlEditor');
+    var umlOutput = document.getElementById('umlOutput');
+    var umlError = document.getElementById('umlError');
+    var umlSuccess = document.getElementById('umlSuccess');
+
+    function renderUML() {
+        var code = umlEditor.value.trim();
+        if (!code) { showUMLMsg('Bitte PlantUML-Code eingeben.', 'error'); return; }
+        try {
+            var encoded = plantumlEncoder.encode(code);
+            var url = 'https://www.plantuml.com/plantuml/svg/' + encoded;
+            umlOutput.innerHTML = '<img src="' + url + '" alt="PlantUML Diagram" style="max-width:100%;height:auto;" onerror="this.parentElement.innerHTML=\'<p style=color:#f44336;>❌ PlantUML-Rendering fehlgeschlagen</p>\'">';
+            showUMLMsg('✅ PlantUML-Diagramm gerendert', 'success');
+        } catch (e) {
+            umlOutput.innerHTML = '<p style="color:#f44336;">❌ Fehler beim Encodieren</p>';
+            showUMLMsg('❌ ' + e.message, 'error');
+        }
+    }
+
+    function showUMLMsg(msg, type) {
+        var el = type === 'error' ? umlError : umlSuccess;
+        el.textContent = msg;
+        el.style.display = 'block';
+        setTimeout(function() { el.style.display = 'none'; }, 3000);
+    }
+
+    function clearUML() { umlEditor.value = ''; umlOutput.innerHTML = ''; }
+
+    function exportUML(format) {
+        var code = umlEditor.value.trim();
+        if (!code) { showUMLMsg('Bitte erst PlantUML-Code eingeben.', 'error'); return; }
+        try {
+            var encoded = plantumlEncoder.encode(code);
+            var ext = format === 'svg' ? 'svg' : 'png';
+            var url = 'https://www.plantuml.com/plantuml/' + ext + '/' + encoded;
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'plantuml-diagramm.' + ext;
+            a.click();
+            showUMLMsg('✅ PlantUML exportiert als ' + ext.toUpperCase(), 'success');
+        } catch (e) {
+            showUMLMsg('❌ Export fehlgeschlagen: ' + e.message, 'error');
+        }
+    }
+
+    /* ── BPMN Editor ──────────────────────────────────────────────── */
+    var bpmnModeler = null;
+    var bpmnCurrentFile = null;
+    var bpmnDirty = false;
+    var bpmnStatusTimer = null;
+
+    var BPMN_DEFAULT = '<?xml version="1.0" encoding="UTF-8"?>\n<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn">\n  <bpmn:process id="Process_1" isExecutable="false" name="Neuer Prozess">\n    <bpmn:startEvent id="StartEvent_1" name="Start">\n      <bpmn:outgoing>Flow_1</bpmn:outgoing>\n    </bpmn:startEvent>\n    <bpmn:endEvent id="EndEvent_1" name="Ende">\n      <bpmn:incoming>Flow_1</bpmn:incoming>\n    </bpmn:endEvent>\n    <bpmn:sequenceFlow id="Flow_1" sourceRef="StartEvent_1" targetRef="EndEvent_1" />\n  </bpmn:process>\n  <bpmndi:BPMNDiagram id="BPMNDiagram_1">\n    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">\n      <bpmndi:BPMNShape id="BPMNShape_StartEvent_1" bpmnElement="StartEvent_1">\n        <dc:Bounds x="179" y="159" width="36" height="36" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id="BPMNShape_EndEvent_1" bpmnElement="EndEvent_1">\n        <dc:Bounds x="432" y="159" width="36" height="36" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id="BPMNEdge_Flow_1" bpmnElement="Flow_1">\n        <di:waypoint x="215" y="177" />\n        <di:waypoint x="432" y="177" />\n      </bpmndi:BPMNEdge>\n    </bpmndi:BPMNPlane>\n  </bpmndi:BPMNDiagram>\n</bpmn:definitions>';
+
+    function bpmnInit() {
+        if (typeof BpmnJS === 'undefined') {
+            document.getElementById('bpmn-status-msg').textContent = '⚠️ bpmn-js nicht geladen. Internetverbindung prüfen.';
+            console.error('[BPMN] bpmn-js library not loaded');
+            return;
+        }
+        try {
+            bpmnModeler = new BpmnJS({
+                container: '#bpmn-canvas-container',
+                keyboard: { bindTo: document }
+            });
+
+            bpmnModeler.on('commandStack.changed', function() {
+                bpmnDirty = true;
+                document.getElementById('bpmn-save-dot').style.background = '#fbbf24';
+                updateBpmnZoom();
+            });
+
+            bpmnModeler.on('canvas.viewbox.changed', function() {
+                updateBpmnZoom();
+            });
+
+            // Standard-Diagramm laden
+            bpmnImportXML(BPMN_DEFAULT);
+            console.log('[BPMN] Modeler initialisiert');
+        } catch (e) {
+            console.error('[BPMN] Init-Fehler:', e);
+            document.getElementById('bpmn-status-msg').textContent = '❌ BPMN-Init fehlgeschlagen: ' + e.message;
+        }
+    }
+
+    function bpmnImportXML(xml) {
+        if (!bpmnModeler) return;
+        bpmnShowLoading('Lade Diagramm...');
+        bpmnModeler.importXML(xml).then(function(result) {
+            bpmnHideLoading();
+            if (result.warnings.length) {
+                console.warn('[BPMN] Import-Warnungen:', result.warnings);
+            }
+            bpmnModeler.get('canvas').zoom('fit-viewport');
+            bpmnDirty = false;
+            updateBpmnZoom();
+            document.getElementById('bpmn-save-dot').style.background = '#34d399';
+            document.getElementById('bpmn-status-msg').textContent = '✅ Diagramm geladen';
+        }).catch(function(err) {
+            bpmnHideLoading();
+            console.error('[BPMN] Import-Fehler:', err);
+            document.getElementById('bpmn-status-msg').textContent = '❌ Ungültiges BPMN XML';
+            bpmnShowToast('Ungültiges BPMN XML: ' + err.message, 'error');
+        });
+    }
+
+    function updateBpmnZoom() {
+        if (!bpmnModeler) return;
+        try {
+            var zoom = bpmnModeler.get('canvas').zoom();
+            document.getElementById('bpmn-zoom-level').textContent = Math.round(zoom * 100) + '%';
+        } catch(e) { /* canvas not ready */ }
+    }
+
+    function bpmnShowLoading(text) {
+        document.getElementById('bpmn-loading-text').textContent = text || 'Lade...';
+        document.getElementById('bpmn-loading').classList.add('active');
+    }
+
+    function bpmnHideLoading() {
+        document.getElementById('bpmn-loading').classList.remove('active');
+    }
+
+    function bpmnShowToast(msg, type) {
+        var toast = document.createElement('div');
+        toast.className = 'bpmn-toast ' + (type || 'info');
+        toast.innerHTML = '<span>' + msg + '</span>';
+        document.body.appendChild(toast);
+        setTimeout(function() { if (toast.parentNode) toast.remove(); }, 4000);
+    }
+
+    function bpmnSetStatus(msg, type) {
+        var el = document.getElementById('bpmn-status-msg');
+        el.textContent = msg;
+        if (bpmnStatusTimer) clearTimeout(bpmnStatusTimer);
+        bpmnStatusTimer = setTimeout(function() {
+            el.textContent = '✅ BPMN Editor bereit';
+        }, 3000);
+    }
+
+    function downloadBlob(blob, filename) {
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+
+    function exportSVGToPNG(svgEl, filename) {
+        var svgData = new XMLSerializer().serializeToString(svgEl);
+        var svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+        var url = URL.createObjectURL(svgBlob);
+        var img = new Image();
+        img.onload = function() {
+            var canvas = document.createElement('canvas');
+            canvas.width = img.width * 2;
+            canvas.height = img.height * 2;
+            var ctx = canvas.getContext('2d');
+            ctx.scale(2, 2);
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, img.width, img.height);
+            ctx.drawImage(img, 0, 0);
+            URL.revokeObjectURL(url);
+            canvas.toBlob(function(blob) {
+                downloadBlob(blob, filename);
+            }, 'image/png');
+        };
+        img.onerror = function() { URL.revokeObjectURL(url); };
+        img.src = url;
+    }
+
+    /* BPMN Aktionen */
+    function bpmnOpen() {
+        document.getElementById('bpmn-file-input').click();
+    }
+
+    document.getElementById('bpmn-file-input').addEventListener('change', function(e) {
+        var file = e.target.files[0];
+        if (!file) return;
+        var reader = new FileReader();
+        reader.onload = function(ev) {
+            bpmnCurrentFile = file.name;
+            document.getElementById('bpmn-filename').textContent = file.name;
+            bpmnImportXML(ev.target.result);
+        };
+        reader.onerror = function() {
+            bpmnShowToast('Datei konnte nicht gelesen werden.', 'error');
+        };
+        reader.readAsText(file);
+        this.value = '';
+    });
+
+    function bpmnSave() {
+        if (!bpmnModeler) return;
+        bpmnShowLoading('Speichere...');
+        bpmnModeler.saveXML({ format: true }).then(function(result) {
+            bpmnHideLoading();
+            var filename = bpmnCurrentFile || 'bpmn-diagramm.bpmn';
+            downloadBlob(new Blob([result.xml], { type: 'application/xml' }), filename);
+            bpmnDirty = false;
+            document.getElementById('bpmn-save-dot').style.background = '#34d399';
+            bpmnSetStatus('✅ Gespeichert: ' + filename);
+        }).catch(function(err) {
+            bpmnHideLoading();
+            bpmnShowToast('Speichern fehlgeschlagen: ' + err.message, 'error');
+        });
+    }
+
+    function bpmnExportSVG() {
+        if (!bpmnModeler) return;
+        bpmnShowLoading('Exportiere SVG...');
+        bpmnModeler.saveSVG().then(function(result) {
+            bpmnHideLoading();
+            var baseName = bpmnCurrentFile ? bpmnCurrentFile.replace(/\.(bpmn|xml)$/i, '') : 'bpmn-diagramm';
+            downloadBlob(new Blob([result.svg], { type: 'image/svg+xml' }), baseName + '.svg');
+            bpmnSetStatus('✅ SVG exportiert');
+        }).catch(function(err) {
+            bpmnHideLoading();
+            bpmnShowToast('SVG-Export fehlgeschlagen: ' + err.message, 'error');
+        });
+    }
+
+    function bpmnExportPNG() {
+        if (!bpmnModeler) return;
+        bpmnShowLoading('Exportiere PNG...');
+        bpmnModeler.saveSVG().then(function(result) {
+            var baseName = bpmnCurrentFile ? bpmnCurrentFile.replace(/\.(bpmn|xml)$/i, '') : 'bpmn-diagramm';
+            var svgBlob = new Blob([result.svg], { type: 'image/svg+xml;charset=utf-8' });
+            var url = URL.createObjectURL(svgBlob);
+            var img = new Image();
+            img.onload = function() {
+                var canvas = document.createElement('canvas');
+                canvas.width = img.width * 2;
+                canvas.height = img.height * 2;
+                var ctx = canvas.getContext('2d');
+                ctx.scale(2, 2);
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, img.width, img.height);
+                ctx.drawImage(img, 0, 0);
+                URL.revokeObjectURL(url);
+                canvas.toBlob(function(blob) {
+                    downloadBlob(blob, baseName + '.png');
+                    bpmnHideLoading();
+                    bpmnSetStatus('✅ PNG exportiert');
+                }, 'image/png');
+            };
+            img.onerror = function() {
+                URL.revokeObjectURL(url);
+                bpmnHideLoading();
+                bpmnShowToast('PNG-Export fehlgeschlagen', 'error');
+            };
+            img.src = url;
+        }).catch(function(err) {
+            bpmnHideLoading();
+            bpmnShowToast('PNG-Export fehlgeschlagen: ' + err.message, 'error');
+        });
+    }
+
+    function bpmnShowXML() {
+        if (!bpmnModeler) return;
+        bpmnShowLoading('Lese XML...');
+        bpmnModeler.saveXML({ format: true }).then(function(result) {
+            bpmnHideLoading();
+            document.getElementById('bpmn-xml-content').textContent = result.xml;
+            document.getElementById('bpmn-modal').classList.add('active');
+        }).catch(function(err) {
+            bpmnHideLoading();
+            bpmnShowToast('XML lesen fehlgeschlagen: ' + err.message, 'error');
+        });
+    }
+
+    function bpmnCloseModal() {
+        document.getElementById('bpmn-modal').classList.remove('active');
+    }
+
+    function bpmnCopyXML() {
+        var text = document.getElementById('bpmn-xml-content').textContent;
+        navigator.clipboard.writeText(text).then(function() {
+            bpmnShowToast('XML in Zwischenablage kopiert', 'success');
+        }).catch(function() {
+            var range = document.createRange();
+            range.selectNodeContents(document.getElementById('bpmn-xml-content'));
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            bpmnShowToast('XML selektiert — bitte Strg+C drücken', 'info');
+        });
+    }
+
+    function bpmnDownloadXML() {
+        var text = document.getElementById('bpmn-xml-content').textContent;
+        var filename = (bpmnCurrentFile || 'bpmn-diagramm').replace(/\.(bpmn|xml)$/i, '') + '.bpmn';
+        downloadBlob(new Blob([text], { type: 'application/xml' }), filename);
+        bpmnCloseModal();
+        bpmnSetStatus('✅ XML heruntergeladen');
+    }
+
+    function bpmnUndo() {
+        if (!bpmnModeler) return;
+        bpmnModeler.get('commandStack').undo();
+    }
+
+    function bpmnRedo() {
+        if (!bpmnModeler) return;
+        bpmnModeler.get('commandStack').redo();
+    }
+
+    function bpmnZoomIn() {
+        if (!bpmnModeler) return;
+        var canvas = bpmnModeler.get('canvas');
+        canvas.zoom(canvas.zoom() * 1.2);
+    }
+
+    function bpmnZoomOut() {
+        if (!bpmnModeler) return;
+        var canvas = bpmnModeler.get('canvas');
+        canvas.zoom(canvas.zoom() / 1.2);
+    }
+
+    function bpmnZoomFit() {
+        if (!bpmnModeler) return;
+        bpmnModeler.get('canvas').zoom('fit-viewport');
+    }
+
+    function bpmnNew() {
+        if (bpmnDirty) {
+            if (!confirm('Ungespeicherte Änderungen gehen verloren. Fortfahren?')) return;
+        }
+        bpmnCurrentFile = null;
+        document.getElementById('bpmn-filename').textContent = 'Unbenannt';
+        bpmnImportXML(BPMN_DEFAULT);
+    }
+
+    /* Modal schließen via Overlay-Klick oder Escape */
+    document.getElementById('bpmn-modal').addEventListener('click', function(e) {
+        if (e.target === this) bpmnCloseModal();
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && document.getElementById('bpmn-modal').classList.contains('active')) {
+            bpmnCloseModal();
+        }
+        if ((e.ctrlKey || e.metaKey) && e.key === 's' && document.activeElement === document.body) {
+            e.preventDefault(); bpmnSave();
+        }
+        if ((e.ctrlKey || e.metaKey) && e.key === 'o' && document.activeElement === document.body) {
+            e.preventDefault(); bpmnOpen();
+        }
+    });
+
+    /* ── Auto-Render bei Start ─────────────────────────────────────── */
+    window.addEventListener('DOMContentLoaded', function() {
+        updatePreview();
+        renderMarkdown();
+        switchTab('html');
+    });
+    </script>
+</body>
+</html>

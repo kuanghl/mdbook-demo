@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Excalidraw 示例</title>
+    <!-- 1. 加载 excalidraw-embed 的样式表 -->
+    <link rel="stylesheet" href="https://unpkg.com/excalidraw-embed/dist/excalidraw-embed.css">
+    <style>
+        /* 确保容器有明确的高度 */
+        #excalidraw-container {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <!-- 2. 准备一个用于挂载的容器 -->
+    <div id="excalidraw-container"></div>
+
+    <!-- 3. 加载 excalidraw-embed 的 JavaScript 库 -->
+    <script src="https://unpkg.com/excalidraw-embed"></script>
+
+    <script>
+        // 4. 调用 renderExcalidraw 方法
+        ExcalidrawEmbed.renderExcalidraw(
+            document.getElementById('excalidraw-container'),
+            {
+                initialData: {
+                    elements: [],
+                    appState: {
+                        viewBackgroundColor: '#ffffff',
+                        gridModeEnabled: true      // ✅ 开启原生网格线
+                    }
+                }
+            }
+        ).then(api => {
+            console.log('Excalidraw 加载成功!', api);
+            // 你可以在这里保存 api 对象，以便后续操作绘图
+        });
+    </script>
+</body>
+</html>

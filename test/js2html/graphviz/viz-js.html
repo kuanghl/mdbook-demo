@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Graphviz WASM CDN 示例</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 900px; margin: 40px auto; padding: 0 20px; }
+    #graph { margin-top: 20px; border: 1px solid #e5e7eb; border-radius: 8px; padding: 20px; background: #f9fafb; }
+  </style>
+</head>
+<body>
+  <h1>🕸️ Graphviz (@viz-js/viz) WASM 单 HTML + CDN 示例</h1>
+  <div id="graph">加载中...</div>
+
+  <script type="module">
+    import { instance } from 'https://cdn.jsdelivr.net/npm/@viz-js/viz@3/lib/viz-standalone.mjs';
+
+    const dot = `
+      digraph G {
+        rankdir=LR;
+        node [shape=box, style="rounded,filled", fillcolor="#e0f2fe"];
+        edge [color="#64748b"];
+        
+        前端 -> {Mermaid; "Vega-Lite"; "Graphviz"};
+        Mermaid -> "流程图";
+        Mermaid -> "时序图";
+        "Vega-Lite" -> "柱状图";
+        "Vega-Lite" -> "折线图";
+        "Graphviz" -> "有向图";
+        "Graphviz" -> "无向图";
+      }
+    `;
+
+    instance().then(viz => {
+      const svg = viz.renderSVGElement(dot);
+      document.getElementById('graph').innerHTML = '';
+      document.getElementById('graph').appendChild(svg);
+    });
+  </script>
+</body>
+</html>
